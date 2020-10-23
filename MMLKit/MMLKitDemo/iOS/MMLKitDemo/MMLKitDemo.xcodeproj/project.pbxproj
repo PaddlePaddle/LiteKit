@@ -1,0 +1,602 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9025ADB1710872C041A33A61 /* libPods-MMLKitDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 673B6DC527AB4C46376BA1AD /* libPods-MMLKitDemo.a */; };
+		BC0DDB3F24C9ECA0002AB0E9 /* test_img.png in Resources */ = {isa = PBXBuildFile; fileRef = BC0DDB3E24C9ECA0002AB0E9 /* test_img.png */; };
+		BC0DDD2724CF1B7B002AB0E9 /* Segmentation.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC0DDD2424CF1B7B002AB0E9 /* Segmentation.bundle */; };
+		BC0DDD2824CF1B7B002AB0E9 /* SuperResolution.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC0DDD2524CF1B7B002AB0E9 /* SuperResolution.bundle */; };
+		BC0DDD2924CF1B7B002AB0E9 /* HandGesture.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC0DDD2624CF1B7B002AB0E9 /* HandGesture.bundle */; };
+		BC158F9124BC494C00308245 /* SuperResolutionViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = BC158F9024BC494C00308245 /* SuperResolutionViewController.mm */; };
+		BC158FA324BC60EA00308245 /* test-SuperResolution.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = BC158FA224BC60EA00308245 /* test-SuperResolution.jpeg */; };
+		BC6A82E724ADADAA000E9480 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = BC6A82E624ADADAA000E9480 /* AppDelegate.mm */; };
+		BC6A82ED24ADADAA000E9480 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6A82EC24ADADAA000E9480 /* ViewController.m */; };
+		BC6A82F024ADADAA000E9480 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC6A82EE24ADADAA000E9480 /* Main.storyboard */; };
+		BC6A82F224ADADAF000E9480 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC6A82F124ADADAF000E9480 /* Assets.xcassets */; };
+		BC6A82F524ADADAF000E9480 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC6A82F324ADADAF000E9480 /* LaunchScreen.storyboard */; };
+		BC6A82F824ADADAF000E9480 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6A82F724ADADAF000E9480 /* main.m */; };
+		BC6A830724ADC511000E9480 /* HandGestureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6A830624ADC511000E9480 /* HandGestureViewController.m */; };
+		BC6A830A24ADC526000E9480 /* SegmentationViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = BC6A830924ADC526000E9480 /* SegmentationViewController.mm */; };
+		BC6A830D24ADC9D5000E9480 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6A830C24ADC9D5000E9480 /* BaseViewController.m */; };
+		BC6A831024ADCE90000E9480 /* BaseDetectView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6A830F24ADCE90000E9480 /* BaseDetectView.m */; };
+		BC6A834824AE2458000E9480 /* HandGestureRecognizeView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6A834724AE2458000E9480 /* HandGestureRecognizeView.m */; };
+		BC6A834B24AE3B65000E9480 /* HandGestureImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6A834A24AE3B65000E9480 /* HandGestureImageViewController.m */; };
+		BC6A835924AF676C000E9480 /* test-HandGesture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BC6A835824AF676C000E9480 /* test-HandGesture.jpg */; };
+		BC6A835B24AF67C4000E9480 /* mmlkit-swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6A835A24AF67C4000E9480 /* mmlkit-swift.swift */; };
+		BCCB6C5624F816CC00884353 /* bg_gesture.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = BCCB6C5324F816CC00884353 /* bg_gesture.jpeg */; };
+		BCCB6C5724F816CC00884353 /* bg_super_resolution.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = BCCB6C5424F816CC00884353 /* bg_super_resolution.jpeg */; };
+		BCCB6C5824F816CC00884353 /* bg_portrait.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = BCCB6C5524F816CC00884353 /* bg_portrait.jpeg */; };
+		BCFDE3A824C9B6B5001A263A /* SegmentationImageViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = BCFDE3A724C9B6B5001A263A /* SegmentationImageViewController.mm */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BCFDE3CC24C9BAD3001A263A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		032F92BA5D23B80940C0ECC1 /* Pods-MMLKitDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MMLKitDemo.debug.xcconfig"; path = "Target Support Files/Pods-MMLKitDemo/Pods-MMLKitDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		0A7FDCB0176FD4E4E70FBB3F /* Pods-MMLKitDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MMLKitDemo.release.xcconfig"; path = "Target Support Files/Pods-MMLKitDemo/Pods-MMLKitDemo.release.xcconfig"; sourceTree = "<group>"; };
+		673B6DC527AB4C46376BA1AD /* libPods-MMLKitDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MMLKitDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC0DDB3E24C9ECA0002AB0E9 /* test_img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_img.png; sourceTree = "<group>"; };
+		BC0DDD2424CF1B7B002AB0E9 /* Segmentation.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Segmentation.bundle; sourceTree = "<group>"; };
+		BC0DDD2524CF1B7B002AB0E9 /* SuperResolution.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SuperResolution.bundle; sourceTree = "<group>"; };
+		BC0DDD2624CF1B7B002AB0E9 /* HandGesture.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HandGesture.bundle; sourceTree = "<group>"; };
+		BC158F8F24BC494C00308245 /* SuperResolutionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SuperResolutionViewController.h; sourceTree = "<group>"; };
+		BC158F9024BC494C00308245 /* SuperResolutionViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SuperResolutionViewController.mm; sourceTree = "<group>"; };
+		BC158FA224BC60EA00308245 /* test-SuperResolution.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "test-SuperResolution.jpeg"; sourceTree = "<group>"; };
+		BC6A82E224ADADAA000E9480 /* MMLKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MMLKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC6A82E524ADADAA000E9480 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		BC6A82E624ADADAA000E9480 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
+		BC6A82EB24ADADAA000E9480 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		BC6A82EC24ADADAA000E9480 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		BC6A82EF24ADADAA000E9480 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BC6A82F124ADADAF000E9480 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BC6A82F424ADADAF000E9480 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BC6A82F624ADADAF000E9480 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC6A82F724ADADAF000E9480 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BC6A830524ADC511000E9480 /* HandGestureViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HandGestureViewController.h; sourceTree = "<group>"; };
+		BC6A830624ADC511000E9480 /* HandGestureViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HandGestureViewController.m; sourceTree = "<group>"; };
+		BC6A830824ADC526000E9480 /* SegmentationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SegmentationViewController.h; sourceTree = "<group>"; };
+		BC6A830924ADC526000E9480 /* SegmentationViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SegmentationViewController.mm; sourceTree = "<group>"; };
+		BC6A830B24ADC9D5000E9480 /* BaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		BC6A830C24ADC9D5000E9480 /* BaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		BC6A830E24ADCE90000E9480 /* BaseDetectView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseDetectView.h; sourceTree = "<group>"; };
+		BC6A830F24ADCE90000E9480 /* BaseDetectView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseDetectView.m; sourceTree = "<group>"; };
+		BC6A832324AE161B000E9480 /* MMLKitDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MMLKitDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		BC6A834324AE1D54000E9480 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		BC6A834624AE2458000E9480 /* HandGestureRecognizeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HandGestureRecognizeView.h; sourceTree = "<group>"; };
+		BC6A834724AE2458000E9480 /* HandGestureRecognizeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HandGestureRecognizeView.m; sourceTree = "<group>"; };
+		BC6A834924AE3B65000E9480 /* HandGestureImageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HandGestureImageViewController.h; sourceTree = "<group>"; };
+		BC6A834A24AE3B65000E9480 /* HandGestureImageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HandGestureImageViewController.m; sourceTree = "<group>"; };
+		BC6A835824AF676C000E9480 /* test-HandGesture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "test-HandGesture.jpg"; sourceTree = "<group>"; };
+		BC6A835A24AF67C4000E9480 /* mmlkit-swift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "mmlkit-swift.swift"; sourceTree = "<group>"; };
+		BCCB6C5324F816CC00884353 /* bg_gesture.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg_gesture.jpeg; sourceTree = "<group>"; };
+		BCCB6C5424F816CC00884353 /* bg_super_resolution.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg_super_resolution.jpeg; sourceTree = "<group>"; };
+		BCCB6C5524F816CC00884353 /* bg_portrait.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg_portrait.jpeg; sourceTree = "<group>"; };
+		BCFDE3A624C9B6B5001A263A /* SegmentationImageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SegmentationImageViewController.h; sourceTree = "<group>"; };
+		BCFDE3A724C9B6B5001A263A /* SegmentationImageViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SegmentationImageViewController.mm; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BC6A82DF24ADADAA000E9480 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9025ADB1710872C041A33A61 /* libPods-MMLKitDemo.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6E994EF212A5736169C8F673 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				032F92BA5D23B80940C0ECC1 /* Pods-MMLKitDemo.debug.xcconfig */,
+				0A7FDCB0176FD4E4E70FBB3F /* Pods-MMLKitDemo.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		BC158F8E24BC491C00308245 /* SuperResolution */ = {
+			isa = PBXGroup;
+			children = (
+				BC158F8F24BC494C00308245 /* SuperResolutionViewController.h */,
+				BC158F9024BC494C00308245 /* SuperResolutionViewController.mm */,
+			);
+			path = SuperResolution;
+			sourceTree = "<group>";
+		};
+		BC6A82D924ADADAA000E9480 = {
+			isa = PBXGroup;
+			children = (
+				BC6A82E424ADADAA000E9480 /* MMLKitDemo */,
+				BC6A82E324ADADAA000E9480 /* Products */,
+				BC6A831E24AE14A9000E9480 /* Frameworks */,
+				6E994EF212A5736169C8F673 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		BC6A82E324ADADAA000E9480 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BC6A82E224ADADAA000E9480 /* MMLKitDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BC6A82E424ADADAA000E9480 /* MMLKitDemo */ = {
+			isa = PBXGroup;
+			children = (
+				BC6A82FE24ADC46C000E9480 /* base */,
+				BC6A82FF24ADC46C000E9480 /* HandGesture */,
+				BC6A830024ADC46C000E9480 /* Segmentation */,
+				BC158F8E24BC491C00308245 /* SuperResolution */,
+				BC6A82E524ADADAA000E9480 /* AppDelegate.h */,
+				BC6A82E624ADADAA000E9480 /* AppDelegate.mm */,
+				BC6A82EB24ADADAA000E9480 /* ViewController.h */,
+				BC6A82EC24ADADAA000E9480 /* ViewController.m */,
+				BC6A835A24AF67C4000E9480 /* mmlkit-swift.swift */,
+				BC6A832324AE161B000E9480 /* MMLKitDemo-Bridging-Header.h */,
+				BC6A82EE24ADADAA000E9480 /* Main.storyboard */,
+				BC6A82F124ADADAF000E9480 /* Assets.xcassets */,
+				BC6A82F324ADADAF000E9480 /* LaunchScreen.storyboard */,
+				BC6A82F624ADADAF000E9480 /* Info.plist */,
+				BC6A82F724ADADAF000E9480 /* main.m */,
+				BCFDE3AE24C9B7F1001A263A /* model */,
+				BC6A831124AE0386000E9480 /* resource */,
+			);
+			path = MMLKitDemo;
+			sourceTree = "<group>";
+		};
+		BC6A82FE24ADC46C000E9480 /* base */ = {
+			isa = PBXGroup;
+			children = (
+				BC6A830B24ADC9D5000E9480 /* BaseViewController.h */,
+				BC6A830C24ADC9D5000E9480 /* BaseViewController.m */,
+				BC6A830E24ADCE90000E9480 /* BaseDetectView.h */,
+				BC6A830F24ADCE90000E9480 /* BaseDetectView.m */,
+			);
+			path = base;
+			sourceTree = "<group>";
+		};
+		BC6A82FF24ADC46C000E9480 /* HandGesture */ = {
+			isa = PBXGroup;
+			children = (
+				BC6A830524ADC511000E9480 /* HandGestureViewController.h */,
+				BC6A830624ADC511000E9480 /* HandGestureViewController.m */,
+				BC6A834624AE2458000E9480 /* HandGestureRecognizeView.h */,
+				BC6A834724AE2458000E9480 /* HandGestureRecognizeView.m */,
+				BC6A834924AE3B65000E9480 /* HandGestureImageViewController.h */,
+				BC6A834A24AE3B65000E9480 /* HandGestureImageViewController.m */,
+			);
+			path = HandGesture;
+			sourceTree = "<group>";
+		};
+		BC6A830024ADC46C000E9480 /* Segmentation */ = {
+			isa = PBXGroup;
+			children = (
+				BC6A830824ADC526000E9480 /* SegmentationViewController.h */,
+				BC6A830924ADC526000E9480 /* SegmentationViewController.mm */,
+				BCFDE3A624C9B6B5001A263A /* SegmentationImageViewController.h */,
+				BCFDE3A724C9B6B5001A263A /* SegmentationImageViewController.mm */,
+			);
+			path = Segmentation;
+			sourceTree = "<group>";
+		};
+		BC6A831124AE0386000E9480 /* resource */ = {
+			isa = PBXGroup;
+			children = (
+				BCCB6C5324F816CC00884353 /* bg_gesture.jpeg */,
+				BCCB6C5524F816CC00884353 /* bg_portrait.jpeg */,
+				BCCB6C5424F816CC00884353 /* bg_super_resolution.jpeg */,
+				BC6A835824AF676C000E9480 /* test-HandGesture.jpg */,
+				BC158FA224BC60EA00308245 /* test-SuperResolution.jpeg */,
+				BC0DDB3E24C9ECA0002AB0E9 /* test_img.png */,
+			);
+			path = resource;
+			sourceTree = "<group>";
+		};
+		BC6A831E24AE14A9000E9480 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BC6A834324AE1D54000E9480 /* libz.tbd */,
+				673B6DC527AB4C46376BA1AD /* libPods-MMLKitDemo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BCFDE3AE24C9B7F1001A263A /* model */ = {
+			isa = PBXGroup;
+			children = (
+				BC0DDD2624CF1B7B002AB0E9 /* HandGesture.bundle */,
+				BC0DDD2424CF1B7B002AB0E9 /* Segmentation.bundle */,
+				BC0DDD2524CF1B7B002AB0E9 /* SuperResolution.bundle */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BC6A82E124ADADAA000E9480 /* MMLKitDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BC6A82FB24ADADAF000E9480 /* Build configuration list for PBXNativeTarget "MMLKitDemo" */;
+			buildPhases = (
+				AC141437127042AED01D02CA /* [CP] Check Pods Manifest.lock */,
+				BC6A82DE24ADADAA000E9480 /* Sources */,
+				BC6A82DF24ADADAA000E9480 /* Frameworks */,
+				BC6A82E024ADADAA000E9480 /* Resources */,
+				BCFDE3CC24C9BAD3001A263A /* Embed Frameworks */,
+				7ADA09380A4D0EB43956544C /* [CP] Embed Pods Frameworks */,
+				E23CF0D45FCD9CC8395DF281 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MMLKitDemo;
+			productName = MMLKitDemo;
+			productReference = BC6A82E224ADADAA000E9480 /* MMLKitDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BC6A82DA24ADADAA000E9480 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1140;
+				ORGANIZATIONNAME = MMLKit;
+				TargetAttributes = {
+					BC6A82E124ADADAA000E9480 = {
+						CreatedOnToolsVersion = 11.4;
+						LastSwiftMigration = 1140;
+					};
+				};
+			};
+			buildConfigurationList = BC6A82DD24ADADAA000E9480 /* Build configuration list for PBXProject "MMLKitDemo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BC6A82D924ADADAA000E9480;
+			productRefGroup = BC6A82E324ADADAA000E9480 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BC6A82E124ADADAA000E9480 /* MMLKitDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BC6A82E024ADADAA000E9480 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC0DDD2824CF1B7B002AB0E9 /* SuperResolution.bundle in Resources */,
+				BCCB6C5724F816CC00884353 /* bg_super_resolution.jpeg in Resources */,
+				BC6A835924AF676C000E9480 /* test-HandGesture.jpg in Resources */,
+				BC0DDD2724CF1B7B002AB0E9 /* Segmentation.bundle in Resources */,
+				BC158FA324BC60EA00308245 /* test-SuperResolution.jpeg in Resources */,
+				BC6A82F524ADADAF000E9480 /* LaunchScreen.storyboard in Resources */,
+				BCCB6C5624F816CC00884353 /* bg_gesture.jpeg in Resources */,
+				BC6A82F224ADADAF000E9480 /* Assets.xcassets in Resources */,
+				BC0DDD2924CF1B7B002AB0E9 /* HandGesture.bundle in Resources */,
+				BC6A82F024ADADAA000E9480 /* Main.storyboard in Resources */,
+				BCCB6C5824F816CC00884353 /* bg_portrait.jpeg in Resources */,
+				BC0DDB3F24C9ECA0002AB0E9 /* test_img.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7ADA09380A4D0EB43956544C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MMLKitDemo/Pods-MMLKitDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MMLKitDemo/Pods-MMLKitDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MMLKitDemo/Pods-MMLKitDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AC141437127042AED01D02CA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MMLKitDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E23CF0D45FCD9CC8395DF281 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MMLKitDemo/Pods-MMLKitDemo-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MMLKitDemo/Pods-MMLKitDemo-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MMLKitDemo/Pods-MMLKitDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BC6A82DE24ADADAA000E9480 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCFDE3A824C9B6B5001A263A /* SegmentationImageViewController.mm in Sources */,
+				BC6A830A24ADC526000E9480 /* SegmentationViewController.mm in Sources */,
+				BC6A82ED24ADADAA000E9480 /* ViewController.m in Sources */,
+				BC6A831024ADCE90000E9480 /* BaseDetectView.m in Sources */,
+				BC6A830724ADC511000E9480 /* HandGestureViewController.m in Sources */,
+				BC6A834B24AE3B65000E9480 /* HandGestureImageViewController.m in Sources */,
+				BC6A82E724ADADAA000E9480 /* AppDelegate.mm in Sources */,
+				BC6A830D24ADC9D5000E9480 /* BaseViewController.m in Sources */,
+				BC6A834824AE2458000E9480 /* HandGestureRecognizeView.m in Sources */,
+				BC6A835B24AF67C4000E9480 /* mmlkit-swift.swift in Sources */,
+				BC158F9124BC494C00308245 /* SuperResolutionViewController.mm in Sources */,
+				BC6A82F824ADADAF000E9480 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BC6A82EE24ADADAA000E9480 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BC6A82EF24ADADAA000E9480 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BC6A82F324ADADAF000E9480 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BC6A82F424ADADAF000E9480 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BC6A82F924ADADAF000E9480 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		BC6A82FA24ADADAF000E9480 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BC6A82FC24ADADAF000E9480 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 032F92BA5D23B80940C0ECC1 /* Pods-MMLKitDemo.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 95V4CMQNYA;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = MMLKitDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.baidu.MMLKit.MMLKitDemo2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MMLKitDemo/MMLKitDemo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BC6A82FD24ADADAF000E9480 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A7FDCB0176FD4E4E70FBB3F /* Pods-MMLKitDemo.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 95V4CMQNYA;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = MMLKitDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.baidu.MMLKit.MMLKitDemo2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MMLKitDemo/MMLKitDemo-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BC6A82DD24ADADAA000E9480 /* Build configuration list for PBXProject "MMLKitDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC6A82F924ADADAF000E9480 /* Debug */,
+				BC6A82FA24ADADAF000E9480 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BC6A82FB24ADADAF000E9480 /* Build configuration list for PBXNativeTarget "MMLKitDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC6A82FC24ADADAF000E9480 /* Debug */,
+				BC6A82FD24ADADAF000E9480 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BC6A82DA24ADADAA000E9480 /* Project object */;
+}

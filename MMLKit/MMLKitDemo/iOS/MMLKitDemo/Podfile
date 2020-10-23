@@ -1,0 +1,13 @@
+# coding: utf-8
+source 'https://github.com/CocoaPods/Specs.git'
+
+platform :ios
+
+target 'MMLKitDemo' do
+  project './MMLKitDemo.xcodeproj'
+    platform :ios, '10.0'
+
+    pod 'MMLHandGestureDetection', '~> 0.0.9'
+    pod 'MMLPortraitSegmentation', '~> 0.0.9'
+    pod 'MMLAIVideoSuperResolution', '~> 0.0.9'
+end
