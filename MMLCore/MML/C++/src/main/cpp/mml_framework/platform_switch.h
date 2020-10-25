@@ -1,0 +1,15 @@
+#ifndef LIB_AI_PLATFORM_SWITCH_H
+#define LIB_AI_PLATFORM_SWITCH_H
+
+#ifdef PLATFORM_iOS
+#else
+#define PLATFORM_ANDROID
+#endif
+
+//#define MML_OPEN_LOG
+
+#define BACKEND_PADDLE_LITE
+
+// #define BACKEND_PADDLE_GPU
+
+#endif //LIB_AI_PLATFORM_SWITCH_H
