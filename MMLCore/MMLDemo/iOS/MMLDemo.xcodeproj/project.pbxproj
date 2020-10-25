@@ -1,0 +1,421 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		27B436A324F100EB00A792A1 /* ProtocolBuffers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B4369124F100AD00A792A1 /* ProtocolBuffers.framework */; };
+		27B436A424F100EB00A792A1 /* ProtocolBuffers.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 27B4369124F100AD00A792A1 /* ProtocolBuffers.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		27B8C68A24FF37DD00609869 /* MML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B8C68924FF37DD00609869 /* MML.framework */; };
+		27B9F2A224E0008600CD423B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B9F2A124E0008600CD423B /* AppDelegate.m */; };
+		27B9F2AD24E0008800CD423B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27B9F2AC24E0008800CD423B /* Assets.xcassets */; };
+		27B9F2B324E0008800CD423B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B9F2B224E0008800CD423B /* main.m */; };
+		27B9F2BE24E0015E00CD423B /* ViewController+MMLCore_CPP.mm in Sources */ = {isa = PBXBuildFile; fileRef = 27B9F2B924E0015D00CD423B /* ViewController+MMLCore_CPP.mm */; };
+		27B9F2BF24E0015E00CD423B /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 27B9F2BA24E0015D00CD423B /* ViewController.mm */; };
+		27B9F2C024E0015E00CD423B /* ViewController+MMLCore_OC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 27B9F2BB24E0015D00CD423B /* ViewController+MMLCore_OC.mm */; };
+		27B9F2CB24E00BC500CD423B /* MMLDemo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 27B9F2CA24E00BC500CD423B /* MMLDemo.bundle */; };
+		27B9F2CD24E00C1700CD423B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27B9F2CC24E00C1700CD423B /* Default-568h@2x.png */; };
+		27B9FBB224E2AA2C00CD423B /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B9FBB124E2AA2C00CD423B /* File.swift */; };
+		27FD877E24FE5E27005E6FEB /* paddle_mobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27FD877D24FE5E27005E6FEB /* paddle_mobile.framework */; };
+		27FD878024FE5EE5005E6FEB /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27FD877F24FE5EE4005E6FEB /* opencv2.framework */; };
+		27FD878224FE5F38005E6FEB /* ZipArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27FD878124FE5F38005E6FEB /* ZipArchive.framework */; };
+		27FD878824FE69A5005E6FEB /* paddle-mobile-metallib.metallib in Resources */ = {isa = PBXBuildFile; fileRef = 27FD878724FE69A5005E6FEB /* paddle-mobile-metallib.metallib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		27B436A724F100EC00A792A1 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				27B436A424F100EB00A792A1 /* ProtocolBuffers.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		27B4369124F100AD00A792A1 /* ProtocolBuffers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ProtocolBuffers.framework; path = Dependence/ProtocolBuffers.framework; sourceTree = "<group>"; };
+		27B8C68924FF37DD00609869 /* MML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MML.framework; path = Dependence/MML.framework; sourceTree = "<group>"; };
+		27B9F29D24E0008600CD423B /* MMLDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MMLDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		27B9F2A024E0008600CD423B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		27B9F2A124E0008600CD423B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		27B9F2A624E0008600CD423B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		27B9F2AC24E0008800CD423B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		27B9F2B124E0008800CD423B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = MMLDemo/Info.plist; sourceTree = "<group>"; };
+		27B9F2B224E0008800CD423B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		27B9F2B924E0015D00CD423B /* ViewController+MMLCore_CPP.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "ViewController+MMLCore_CPP.mm"; sourceTree = "<group>"; };
+		27B9F2BA24E0015D00CD423B /* ViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
+		27B9F2BB24E0015D00CD423B /* ViewController+MMLCore_OC.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "ViewController+MMLCore_OC.mm"; sourceTree = "<group>"; };
+		27B9F2BC24E0015D00CD423B /* ViewController+MMLCore_CPP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+MMLCore_CPP.h"; sourceTree = "<group>"; };
+		27B9F2BD24E0015E00CD423B /* ViewController+MMLCore_OC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+MMLCore_OC.h"; sourceTree = "<group>"; };
+		27B9F2CA24E00BC500CD423B /* MMLDemo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = MMLDemo.bundle; path = mml_models/MMLDemo.bundle; sourceTree = "<group>"; };
+		27B9F2CC24E00C1700CD423B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		27B9FBB024E2AA2B00CD423B /* MMLDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MMLDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		27B9FBB124E2AA2C00CD423B /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		27FD877D24FE5E27005E6FEB /* paddle_mobile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = paddle_mobile.framework; path = Dependence/PaddleMobileGPU/paddle_mobile.framework; sourceTree = "<group>"; };
+		27FD877F24FE5EE4005E6FEB /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = Dependence/opencv2.framework; sourceTree = "<group>"; };
+		27FD878124FE5F38005E6FEB /* ZipArchive.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZipArchive.framework; path = Dependence/ZipArchive.framework; sourceTree = "<group>"; };
+		27FD878724FE69A5005E6FEB /* paddle-mobile-metallib.metallib */ = {isa = PBXFileReference; lastKnownFileType = "archive.metal-library"; path = "paddle-mobile-metallib.metallib"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		27B9F29A24E0008600CD423B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27B8C68A24FF37DD00609869 /* MML.framework in Frameworks */,
+				27FD878024FE5EE5005E6FEB /* opencv2.framework in Frameworks */,
+				27FD878224FE5F38005E6FEB /* ZipArchive.framework in Frameworks */,
+				27FD877E24FE5E27005E6FEB /* paddle_mobile.framework in Frameworks */,
+				27B436A324F100EB00A792A1 /* ProtocolBuffers.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		27B9F29424E0008600CD423B = {
+			isa = PBXGroup;
+			children = (
+				27FD878724FE69A5005E6FEB /* paddle-mobile-metallib.metallib */,
+				27B9F29F24E0008600CD423B /* MMLDemo */,
+				27B9F2C724E00B5B00CD423B /* Resources */,
+				27B9F29E24E0008600CD423B /* Products */,
+				27B9FBAE24E2A73D00CD423B /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		27B9F29E24E0008600CD423B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				27B9F29D24E0008600CD423B /* MMLDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		27B9F29F24E0008600CD423B /* MMLDemo */ = {
+			isa = PBXGroup;
+			children = (
+				27B9F2A624E0008600CD423B /* ViewController.h */,
+				27B9F2BA24E0015D00CD423B /* ViewController.mm */,
+				27B9F2BC24E0015D00CD423B /* ViewController+MMLCore_CPP.h */,
+				27B9F2B924E0015D00CD423B /* ViewController+MMLCore_CPP.mm */,
+				27B9F2BD24E0015E00CD423B /* ViewController+MMLCore_OC.h */,
+				27B9F2BB24E0015D00CD423B /* ViewController+MMLCore_OC.mm */,
+				27B9F2A024E0008600CD423B /* AppDelegate.h */,
+				27B9F2A124E0008600CD423B /* AppDelegate.m */,
+				27B9F2B224E0008800CD423B /* main.m */,
+				27B9FBB124E2AA2C00CD423B /* File.swift */,
+				27B9FBB024E2AA2B00CD423B /* MMLDemo-Bridging-Header.h */,
+			);
+			path = MMLDemo;
+			sourceTree = "<group>";
+		};
+		27B9F2C724E00B5B00CD423B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				27B9F2CC24E00C1700CD423B /* Default-568h@2x.png */,
+				27B9F2CA24E00BC500CD423B /* MMLDemo.bundle */,
+				27B9F2AC24E0008800CD423B /* Assets.xcassets */,
+				27B9F2B124E0008800CD423B /* Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		27B9FBAE24E2A73D00CD423B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				27B8C68924FF37DD00609869 /* MML.framework */,
+				27FD878124FE5F38005E6FEB /* ZipArchive.framework */,
+				27FD877F24FE5EE4005E6FEB /* opencv2.framework */,
+				27FD877D24FE5E27005E6FEB /* paddle_mobile.framework */,
+				27B4369124F100AD00A792A1 /* ProtocolBuffers.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		27B9F29C24E0008600CD423B /* MMLDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 27B9F2B624E0008800CD423B /* Build configuration list for PBXNativeTarget "MMLDemo" */;
+			buildPhases = (
+				27B9F29924E0008600CD423B /* Sources */,
+				27B9F29A24E0008600CD423B /* Frameworks */,
+				27B9F29B24E0008600CD423B /* Resources */,
+				27B436A724F100EC00A792A1 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MMLDemo;
+			productName = MMLDemo;
+			productReference = 27B9F29D24E0008600CD423B /* MMLDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		27B9F29524E0008600CD423B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1160;
+				ORGANIZATIONNAME = Baidu;
+				TargetAttributes = {
+					27B9F29C24E0008600CD423B = {
+						CreatedOnToolsVersion = 11.6;
+						LastSwiftMigration = 1160;
+					};
+				};
+			};
+			buildConfigurationList = 27B9F29824E0008600CD423B /* Build configuration list for PBXProject "MMLDemo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 27B9F29424E0008600CD423B;
+			productRefGroup = 27B9F29E24E0008600CD423B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				27B9F29C24E0008600CD423B /* MMLDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		27B9F29B24E0008600CD423B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27B9F2AD24E0008800CD423B /* Assets.xcassets in Resources */,
+				27FD878824FE69A5005E6FEB /* paddle-mobile-metallib.metallib in Resources */,
+				27B9F2CB24E00BC500CD423B /* MMLDemo.bundle in Resources */,
+				27B9F2CD24E00C1700CD423B /* Default-568h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		27B9F29924E0008600CD423B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27B9F2BE24E0015E00CD423B /* ViewController+MMLCore_CPP.mm in Sources */,
+				27B9F2BF24E0015E00CD423B /* ViewController.mm in Sources */,
+				27B9FBB224E2AA2C00CD423B /* File.swift in Sources */,
+				27B9F2A224E0008600CD423B /* AppDelegate.m in Sources */,
+				27B9F2B324E0008800CD423B /* main.m in Sources */,
+				27B9F2C024E0015E00CD423B /* ViewController+MMLCore_OC.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		27B9F2B424E0008800CD423B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		27B9F2B524E0008800CD423B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		27B9F2B724E0008800CD423B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 95V4CMQNYA;
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Dependence\"/**";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Dependence\"/**";
+				INFOPLIST_FILE = MMLDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/Dependence\"/**";
+				OTHER_LDFLAGS = (
+					"-l\"mml_framework_ios\"",
+					"-force_load",
+					"\"$(SRCROOT)/Dependence/MML.framework/MML\"",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.baidu.MMLNativeDemo2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MMLDemo/MMLDemo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		27B9F2B824E0008800CD423B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 95V4CMQNYA;
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Dependence\"/**";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Dependence\"/**";
+				INFOPLIST_FILE = MMLDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/Dependence\"/**";
+				OTHER_LDFLAGS = (
+					"-l\"mml_framework_ios\"",
+					"-force_load",
+					"\"$(SRCROOT)/Dependence/MML.framework/MML\"",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.baidu.MMLNativeDemo2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MMLDemo/MMLDemo-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		27B9F29824E0008600CD423B /* Build configuration list for PBXProject "MMLDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27B9F2B424E0008800CD423B /* Debug */,
+				27B9F2B524E0008800CD423B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		27B9F2B624E0008800CD423B /* Build configuration list for PBXNativeTarget "MMLDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27B9F2B724E0008800CD423B /* Debug */,
+				27B9F2B824E0008800CD423B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 27B9F29524E0008600CD423B /* Project object */;
+}
