@@ -1,4 +1,4 @@
-# MMLKit接口文档(for OC)
+# MMLKit接口文档(for iOS)
 
 ## 人像分割
 人像分割能力的output数据结构定义

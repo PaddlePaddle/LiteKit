@@ -6,7 +6,7 @@
 - app / libs / gesturerecognize-0.0.9.aar
 - app / libs / superresolution-0.0.9.aar
 - app / libs / portraitsegmentation-0.0.9.aar
-- app / libs / mmlkitdependency-0.0.9.aar
+- app / libs / thirdpartydependency-0.0.9.aar
 - app / libs / mmlkitdependency-0.0.9.aar
 
 - `然后就可以直接编译链接, 运行啦`

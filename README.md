@@ -28,7 +28,7 @@ MMLCore是一种业界领先的，跨平台的，面向移动开发者的，AI�
 |ZipArchive|1.0.0|3.9MB|
 
 
-#### Android API 依赖
+#### Java API 依赖
 |依赖|版本| 体积 | 
 |---|---|---|
 | MML Native|-|51.5MB(armv7), 51MB(arm64) |
@@ -64,7 +64,7 @@ open MMLDemo.xcodeproj
 <br>
 [接口文档 for OC API ](/Doc/MMLCore接口文档(for%20OC%20API).md)
 <br>
-[接口文档 for Android API ]()
+[接口文档 for Java API ](/Doc/MMLCore接口文档(for%20Java%20API).md)
 
 ## 三、接入文档
 [接入文档 for OC API ](/Doc/MMLCore接入文档(for%20OC%20API).md)
@@ -73,7 +73,7 @@ open MMLDemo.xcodeproj
 <br>
 [接入文档 for Native C++ API on Android]()
 <br>
-[接入文档 for Android API ]()
+[接入文档 for Java API ]()
 
 
 

@@ -1,4 +1,4 @@
-# MMLKit接入文档(for OC)
+# MMLKit接入文档(for iOS)
 ## 导入SDK
 |能力 |对应SDK | 
 |---|---|
