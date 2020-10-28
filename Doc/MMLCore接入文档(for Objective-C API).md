@@ -1,4 +1,4 @@
-# MMLCore接入文档 (for Native OC API)
+# MMLCore接入文档 (for Native Objective-C API)
 
 
 ## 一、编译
@@ -28,11 +28,11 @@ sh product_build.sh
 
 ## 二、集成
 ### 1. 导入SDK
-在build phases中导入MML OC SDK： MML.framework
+在build phases中导入MML Objective-C SDK： MML.framework
 ![图片](/Doc/Resources/2_1.png)
 
 ### 2. 添加第三方依赖
-在build phases中添加MML OC SDK相关依赖
+在build phases中添加MML Objective-C SDK相关依赖
 |依赖| 版本|
 |---|---|---|---|
 |opencv|3.4.1|
@@ -54,14 +54,14 @@ sh product_build.sh
 ![图片](/Doc/Resources/2_4.png)
 
 ## 三、使用
-   MML OC API执行推理的时候。
+   MML Objective-C API执行推理的时候。
    <br>首先，需要确定模型、所使用的backend、模型和backend是否匹配、以及其他config参数，并创建config。
    <br>然后，通过Service的loadMachineWithConfig:error:对config进行加载，生成预测的machine，用户仅需要持有/操作machine，不需要对backend的实例进行直接管理。machine直接对用户预测的服务。
 
 
 ### 1) 引入头文件
 ```
-// import MML OC header
+// import MML Objective-C header
 
 #import <MML/MML.h> // Umbrella header
 
@@ -159,7 +159,7 @@ ARC下不需要特别的释放操作
 typedef NS_ENUM(NSInteger,MMLMachineServiceLoadErrorCode) {
     MMLMachineServiceLoadMachineTypeError = 0,  // 错误的machine类型，loadMachineWithConfig阶段，传入了不存在的machineType，或者使用的是差异化的剪裁版本，传入了剪裁掉的backend对应的machineType的时候，会返回该错误。
     MMLMachineServiceLoadNotSupportSimulator,   // 不支持模拟器，在模拟器上运行的时候，会返回该错误。
-    MMLMachineServiceLoadNotSupportArchitecture,// 不支持的处理器架构，在Mac OC上运行的时候，会返回该错误。
+    MMLMachineServiceLoadNotSupportArchitecture,// 不支持的处理器架构，在Mac OS上运行的时候，会返回该错误。
     MMLMachineServiceLoadWrongConfig,           // 错误的配置，创建GPUbackend的时候，如果engineConifg为空，或类型错误的时候，会返回该错误。
     MMLMachineServiceLoadNoModelFile,           // 没有模型文件
     MMLMachineServiceLoadNoModelPointer,        // 内存指针为空，创建GPUbackend的时候，如果MMLMachineConfig的modelPath为空， 且engineConifg的paramPointer和modelPointer均为空的时候，会返回该错误。modelPath和engineConifg这两处至少有一处需要对模型进行配置。
