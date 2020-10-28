@@ -103,15 +103,14 @@ ArrayList<MMLData> output = machine.predictWithInputData(input);
 ### 7) 读取output
 ```
 // get output
-float[] result = postprocess(output.get(0).output.fetchFloatData(), output.get(1).output.fetchFloatData(), output.get(2).output.fetchFloatData(),
-                output.get(3).output.fetchFloatData(), output.get(4).output.fetchFloatData(), image.getWidth(), image.getHeight());
+float *result = output.get(0).output.fetchFloatData()// example output data
         
 ```
  
 ### 8) 后处理
 ```
 //读取output数据后，进行需要的后处理
-float *result = output.get(0).output.fetchFloatData()// example output data
+float *result 为读取到的output数据
 ```
 
 ### 9) 释放Machine
