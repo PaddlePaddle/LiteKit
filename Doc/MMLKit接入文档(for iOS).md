@@ -26,6 +26,26 @@
 ## 资源文件
 将模型文件放置到工程适当位置，创建能力实例的时候需要读取模型文件。
 ![模型文件](/Doc/Resources/21_1.png)
+<br>
+或者
+<br>
+通过pod引入，[参考](/MMLKit/MMLKitDemo/iOS/MMLKitDemo/Podfile)
+```
+# coding: utf-8
+source 'https://github.com/CocoaPods/Specs.git'
+
+platform :ios
+
+target 'MMLKitDemo' do
+  project './MMLKitDemo.xcodeproj'
+    platform :ios, '10.0'
+
+    pod 'MMLHandGestureDetection', '~> 0.0.9'
+    pod 'MMLPortraitSegmentation', '~> 0.0.9'
+    pod 'MMLAIVideoSuperResolution', '~> 0.0.9'
+end
+
+```
 
 ## 使用方法
 ### 人像分割

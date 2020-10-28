@@ -18,7 +18,28 @@
 无
 
 ## 配置环境
-无
+1. 将依赖SDK放置在工程对应目录下，[参考](/MMLKit/MMLKitDemo/Android/README.md)
+<br>
+2. gradle增加配置引入SDK
+
+```
+// search for aar + so
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    compile(name:'mmlkitdependency-0.0.9', ext:'aar')
+    compile(name:'thirdpartydependency-0.0.9', ext:'aar')
+    
+    compile(name:'gesturerecognize-0.0.9', ext:'aar')
+    compile(name:'portraitsegmentation-0.0.9', ext:'aar')
+    compile(name:'superresolution-0.0.9', ext:'aar')
+}
+```
+
 
 ## 资源文件
 将模型文件放置到工程适当位置，创建能力实例的时候需要读取模型文件位置。

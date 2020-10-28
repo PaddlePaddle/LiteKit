@@ -53,10 +53,10 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    compile(name:'mmlkitdependency-1.0.3', ext:'aar')
-    compile(name:'thirdpartydependency-1.0.3', ext:'aar')
-
-    compile(name:'gesturerecognize-1.0.1', ext:'aar')
-    compile(name:'portraitsegmentation-1.0.3', ext:'aar')
-    compile(name:'superresolution-1.0.3', ext:'aar')
+    compile(name:'mmlkitdependency-0.0.9', ext:'aar')
+    compile(name:'thirdpartydependency-0.0.9', ext:'aar')
+    
+    compile(name:'gesturerecognize-0.0.9', ext:'aar')
+    compile(name:'portraitsegmentation-0.0.9', ext:'aar')
+    compile(name:'superresolution-0.0.9', ext:'aar')
 }
