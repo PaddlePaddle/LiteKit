@@ -109,7 +109,7 @@ MMLCore是一种业界领先的，跨平台的，面向移动开发者的，AI�
 ### 4. Demo Project
 iOS示例工程包含了Native C++ API和Objective-C API的demo调用示例，Native C++ API和Objective-C API分别包含CPU和GPU两种backend，一共4种加载和预测的方式。针对C++API（在iOS上）和Objective-C API的CPU/GPU backend分别是对齐的，模型的加载和预测能力一致。但是CPU和GPU backend之间是隔离的，预测所使用的模型是不一样的。
 
-#### 示例IOS工程部署
+#### 示例iOS工程部署
 1.组装工程 
 ```
 git clone https://github.com/PaddlePaddle/LiteKit.git
