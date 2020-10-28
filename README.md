@@ -71,9 +71,9 @@ open MMLDemo.xcodeproj
 <br>
 [接入文档 for Native C++ API on iOS](/Doc/MMLCore接入文档(for%20Native%20C%2B%2B%20API%20on%20iOS).md)
 <br>
-[接入文档 for Native C++ API on Android]()
+[接入文档 for Native C++ API on Android](/Doc/MMLCore接入文档(for%20Native%20C%2B%2B%20API%20on%20Android).md)
 <br>
-[接入文档 for Java API ]()
+[接入文档 for Java API ](/Doc/MMLCore接入文档(for%20Java%20API).md)
 
 
 
