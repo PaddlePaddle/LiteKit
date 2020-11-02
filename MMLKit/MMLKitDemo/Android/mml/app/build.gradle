@@ -56,7 +56,7 @@ dependencies {
     compile(name:'mmlkitdependency-0.0.9', ext:'aar')
     compile(name:'thirdpartydependency-0.0.9', ext:'aar')
     
-    compile(name:'gesturerecognize-0.0.9', ext:'aar')
-    compile(name:'portraitsegmentation-0.0.9', ext:'aar')
-    compile(name:'superresolution-0.0.9', ext:'aar')
+    compile(name:'gesturerecognize-0.0.10', ext:'aar')
+    compile(name:'portraitsegmentation-0.0.10', ext:'aar')
+    compile(name:'superresolution-0.0.10', ext:'aar')
 }
