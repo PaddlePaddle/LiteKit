@@ -33,9 +33,9 @@
 |thirdpartydependency | 0.0.9 | 11.8MB |
 
 ### Demo Project
-快速体验Android - 扫码安装
-[QR_Code](/Doc/Resources/1-3.png)
-<br>
+快速体验Android - 扫码安装<br>
+![QR_Code](/Doc/Resources/1-3.png)
+
 
 #### iOS平台
 ###### 示例工程说明
