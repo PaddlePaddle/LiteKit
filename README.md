@@ -33,6 +33,10 @@
 |thirdpartydependency | 0.0.9 | 11.8MB |
 
 ### Demo Project
+快速体验Android - 扫码安装
+[QR_Code](/Doc/Resources/1-3.png)
+<br>
+
 #### iOS平台
 ###### 示例工程说明
 示例工程中展示了人像分割、手势识别、视频超分能力。包括能力的接入demo和能力效果的展示。
