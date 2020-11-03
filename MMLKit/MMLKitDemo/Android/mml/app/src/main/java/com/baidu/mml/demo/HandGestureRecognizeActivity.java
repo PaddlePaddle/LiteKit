@@ -84,15 +84,8 @@ public class HandGestureRecognizeActivity extends CameraBaseActivity {
      */
     @Override
     void onKitCreate() {
-        String dir = this.getFilesDir().getAbsolutePath() + File.separator;
-        String model_name = "gesture_det_cpu_enc.nb";
-        try {
-            FileUtil.copyFileFromAssets(this.getApplicationContext(), "models/gesture/" + model_name, dir + model_name);
-        } catch (IOException e) {
-            Log.e(getResources().getString(R.string.TAG), e.toString());
-        }
         final long start = System.currentTimeMillis();
-        if (!HandGestureDetector.init(this, dir + model_name)) {
+        if (!HandGestureDetector.init(this)) {
             Log.e(getResources().getString(R.string.TAG), "initialization gesture failed");
             System.exit(-1);
         }

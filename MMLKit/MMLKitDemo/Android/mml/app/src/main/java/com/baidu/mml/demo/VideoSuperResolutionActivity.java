@@ -69,12 +69,6 @@ public class VideoSuperResolutionActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        // 检查模型是否已经存在
-        String modelPath = FileManager.sr32(this);
-        if (!new File(modelPath).exists()) {
-            return;
-        }
-
         final Button btn = (Button) this.findViewById(R.id.srbutton);
         final TextView label = (TextView) this.findViewById(R.id.imageLabel);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -132,7 +126,7 @@ public class VideoSuperResolutionActivity extends AppCompatActivity {
     private Bitmap doSrRgba(Bitmap lowBitmap) {
         // 创建srmachine
         final long startInit = System.currentTimeMillis();
-        Long handle = SrBridge.nativeInitSr(FileManager.sr32(this));
+        Long handle = SrBridge.init(this);
         final long endInit = System.currentTimeMillis();
         Log.d(getResources().getString(R.string.TAG),
                 "【MML】【SR】【Init】"+ (endInit-startInit) +" ms");
@@ -195,7 +189,7 @@ public class VideoSuperResolutionActivity extends AppCompatActivity {
     private Bitmap doSrBitmap(Bitmap lowBitmap) {
         // 创建srmachine
         final long startInit = System.currentTimeMillis();
-        Long handle = SrBridge.nativeInitSr(FileManager.sr32(this));
+        Long handle = SrBridge.init(this);
         final long endInit = System.currentTimeMillis();
         Log.d(getResources().getString(R.string.TAG),
                 "【MML】【SR】【Init】"+ (endInit-startInit) +" ms");
@@ -276,17 +270,6 @@ class FileManager {
      */
     public static String sourceDir() {
         return "pics";
-    }
-
-    /**
-     * @desc 获取模型地址工具
-     *
-     * @param context Context
-     *
-     * @return 模型地址
-     */
-    public static String sr32(Context context) {
-        return context.getFilesDir().getAbsolutePath() + File.separator + modelDir()+"/video-sr-int16-opencl-releasev2.6-6942d753-enc.nb";
     }
 
     /**

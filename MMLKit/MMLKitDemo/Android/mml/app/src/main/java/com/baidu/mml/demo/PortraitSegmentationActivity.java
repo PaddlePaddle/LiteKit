@@ -88,15 +88,7 @@ public class PortraitSegmentationActivity extends CameraBaseActivity {
      */
     @Override
     void onKitCreate() {
-        String dir = this.getFilesDir().getAbsolutePath() + File.separator;
-        String model_name = "/humanseg_shv75_0303-fp32-cpu-releasev2.6-fix.9e12fd68-enc.nb";
-        try {
-            FileUtil.copyFileFromAssets(this.getApplicationContext(), "models/portrait" + model_name, dir + model_name);
-        } catch (IOException e) {
-            Log.e(getResources().getString(R.string.TAG), e.toString());
-        }
-        MMLPortraitSegmentationConfig config = new MMLPortraitSegmentationConfig();
-        config.setModelUrl(dir + model_name);
+        MMLPortraitSegmentationConfig config = new MMLPortraitSegmentationConfig(this);
         final long start = System.currentTimeMillis();
         portraitSegmentation = new MMLPortraitSegmentation(config);
         final long end = System.currentTimeMillis();

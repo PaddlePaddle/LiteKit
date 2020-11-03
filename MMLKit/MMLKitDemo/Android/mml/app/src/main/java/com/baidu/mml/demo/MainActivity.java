@@ -22,7 +22,6 @@ import com.baidu.mml.demo.utils.FileUtil;
 
 import java.io.File;
 
-import static com.baidu.mml.demo.FileManager.modelDir;
 import static com.baidu.mml.demo.FileManager.sourceDir;
 
 public class MainActivity extends AppCompatActivity {
@@ -43,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
     private void prepareResources() {
         String targetModelPath = (this.getFilesDir().getAbsolutePath() + File.separator);
         // 拷贝超分需要使用的资源到assert
-        FileUtil.copyFilesFromAssets(this, modelDir(), targetModelPath + modelDir());
         FileUtil.copyFilesFromAssets(this, sourceDir(), targetModelPath + sourceDir());
     }
 
