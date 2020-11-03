@@ -67,8 +67,7 @@
 
 - (void)createInstance {
     NSError *error;
-    NSString *modelPath = [[[NSBundle mainBundle] bundlePath] stringByAppendingString:@"/HandGesture.bundle/"];
-    self.gestureRecognizer = [MMLHandGestureDetector createGestureDetectorWithModelPath:modelPath error:&error];
+    self.gestureRecognizer = [MMLHandGestureDetector createHandGestureDetectorWithError:&error];
     if (!self.gestureRecognizer || error) {
         return;
     }

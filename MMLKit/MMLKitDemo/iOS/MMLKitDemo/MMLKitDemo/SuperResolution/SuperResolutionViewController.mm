@@ -34,11 +34,8 @@
 
 - (void)initData {
     self.image = [UIImage imageNamed:@"test-SuperResolution.jpeg"];
-    NSString *modelPath = [[[NSBundle mainBundle] bundlePath] stringByAppendingString:@"/SuperResolution.bundle"];
-    MMLVideoSuperResolutionConfig *config = [[MMLVideoSuperResolutionConfig alloc] init];
-    config.modelDir = modelPath;
     NSError *error = nil;
-    MMLVideoSuperResolutionor *sVideo = [MMLVideoSuperResolutionor createInstanceWithConfig:config error:&error];
+    MMLVideoSuperResolutionor *sVideo = [MMLVideoSuperResolutionor createVideoSuperResolutionorWithError:&error];
     if (error) {
         NSLog(@"出错1 ==== > %@", error);
         return;

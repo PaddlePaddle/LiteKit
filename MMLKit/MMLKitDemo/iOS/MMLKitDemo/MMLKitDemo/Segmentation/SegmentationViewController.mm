@@ -71,8 +71,7 @@
 
 - (void)createInstance {
     NSError *error = nil;
-    NSString *modelPath = [[NSBundle mainBundle] pathForResource:@"Segmentation.bundle/humanseg-cpu" ofType:@"nb"];
-    self.portraitSegmentor = [MMLPortraitSegmentor create:modelPath error:&error];
+    self.portraitSegmentor = [MMLPortraitSegmentor createPortraitSegmentorWithError:&error];
     if (!self.portraitSegmentor || error) {
         return;
     }

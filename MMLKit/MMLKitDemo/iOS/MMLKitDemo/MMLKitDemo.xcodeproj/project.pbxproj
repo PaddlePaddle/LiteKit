@@ -9,9 +9,6 @@
 /* Begin PBXBuildFile section */
 		9025ADB1710872C041A33A61 /* libPods-MMLKitDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 673B6DC527AB4C46376BA1AD /* libPods-MMLKitDemo.a */; };
 		BC0DDB3F24C9ECA0002AB0E9 /* test_img.png in Resources */ = {isa = PBXBuildFile; fileRef = BC0DDB3E24C9ECA0002AB0E9 /* test_img.png */; };
-		BC0DDD2724CF1B7B002AB0E9 /* Segmentation.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC0DDD2424CF1B7B002AB0E9 /* Segmentation.bundle */; };
-		BC0DDD2824CF1B7B002AB0E9 /* SuperResolution.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC0DDD2524CF1B7B002AB0E9 /* SuperResolution.bundle */; };
-		BC0DDD2924CF1B7B002AB0E9 /* HandGesture.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC0DDD2624CF1B7B002AB0E9 /* HandGesture.bundle */; };
 		BC158F9124BC494C00308245 /* SuperResolutionViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = BC158F9024BC494C00308245 /* SuperResolutionViewController.mm */; };
 		BC158FA324BC60EA00308245 /* test-SuperResolution.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = BC158FA224BC60EA00308245 /* test-SuperResolution.jpeg */; };
 		BC6A82E724ADADAA000E9480 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = BC6A82E624ADADAA000E9480 /* AppDelegate.mm */; };
@@ -52,9 +49,6 @@
 		0A7FDCB0176FD4E4E70FBB3F /* Pods-MMLKitDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MMLKitDemo.release.xcconfig"; path = "Target Support Files/Pods-MMLKitDemo/Pods-MMLKitDemo.release.xcconfig"; sourceTree = "<group>"; };
 		673B6DC527AB4C46376BA1AD /* libPods-MMLKitDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MMLKitDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC0DDB3E24C9ECA0002AB0E9 /* test_img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_img.png; sourceTree = "<group>"; };
-		BC0DDD2424CF1B7B002AB0E9 /* Segmentation.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Segmentation.bundle; sourceTree = "<group>"; };
-		BC0DDD2524CF1B7B002AB0E9 /* SuperResolution.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SuperResolution.bundle; sourceTree = "<group>"; };
-		BC0DDD2624CF1B7B002AB0E9 /* HandGesture.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HandGesture.bundle; sourceTree = "<group>"; };
 		BC158F8F24BC494C00308245 /* SuperResolutionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SuperResolutionViewController.h; sourceTree = "<group>"; };
 		BC158F9024BC494C00308245 /* SuperResolutionViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SuperResolutionViewController.mm; sourceTree = "<group>"; };
 		BC158FA224BC60EA00308245 /* test-SuperResolution.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "test-SuperResolution.jpeg"; sourceTree = "<group>"; };
@@ -157,7 +151,6 @@
 				BC6A82F324ADADAF000E9480 /* LaunchScreen.storyboard */,
 				BC6A82F624ADADAF000E9480 /* Info.plist */,
 				BC6A82F724ADADAF000E9480 /* main.m */,
-				BCFDE3AE24C9B7F1001A263A /* model */,
 				BC6A831124AE0386000E9480 /* resource */,
 			);
 			path = MMLKitDemo;
@@ -218,16 +211,6 @@
 				673B6DC527AB4C46376BA1AD /* libPods-MMLKitDemo.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		BCFDE3AE24C9B7F1001A263A /* model */ = {
-			isa = PBXGroup;
-			children = (
-				BC0DDD2624CF1B7B002AB0E9 /* HandGesture.bundle */,
-				BC0DDD2424CF1B7B002AB0E9 /* Segmentation.bundle */,
-				BC0DDD2524CF1B7B002AB0E9 /* SuperResolution.bundle */,
-			);
-			path = model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,15 +275,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC0DDD2824CF1B7B002AB0E9 /* SuperResolution.bundle in Resources */,
 				BCCB6C5724F816CC00884353 /* bg_super_resolution.jpeg in Resources */,
 				BC6A835924AF676C000E9480 /* test-HandGesture.jpg in Resources */,
-				BC0DDD2724CF1B7B002AB0E9 /* Segmentation.bundle in Resources */,
 				BC158FA324BC60EA00308245 /* test-SuperResolution.jpeg in Resources */,
 				BC6A82F524ADADAF000E9480 /* LaunchScreen.storyboard in Resources */,
 				BCCB6C5624F816CC00884353 /* bg_gesture.jpeg in Resources */,
 				BC6A82F224ADADAF000E9480 /* Assets.xcassets in Resources */,
-				BC0DDD2924CF1B7B002AB0E9 /* HandGesture.bundle in Resources */,
 				BC6A82F024ADADAA000E9480 /* Main.storyboard in Resources */,
 				BCCB6C5824F816CC00884353 /* bg_portrait.jpeg in Resources */,
 				BC0DDB3F24C9ECA0002AB0E9 /* test_img.png in Resources */,
