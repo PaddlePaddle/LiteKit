@@ -15,10 +15,10 @@
 #import "HandGestureRecognizeView.h"
 
 @implementation HandGestureRecognizeView {
-    MMLHandGestureDetectResult *_resultData;
+    LiteKitHandGestureDetectResult *_resultData;
 }
 
-- (void)updateResultData:(MMLHandGestureDetectResult *)resultData {
+- (void)updateResultData:(LiteKitHandGestureDetectResult *)resultData {
     _resultData = resultData;
     [self setNeedsDisplay];
 }
@@ -51,7 +51,7 @@
     CGContextAddRect(context, handBox);
     CGContextStrokePath(context);
     // draw finger point if detection result is not fist
-    if (_resultData.label != MMLHandGestureDetectionLabelFist) {
+    if (_resultData.label != LiteKitHandGestureDetectionLabelFist) {
         CGContextSetRGBStrokeColor(context, 1.0, 1.0, 0.0, 1.0);
         CGContextSetLineWidth(context, 2);
         CGContextAddArc(context, _resultData.fingerPoint.x * scale, _resultData.fingerPoint.y * scale, 2, 0, 2 * 3.14, 0);
@@ -70,19 +70,19 @@
     _resultData = nil;
 }
 
-- (NSString *)labelWithLabelIndex:(MMLHandGestureDetectionLabel)labelIndex {
+- (NSString *)labelWithLabelIndex:(LiteKitHandGestureDetectionLabel)labelIndex {
     switch (labelIndex) {
-        case MMLHandGestureDetectionLabelHand:
+        case LiteKitHandGestureDetectionLabelHand:
             return @"hand";
-        case MMLHandGestureDetectionLabelFive:
+        case LiteKitHandGestureDetectionLabelFive:
             return @"five";
-        case MMLHandGestureDetectionLabelVictory:
+        case LiteKitHandGestureDetectionLabelVictory:
             return @"victory";
-        case MMLHandGestureDetectionLabelFist:
+        case LiteKitHandGestureDetectionLabelFist:
             return @"fist";
-        case MMLHandGestureDetectionLabelOne:
+        case LiteKitHandGestureDetectionLabelOne:
             return @"one";
-        case MMLHandGestureDetectionLabelOK:
+        case LiteKitHandGestureDetectionLabelOK:
             return @"ok";
         default:
             return @"";

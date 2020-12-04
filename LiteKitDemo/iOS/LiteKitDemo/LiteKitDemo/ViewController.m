@@ -25,7 +25,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"MMLKit";
+    self.title = @"LiteKit";
     self.view.backgroundColor = [UIColor whiteColor];
     
     CGFloat screenWidth = [[UIScreen mainScreen] bounds].size.width;

@@ -19,7 +19,7 @@
 @property (strong, nonatomic) UIImage *image;
 @property (strong, nonatomic) UILabel *timeCost;
 @property (strong, nonatomic) HandGestureRecognizeView *detectView;
-@property (nonatomic, strong) MMLHandGestureDetector *gestureRecognizer;
+@property (nonatomic, strong) LiteKitHandGestureDetector *gestureRecognizer;
 @end
 
 #define ScreenWidth                         [[UIScreen mainScreen] bounds].size.width
@@ -67,7 +67,7 @@
 
 - (void)createInstance {
     NSError *error;
-    self.gestureRecognizer = [MMLHandGestureDetector createHandGestureDetectorWithError:&error];
+    self.gestureRecognizer = [LiteKitHandGestureDetector createHandGestureDetectorWithError:&error];
     if (!self.gestureRecognizer || error) {
         return;
     }
@@ -75,7 +75,7 @@
 
 - (void)imageDetectAction:(id)sender {
     NSTimeInterval begin = [[NSDate date] timeIntervalSince1970];
-    [self.gestureRecognizer detectWithUIImage:self.image complete:^(MMLHandGestureDetectResult *result, NSError *error) {
+    [self.gestureRecognizer detectWithUIImage:self.image complete:^(LiteKitHandGestureDetectResult *result, NSError *error) {
         NSTimeInterval end = [[NSDate date] timeIntervalSince1970];
         if (!result || error) {
             return;
@@ -88,7 +88,7 @@
     }];
 }
 
-- (void)outputDetectResult:(MMLHandGestureDetectResult *)result {
+- (void)outputDetectResult:(LiteKitHandGestureDetectResult *)result {
     if (result) {
         NSLog(@"Gesture Detect Result:\n"
               "\t\t\t----Detect Label Index:%d\n"

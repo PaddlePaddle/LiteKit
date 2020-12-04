@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9025ADB1710872C041A33A61 /* libPods-MMLKitDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 673B6DC527AB4C46376BA1AD /* libPods-MMLKitDemo.a */; };
 		BC0DDB3F24C9ECA0002AB0E9 /* test_img.png in Resources */ = {isa = PBXBuildFile; fileRef = BC0DDB3E24C9ECA0002AB0E9 /* test_img.png */; };
 		BC158F9124BC494C00308245 /* SuperResolutionViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = BC158F9024BC494C00308245 /* SuperResolutionViewController.mm */; };
 		BC158FA324BC60EA00308245 /* test-SuperResolution.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = BC158FA224BC60EA00308245 /* test-SuperResolution.jpeg */; };
@@ -24,11 +23,12 @@
 		BC6A834824AE2458000E9480 /* HandGestureRecognizeView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6A834724AE2458000E9480 /* HandGestureRecognizeView.m */; };
 		BC6A834B24AE3B65000E9480 /* HandGestureImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6A834A24AE3B65000E9480 /* HandGestureImageViewController.m */; };
 		BC6A835924AF676C000E9480 /* test-HandGesture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BC6A835824AF676C000E9480 /* test-HandGesture.jpg */; };
-		BC6A835B24AF67C4000E9480 /* mmlkit-swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6A835A24AF67C4000E9480 /* mmlkit-swift.swift */; };
+		BC6A835B24AF67C4000E9480 /* litekit-swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6A835A24AF67C4000E9480 /* litekit-swift.swift */; };
 		BCCB6C5624F816CC00884353 /* bg_gesture.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = BCCB6C5324F816CC00884353 /* bg_gesture.jpeg */; };
 		BCCB6C5724F816CC00884353 /* bg_super_resolution.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = BCCB6C5424F816CC00884353 /* bg_super_resolution.jpeg */; };
 		BCCB6C5824F816CC00884353 /* bg_portrait.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = BCCB6C5524F816CC00884353 /* bg_portrait.jpeg */; };
 		BCFDE3A824C9B6B5001A263A /* SegmentationImageViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = BCFDE3A724C9B6B5001A263A /* SegmentationImageViewController.mm */; };
+		CEEBF5C0ADA4B8596D8587A9 /* libPods-LiteKitDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 93B2B4E2CF48D285859FC8CB /* libPods-LiteKitDemo.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -45,14 +45,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		032F92BA5D23B80940C0ECC1 /* Pods-MMLKitDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MMLKitDemo.debug.xcconfig"; path = "Target Support Files/Pods-MMLKitDemo/Pods-MMLKitDemo.debug.xcconfig"; sourceTree = "<group>"; };
-		0A7FDCB0176FD4E4E70FBB3F /* Pods-MMLKitDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MMLKitDemo.release.xcconfig"; path = "Target Support Files/Pods-MMLKitDemo/Pods-MMLKitDemo.release.xcconfig"; sourceTree = "<group>"; };
-		673B6DC527AB4C46376BA1AD /* libPods-MMLKitDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MMLKitDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		93B2B4E2CF48D285859FC8CB /* libPods-LiteKitDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LiteKitDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A32FF356C3EBCAD794D931D0 /* Pods-LiteKitDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiteKitDemo.release.xcconfig"; path = "Target Support Files/Pods-LiteKitDemo/Pods-LiteKitDemo.release.xcconfig"; sourceTree = "<group>"; };
 		BC0DDB3E24C9ECA0002AB0E9 /* test_img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_img.png; sourceTree = "<group>"; };
 		BC158F8F24BC494C00308245 /* SuperResolutionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SuperResolutionViewController.h; sourceTree = "<group>"; };
 		BC158F9024BC494C00308245 /* SuperResolutionViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SuperResolutionViewController.mm; sourceTree = "<group>"; };
 		BC158FA224BC60EA00308245 /* test-SuperResolution.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "test-SuperResolution.jpeg"; sourceTree = "<group>"; };
-		BC6A82E224ADADAA000E9480 /* MMLKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MMLKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC6A82E224ADADAA000E9480 /* LiteKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiteKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC6A82E524ADADAA000E9480 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BC6A82E624ADADAA000E9480 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		BC6A82EB24ADADAA000E9480 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -70,19 +69,20 @@
 		BC6A830C24ADC9D5000E9480 /* BaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		BC6A830E24ADCE90000E9480 /* BaseDetectView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseDetectView.h; sourceTree = "<group>"; };
 		BC6A830F24ADCE90000E9480 /* BaseDetectView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseDetectView.m; sourceTree = "<group>"; };
-		BC6A832324AE161B000E9480 /* MMLKitDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MMLKitDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		BC6A832324AE161B000E9480 /* LiteKitDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LiteKitDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		BC6A834324AE1D54000E9480 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		BC6A834624AE2458000E9480 /* HandGestureRecognizeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HandGestureRecognizeView.h; sourceTree = "<group>"; };
 		BC6A834724AE2458000E9480 /* HandGestureRecognizeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HandGestureRecognizeView.m; sourceTree = "<group>"; };
 		BC6A834924AE3B65000E9480 /* HandGestureImageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HandGestureImageViewController.h; sourceTree = "<group>"; };
 		BC6A834A24AE3B65000E9480 /* HandGestureImageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HandGestureImageViewController.m; sourceTree = "<group>"; };
 		BC6A835824AF676C000E9480 /* test-HandGesture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "test-HandGesture.jpg"; sourceTree = "<group>"; };
-		BC6A835A24AF67C4000E9480 /* mmlkit-swift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "mmlkit-swift.swift"; sourceTree = "<group>"; };
+		BC6A835A24AF67C4000E9480 /* litekit-swift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "litekit-swift.swift"; sourceTree = "<group>"; };
 		BCCB6C5324F816CC00884353 /* bg_gesture.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg_gesture.jpeg; sourceTree = "<group>"; };
 		BCCB6C5424F816CC00884353 /* bg_super_resolution.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg_super_resolution.jpeg; sourceTree = "<group>"; };
 		BCCB6C5524F816CC00884353 /* bg_portrait.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg_portrait.jpeg; sourceTree = "<group>"; };
 		BCFDE3A624C9B6B5001A263A /* SegmentationImageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SegmentationImageViewController.h; sourceTree = "<group>"; };
 		BCFDE3A724C9B6B5001A263A /* SegmentationImageViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SegmentationImageViewController.mm; sourceTree = "<group>"; };
+		FC3C7F89767BFED528745DE8 /* Pods-LiteKitDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiteKitDemo.debug.xcconfig"; path = "Target Support Files/Pods-LiteKitDemo/Pods-LiteKitDemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9025ADB1710872C041A33A61 /* libPods-MMLKitDemo.a in Frameworks */,
+				CEEBF5C0ADA4B8596D8587A9 /* libPods-LiteKitDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,8 +100,8 @@
 		6E994EF212A5736169C8F673 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				032F92BA5D23B80940C0ECC1 /* Pods-MMLKitDemo.debug.xcconfig */,
-				0A7FDCB0176FD4E4E70FBB3F /* Pods-MMLKitDemo.release.xcconfig */,
+				FC3C7F89767BFED528745DE8 /* Pods-LiteKitDemo.debug.xcconfig */,
+				A32FF356C3EBCAD794D931D0 /* Pods-LiteKitDemo.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -118,7 +118,7 @@
 		BC6A82D924ADADAA000E9480 = {
 			isa = PBXGroup;
 			children = (
-				BC6A82E424ADADAA000E9480 /* MMLKitDemo */,
+				BC6A82E424ADADAA000E9480 /* LiteKitDemo */,
 				BC6A82E324ADADAA000E9480 /* Products */,
 				BC6A831E24AE14A9000E9480 /* Frameworks */,
 				6E994EF212A5736169C8F673 /* Pods */,
@@ -128,12 +128,12 @@
 		BC6A82E324ADADAA000E9480 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BC6A82E224ADADAA000E9480 /* MMLKitDemo.app */,
+				BC6A82E224ADADAA000E9480 /* LiteKitDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		BC6A82E424ADADAA000E9480 /* MMLKitDemo */ = {
+		BC6A82E424ADADAA000E9480 /* LiteKitDemo */ = {
 			isa = PBXGroup;
 			children = (
 				BC6A82FE24ADC46C000E9480 /* base */,
@@ -144,8 +144,8 @@
 				BC6A82E624ADADAA000E9480 /* AppDelegate.mm */,
 				BC6A82EB24ADADAA000E9480 /* ViewController.h */,
 				BC6A82EC24ADADAA000E9480 /* ViewController.m */,
-				BC6A835A24AF67C4000E9480 /* mmlkit-swift.swift */,
-				BC6A832324AE161B000E9480 /* MMLKitDemo-Bridging-Header.h */,
+				BC6A835A24AF67C4000E9480 /* litekit-swift.swift */,
+				BC6A832324AE161B000E9480 /* LiteKitDemo-Bridging-Header.h */,
 				BC6A82EE24ADADAA000E9480 /* Main.storyboard */,
 				BC6A82F124ADADAF000E9480 /* Assets.xcassets */,
 				BC6A82F324ADADAF000E9480 /* LaunchScreen.storyboard */,
@@ -153,7 +153,7 @@
 				BC6A82F724ADADAF000E9480 /* main.m */,
 				BC6A831124AE0386000E9480 /* resource */,
 			);
-			path = MMLKitDemo;
+			path = LiteKitDemo;
 			sourceTree = "<group>";
 		};
 		BC6A82FE24ADC46C000E9480 /* base */ = {
@@ -208,7 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				BC6A834324AE1D54000E9480 /* libz.tbd */,
-				673B6DC527AB4C46376BA1AD /* libPods-MMLKitDemo.a */,
+				93B2B4E2CF48D285859FC8CB /* libPods-LiteKitDemo.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -216,9 +216,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BC6A82E124ADADAA000E9480 /* MMLKitDemo */ = {
+		BC6A82E124ADADAA000E9480 /* LiteKitDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BC6A82FB24ADADAF000E9480 /* Build configuration list for PBXNativeTarget "MMLKitDemo" */;
+			buildConfigurationList = BC6A82FB24ADADAF000E9480 /* Build configuration list for PBXNativeTarget "LiteKitDemo" */;
 			buildPhases = (
 				AC141437127042AED01D02CA /* [CP] Check Pods Manifest.lock */,
 				BC6A82DE24ADADAA000E9480 /* Sources */,
@@ -232,9 +232,9 @@
 			);
 			dependencies = (
 			);
-			name = MMLKitDemo;
+			name = LiteKitDemo;
 			productName = MMLKitDemo;
-			productReference = BC6A82E224ADADAA000E9480 /* MMLKitDemo.app */;
+			productReference = BC6A82E224ADADAA000E9480 /* LiteKitDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -252,7 +252,7 @@
 					};
 				};
 			};
-			buildConfigurationList = BC6A82DD24ADADAA000E9480 /* Build configuration list for PBXProject "MMLKitDemo" */;
+			buildConfigurationList = BC6A82DD24ADADAA000E9480 /* Build configuration list for PBXProject "LiteKitDemo" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -265,7 +265,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BC6A82E124ADADAA000E9480 /* MMLKitDemo */,
+				BC6A82E124ADADAA000E9480 /* LiteKitDemo */,
 			);
 		};
 /* End PBXProject section */
@@ -296,15 +296,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MMLKitDemo/Pods-MMLKitDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-LiteKitDemo/Pods-LiteKitDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MMLKitDemo/Pods-MMLKitDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-LiteKitDemo/Pods-LiteKitDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MMLKitDemo/Pods-MMLKitDemo-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LiteKitDemo/Pods-LiteKitDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		AC141437127042AED01D02CA /* [CP] Check Pods Manifest.lock */ = {
@@ -322,7 +322,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MMLKitDemo-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-LiteKitDemo-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -335,15 +335,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MMLKitDemo/Pods-MMLKitDemo-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-LiteKitDemo/Pods-LiteKitDemo-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MMLKitDemo/Pods-MMLKitDemo-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-LiteKitDemo/Pods-LiteKitDemo-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MMLKitDemo/Pods-MMLKitDemo-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LiteKitDemo/Pods-LiteKitDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -362,7 +362,7 @@
 				BC6A82E724ADADAA000E9480 /* AppDelegate.mm in Sources */,
 				BC6A830D24ADC9D5000E9480 /* BaseViewController.m in Sources */,
 				BC6A834824AE2458000E9480 /* HandGestureRecognizeView.m in Sources */,
-				BC6A835B24AF67C4000E9480 /* mmlkit-swift.swift in Sources */,
+				BC6A835B24AF67C4000E9480 /* litekit-swift.swift in Sources */,
 				BC158F9124BC494C00308245 /* SuperResolutionViewController.mm in Sources */,
 				BC6A82F824ADADAF000E9480 /* main.m in Sources */,
 			);
@@ -502,7 +502,7 @@
 		};
 		BC6A82FC24ADADAF000E9480 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 032F92BA5D23B80940C0ECC1 /* Pods-MMLKitDemo.debug.xcconfig */;
+			baseConfigurationReference = FC3C7F89767BFED528745DE8 /* Pods-LiteKitDemo.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -511,7 +511,7 @@
 				DEVELOPMENT_TEAM = 95V4CMQNYA;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				HEADER_SEARCH_PATHS = "";
-				INFOPLIST_FILE = MMLKitDemo/Info.plist;
+				INFOPLIST_FILE = LiteKitDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -519,9 +519,9 @@
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.baidu.MMLKit.MMLKitDemo2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.baidu.LiteKit.LiteKitDemo2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "MMLKitDemo/MMLKitDemo-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "LiteKitDemo/LiteKitDemo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -530,7 +530,7 @@
 		};
 		BC6A82FD24ADADAF000E9480 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0A7FDCB0176FD4E4E70FBB3F /* Pods-MMLKitDemo.release.xcconfig */;
+			baseConfigurationReference = A32FF356C3EBCAD794D931D0 /* Pods-LiteKitDemo.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -539,7 +539,7 @@
 				DEVELOPMENT_TEAM = 95V4CMQNYA;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				HEADER_SEARCH_PATHS = "";
-				INFOPLIST_FILE = MMLKitDemo/Info.plist;
+				INFOPLIST_FILE = LiteKitDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -547,9 +547,9 @@
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.baidu.MMLKit.MMLKitDemo2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.baidu.LiteKit.LiteKitDemo2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "MMLKitDemo/MMLKitDemo-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "LiteKitDemo/LiteKitDemo-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -558,7 +558,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BC6A82DD24ADADAA000E9480 /* Build configuration list for PBXProject "MMLKitDemo" */ = {
+		BC6A82DD24ADADAA000E9480 /* Build configuration list for PBXProject "LiteKitDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BC6A82F924ADADAF000E9480 /* Debug */,
@@ -567,7 +567,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BC6A82FB24ADADAF000E9480 /* Build configuration list for PBXNativeTarget "MMLKitDemo" */ = {
+		BC6A82FB24ADADAF000E9480 /* Build configuration list for PBXNativeTarget "LiteKitDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BC6A82FC24ADADAF000E9480 /* Debug */,

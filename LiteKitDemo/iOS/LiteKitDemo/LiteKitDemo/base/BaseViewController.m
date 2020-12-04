@@ -200,7 +200,7 @@
     }
     [self.videoDataOutput setAlwaysDiscardsLateVideoFrames:YES];
     //处理队列
-    self.sampleBufferCallbackQueue = dispatch_queue_create("com.baidu.MMLKit.camera", DISPATCH_QUEUE_SERIAL);
+    self.sampleBufferCallbackQueue = dispatch_queue_create("com.baidu.LiteKit.camera", DISPATCH_QUEUE_SERIAL);
     [self.videoDataOutput setSampleBufferDelegate:self queue:self.sampleBufferCallbackQueue];
     
     // 创建、配置并添加预览layer

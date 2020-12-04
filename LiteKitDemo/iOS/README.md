@@ -1,4 +1,4 @@
-# MMLKit
+# LiteKit
 简要说明
 
 ## 快速开始

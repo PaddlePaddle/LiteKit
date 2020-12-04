@@ -15,7 +15,7 @@
 
 #import "SegmentationImageViewController.h"
 #import <Accelerate/Accelerate.h>
-#import <MMLPortraitSegmentation/MMLPortraitSegmentor.h>
+#import <LiteKitPortraitSegmentation/LiteKitPortraitSegmentor.h>
 
 #define Output_Width  192
 #define Output_Height  192
@@ -30,7 +30,7 @@
 @property (nonatomic, assign) float *alpha_scale;       //放大到目标大小
 @property (nonatomic, assign) uint8_t *rgb_output;      //融合后输出
 @property (nonatomic, assign) uint8_t *rgba_capture;    //camera输出
-@property (nonatomic, strong) MMLPortraitSegmentor *portraitSegmentor;
+@property (nonatomic, strong) LiteKitPortraitSegmentor *portraitSegmentor;
 
 @end
 
@@ -88,7 +88,7 @@
 
 - (void)createInstance {
     NSError *error = nil;
-    self.portraitSegmentor = [MMLPortraitSegmentor createPortraitSegmentorWithError:&error];
+    self.portraitSegmentor = [LiteKitPortraitSegmentor createPortraitSegmentorWithError:&error];
     if (!self.portraitSegmentor || error) {
         return;
     }
@@ -97,7 +97,7 @@
 - (void)imageDetectAction:(id)sender {
     
     NSTimeInterval begin = [[NSDate date] timeIntervalSince1970];
-    MMLPSData *output = (MMLPSData *)[self.portraitSegmentor inferWithImage:self.image error:nil];
+    LiteKitPSData *output = (LiteKitPSData *)[self.portraitSegmentor inferWithImage:self.image error:nil];
     NSTimeInterval end = [[NSDate date] timeIntervalSince1970];
     
     uint8_t *alpahUnit8 = (uint8_t *)output->data;

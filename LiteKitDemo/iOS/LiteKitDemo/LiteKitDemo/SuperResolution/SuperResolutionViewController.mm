@@ -13,14 +13,14 @@
 // limitations under the License.
 
 #import "SuperResolutionViewController.h"
-#import <MMLAIVideoSuperResolution/MMLAIVideoSuperResolution.h>
+#import <LiteKitVideoSuperResolution/LiteKitVideoSuperResolution.h>
 
 @interface SuperResolutionViewController ()
 @property (nonatomic, strong) UIImage *image;
 @property (strong, nonatomic) UILabel *timeCost;
 @property (nonatomic, strong) UIImageView *originView;
 @property (nonatomic, strong) UIImageView *superResolutionView;
-@property (nonatomic, strong) MMLVideoSuperResolutionor *superVideo;
+@property (nonatomic, strong) LiteKitVideoSuperResolutionor *superVideo;
 @end
 
 @implementation SuperResolutionViewController
@@ -35,7 +35,7 @@
 - (void)initData {
     self.image = [UIImage imageNamed:@"test-SuperResolution.jpeg"];
     NSError *error = nil;
-    MMLVideoSuperResolutionor *sVideo = [MMLVideoSuperResolutionor createVideoSuperResolutionorWithError:&error];
+    LiteKitVideoSuperResolutionor *sVideo = [LiteKitVideoSuperResolutionor createVideoSuperResolutionorWithError:&error];
     if (error) {
         NSLog(@"出错1 ==== > %@", error);
         return;

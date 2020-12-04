@@ -18,7 +18,7 @@
 
 @interface HandGestureViewController ()
 @property (strong, nonatomic) UILabel *timeCost;
-@property (nonatomic, strong) MMLHandGestureDetector *gestureRecognizer;
+@property (nonatomic, strong) LiteKitHandGestureDetector *gestureRecognizer;
 @end
 
 @implementation HandGestureViewController
@@ -38,7 +38,7 @@
 
 - (void)createInstance {
     NSError *error;
-    self.gestureRecognizer = [MMLHandGestureDetector createHandGestureDetectorWithError:&error];
+    self.gestureRecognizer = [LiteKitHandGestureDetector createHandGestureDetectorWithError:&error];
     if (!self.gestureRecognizer || error) {
         return;
     }
@@ -65,7 +65,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 - (void)detectWithSampleBuffer:(CMSampleBufferRef)sampleBuffer {
     NSTimeInterval begin = [[NSDate date] timeIntervalSince1970];
     [self.gestureRecognizer detectWithSampleBuffer:sampleBuffer
-                                          complete:^(MMLHandGestureDetectResult *result, NSError *error) {
+                                          complete:^(LiteKitHandGestureDetectResult *result, NSError *error) {
         NSTimeInterval end = [[NSDate date] timeIntervalSince1970];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self outputDetectResult:result];
@@ -75,7 +75,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     }];
 }
 
-- (void)outputDetectResult:(MMLHandGestureDetectResult *)result {
+- (void)outputDetectResult:(LiteKitHandGestureDetectResult *)result {
     if (result) {
         NSLog(@"Gesture Detect Result:\n"
               "\t\t\t----Detect Label Index:%d\n"

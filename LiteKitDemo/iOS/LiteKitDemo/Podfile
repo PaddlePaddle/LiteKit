@@ -1,0 +1,13 @@
+# coding: utf-8
+source 'https://github.com/CocoaPods/Specs.git'
+
+platform :ios
+
+target 'LiteKitDemo' do
+  project './LiteKitDemo.xcodeproj'
+    platform :ios, '10.0'
+
+    pod 'LiteKitHandGestureDetection', '~> 0.1.0'
+    pod 'LiteKitPortraitSegmentation', '~> 0.1.0'
+    pod 'LiteKitVideoSuperResolution', '~> 0.1.0'
+end

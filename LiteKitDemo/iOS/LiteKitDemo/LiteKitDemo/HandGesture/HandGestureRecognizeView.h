@@ -14,13 +14,13 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseDetectView.h"
-#import <MMLHandGestureDetection/MMLHandGestureDetector.h>
+#import <LiteKitHandGestureDetection/LiteKitHandGestureDetector.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface HandGestureRecognizeView : BaseDetectView
 
-- (void)updateResultData:(MMLHandGestureDetectResult *)resultData;
+- (void)updateResultData:(LiteKitHandGestureDetectResult *)resultData;
 
 @end
 
