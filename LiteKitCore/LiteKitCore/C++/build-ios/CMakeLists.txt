@@ -1,6 +1,6 @@
 
 cmake_minimum_required(VERSION 3.0.0)
-project(mml_c_ios_arch)
+project(litekit_c_ios_arch)
 
 # 添加编译选项
 add_definitions(-std=c++11)
@@ -19,7 +19,7 @@ if(IS_IOS)
     add_compile_options(-fembed-bitcode)
 else()
     set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
-    message(STATUS "mml______not support architecture.")
+    message(STATUS "litekit______not support architecture.")
 endif()
 
 
@@ -30,17 +30,17 @@ endif()
 
 ########### 仅含paddle_lite的构建  start#######
 add_library( # Sets the name of the library.
-             mml_framework_ios
+             litekit_framework_ios
              # Sets the library as a shared library. 
              STATIC
              # Provides a relative path to your source file(s).
-             ${CMAKE_CURRENT_SOURCE_DIR}/../src/main/cpp/mml_framework/mml_inference_api.cpp
-             ${CMAKE_CURRENT_SOURCE_DIR}/../src/main/cpp/mml_framework/common_log.cpp
-             ${CMAKE_CURRENT_SOURCE_DIR}/../src/main/cpp/mml_framework/mml_convertor.cpp
-             ${CMAKE_CURRENT_SOURCE_DIR}/../src/main/cpp/mml_framework/mml_filetools.cpp
-             ${CMAKE_CURRENT_SOURCE_DIR}/../src/main/cpp/mml_framework/paddle_gpu/paddle_gpu_machine_predictor.cpp
-             ${CMAKE_CURRENT_SOURCE_DIR}/../src/main/cpp/mml_framework/paddle_lite/paddle_lite_machine_predictor.cpp
-             ${CMAKE_CURRENT_SOURCE_DIR}/../src/main/cpp/mml_framework/paddle_lite/paddle_lite_image_preprocess.cpp
+             ${CMAKE_CURRENT_SOURCE_DIR}/../src/main/cpp/litekit_framework/litekit_inference_api.cpp
+             ${CMAKE_CURRENT_SOURCE_DIR}/../src/main/cpp/litekit_framework/common_log.cpp
+             ${CMAKE_CURRENT_SOURCE_DIR}/../src/main/cpp/litekit_framework/litekit_convertor.cpp
+             ${CMAKE_CURRENT_SOURCE_DIR}/../src/main/cpp/litekit_framework/litekit_filetools.cpp
+             ${CMAKE_CURRENT_SOURCE_DIR}/../src/main/cpp/litekit_framework/paddle_gpu/paddle_gpu_machine_predictor.cpp
+             ${CMAKE_CURRENT_SOURCE_DIR}/../src/main/cpp/litekit_framework/paddle_lite/paddle_lite_machine_predictor.cpp
+             ${CMAKE_CURRENT_SOURCE_DIR}/../src/main/cpp/litekit_framework/paddle_lite/paddle_lite_image_preprocess.cpp
             )
             
 ########### 仅含paddle_lite的构建  end#######  
@@ -55,14 +55,14 @@ set(PROJ_DEPS ${PROJ_DEPS} paddle_lite)
 
 
 ## 添加头文件目录
-include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/../src/main/cpp/mml_framework/paddle_gpu_header )
-include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/../src/main/cpp/mml_framework/paddle-lite-header )
+include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/../src/main/cpp/litekit_framework/paddle_gpu_header )
+include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/../src/main/cpp/litekit_framework/paddle-lite-header )
 
 
 # Specifies libraries CMake should link to your target library. You
 # can link multiple libraries, such as libraries you define in this
 # build script, prebuilt third-party libraries, or system libraries.
 
-set_target_properties(mml_framework_ios PROPERTIES RUNTIME_OUTPUT_DIRECTORY> "${RUNTIME_OUTPUT_DIRECTORY}/lib")
+set_target_properties(litekit_framework_ios PROPERTIES RUNTIME_OUTPUT_DIRECTORY> "${RUNTIME_OUTPUT_DIRECTORY}/lib")
 
 

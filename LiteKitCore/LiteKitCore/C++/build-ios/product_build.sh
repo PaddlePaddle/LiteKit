@@ -7,7 +7,7 @@ BUILD_DIR=$CURRENT_DIR/${BUILD_DIR_NAME}
 rm -r ${BUILD_DIR}
 mkdir -p ${BUILD_DIR}
 echo "###############################################################"
-echo "**** 即将开始编译iOS native arm全架构(arm64+armv7)版本的mml库 ****"
+echo "**** 即将开始编译iOS native arm全架构(arm64+armv7)版本的litekit库 ****"
 echo "**** 将要编译产物到目录：${BUILD_DIR} ****"
 echo "###############################################################"
 sleep 0.5
@@ -15,7 +15,7 @@ sleep 0.5
 ARM64=arm64
 ARMV7=armv7
 IOS_ARCHITECTURE=(armv7 arm64)
-PRODUCT_LIB=libmml_framework_ios.a
+PRODUCT_LIB=liblitekit_framework_ios.a
 TOOL_CHAIN_FILE=${CURRENT_DIR}/tools/iOS.cmake
 MODE="Release"
 
@@ -47,8 +47,8 @@ mkdir -p $PRODUCT_ARM_FINAL_DIR
 mkdir -p $PRODUCT_TEMP_DIR/$ARM64
 
 
-cp ${CURRENT_DIR}/../src/main/cpp/mml_framework/mml_inference_api.h $PRODUCT_HEADER_DIR/mml_inference_api.h
-cp ${CURRENT_DIR}/../src/main/cpp/mml_framework/paddle_lite/paddle_lite_image_preprocess.h $PRODUCT_HEADER_DIR/paddle_lite_image_preprocess.h
+cp ${CURRENT_DIR}/../src/main/cpp/litekit_framework/litekit_inference_api.h $PRODUCT_HEADER_DIR/litekit_inference_api.h
+cp ${CURRENT_DIR}/../src/main/cpp/litekit_framework/paddle_lite/paddle_lite_image_preprocess.h $PRODUCT_HEADER_DIR/paddle_lite_image_preprocess.h
 mv $BUILD_DIR/$PRODUCT_LIB $PRODUCT_TEMP_DIR/$ARM64/$PRODUCT_LIB
 
 
@@ -76,7 +76,7 @@ mv $BUILD_DIR/$PRODUCT_LIB $PRODUCT_TEMP_DIR/$ARMV7/$PRODUCT_LIB
 
 mkdir -p $PRODUCT_FINAL_DIR
 #### merge
-PRODUCT_LIB_TINY=libmml_framework_ios_tiny.a
+PRODUCT_LIB_TINY=liblitekit_framework_ios_tiny.a
 lipo -create $PRODUCT_TEMP_DIR/$ARMV7/$PRODUCT_LIB $PRODUCT_TEMP_DIR/$ARM64/$PRODUCT_LIB -output $PRODUCT_FINAL_DIR/$PRODUCT_LIB_TINY
 
 xcrun -r libtool -static -o $PRODUCT_FINAL_DIR/$PRODUCT_LIB \
