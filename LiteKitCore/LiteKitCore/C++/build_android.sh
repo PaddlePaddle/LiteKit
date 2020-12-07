@@ -60,9 +60,9 @@ rm -rf output
 mkdir -p output/armeabi-v7a
 mkdir -p output/arm64-v8a
 
-cp -r $work_path/android_release_v7a/src/main/cpp/mml_framework/libmml_framework.so output/armeabi-v7a/
-cp -r $work_path/android_release_v8a/src/main/cpp/mml_framework/libmml_framework.so output/arm64-v8a/
-cp -r src/main/cpp/mml_framework/mml_inference_api.h output/mml_inference_api.h
+cp -r $work_path/android_release_v7a/src/main/cpp/litekit_framework/liblitekit_framework.so output/armeabi-v7a/
+cp -r $work_path/android_release_v8a/src/main/cpp/litekit_framework/liblitekit_framework.so output/arm64-v8a/
+cp -r src/main/cpp/litekit_framework/litekit_inference_api.h output/litekit_inference_api.h
 
 cd $work_path
 rm -rf android_release_v7a

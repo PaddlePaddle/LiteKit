@@ -31,11 +31,11 @@ endif ()
 # Gradle automatically packages shared libraries with your APK.
 
 add_library( # Sets the name of the library.
-        mml_framework
+        litekit_framework
         # Sets the library as a shared library.
         SHARED
         # Provides a relative path to your source file(s).
-        ${CMAKE_CURRENT_SOURCE_DIR}/mml_inference_api.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/litekit_inference_api.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/paddle_lite/paddle_lite_image_preprocess.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/paddle_lite/paddle_lite_machine_predictor.cpp
         )
@@ -66,11 +66,11 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/paddle_lite)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/paddle_lite_header)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
-set_target_properties(mml_framework PROPERTIES LINK_FLAGS "${LINK_FLAGS}")
+set_target_properties(litekit_framework PROPERTIES LINK_FLAGS "${LINK_FLAGS}")
 #link_directories(${PROJECT_SOURCE_DIR}/src/main/jniLibs)
 
 target_link_libraries( # Specifies the target library.
-            mml_framework
+            litekit_framework
             # Links the log library to the target library.
             ${log-lib}
             ${jnigraphics-lib}
