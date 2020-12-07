@@ -1,16 +1,18 @@
-// Copyright (c) 2019 PaddlePaddle Authors. All Rights Reserved.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
+/**
+Copyright © 2020 Baidu, Inc. All Rights Reserved.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
 
 /**
  * PaddleLiteMachinePredictor封装，实现基于PaddleLite的预测引擎
@@ -27,7 +29,7 @@ public:
     /**
      * 根据config，创建对应backend，并且完成对 backend的实例化
      */
-    int load(const mml_framework::MMLConfig &config);
+    int load(const litekit_framework::LiteKitConfig &config);
 
     /**
      * 预测函数
@@ -35,26 +37,26 @@ public:
      * @param outputData
      * @return
      */
-    int predict(mml_framework::MMLData &inputData, mml_framework::MMLData *outputData);
+    int predict(litekit_framework::LiteKitData &inputData, litekit_framework::LiteKitData *outputData);
     /**
     * 预测函数 适用于paddle-lite backend
-    * @return i 0成功, 其他错误见mml_framework ErrorCode
+    * @return i 0成功, 其他错误见litekit_framework ErrorCode
     */
     int predict();
     
     /**
     * 申请第i个input的tensor空间
     * @param i
-    * @return MMLData
+    * @return LiteKitData
     */
-    virtual std::unique_ptr<mml_framework::MMLData> getInputData(int i);
+    virtual std::unique_ptr<litekit_framework::LiteKitData> getInputData(int i);
     
     /**
     * 获取多输出中的第i个output
     * @param i
-    * @return MMLData
+    * @return LiteKitData
     */
-    virtual std::unique_ptr<const mml_framework::MMLData> getOutputData(int i);
+    virtual std::unique_ptr<const litekit_framework::LiteKitData> getOutputData(int i);
     
     /**
      * 获取input的names
@@ -71,9 +73,9 @@ public:
     /**
      * 获取name对应的input
      * @param name input的name
-     * @return MMLData
+     * @return LiteKitData
      */
-    virtual std::unique_ptr<mml_framework::MMLData> getInputByName(const std::string& name) ;
+    virtual std::unique_ptr<litekit_framework::LiteKitData> getInputByName(const std::string& name) ;
     
     /**
      * 析构函数

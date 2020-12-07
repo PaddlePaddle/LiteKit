@@ -1,25 +1,35 @@
-// Copyright (c) 2019 PaddlePaddle Authors. All Rights Reserved.
+/**
+Copyright © 2020 Baidu, Inc. All Rights Reserved.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
+
 //
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
+//  paddle_lite_image_preprocess.cpp
+//  LiteKitNativeDemo
 //
-//     http://www.apache.org/licenses/LICENSE-2.0
+//  Created by Baidu Co.Ltd. on 2020/3/2.
+//  Copyright © 2020 Baidu Co.Ltd. All rights reserved.
 //
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
 
 #include "paddle_lite_image_preprocess.h"
 #include "../paddle_lite_header/paddle_image_preprocess.h"
 #include "../common_log.h"
 
-using namespace mml_framework;
+using namespace litekit_framework;
 using namespace lite;
 
-paddle::lite::utils::cv::ImageFormat srcFormatFromMMLFormat(ImageFormat srcFormat) {
+paddle::lite::utils::cv::ImageFormat srcFormatFromLiteKitFormat(ImageFormat srcFormat) {
     paddle::lite::utils::cv::ImageFormat returnValue;
     switch (srcFormat) {
         case RGBA :{
@@ -59,7 +69,7 @@ paddle::lite::utils::cv::ImageFormat srcFormatFromMMLFormat(ImageFormat srcForma
     return returnValue;
 }
 
-paddle::lite::utils::cv::FlipParam filpParamFromMMLFlipParam(FlipParam flip_param) {
+paddle::lite::utils::cv::FlipParam filpParamFromLiteKitFlipParam(FlipParam flip_param) {
     paddle::lite::utils::cv::FlipParam returnValue;
     
     switch (flip_param) {
@@ -92,14 +102,14 @@ paddle::lite::utils::cv::FlipParam filpParamFromMMLFlipParam(FlipParam flip_para
 PaddleLiteImagePreprocess::PaddleLiteImagePreprocess(ImageFormat srcFormat,
                                                      ImageFormat dstFormat,
                                                      TransParam param) {
-    paddle::lite::utils::cv::ImageFormat srcFormatLite = srcFormatFromMMLFormat(srcFormat);
-    paddle::lite::utils::cv::ImageFormat dstFormatLite = srcFormatFromMMLFormat(dstFormat);
+    paddle::lite::utils::cv::ImageFormat srcFormatLite = srcFormatFromLiteKitFormat(srcFormat);
+    paddle::lite::utils::cv::ImageFormat dstFormatLite = srcFormatFromLiteKitFormat(dstFormat);
     paddle::lite::utils::cv::TransParam paramLite = paddle::lite::utils::cv::TransParam{
         .ih = param.ih,                // input height
         .iw = param.iw,                // input width
         .oh = param.oh,                // outpu theight
         .ow = param.ow,                // output width
-        .flip_param = filpParamFromMMLFlipParam(param.flip_param),  // flip, support x, y, xy
+        .flip_param = filpParamFromLiteKitFlipParam(param.flip_param),  // flip, support x, y, xy
         .rotate_param = param.rotate_param
     };
     
@@ -140,8 +150,8 @@ void PaddleLiteImagePreprocess::imageConvert(const uint8_t* src,
                                              uint8_t* dst,
                                              ImageFormat srcFormat,
                                              ImageFormat dstFormat) {
-    paddle::lite::utils::cv::ImageFormat srcFormatLite = srcFormatFromMMLFormat(srcFormat);
-    paddle::lite::utils::cv::ImageFormat dstFormatLite = srcFormatFromMMLFormat(dstFormat);
+    paddle::lite::utils::cv::ImageFormat srcFormatLite = srcFormatFromLiteKitFormat(srcFormat);
+    paddle::lite::utils::cv::ImageFormat dstFormatLite = srcFormatFromLiteKitFormat(dstFormat);
     
     paddle::lite::utils::cv::ImagePreprocess *preprocesser = (paddle::lite::utils::cv::ImagePreprocess *)this->preprocesser;
     preprocesser->imageConvert(src, dst, srcFormatLite, dstFormatLite);
@@ -177,7 +187,7 @@ void PaddleLiteImagePreprocess::imageResize(const uint8_t* src,
                                             int dsth){
     paddle::lite::utils::cv::ImagePreprocess *preprocesser = (paddle::lite::utils::cv::ImagePreprocess *)this->preprocesser;
     
-    paddle::lite::utils::cv::ImageFormat srcFormatLite = srcFormatFromMMLFormat(srcFormat);
+    paddle::lite::utils::cv::ImageFormat srcFormatLite = srcFormatFromLiteKitFormat(srcFormat);
     
     preprocesser->imageResize(src, dst, srcFormatLite, srcw, srch, dstw, dsth);
 }
@@ -211,7 +221,7 @@ void PaddleLiteImagePreprocess::imageRotate(const uint8_t* src,
                                             int srch,
                                             float degree) {
     paddle::lite::utils::cv::ImagePreprocess *preprocesser = (paddle::lite::utils::cv::ImagePreprocess *)this->preprocesser;
-    paddle::lite::utils::cv::ImageFormat srcFormatLite = srcFormatFromMMLFormat(srcFormat);
+    paddle::lite::utils::cv::ImageFormat srcFormatLite = srcFormatFromLiteKitFormat(srcFormat);
     preprocesser->imageRotate(src, dst, srcFormatLite, srcw, srch, degree);
 }
 /*
@@ -243,14 +253,14 @@ void PaddleLiteImagePreprocess::imageFlip(const uint8_t* src,
                                           int srch,
                                           FlipParam flip_param) {
     paddle::lite::utils::cv::ImagePreprocess *preprocesser = (paddle::lite::utils::cv::ImagePreprocess *)this->preprocesser;
-    paddle::lite::utils::cv::ImageFormat srcFormatLite = srcFormatFromMMLFormat(srcFormat);
-    paddle::lite::utils::cv::FlipParam flip_param_lite = filpParamFromMMLFlipParam(flip_param);
+    paddle::lite::utils::cv::ImageFormat srcFormatLite = srcFormatFromLiteKitFormat(srcFormat);
+    paddle::lite::utils::cv::FlipParam flip_param_lite = filpParamFromLiteKitFlipParam(flip_param);
     
     preprocesser->imageFlip(src, dst, srcFormatLite, srcw, srch, flip_param_lite);
 }
 
 
-paddle::lite::utils::cv::LayoutType layoutTypeFromMMLLayoutType(DataLayoutType layout) {
+paddle::lite::utils::cv::LayoutType layoutTypeFromLiteKitLayoutType(DataLayoutType layout) {
     paddle::lite::utils::cv::LayoutType returnValue;
     switch (layout) {
         case kUnk :{
@@ -307,7 +317,7 @@ void PaddleLiteImagePreprocess::image2Tensor(const uint8_t* src,
                                              float* means,
                                              float* scales) {
     paddle::lite::utils::cv::ImagePreprocess *preprocesser = (paddle::lite::utils::cv::ImagePreprocess *)this->preprocesser;
-    paddle::lite::utils::cv::LayoutType layoutLite = layoutTypeFromMMLLayoutType(layout);
+    paddle::lite::utils::cv::LayoutType layoutLite = layoutTypeFromLiteKitLayoutType(layout);
     preprocesser->image2Tensor(src, (paddle::lite_api::Tensor *)dstTensor->tensor, layoutLite, means, scales);
 }
 /*
@@ -333,8 +343,8 @@ void PaddleLiteImagePreprocess::image2Tensor(const uint8_t* src,
                                              float* means,
                                              float* scales) {
     paddle::lite::utils::cv::ImagePreprocess *preprocesser = (paddle::lite::utils::cv::ImagePreprocess *)this->preprocesser;
-    paddle::lite::utils::cv::LayoutType layoutLite = layoutTypeFromMMLLayoutType(layout);
-    paddle::lite::utils::cv::ImageFormat srcFormatLite = srcFormatFromMMLFormat(srcFormat);
+    paddle::lite::utils::cv::LayoutType layoutLite = layoutTypeFromLiteKitLayoutType(layout);
+    paddle::lite::utils::cv::ImageFormat srcFormatLite = srcFormatFromLiteKitFormat(srcFormat);
     
     preprocesser->image2Tensor(src, (paddle::lite_api::Tensor *)dstTensor->tensor, srcFormatLite, srcw, srch, layoutLite, means, scales);
 }

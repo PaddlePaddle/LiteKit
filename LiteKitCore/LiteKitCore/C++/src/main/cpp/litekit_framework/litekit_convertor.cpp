@@ -14,19 +14,34 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#include <stdio.h>
-#include "common_log.h"
-#include <sys/time.h>
+#include "litekit_convertor.h"
 
-namespace litekit_framework {
-namespace log {
+#include <stdint.h>
 
-void litekit_log(const char *perty_funcname, const char *stage) {
-    struct timeval tv;
-    struct timezone tz;
-    gettimeofday(&tv, &tz);
-    LOGI("TS: %ld.%d  |  stage: %s  |  funcname: %s \n", tv.tv_sec, tv.tv_usec, stage, perty_funcname);
+using namespace litekit_framework;
+
+int sizeOfRawDataType(LiteKitData::RawDataType litekitDataType) {
+    switch (litekitDataType)
+    {
+        case LiteKitData::RawDataType::FLOAT32:
+            return sizeof(float);
+        case LiteKitData::RawDataType::UINT8:
+            return sizeof(uint8_t);
+
+        default:
+            return sizeof(float);
+    }
 }
 
-}
+void* createRawData(LiteKitData::RawDataType litekitDataType, int len) {
+    switch (litekitDataType)
+    {
+        case LiteKitData::RawDataType::FLOAT32:
+            return new float[len];
+        case LiteKitData::RawDataType::UINT8:
+            return new uint8_t[len];
+
+        default:
+            return new float[len];
+    }
 }

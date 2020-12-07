@@ -14,19 +14,11 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+#ifndef litekit_filetools_hpp
+#define litekit_filetools_hpp
+
 #include <stdio.h>
-#include "common_log.h"
-#include <sys/time.h>
 
-namespace litekit_framework {
-namespace log {
+char *getFileContent(const char *filename, size_t *filesize);
 
-void litekit_log(const char *perty_funcname, const char *stage) {
-    struct timeval tv;
-    struct timezone tz;
-    gettimeofday(&tv, &tz);
-    LOGI("TS: %ld.%d  |  stage: %s  |  funcname: %s \n", tv.tv_sec, tv.tv_usec, stage, perty_funcname);
-}
-
-}
-}
+#endif /* litekit_filetools_hpp */

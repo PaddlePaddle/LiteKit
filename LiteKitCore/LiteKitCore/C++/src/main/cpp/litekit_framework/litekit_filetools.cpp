@@ -14,19 +14,40 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#include <stdio.h>
-#include "common_log.h"
-#include <sys/time.h>
+#include "litekit_filetools.h"
+#include<stdlib.h>
 
-namespace litekit_framework {
-namespace log {
+#pragma mark - utils
 
-void litekit_log(const char *perty_funcname, const char *stage) {
-    struct timeval tv;
-    struct timezone tz;
-    gettimeofday(&tv, &tz);
-    LOGI("TS: %ld.%d  |  stage: %s  |  funcname: %s \n", tv.tv_sec, tv.tv_usec, stage, perty_funcname);
+long get_file_size(FILE *file_handle) {
+    //获取当前读取文件的位置 进行保存
+    long current_read_position = ftell(file_handle);
+    long file_size = 0;
+    fseek(file_handle, 0, SEEK_END);
+    //获取文件的大小
+    file_size = ftell(file_handle);
+    //恢复文件原来读取的位置
+    fseek(file_handle, current_read_position, SEEK_SET);
+    return file_size;
 }
 
-}
+char *getFileContent(const char *fileName, size_t *fileSize) {
+    // open file
+    FILE *aFile = fopen(fileName, "r");
+    
+    // get file size
+    size_t size = get_file_size(aFile);
+    if (fileSize != nullptr) {
+        *fileSize = size;
+    }
+    
+    // get file content
+    char *fileContent = (char *)malloc(sizeof(char)*size);
+    fread(fileContent, 1, size, aFile);
+    
+    // flose file
+    fclose(aFile);
+    
+    // return
+    return fileContent;
 }

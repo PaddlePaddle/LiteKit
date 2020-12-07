@@ -1,46 +1,52 @@
-// Copyright (c) 2019 PaddlePaddle Authors. All Rights Reserved.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
+/**
+Copyright © 2020 Baidu, Inc. All Rights Reserved.
 
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
+
+//
+//  paddle_lite_machine_predictor.cpp
+//  LiteKit
+//
 
 #include "paddle_lite_machine_predictor.h"
 #include "../common_log.h"
-#include "../mml_inference_api.h"
+#include "../litekit_inference_api.h"
 #include "../paddle_lite_header/paddle_api.h"
 
-mml_framework::ErrorCode fillLiteConfigWithMMLConfig_Business(paddle::lite_api::MobileConfig &aconfig,
-                                                         mml_framework::MMLConfig::PaddleLiteConfig &liteconfig,
-                                                                     const mml_framework::MMLConfig &config) {
-    mml_framework::ErrorCode error_code = mml_framework::ErrorCode::SUCCESS;
+litekit_framework::ErrorCode fillLiteConfigWithLiteKitConfig_Business(paddle::lite_api::MobileConfig &aconfig,
+                                                         litekit_framework::LiteKitConfig::PaddleLiteConfig &liteconfig,
+                                                                     const litekit_framework::LiteKitConfig &config) {
+    litekit_framework::ErrorCode error_code = litekit_framework::ErrorCode::SUCCESS;
     switch (config.machine_config.paddle_lite_config.model_type) {
-        case mml_framework::MMLConfig::PaddleLiteConfig::LITE_MODEL_FROM_DIR: {
+        case litekit_framework::LiteKitConfig::PaddleLiteConfig::LITE_MODEL_FROM_DIR: {
             aconfig.set_model_dir(config.modelUrl);
             break;
         }
-        case mml_framework::MMLConfig::PaddleLiteConfig::LITE_MODEL_FROM_FILE: {
+        case litekit_framework::LiteKitConfig::PaddleLiteConfig::LITE_MODEL_FROM_FILE: {
             std::string model_file = std::string(config.machine_config.paddle_lite_config.model.model_from_file.data,
                                                  config.machine_config.paddle_lite_config.model.model_from_file.size);
             aconfig.set_model_from_file(model_file);
             break;
         }
-        case mml_framework::MMLConfig::PaddleLiteConfig::LITE_MODEL_FROM_BUFFER: {
+        case litekit_framework::LiteKitConfig::PaddleLiteConfig::LITE_MODEL_FROM_BUFFER: {
             std::string model_buffer =
             std::string(config.machine_config.paddle_lite_config.model.model_from_buffer.data,
                         config.machine_config.paddle_lite_config.model.model_from_buffer.size);
             aconfig.set_model_from_buffer(model_buffer);
             break;
         }
-        case mml_framework::MMLConfig::PaddleLiteConfig::LITE_MODEL_FROM_MODELBUFFER: {
+        case litekit_framework::LiteKitConfig::PaddleLiteConfig::LITE_MODEL_FROM_MODELBUFFER: {
             aconfig.set_model_buffer(config.machine_config.paddle_lite_config.model.model_buffer.model_buffer,
                                      config.machine_config.paddle_lite_config.model.model_buffer.model_buffer_size,
                                      config.machine_config.paddle_lite_config.model.model_buffer.param_buffer,
@@ -48,21 +54,21 @@ mml_framework::ErrorCode fillLiteConfigWithMMLConfig_Business(paddle::lite_api::
             break;
         }
         default: {
-            error_code = mml_framework::ErrorCode::LOAD_ERR_OTHER;
+            error_code = litekit_framework::ErrorCode::LOAD_ERR_OTHER;
             break;
         }
     }
     return error_code;
 }
 
-int PaddleLiteMachinePredictor::load(const mml_framework::MMLConfig &config) { FUNC_BEGIN_WITHTIME
+int PaddleLiteMachinePredictor::load(const litekit_framework::LiteKitConfig &config) { FUNC_BEGIN_WITHTIME
     
-    int error_code = mml_framework::ErrorCode::SUCCESS;
+    int error_code = litekit_framework::ErrorCode::SUCCESS;
     
     paddle::lite_api::MobileConfig aconfig;
-    mml_framework::MMLConfig::PaddleLiteConfig liteconfig = config.machine_config.paddle_lite_config;
+    litekit_framework::LiteKitConfig::PaddleLiteConfig liteconfig = config.machine_config.paddle_lite_config;
   
-    error_code = fillLiteConfigWithMMLConfig_Business(aconfig, liteconfig, config);
+    error_code = fillLiteConfigWithLiteKitConfig_Business(aconfig, liteconfig, config);
     
     aconfig.set_threads(liteconfig.threads);
     
@@ -87,11 +93,11 @@ int PaddleLiteMachinePredictor::load(const mml_framework::MMLConfig &config) { F
             aconfig.set_power_mode(paddle::lite_api::LITE_POWER_RAND_LOW);
             break;
         default:
-            error_code = mml_framework::ErrorCode::LOAD_ERR_OTHER;
+            error_code = litekit_framework::ErrorCode::LOAD_ERR_OTHER;
             break;
     }
 
-    if (mml_framework::ErrorCode::SUCCESS == error_code) {
+    if (litekit_framework::ErrorCode::SUCCESS == error_code) {
         CALL_BEGIN_WITHTIME("paddle::lite_api::CreatePaddlePredictor")
         this->realPredictorPtr =
         paddle::lite_api::CreatePaddlePredictor<paddle::lite_api::MobileConfig>(aconfig);
@@ -99,7 +105,7 @@ int PaddleLiteMachinePredictor::load(const mml_framework::MMLConfig &config) { F
     }
 
     if (nullptr == this->realPredictorPtr) {
-        error_code = mml_framework::ErrorCode::LOAD_ERR_OTHER;
+        error_code = litekit_framework::ErrorCode::LOAD_ERR_OTHER;
     }
     
     
@@ -113,7 +119,7 @@ int PaddleLiteMachinePredictor::predict(){ FUNC_BEGIN_WITHTIME
 
     if (realPredictorPtr == nullptr) {
         LOGI("realPredictor is nullptr, did you call load() first?");
-        return mml_framework::ErrorCode::RUN_ERR_MACHINE_HANDLE;
+        return litekit_framework::ErrorCode::RUN_ERR_MACHINE_HANDLE;
     }
     
     paddle::lite_api::PaddlePredictor *litePredictor = static_cast<paddle::lite_api::PaddlePredictor *>( this->realPredictorPtr.get());
@@ -126,37 +132,37 @@ int PaddleLiteMachinePredictor::predict(){ FUNC_BEGIN_WITHTIME
     return 0;
 }
 
-int PaddleLiteMachinePredictor::predict(mml_framework::MMLData &modelInputData, mml_framework::MMLData *modelOutputData) {
+int PaddleLiteMachinePredictor::predict(litekit_framework::LiteKitData &modelInputData, litekit_framework::LiteKitData *modelOutputData) {
 
     LOGI("enter PaddleLiteMachinePredictor::predict");
 
     if (realPredictorPtr == nullptr) {
         LOGI("realPredictor is nullptr, did you call load() first?");
-        return mml_framework::ErrorCode::RUN_ERR_MACHINE_HANDLE;
+        return litekit_framework::ErrorCode::RUN_ERR_MACHINE_HANDLE;
     }
     
     paddle::lite_api::PaddlePredictor *litePredictor = static_cast<paddle::lite_api::PaddlePredictor *>( this->realPredictorPtr.get());
     
     (*litePredictor).Run();
 
-    return mml_framework::ErrorCode::SUCCESS;
+    return litekit_framework::ErrorCode::SUCCESS;
 }
 
-std::unique_ptr<mml_framework::MMLData> PaddleLiteMachinePredictor::getInputData(int i){
+std::unique_ptr<litekit_framework::LiteKitData> PaddleLiteMachinePredictor::getInputData(int i){
     
     paddle::lite_api::PaddlePredictor *litePredictor = static_cast<paddle::lite_api::PaddlePredictor *>( this->realPredictorPtr.get());
     
     std::unique_ptr<paddle::lite_api::Tensor> input_tensor((*litePredictor).GetInput(i));
     paddle::lite_api::Tensor *tensor = input_tensor.release();
-    std::unique_ptr<mml_framework::MMLData> data(new mml_framework::MMLData());
+    std::unique_ptr<litekit_framework::LiteKitData> data(new litekit_framework::LiteKitData());
 
-    mml_framework::MMLTensor *mmlTensor = new mml_framework::MMLTensor();
-    data->mmlTensor = mmlTensor;
-    data->mmlTensor->tensor = tensor;
+    litekit_framework::LiteKitTensor *litekitTensor = new litekit_framework::LiteKitTensor();
+    data->litekitTensor = litekitTensor;
+    data->litekitTensor->tensor = tensor;
     return data;
 }
    
-std::unique_ptr<const mml_framework::MMLData> PaddleLiteMachinePredictor::getOutputData(int i){ FUNC_BEGIN_WITHTIME
+std::unique_ptr<const litekit_framework::LiteKitData> PaddleLiteMachinePredictor::getOutputData(int i){ FUNC_BEGIN_WITHTIME
     
     paddle::lite_api::PaddlePredictor *litePredictor = static_cast<paddle::lite_api::PaddlePredictor *>( this->realPredictorPtr.get());
        
@@ -165,13 +171,13 @@ std::unique_ptr<const mml_framework::MMLData> PaddleLiteMachinePredictor::getOut
     CALL_END_WITHTIME("std::unique_ptr<const paddle::lite_api::Tensor> GetOutput")
     
     const paddle::lite_api::Tensor *tensor = output_tensor.release();
-    std::unique_ptr<mml_framework::MMLData> data(new mml_framework::MMLData());
+    std::unique_ptr<litekit_framework::LiteKitData> data(new litekit_framework::LiteKitData());
     
-    mml_framework::MMLTensor *mmlTensor = new mml_framework::MMLTensor();
-    data->mmlTensor = mmlTensor;
-    data->mmlTensor->tensor = (void *)tensor;
+    litekit_framework::LiteKitTensor *litekitTensor = new litekit_framework::LiteKitTensor();
+    data->litekitTensor = litekitTensor;
+    data->litekitTensor->tensor = (void *)tensor;
     
-    mml_framework::shape_t shape = mmlTensor->shape();
+    litekit_framework::shape_t shape = litekitTensor->shape();
     if (shape.size() > 0) {
         int64_t res = 1;
         for (auto i : shape) { res *= i; }
@@ -192,16 +198,16 @@ std::vector<std::string> PaddleLiteMachinePredictor::getOutputNames() {
     return litePredictor->GetOutputNames();
 }
 
-std::unique_ptr<mml_framework::MMLData> PaddleLiteMachinePredictor::getInputByName(const std::string& name) {
+std::unique_ptr<litekit_framework::LiteKitData> PaddleLiteMachinePredictor::getInputByName(const std::string& name) {
     paddle::lite_api::PaddlePredictor *litePredictor = static_cast<paddle::lite_api::PaddlePredictor *>( this->realPredictorPtr.get());
        
     std::unique_ptr<paddle::lite_api::Tensor> input_tensor((*litePredictor).GetInputByName(name));
     paddle::lite_api::Tensor *tensor = input_tensor.release();
-    std::unique_ptr<mml_framework::MMLData> data(new mml_framework::MMLData());
+    std::unique_ptr<litekit_framework::LiteKitData> data(new litekit_framework::LiteKitData());
     
-    mml_framework::MMLTensor *mmlTensor = new mml_framework::MMLTensor();
-    data->mmlTensor = mmlTensor;
-    data->mmlTensor->tensor = (void *)tensor;
+    litekit_framework::LiteKitTensor *litekitTensor = new litekit_framework::LiteKitTensor();
+    data->litekitTensor = litekitTensor;
+    data->litekitTensor->tensor = (void *)tensor;
     return data;
 }
 

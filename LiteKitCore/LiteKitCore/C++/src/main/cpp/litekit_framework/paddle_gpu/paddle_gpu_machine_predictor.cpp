@@ -1,26 +1,27 @@
-// Copyright (c) 2019 PaddlePaddle Authors. All Rights Reserved.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
+/**
+Copyright © 2020 Baidu, Inc. All Rights Reserved.
 
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
 
 #include "paddle_gpu_machine_predictor.h"
-#include "../mml_inference_api.h"
+#include "../litekit_inference_api.h"
 #include <stdlib.h>
 #include "../common_log.h"
-#include "../mml_convertor.h"
+#include "../litekit_convertor.h"
 #include "../paddle_gpu_header/paddle_mobile_gpu_interface.h"
 
-int PaddleGPUMachinePredictor::load(const mml_framework::MMLConfig &config) {
+int PaddleGPUMachinePredictor::load(const litekit_framework::LiteKitConfig &config) {
     LOGI("enter PaddleGPUMachinePredictor::load");
     
     paddle_moible_gpu::PaddleMobileGPUModelConfig modelConfig = {};
@@ -34,7 +35,7 @@ int PaddleGPUMachinePredictor::load(const mml_framework::MMLConfig &config) {
     return ErrorCode::SUCCESS;
 }
 
-int PaddleGPUMachinePredictor::predict(MMLData &modelInputData, MMLData *modelOutputData) {
+int PaddleGPUMachinePredictor::predict(LiteKitData &modelInputData, LiteKitData *modelOutputData) {
     
     LOGI("enter PaddleLiteMachinePredictor::predict");
 
@@ -68,17 +69,17 @@ int PaddleGPUMachinePredictor::predict(MMLData &modelInputData, MMLData *modelOu
             paddle_moible_gpu::PaddleMobileGPUData output = outputs[0];
             modelOutputData->rawData = output.data;
             modelOutputData->dataLength = output.length;
-            modelOutputData->rawDataShape = mml_framework::MMLData::RawDataShape(output.shape[0], output.shape[1], output.shape[2] ,output.shape[3]);
+            modelOutputData->rawDataShape = litekit_framework::LiteKitData::RawDataShape(output.shape[0], output.shape[1], output.shape[2] ,output.shape[3]);
         }
     }
     return ErrorCode::SUCCESS;
 }
 
-std::unique_ptr<mml_framework::MMLData> PaddleGPUMachinePredictor::getInputData(int i) {
+std::unique_ptr<litekit_framework::LiteKitData> PaddleGPUMachinePredictor::getInputData(int i) {
     return 0;
 }
 
-std::unique_ptr<const mml_framework::MMLData> PaddleGPUMachinePredictor::getOutputData(int i) {
+std::unique_ptr<const litekit_framework::LiteKitData> PaddleGPUMachinePredictor::getOutputData(int i) {
     return 0;
 }
 
@@ -94,7 +95,7 @@ std::vector<std::string> PaddleGPUMachinePredictor::getOutputNames() {
     return {};
 }
 
-std::unique_ptr<mml_framework::MMLData> PaddleGPUMachinePredictor::getInputByName(const std::string& name) {
+std::unique_ptr<litekit_framework::LiteKitData> PaddleGPUMachinePredictor::getInputByName(const std::string& name) {
     return 0;
 }
 

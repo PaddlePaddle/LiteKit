@@ -14,19 +14,25 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#include <stdio.h>
-#include "common_log.h"
-#include <sys/time.h>
+#ifndef LIB_AI_LITEKIT_CONVERTOR_H
+#define LIB_AI_LITEKIT_CONVERTOR_H
+#include "litekit_inference_api.h"
 
-namespace litekit_framework {
-namespace log {
+using namespace litekit_framework;
 
-void litekit_log(const char *perty_funcname, const char *stage) {
-    struct timeval tv;
-    struct timezone tz;
-    gettimeofday(&tv, &tz);
-    LOGI("TS: %ld.%d  |  stage: %s  |  funcname: %s \n", tv.tv_sec, tv.tv_usec, stage, perty_funcname);
-}
+/**
+ * 返回LiteKitDataType的Size
+ * @param litekitDataType
+ * @return
+ */
+int sizeOfRawDataType(LiteKitData::RawDataType litekitDataType);
 
-}
-}
+/**
+ * 根据DataType创建对应的Data数组
+ * @param litekitDataType
+ * @param len 单位为sizeOfRawDataType()，而不是byte
+ * @return
+ */
+void* createRawData(LiteKitData::RawDataType litekitDataType, int len);
+
+#endif //LIB_AI_LITEKIT_CONVERTOR_H

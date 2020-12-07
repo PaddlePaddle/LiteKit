@@ -1,59 +1,61 @@
-// Copyright (c) 2019 PaddlePaddle Authors. All Rights Reserved.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
+/**
+Copyright © 2020 Baidu, Inc. All Rights Reserved.
 
-#ifndef MML_FRAMEWORK_ANDROID_COMMON_H
-#define MML_FRAMEWORK_ANDROID_COMMON_H
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
+
+#ifndef LITEKIT_FRAMEWORK_ANDROID_COMMON_H
+#define LITEKIT_FRAMEWORK_ANDROID_COMMON_H
 
 #include "platform_switch.h"
 #include <stdio.h>
 #include <string.h>
 
 // 打Release包请关闭DEBUG
-#ifndef MML_OPEN_LOG
+#ifndef LITEKIT_OPEN_LOG
     #define LOGI(format, ...)
     #define LOGW(format, ...)
     #define LOGE(format, ...)
-#else //else MML_DEBUG
+#else //else LITEKIT_DEBUG
     #ifdef PLATFORM_ANDROID
         #include <android/log.h>
-        #define LOGI(format, ...) __android_log_print(ANDROID_LOG_INFO, "mml_framework", \
+        #define LOGI(format, ...) __android_log_print(ANDROID_LOG_INFO, "litekit_framework", \
                 format, ##__VA_ARGS__)
-        #define LOGW(format, ...) __android_log_print(ANDROID_LOG_WARN, "mml_framework", \
+        #define LOGW(format, ...) __android_log_print(ANDROID_LOG_WARN, "litekit_framework", \
                 format, ##__VA_ARGS__)
-        #define LOGE(format, ...) __android_log_print(ANDROID_LOG_ERROR, "mml_framework", \
+        #define LOGE(format, ...) __android_log_print(ANDROID_LOG_ERROR, "litekit_framework", \
                 "Error: " format, ##__VA_ARGS__)
     #else //else  PLATFORM_ANDROID
-        #define LOGI(format, ...) printf("【mml】 Info: " format, ##__VA_ARGS__)
-        #define LOGW(format, ...) printf("【mml】 Warn: " format, ##__VA_ARGS__)
-        #define LOGE(format, ...) printf("【mml】 Error: " format, ##__VA_ARGS__)
+        #define LOGI(format, ...) printf("【litekit】 Info: " format, ##__VA_ARGS__)
+        #define LOGW(format, ...) printf("【litekit】 Warn: " format, ##__VA_ARGS__)
+        #define LOGE(format, ...) printf("【litekit】 Error: " format, ##__VA_ARGS__)
     #endif
-#endif //endif MML_DEBUG
+#endif //endif LITEKIT_DEBUG
 
 
-/// MML log
-#ifdef MML_OPEN_LOG
+/// LiteKit log
+#ifdef LITEKIT_OPEN_LOG
 
-#define FUNC_BEGIN_WITHTIME {mml_framework::log::mml_log(__PRETTY_FUNCTION__, "Begin");}
-#define FUNC_END_WITHTIME {mml_framework::log::mml_log(__PRETTY_FUNCTION__, "End");}
+#define FUNC_BEGIN_WITHTIME {litekit_framework::log::litekit_log(__PRETTY_FUNCTION__, "Begin");}
+#define FUNC_END_WITHTIME {litekit_framework::log::litekit_log(__PRETTY_FUNCTION__, "End");}
 
-#define CALL_BEGIN_WITHTIME(methodName) {mml_framework::log::mml_log(methodName, "Begin");}
-#define CALL_END_WITHTIME(methodName) {mml_framework::log::mml_log(methodName, "End");}
+#define CALL_BEGIN_WITHTIME(methodName) {litekit_framework::log::litekit_log(methodName, "Begin");}
+#define CALL_END_WITHTIME(methodName) {litekit_framework::log::litekit_log(methodName, "End");}
 
-namespace mml_framework {
+namespace litekit_framework {
 namespace log {
 
-void mml_log(const char *perty_funcname, const char *stage);
+void litekit_log(const char *perty_funcname, const char *stage);
 
 }
 }
@@ -69,4 +71,4 @@ void mml_log(const char *perty_funcname, const char *stage);
 #endif
 
 
-#endif  // MML_FRAMEWORK_ANDROID_COMMON_H
+#endif  // LITEKIT_FRAMEWORK_ANDROID_COMMON_H

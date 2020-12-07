@@ -1,29 +1,30 @@
-// Copyright (c) 2019 PaddlePaddle Authors. All Rights Reserved.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
+/**
+Copyright © 2020 Baidu, Inc. All Rights Reserved.
 
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
 
 /*
- * MML framework
+ * LiteKit framework
  */
-#ifndef LIB_AI_MML_INTERFACE_API_H
-#define LIB_AI_MML_INTERFACE_API_H
+#ifndef LIB_AI_LITEKIT_INTERFACE_API_H
+#define LIB_AI_LITEKIT_INTERFACE_API_H
 
 #include <string>
 
-namespace mml_framework {
+namespace litekit_framework {
 //lite backend Target Type
-    enum class MMLTargetType : int {
+    enum class LiteKitTargetType : int {
         kUnk = 0,
         kHost = 1,
         kX86 = 2,
@@ -38,21 +39,21 @@ namespace mml_framework {
     };
 
 
-    /// MML string容器
-    struct MMLString {
+    /// LiteKit string容器
+    struct LiteKitString {
         const char *data;
         size_t size;
     };
 
-    struct MMLModelBuffer {
+    struct LiteKitModelBuffer {
         char *model_buffer;
         size_t model_buffer_size;
         char *param_buffer;
         size_t param_buffer_size;
     };
 
-    // MML配置相关参数
-    struct MMLConfig {
+    // LiteKit配置相关参数
+    struct LiteKitConfig {
         // 默认的模型和参数文件名
         const std::string MODEL_FILE_NAME = "model.mlm";
         const std::string PARAM_FILE_NAME = "params.mlm";
@@ -106,16 +107,16 @@ namespace mml_framework {
             PaddleLiteModelType model_type = {PaddleLiteModelType::LITE_MODEL_FROM_DIR};
 
             union PaddleLiteModel {
-                MMLString model_from_file; // used when LITE_MODEL_FROM_FILE
-                MMLString model_from_buffer; // used whtn LITE_MODEL_FROM_BUFFER
-                MMLModelBuffer model_buffer; // used when LITE_MODEL_FROM_MODELBUFFER
+                LiteKitString model_from_file; // used when LITE_MODEL_FROM_FILE
+                LiteKitString model_from_buffer; // used whtn LITE_MODEL_FROM_BUFFER
+                LiteKitModelBuffer model_buffer; // used when LITE_MODEL_FROM_MODELBUFFER
             };
             PaddleLiteModel model;
         };
 
         // PaddleiOSGPU special config （ios特有）
         struct PaddleiOSGPUConfig {
-            //支持的模型类型 设置了类型 gpu层自动设置输入维度 MMLData中shape不需要了
+            //支持的模型类型 设置了类型 gpu层自动设置输入维度 LiteKitData中shape不需要了
             enum NetType {
                 Default = -1, SuperResolution = 0, MobileNetSSD = 1, Gan = 2, Shuffle = 3
             };
@@ -132,24 +133,24 @@ namespace mml_framework {
 
     };
 
-    enum MMLMachineType {
+    enum LiteKitMachineType {
         // 暂时只支持PADDLE_LITE
         PADDLE_LITE = 1,
         PADDLE_iOSGPU = 2,
     };
 
-    // MMLTensor中使用的一些控制类型
+    // LiteKitTensor中使用的一些控制类型
     using shape_t = std::vector<int64_t>;
     using lod_t = std::vector<std::vector<uint64_t>>;
 
-    //MML Tensor,
-    class MMLTensor {
+    //LiteKit Tensor,
+    class LiteKitTensor {
     public:
-        explicit MMLTensor(void *raw);
+        explicit LiteKitTensor(void *raw);
 
-        explicit MMLTensor(const void *raw);
+        explicit LiteKitTensor(const void *raw);
 
-        MMLTensor() = default;
+        LiteKitTensor() = default;
 
         void *tensor = 0;
 
@@ -162,7 +163,7 @@ namespace mml_framework {
         const T *data() const;
 
         template<typename T>
-        T *mutable_data(MMLTargetType type = MMLTargetType::kHost) const;
+        T *mutable_data(LiteKitTargetType type = LiteKitTargetType::kHost) const;
 
         shape_t shape() const;
 
@@ -171,14 +172,14 @@ namespace mml_framework {
         bool autoRelease = true;
 
         // 如果autoRelease为true，则会在析构时释放rawData
-        virtual ~MMLTensor();
+        virtual ~LiteKitTensor();
 
         // 释放rawData，如果autoRelease为true，则不需要主动调用
         void release();
     };
 
-    // MML配置相关参数
-    struct MMLData {
+    // LiteKit配置相关参数
+    struct LiteKitData {
         enum RawDataType {
             FLOAT32,
             UINT8,
@@ -212,21 +213,21 @@ namespace mml_framework {
         // 若为true 析构时自动调用release()
         bool autoRelease = true;
         //tensor
-        MMLTensor *mmlTensor = 0;
+        LiteKitTensor *litekitTensor = 0;
 
-        MMLData() = default;
+        LiteKitData() = default;
 
         // 如果autoRelease为true，则会在析构时释放rawData
-        virtual ~MMLData();
+        virtual ~LiteKitData();
 
-        // delete rawData、mmlTensor，如果autoRelease为true，则不需要主动调用
+        // delete rawData、litekitTensor，如果autoRelease为true，则不需要主动调用
         void release();
     };
 
     /**
      * 前后处理接口类
      */
-    class MMLDataProcessor {
+    class LiteKitDataProcessor {
     public:
         /**
          * 前处理回调
@@ -235,7 +236,7 @@ namespace mml_framework {
          * @return
          */
         virtual int
-        preProcess(const MMLData &preProcessInputData, MMLData *preProcessOutputData) = 0;
+        preProcess(const LiteKitData &preProcessInputData, LiteKitData *preProcessOutputData) = 0;
 
         /**
          * 后处理回调
@@ -244,33 +245,33 @@ namespace mml_framework {
          * @return
          */
         virtual int
-        postProcess(const MMLData &postProcessInputData, MMLData *postProcessOutputData) = 0;
+        postProcess(const LiteKitData &postProcessInputData, LiteKitData *postProcessOutputData) = 0;
 
-        virtual ~MMLDataProcessor() {};
+        virtual ~LiteKitDataProcessor() {};
     };
 
     /**
-     * MMLMachine管理类。我们把加载了某个模型的一种Inference引擎（如PaddleLite）称做一个MMLMachine。
+     * LiteKitMachine管理类。我们把加载了某个模型的一种Inference引擎（如PaddleLite）称做一个LiteKitMachine。
      */
-    class MMLMachineService {
+    class LiteKitMachineService {
     public:
-        std::unique_ptr<mml_framework::MMLData> getInputData(int i);
+        std::unique_ptr<litekit_framework::LiteKitData> getInputData(int i);
 
-        std::unique_ptr<const mml_framework::MMLData> getOutputData(int i);
+        std::unique_ptr<const litekit_framework::LiteKitData> getOutputData(int i);
 
         std::vector<std::string> getInputNames();
 
         std::vector<std::string> getOutputNames();
 
-        std::unique_ptr<mml_framework::MMLData> getInputByName(const std::string &name);
+        std::unique_ptr<litekit_framework::LiteKitData> getInputByName(const std::string &name);
 
     private:
         // MachinePredictor指针
         void *machineHandle = nullptr;
         // MachinePredictor类型，如PaddleLite, PaddleiOSGPU等
-        MMLMachineType mmlMachineType;
+        LiteKitMachineType litekitMachineType;
         // 前后处理回调实现
-        MMLDataProcessor *mProcessorImpl = nullptr;
+        LiteKitDataProcessor *mProcessorImpl = nullptr;
 
         /**
          * 预测函数，不包含前后处理
@@ -279,7 +280,7 @@ namespace mml_framework {
          * @param modelOutputData
          * @return
          */
-        int predict(MMLData &modelInputData, MMLData *modelOutputData);
+        int predict(LiteKitData &modelInputData, LiteKitData *modelOutputData);
 
         int predict();
 
@@ -295,7 +296,7 @@ namespace mml_framework {
          *
          * @param processorImpl
          */
-        void setInterceptProcessor(MMLDataProcessor *processorImpl);
+        void setInterceptProcessor(LiteKitDataProcessor *processorImpl);
 
         /**
          * 预测函数，如果设置了InterceptProcessor，则会先执行InterceptProcessor的前处理回调，再执行predict，
@@ -305,22 +306,22 @@ namespace mml_framework {
          * @param outputData
          * @return
          */
-        int run(MMLData &inputData, MMLData *outputData);
+        int run(LiteKitData &inputData, LiteKitData *outputData);
 
         int run();
 
         /**
-         * 根据MMLConfig配置，创建MachinePredictor，并加载模型
+         * 根据LiteKitConfig配置，创建MachinePredictor，并加载模型
          *
          * @param config
          * @return
          */
-        int load(const MMLConfig &config);
+        int load(const LiteKitConfig &config);
 
         /**
          * 如果autoRelease为true，则会在析构时delete mProcessorImpl以及machineHandle指向的predictor
          */
-        virtual ~MMLMachineService();
+        virtual ~LiteKitMachineService();
 
         /**
         * 释放mProcessorImpl与machineHandle，如果autoRelease为true，则不需要主动调用
@@ -347,8 +348,8 @@ namespace mml_framework {
 
     };
 
-    std::shared_ptr<MMLMachineService> CreateMMLMachineService(MMLConfig &config);
+    std::shared_ptr<LiteKitMachineService> CreateLiteKitMachineService(LiteKitConfig &config);
 
 }
 
-#endif //LIB_AI_MML_INTERFACE_API_H
+#endif //LIB_AI_LITEKIT_INTERFACE_API_H
