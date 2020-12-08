@@ -26,7 +26,7 @@
 		27B4367724F0FC4300A792A1 /* LiteKitMachine.mm in Sources */ = {isa = PBXBuildFile; fileRef = 27B4367524F0FC4300A792A1 /* LiteKitMachine.mm */; };
 		27B4367924F0FC4C00A792A1 /* LiteKitMachine+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B4367824F0FC4C00A792A1 /* LiteKitMachine+Protected.h */; };
 		27B4367E24F0FC9900A792A1 /* PaddleGPU+MetalResource.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B4367A24F0FC9700A792A1 /* PaddleGPU+MetalResource.h */; };
-		27B4367F24F0FC9900A792A1 /* PaddleGPU.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B4367B24F0FC9700A792A1 /* PaddleGPU.h */; };
+		27B4367F24F0FC9900A792A1 /* PaddleGPU.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B4367B24F0FC9700A792A1 /* PaddleGPU.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27B4368024F0FC9900A792A1 /* PaddleGPU.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B4367C24F0FC9800A792A1 /* PaddleGPU.m */; };
 		27B4368124F0FC9900A792A1 /* PaddleGPU+MetalResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B4367D24F0FC9800A792A1 /* PaddleGPU+MetalResource.m */; };
 		27F540CF24FD26F50085B065 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27F540CC24FD26F50085B065 /* opencv2.framework */; };

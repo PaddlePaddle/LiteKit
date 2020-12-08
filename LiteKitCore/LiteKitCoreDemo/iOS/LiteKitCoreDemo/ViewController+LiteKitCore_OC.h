@@ -14,25 +14,25 @@
 
 #import "ViewController.h"
 
-///mml  header
-#import <MML/MMLPaddleConfig.h>
-#import <MML/MMLMachineConfig.h>
-#import <MML/MMLMachineService.h>
-#import <MML/MMLDataProcess.h>
-#import <MML/MMLLogger.h>
-#import <MML/MML.h>
+///litekit  header
+#import <LiteKitCore/LiteKitPaddleConfig.h>
+#import <LiteKitCore/LiteKitMachineConfig.h>
+#import <LiteKitCore/LiteKitMachineService.h>
+#import <LiteKitCore/LiteKitDataProcess.h>
+#import <LiteKitCore/LiteKitLogger.h>
+#import <LiteKitCore/LiteKitCore.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-static const int kMMLInputBatch      = 1;
-static const int kMMLInputChannel    = 3;
-static const int kMMLInputHeight     = 224;
-static const int kMMLInputWidth      = 224;
+static const int kLiteKitInputBatch      = 1;
+static const int kLiteKitInputChannel    = 3;
+static const int kLiteKitInputHeight     = 224;
+static const int kLiteKitInputWidth      = 224;
 
-@interface ViewController(MMLCore_OC)
+@interface ViewController(LiteKitCore_OC)
 
-- (MMLBaseMachine *)loadMMLWithModelDir_GPU:(NSString *)modelDir;
-- (MMLBaseMachine *)loadMMLWithModelDir_CPU:(NSString *)modelDir;
+- (LiteKitBaseMachine *)loadLiteKitWithModelDir_GPU:(NSString *)modelDir;
+- (LiteKitBaseMachine *)loadLiteKitWithModelDir_CPU:(NSString *)modelDir;
 
 @end
 

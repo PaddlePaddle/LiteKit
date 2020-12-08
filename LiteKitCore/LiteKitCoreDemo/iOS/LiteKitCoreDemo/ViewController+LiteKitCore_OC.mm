@@ -12,13 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#import "ViewController+MMLCore_OC.h"
+#import "ViewController+LiteKitCore_OC.h"
 
-@implementation ViewController(MMLCore_OC)
+@implementation ViewController(LiteKitCore_OC)
 
-- (MMLBaseMachine *)loadMMLWithModelDir_GPU:(NSString *)modelDir {
+- (LiteKitBaseMachine *)loadLiteKitWithModelDir_GPU:(NSString *)modelDir {
     PaddleGPUConfig *modelConfig = [[PaddleGPUConfig alloc] init];
-    modelConfig.dims = @[@(kMMLInputBatch), @(kMMLInputChannel), @(kMMLInputHeight), @(kMMLInputWidth)];
+    modelConfig.dims = @[@(kLiteKitInputBatch), @(kLiteKitInputChannel), @(kLiteKitInputHeight), @(kLiteKitInputWidth)];
     modelConfig.useMPS = YES;
     modelConfig.useAggressiveOptimization = YES;
     modelConfig.computePrecision = PrecisionTypeFloat16;
@@ -27,36 +27,36 @@
     modelConfig.metalLoadType = LoadMetalInCustomMetalLib;
     
     // construct inf engine config
-    MMLPaddleConfig *paddleConfig = [[MMLPaddleConfig alloc] init];
+    LiteKitPaddleConfig *paddleConfig = [[LiteKitPaddleConfig alloc] init];
     paddleConfig.netType = CustomNetType;
     paddleConfig.paddleGPUConfig = modelConfig;
     
-    // construct mml config
-    MMLMachineConfig *machineConfig = [[MMLMachineConfig alloc] init];
+    // construct litekit config
+    LiteKitMachineConfig *machineConfig = [[LiteKitMachineConfig alloc] init];
     machineConfig.modelPath = [modelDir stringByAppendingPathComponent:@"mobilenetv2"];
     machineConfig.engineConifg = paddleConfig;
-    machineConfig.machineType = MMLPaddleGPU;
+    machineConfig.machineType = LiteKitPaddleGPU;
 
     // 加载模型
     NSError *aError = nil;
-    MMLMachineService *service = [[MMLMachineService alloc] init];
-    MMLBaseMachine *mmlMachine = [service loadMachineWithConfig:machineConfig error:&aError];
+    LiteKitMachineService *service = [[LiteKitMachineService alloc] init];
+    LiteKitBaseMachine *litekitMachine = [service loadMachineWithConfig:machineConfig error:&aError];
     
-    return mmlMachine;
+    return litekitMachine;
 }
 
-- (MMLBaseMachine *)loadMMLWithModelDir_CPU:(NSString *)modelDir {
-    // construct mml config
-    MMLMachineConfig *machineConfig = [[MMLMachineConfig alloc] init];
+- (LiteKitBaseMachine *)loadLiteKitWithModelDir_CPU:(NSString *)modelDir {
+    // construct litekit config
+    LiteKitMachineConfig *machineConfig = [[LiteKitMachineConfig alloc] init];
     machineConfig.modelPath = [modelDir stringByAppendingPathComponent:@"mobilenet_v1_opt.nb"];
-    machineConfig.machineType = MMLPaddleCPU;
+    machineConfig.machineType = LiteKitPaddleCPU;
 
     // 加载模型
     NSError *aError = nil;
-    MMLMachineService *service = [[MMLMachineService alloc] init];
-    MMLBaseMachine *mmlMachine = [service loadMachineWithConfig:machineConfig error:&aError];
+    LiteKitMachineService *service = [[LiteKitMachineService alloc] init];
+    LiteKitBaseMachine *litekitMachine = [service loadMachineWithConfig:machineConfig error:&aError];
     
-    return mmlMachine;
+    return litekitMachine;
 }
 
 @end

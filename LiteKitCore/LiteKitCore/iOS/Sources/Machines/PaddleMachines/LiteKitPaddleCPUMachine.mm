@@ -108,7 +108,7 @@
     LiteKitData *predictOutput = [[LiteKitData alloc] initWithData:outputShapedData type:TLiteKitDataTypeLiteKitShapedData];
     
     NSTimeInterval end = [[NSDate date] timeIntervalSince1970];
-    [self.logger performanceInfoLogMsg:[NSString stringWithFormat:@"paddle gpu predict time: %f ms", (end - start) * 1000]];
+    [self.logger performanceInfoLogMsg:[NSString stringWithFormat:@"paddle cpu predict time: %f ms", (end - start) * 1000]];
     
     
     aBlock(predictOutput, nil);

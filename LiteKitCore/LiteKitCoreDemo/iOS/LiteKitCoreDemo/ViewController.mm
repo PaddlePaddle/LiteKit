@@ -13,11 +13,11 @@
 // limitations under the License.
 
 #import "ViewController.h"
-#import "ViewController+MMLCore_CPP.h"
-#import "ViewController+MMLCore_OC.h"
+#import "ViewController+LiteKitCore_CPP.h"
+#import "ViewController+LiteKitCore_OC.h"
 
-///mml  header
-#import "mml_inference_api.h"
+///litekit  header
+#import "litekit_inference_api.h"
 #import "paddle_lite_image_preprocess.h"
 
 
@@ -33,16 +33,16 @@
     self.view.backgroundColor = [UIColor lightGrayColor];
     
     NSBundle *testBundle = [NSBundle mainBundle];
-    NSString *filePath = @"MMLDemo.bundle";
+    NSString *filePath = @"LiteKitCoreDemo.bundle";
     NSString *modelDir = [testBundle pathForResource:filePath ofType:nil];
     
-    /// MML  demo code
-    [self MML_CPP_Demo_GPU:modelDir];
-    [self MML_CPP_Demo_CPU:modelDir];
+    /// LiteKit  demo code
+    [self LiteKit_CPP_Demo_GPU:modelDir];
+    [self LiteKit_CPP_Demo_CPU:modelDir];
 
-    /// MML OC demo code
-    [self MML_OC_Demo_GPU:modelDir];
-    [self MML_OC_Demo_CPU:modelDir];
+    /// LiteKit OC demo code
+    [self LiteKit_OC_Demo_GPU:modelDir];
+    [self LiteKit_OC_Demo_CPU:modelDir];
     
     // Do any additional setup after loading the view.
 }
@@ -50,23 +50,23 @@
 #pragma mark  - C++ Demo
 
 NSUInteger n = 1, c = 3, h = 256, w = 256;
-- (void *)MML_CPP_Demo_GPU:(NSString *)modelDir {
+- (void *)LiteKit_CPP_Demo_GPU:(NSString *)modelDir {
     printf("\ninput: \n");
     NSError *error = nil;
     NSString *inputName = [modelDir stringByAppendingPathComponent:@"input_1_3_256_256"];
     NSData *inputData = [NSData dataWithContentsOfFile:inputName options:0 error:&error];
     [self logBuffer:(float *)inputData.bytes length:inputData.length / sizeof(float) count:20];
     
-    mml_framework::MMLData input = {};
+    litekit_framework::LiteKitData input = {};
     input.autoRelease = false;
-    input.rawDataShape = mml_framework::MMLData::RawDataShape((int)n, (int)c, (int)h, (int)w);
+    input.rawDataShape = litekit_framework::LiteKitData::RawDataShape((int)n, (int)c, (int)h, (int)w);
     input.rawData = const_cast<void *>(inputData.bytes);
     input.dataLength = inputData.length;
    
-    mml_framework::MMLData output = {};
+    litekit_framework::LiteKitData output = {};
     output.autoRelease = false;
     
-    std::shared_ptr<mml_framework::MMLMachineService> service = [self loadMMLWithModelDir_GPU_CPP:modelDir];
+    std::shared_ptr<litekit_framework::LiteKitMachineService> service = [self loadLiteKitWithModelDir_GPU_CPP:modelDir];
     service->run(input, &output);
     printf("\noutput: \n");
     [self logBuffer:(float *)(output.rawData) length:output.dataLength count:20];
@@ -86,17 +86,17 @@ NSUInteger n = 1, c = 3, h = 256, w = 256;
 }
 
 
-- (void)MML_CPP_Demo_CPU:(NSString *)modelDir {
+- (void)LiteKit_CPP_Demo_CPU:(NSString *)modelDir {
     /// shared ptr
     @autoreleasepool {
         // load
-        std::shared_ptr<mml_framework::MMLMachineService> service = [self loadMMLWithModelDir_Shared:modelDir];
+        std::shared_ptr<litekit_framework::LiteKitMachineService> service = [self loadLiteKitWithModelDir_Shared:modelDir];
         if (nullptr == service) {
-            NSLog(@"MML_Fail");
+            NSLog(@"LiteKit_Fail");
         } else {
             __block float *output = nullptr;
             
-            NSLog(@"MML_predict");
+            NSLog(@"LiteKit_predict");
             output = [self predictWithMachine_shared:service];
 
             free(output);
@@ -106,13 +106,13 @@ NSUInteger n = 1, c = 3, h = 256, w = 256;
     /// normal ptr
     @autoreleasepool {
         // load
-        mml_framework::MMLMachineService *service = [self loadMMLWithModelDir_LITE_MODEL_FROM_FILE:modelDir];
+        litekit_framework::LiteKitMachineService *service = [self loadLiteKitWithModelDir_LITE_MODEL_FROM_FILE:modelDir];
         if (nullptr == service) {
-            NSLog(@"MML_Fail");
+            NSLog(@"LiteKit_Fail");
         } else {
             __block float *output = nullptr;
             
-            NSLog(@"MML_predict");
+            NSLog(@"LiteKit_predict");
             output = [self predictWithMachine:service];
 
             free(output);
@@ -123,9 +123,9 @@ NSUInteger n = 1, c = 3, h = 256, w = 256;
     }
 }
 
-- (float *)predictWithMachine:(mml_framework::MMLMachineService *)service {
+- (float *)predictWithMachine:(litekit_framework::LiteKitMachineService *)service {
     ///Demo Data
-    mml_framework::shape_t shape({1, 1, 224, 224});
+    litekit_framework::shape_t shape({1, 1, 224, 224});
     int64_t inputDemoDataSize = demo_shapeProduction(shape);
     float *inputDemoData = (float *)malloc(sizeof(float)*inputDemoDataSize);
     for (int i=0; i<inputDemoDataSize; i++) {
@@ -133,8 +133,8 @@ NSUInteger n = 1, c = 3, h = 256, w = 256;
     }
     
     // 3. Prepare input data
-    std::unique_ptr<mml_framework::MMLData> inputData = service->getInputData(0);
-    mml_framework::MMLTensor *ainput = inputData->mmlTensor;
+    std::unique_ptr<litekit_framework::LiteKitData> inputData = service->getInputData(0);
+    litekit_framework::LiteKitTensor *ainput = inputData->litekitTensor;
 
     ainput->Resize(shape);
     auto *data = ainput->mutable_data<float>();
@@ -144,8 +144,8 @@ NSUInteger n = 1, c = 3, h = 256, w = 256;
     service->run();
 
     // 5. Get output
-    std::unique_ptr<const mml_framework::MMLData> outputData = service->getOutputData(0);
-    const mml_framework::MMLTensor *output_tensor = outputData->mmlTensor;
+    std::unique_ptr<const litekit_framework::LiteKitData> outputData = service->getOutputData(0);
+    const litekit_framework::LiteKitTensor *output_tensor = outputData->litekitTensor;
 
     int64_t outputDataSize = demo_shapeProduction(output_tensor->shape());
     int64_t dataSizex = outputData->dataLength;
@@ -156,8 +156,8 @@ NSUInteger n = 1, c = 3, h = 256, w = 256;
 
     if (names.size() > 1) {
         // 5. Get output
-        std::unique_ptr<const mml_framework::MMLData> outputData2 = service->getOutputData(1);
-        const mml_framework::MMLTensor *output_tensor2 = outputData2->mmlTensor;
+        std::unique_ptr<const litekit_framework::LiteKitData> outputData2 = service->getOutputData(1);
+        const litekit_framework::LiteKitTensor *output_tensor2 = outputData2->litekitTensor;
         //    delete outputData;
         int64_t outputDataSize2 = demo_shapeProduction(output_tensor2->shape());
         int64_t dataSizex2 = outputData2->dataLength;
@@ -173,9 +173,9 @@ NSUInteger n = 1, c = 3, h = 256, w = 256;
 }
 
 
-- (float *)predictWithMachine_shared:(std::shared_ptr<mml_framework::MMLMachineService>)service {
+- (float *)predictWithMachine_shared:(std::shared_ptr<litekit_framework::LiteKitMachineService>)service {
     ///Demo Data
-    mml_framework::shape_t shape({1, 1, 192, 192});
+    litekit_framework::shape_t shape({1, 1, 192, 192});
     int64_t inputDemoDataSize = demo_shapeProduction(shape);
     float *inputDemoData = (float *)malloc(sizeof(float)*inputDemoDataSize);
     for (int i=0; i<inputDemoDataSize; i++) {
@@ -183,8 +183,8 @@ NSUInteger n = 1, c = 3, h = 256, w = 256;
     }
     
     // 3. Prepare input data
-    std::unique_ptr<mml_framework::MMLData> inputData = service->getInputData(0);
-    mml_framework::MMLTensor *ainput = inputData->mmlTensor;
+    std::unique_ptr<litekit_framework::LiteKitData> inputData = service->getInputData(0);
+    litekit_framework::LiteKitTensor *ainput = inputData->litekitTensor;
 
     ainput->Resize(shape);
     auto *data = ainput->mutable_data<float>();
@@ -194,8 +194,8 @@ NSUInteger n = 1, c = 3, h = 256, w = 256;
     service->run();
 
     // 5. Get output
-    std::unique_ptr<const mml_framework::MMLData> outputData = service->getOutputData(0);
-    const mml_framework::MMLTensor *output_tensor = outputData->mmlTensor;
+    std::unique_ptr<const litekit_framework::LiteKitData> outputData = service->getOutputData(0);
+    const litekit_framework::LiteKitTensor *output_tensor = outputData->litekitTensor;
 
     int64_t outputDataSize = demo_shapeProduction(output_tensor->shape());
     int64_t dataSizex = outputData->dataLength;
@@ -206,8 +206,8 @@ NSUInteger n = 1, c = 3, h = 256, w = 256;
 
     if (names.size() > 1) {
         // 5. Get output
-        std::unique_ptr<const mml_framework::MMLData> outputData2 = service->getOutputData(1);
-        const mml_framework::MMLTensor *output_tensor2 = outputData2->mmlTensor;
+        std::unique_ptr<const litekit_framework::LiteKitData> outputData2 = service->getOutputData(1);
+        const litekit_framework::LiteKitTensor *output_tensor2 = outputData2->litekitTensor;
         //    delete outputData;
         int64_t outputDataSize2 = demo_shapeProduction(output_tensor2->shape());
         int64_t dataSizex2 = outputData2->dataLength;
@@ -224,7 +224,7 @@ NSUInteger n = 1, c = 3, h = 256, w = 256;
 
 
 #pragma mark - utils
-int64_t demo_shapeProduction(const mml_framework::shape_t shape) {
+int64_t demo_shapeProduction(const litekit_framework::shape_t shape) {
   int64_t res = 1;
   for (auto i : shape) res *= i;
   return res;
@@ -232,50 +232,50 @@ int64_t demo_shapeProduction(const mml_framework::shape_t shape) {
 
 #pragma mark - OC Demo
 
-- (void)MML_OC_Demo_GPU:(NSString *)modelDir {
+- (void)LiteKit_OC_Demo_GPU:(NSString *)modelDir {
     
-    MMLBaseMachine *mmlMachine = [self loadMMLWithModelDir_GPU:modelDir];
+    LiteKitBaseMachine *litekitMachine = [self loadLiteKitWithModelDir_GPU:modelDir];
     
     // 数据准备
-    NSInteger n = kMMLInputBatch;
-    NSInteger c = kMMLInputChannel;
-    NSInteger h = kMMLInputHeight;
-    NSInteger w = kMMLInputWidth;
+    NSInteger n = kLiteKitInputBatch;
+    NSInteger c = kLiteKitInputChannel;
+    NSInteger h = kLiteKitInputHeight;
+    NSInteger w = kLiteKitInputWidth;
     NSArray *dims = @[@(n), @(c), @(h), @(w)];
     float *image_data = (float *)malloc(sizeof(float)*w*h*c);
     for(int i=0; i<w*h; i++) {
         image_data[i] = 1;
     }
-    MMLShapedData *shapeData = [[MMLShapedData alloc] initWithData:image_data dataSize:w*h*c dims:dims];
-    MMLData *inputData = [[MMLData alloc] initWithData:shapeData type:TMMLDataTypeMMLShapedData];
+    LiteKitShapedData *shapeData = [[LiteKitShapedData alloc] initWithData:image_data dataSize:w*h*c dims:dims];
+    LiteKitData *inputData = [[LiteKitData alloc] initWithData:shapeData type:TLiteKitDataTypeLiteKitShapedData];
     
     // run sync
     NSError *error = nil;
-    MMLData *outputData = [mmlMachine predictWithInputData:inputData error:&error];
+    LiteKitData *outputData = [litekitMachine predictWithInputData:inputData error:&error];
     
     NSLog(@"end");
 }
 
-- (void)MML_OC_Demo_CPU:(NSString *)modelDir {
+- (void)LiteKit_OC_Demo_CPU:(NSString *)modelDir {
     
-    MMLBaseMachine *mmlMachine = [self loadMMLWithModelDir_CPU:modelDir];
+    LiteKitBaseMachine *litekitMachine = [self loadLiteKitWithModelDir_CPU:modelDir];
     
     // 数据准备
-    NSInteger n = kMMLInputBatch;
-    NSInteger c = kMMLInputChannel;
-    NSInteger h = kMMLInputHeight;
-    NSInteger w = kMMLInputWidth;
+    NSInteger n = kLiteKitInputBatch;
+    NSInteger c = kLiteKitInputChannel;
+    NSInteger h = kLiteKitInputHeight;
+    NSInteger w = kLiteKitInputWidth;
     NSArray *dims = @[@(n), @(c), @(h), @(w)];
     float *image_data = (float *)malloc(sizeof(float)*w*h*c);
     for(int i=0; i<w*h; i++) {
         image_data[i] = 1;
     }
-    MMLShapedData *shapeData = [[MMLShapedData alloc] initWithData:image_data dataSize:w*h*c dims:dims];
-    MMLData *inputData = [[MMLData alloc] initWithData:shapeData type:TMMLDataTypeMMLShapedData];
+    LiteKitShapedData *shapeData = [[LiteKitShapedData alloc] initWithData:image_data dataSize:w*h*c dims:dims];
+    LiteKitData *inputData = [[LiteKitData alloc] initWithData:shapeData type:TLiteKitDataTypeLiteKitShapedData];
     
     // run sync
     NSError *error = nil;
-    MMLData *outputData = [mmlMachine predictWithInputData:inputData error:&error];
+    LiteKitData *outputData = [litekitMachine predictWithInputData:inputData error:&error];
     
     NSLog(@"end");
 }
