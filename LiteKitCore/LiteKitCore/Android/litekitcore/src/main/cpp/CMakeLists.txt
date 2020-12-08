@@ -12,22 +12,22 @@ cmake_minimum_required(VERSION 3.4.1)
 
 include_directories(include)
 
-# mml framework lib
-SET(mml_framework ${CMAKE_SOURCE_DIR}/libs/${ANDROID_ABI}/libmml_framework.so)
+# litekit framework lib
+SET(litekit_framework ${CMAKE_SOURCE_DIR}/libs/${ANDROID_ABI}/liblitekit_framework.so)
 
 add_library( # Sets the name of the library.
-        mml-core
+        litekit-core
 
         # Sets the library as a shared library.
         SHARED
 
         # Provides a relative path to your source file(s).
-        src/mml_init.cpp
-        src/mml_input.cpp
-        src/mml_run.cpp
-        src/mml_output.cpp
-        src/mml_release.cpp
-        src/mml_tensor.cpp
+        src/litekit_init.cpp
+        src/litekit_input.cpp
+        src/litekit_run.cpp
+        src/litekit_output.cpp
+        src/litekit_release.cpp
+        src/litekit_tensor.cpp
         src/dynamic_register_native_methods.cpp
         )
 
@@ -49,10 +49,10 @@ find_library( # Sets the name of the path variable.
 # build script, prebuilt third-party libraries, or system libraries.
 
 target_link_libraries( # Specifies the target library.
-        mml-core
+        litekit-core
 
         # Links the target library to the log library
         # included in the NDK.
         ${log-lib}
-        ${mml_framework}
+        ${litekit_framework}
         )

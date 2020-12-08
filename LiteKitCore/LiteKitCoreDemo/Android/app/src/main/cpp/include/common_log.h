@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef MMLCORE_COMMON_LOG_H
-#define MMLCORE_COMMON_LOG_H
+#ifndef LITEKITCORE_COMMON_LOG_H
+#define LITEKITCORE_COMMON_LOG_H
 #include  <android/log.h>
 
 namespace imba {

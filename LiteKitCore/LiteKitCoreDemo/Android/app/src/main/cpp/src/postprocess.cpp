@@ -137,7 +137,7 @@ void postprocess(float *result, float *outputs[], float originWidth, float origi
 
 extern "C"
 JNIEXPORT jfloatArray JNICALL
-Java_com_baidu_mml_demo_MainActivity_postprocess(JNIEnv *env,
+Java_com_baidu_litekitcore_demo_MainActivity_postprocess(JNIEnv *env,
                                                  jobject thiz,
                                                  jfloatArray data0,
                                                  jfloatArray data1,

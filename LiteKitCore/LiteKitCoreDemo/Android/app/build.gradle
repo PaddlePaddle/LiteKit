@@ -65,6 +65,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     // 导入AAR
-    implementation(name: 'mmlcore-debug', ext: 'aar')
-    // implementation(project(':mmlcore'))
+    implementation(name: 'litekitcore-debug', ext: 'aar')
+    // implementation(project(':litekitcore'))
 }

@@ -12,19 +12,26 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef LITEKITCORE_COMMON_LOG_H
-#define LITEKITCORE_COMMON_LOG_H
-#include  <android/log.h>
+#include <jni.h>
+#include <string>
+#include <map>
+
+#include "common_log.h"
+#include "litekit_run.h"
+#include "litekit_inference_api.h"
 
 namespace litekitcore {
+using litekit_framework::LiteKitMachineService;
+using litekit_framework::LiteKitConfig;
 
-#define LOG_TAG "litekitcore"
-#define LOGV(...) __android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, __VA_ARGS__)
-#define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG, LOG_TAG, __VA_ARGS__)
-#define LOGI(...) __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__)
-#define LOGW(...) __android_log_print(ANDROID_LOG_WARN, LOG_TAG, __VA_ARGS__)
-#define LOGE(...) __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, __VA_ARGS__)
-#define LOG_ASSERT(_cond, ...) if (!_cond) __android_log_assert("conditional", LOG_TAG, __VA_ARGS__)
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_baidu_litekitcore_LiteKitBaseMachine_run(JNIEnv *env, jobject type, jlong nativeMachineHandler) {
+  LiteKitMachineService* service = reinterpret_cast<LiteKitMachineService*>(nativeMachineHandler);
+  int ret = service->run();
+  if (ret != 0) {
+    LOGE("service run error");
+  }
+}
 
 }
-#endif

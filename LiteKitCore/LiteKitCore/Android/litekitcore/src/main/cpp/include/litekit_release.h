@@ -12,19 +12,29 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef LITEKITCORE_COMMON_LOG_H
-#define LITEKITCORE_COMMON_LOG_H
-#include  <android/log.h>
+#ifndef LITEKITCORE_LITEKITCORE_SRC_MAIN_CPP_INCLUDE_LITEKIT_RELEASE_H_
+#define LITEKITCORE_LITEKITCORE_SRC_MAIN_CPP_INCLUDE_LITEKIT_RELEASE_H_
+
+#include <jni.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 namespace litekitcore {
 
-#define LOG_TAG "litekitcore"
-#define LOGV(...) __android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, __VA_ARGS__)
-#define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG, LOG_TAG, __VA_ARGS__)
-#define LOGI(...) __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__)
-#define LOGW(...) __android_log_print(ANDROID_LOG_WARN, LOG_TAG, __VA_ARGS__)
-#define LOGE(...) __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, __VA_ARGS__)
-#define LOG_ASSERT(_cond, ...) if (!_cond) __android_log_assert("conditional", LOG_TAG, __VA_ARGS__)
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_baidu_litekitcore_LiteKitBaseMachine_release(JNIEnv *env, jobject thiz, jlong nativeMachineHandler);
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_baidu_litekitcore_LiteKitTensor_release(JNIEnv *env, jobject thiz, jlong nativeTensorHandler);
 
 }
+
+#ifdef __cplusplus
+}
 #endif
+
+#endif //LITEKITCORE_LITEKITCORE_SRC_MAIN_CPP_INCLUDE_LITEKIT_RELEASE_H_

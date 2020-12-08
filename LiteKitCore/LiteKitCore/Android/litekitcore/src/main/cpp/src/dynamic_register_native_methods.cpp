@@ -13,9 +13,9 @@
 // limitations under the License.
 
 #include <jni.h>
-#include "mml_input.h"
+#include "litekit_input.h"
 
-namespace mmlcore {
+namespace litekitcore {
 // 参数映射表
 static JNINativeMethod methods[] = {
     {"feedInputData", "(J[FIIIII)V", (void *) feedFloatInputData},
@@ -36,14 +36,14 @@ JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *vm, void *reserved) {
   }
 
   // 获取native方法所在类
-  const char *className = "com/baidu/mmlcore/MMLPaddleLiteMachine";
+  const char *className = "com/baidu/litekitcore/LiteKitPaddleLiteMachine";
   jclass clazz = env->FindClass(className);
   if (clazz == NULL) {
     return result;
   }
 
   // 动态注册native方法
-  if (env->RegisterNatives(clazz, mmlcore::methods, sizeof(mmlcore::methods) / sizeof(mmlcore::methods[0])) < 0) {
+  if (env->RegisterNatives(clazz, litekitcore::methods, sizeof(litekitcore::methods) / sizeof(litekitcore::methods[0])) < 0) {
     return result;
   }
 

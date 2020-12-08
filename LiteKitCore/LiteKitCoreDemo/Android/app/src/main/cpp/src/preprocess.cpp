@@ -57,7 +57,7 @@ void preprocess(cv::Mat src, cv::Mat dst) {
 
 extern "C"
 JNIEXPORT jfloatArray JNICALL
-Java_com_baidu_mml_demo_MainActivity_preprocess(JNIEnv *env,
+Java_com_baidu_litekitcore_demo_MainActivity_preprocess(JNIEnv *env,
                                                jobject thiz,
                                                jbyteArray data,
                                                jint imgWidth,

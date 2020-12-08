@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef MMLCORE_APP_SRC_MAIN_CPP_INCLUDE_POSTPROCESS_H_
-#define MMLCORE_APP_SRC_MAIN_CPP_INCLUDE_POSTPROCESS_H_
+#ifndef LITEKITCORE_APP_SRC_MAIN_CPP_INCLUDE_POSTPROCESS_H_
+#define LITEKITCORE_APP_SRC_MAIN_CPP_INCLUDE_POSTPROCESS_H_
 
 #include <jni.h>
 
@@ -25,7 +25,7 @@ namespace imba {
 
 extern "C"
 JNIEXPORT jfloatArray JNICALL
-Java_com_baidu_mml_demo_MainActivity_postprocess(JNIEnv *env,
+Java_com_baidu_litekitcore_demo_MainActivity_postprocess(JNIEnv *env,
                                                  jobject thiz,
                                                  jfloatArray data0,
                                                  jfloatArray data1,
@@ -42,4 +42,4 @@ Java_com_baidu_mml_demo_MainActivity_postprocess(JNIEnv *env,
 }
 #endif
 
-#endif //MMLCORE_APP_SRC_MAIN_CPP_INCLUDE_POSTPROCESS_H_
+#endif //LITEKITCORE_APP_SRC_MAIN_CPP_INCLUDE_POSTPROCESS_H_

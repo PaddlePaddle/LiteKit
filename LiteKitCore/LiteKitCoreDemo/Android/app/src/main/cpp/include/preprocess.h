@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef MMLCORE_APP_SRC_MAIN_CPP_PREPROCESS_H_
-#define MMLCORE_APP_SRC_MAIN_CPP_PREPROCESS_H_
+#ifndef LITEKITCORE_APP_SRC_MAIN_CPP_PREPROCESS_H_
+#define LITEKITCORE_APP_SRC_MAIN_CPP_PREPROCESS_H_
 
 #include <jni.h>
 
@@ -25,7 +25,7 @@ namespace imba {
 
 extern "C"
 JNIEXPORT jfloatArray JNICALL
-Java_com_baidu_mml_demo_MainActivity_preprocess(JNIEnv *env,
+Java_com_baidu_litekitcore_demo_MainActivity_preprocess(JNIEnv *env,
                                                jobject thiz,
                                                jbyteArray data,
                                                jint imgWidth,
@@ -37,4 +37,4 @@ Java_com_baidu_mml_demo_MainActivity_preprocess(JNIEnv *env,
 }
 #endif
 
-#endif //MMLCORE_APP_SRC_MAIN_CPP_PREPROCESS_H_
+#endif //LITEKITCORE_APP_SRC_MAIN_CPP_PREPROCESS_H_
