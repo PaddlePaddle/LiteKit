@@ -1,10 +1,10 @@
 #!/bin/bash
 set -x
 
-SCHEME=MML
+SCHEME=LiteKitCore
 
 IOS_LIBS_DIR=../Dependences
-XCODE_PROJECT_NAME=MML.xcodeproj
+XCODE_PROJECT_NAME=LiteKitCore.xcodeproj
 XCODE_PROJECT_DIR=.
 BUILD_DIR=${XCODE_PROJECT_DIR}/build
 DEVICE_BUILD=${BUILD_DIR}/device_build_intermediate

@@ -16,7 +16,7 @@
 
 #import "PaddleCPU.h"
 
-static NSString *TMML_PaddleCPU_LoadError = @"TMML_PaddleCPU_LoadError";
+static NSString *TLiteKit_PaddleCPU_LoadError = @"TLiteKit_PaddleCPU_LoadError";
 #if __has_include("PaddleLite/paddle_api.h")
 #include "PaddleLite/paddle_api.h"
 
@@ -61,7 +61,7 @@ static NSString *TMML_PaddleCPU_LoadError = @"TMML_PaddleCPU_LoadError";
         self.predictor = predictor;
     } else {
         if ( NULL != error) {
-            *error = [NSError errorWithDomain:TMML_PaddleCPU_LoadError code:0 userInfo:nil];
+            *error = [NSError errorWithDomain:TLiteKit_PaddleCPU_LoadError code:0 userInfo:nil];
         }
     }
 }
@@ -86,7 +86,7 @@ static NSString *TMML_PaddleCPU_LoadError = @"TMML_PaddleCPU_LoadError";
     std::unique_ptr<const paddle::lite_api::Tensor> output_tensor(self.predictor->GetOutput(0));
     PaddleCPUResult *result = [[PaddleCPUResult alloc] init];
     //datasize
-    result.dataSize = mml_ShapeProduction(output_tensor->shape());
+    result.dataSize = litekit_ShapeProduction(output_tensor->shape());
     ///data
     result.data = (float *)malloc(sizeof(float)*result.dataSize);
     memcpy(result.data, output_tensor->data<float>(), result.dataSize*sizeof(float));
@@ -100,7 +100,7 @@ static NSString *TMML_PaddleCPU_LoadError = @"TMML_PaddleCPU_LoadError";
     return result;
 }
 
-NSInteger mml_ShapeProduction(const paddle::lite_api::shape_t& shape) {
+NSInteger litekit_ShapeProduction(const paddle::lite_api::shape_t& shape) {
   NSInteger res = 1;
   for (auto i : shape) res *= i;
   return res;
@@ -116,7 +116,7 @@ NSInteger mml_ShapeProduction(const paddle::lite_api::shape_t& shape) {
 
 - (void)loadWithError:(NSError *__autoreleasing  _Nullable * _Nullable)error {
     if ( NULL != error) {
-        *error = [NSError errorWithDomain:TMML_PaddleCPU_LoadError code:0 userInfo:nil];
+        *error = [NSError errorWithDomain:TLiteKit_PaddleCPU_LoadError code:0 userInfo:nil];
     }
 }
 
