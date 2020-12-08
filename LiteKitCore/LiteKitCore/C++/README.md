@@ -6,7 +6,7 @@
 
   - c++运行库: ANDROID_STL=c++_shared
 
-- 下载[依赖库](https://gitee.com/paddlepaddle/LiteKit/tree/main/Android/MMLCoreNativeDepencency/paddle_api_light_bundled/0.0.9)
+- 下载[依赖库](https://gitee.com/paddlepaddle/LiteKit/tree/main/Android/LiteKitCoreNativeDepencency/paddle_api_light_bundled/0.0.9)
 
   - 放到以下路径中
 
@@ -22,6 +22,6 @@
 
 - 输出产物
 
-  - `./output/mml_inference_api.h`
-  - `./output/armeabi-v7a/libmml_framework.so`
-  - `./output/arm64-v8a/libmml_framework.so`
+  - `./output/litekit_inference_api.h`
+  - `./output/armeabi-v7a/liblitekit_framework.so`
+  - `./output/arm64-v8a/liblitekit_framework.so`

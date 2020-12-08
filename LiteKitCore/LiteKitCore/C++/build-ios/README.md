@@ -3,17 +3,17 @@
 - 统一环境
 - cmake 3.15.0
 
-- 下载[依赖库](https://gitee.com/paddlepaddle/LiteKit/tree/main/iOS/MMLCoreNativeDepencency/0.0.9)
+- 下载[依赖库](https://gitee.com/paddlepaddle/LiteKit/tree/main/iOS/LiteKitCoreNativeDepencency/0.0.9)
 
   - 放到以下路径中
-  - MMLCore/MML/C++/src/main/iOSLibs/
+  - LiteKitCore/LiteKitCore/C++/src/main/iOSLibs/
 
 - 执行脚本
 
-  - `cd /MMLCore/MML/C++/build-ios`
+  - `cd /LiteKitCore/LiteKitCore/C++/build-ios`
   - `sh product_build.sh`
 
 - 输出产物
 
-  - `./output/product/release/include/mml_inference_api.h`
-  - `./output/product/release/libmml_framework_ios.a`
+  - `./output/product/release/include/litekit_inference_api.h`
+  - `./output/product/release/liblitekit_framework_ios.a`
