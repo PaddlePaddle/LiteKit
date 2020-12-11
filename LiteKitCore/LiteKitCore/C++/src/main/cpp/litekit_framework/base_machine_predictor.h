@@ -15,7 +15,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
 */
 
 /**
- * BaseMachinePredictor封装，不同Backend实现（如PaddleLite）应当继承自BaseMachinePredictor
+ * BaseMachinePredictor ，different Backend（example:PaddleLite）should inherit and impl BaseMachinePredictor
  */
 
 #ifndef LIB_AI_BASE_MACHINE_PREDICTOR_H
@@ -25,62 +25,64 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
 
 class BaseMachinePredictor {
 public:
-    // 真实的BackendPredictor指针（如PaddleLite）
+    // real pointer of BackendPredictor（example:PaddleLite）
     void *realPredictor;
     // backend的share pointer
     std::shared_ptr<void> realPredictorPtr;
 
     /**
-     * 根据config，创建realPredictor，并加载模型
+     * according to config，create realPredictor，and load model
      *
-     * @param config
-     * @return
+     * @param config config
+     * @return ErrorCode
      */
     virtual int load(const litekit_framework::LiteKitConfig &config) = 0;
 
     /**
-     * 预测函数
-     * @param inputData
-     * @param outputData
-     * @return
+     * predict function
+     * @param inputData input data
+     * @param outputData output data
+     * @return ErrorCode
      */
     virtual int predict(litekit_framework::LiteKitData &inputData, litekit_framework::LiteKitData *outputData) = 0;
+   
     /**
-    * 预测函数 适用于paddle-lite backend
-    * @return i 0成功, 其他错误见litekit_framework ErrorCode
+    * predict function for paddle-lite backend
+    * @return ErrorCode, 0 means succeed, else see litekit_framework ErrorCode
     */
     virtual int predict() = 0;
+    
     /**
-       * 申请第i个input的tensor空间
-       * @param i
+       * create the Ith input tensor
+       * @param i index
        * @return LiteKitData
        */
     virtual std::unique_ptr<litekit_framework::LiteKitData> getInputData(int i) = 0;
     /**
-       * 获取多输出中的第i个output
-       * @param i
+       * get thr Ith output
+       * @param i index
        * @return LiteKitData
        */
     virtual std::unique_ptr<const litekit_framework::LiteKitData> getOutputData(int i) = 0;
     /**
-     * 获取input的names
+     * get inputnames
      * @return std::vector<std::string>
      */
     virtual std::vector<std::string> getInputNames() = 0 ;
     /**
-     * 获取output的names
+     * get output names
      * @return std::vector<std::string>
      */
     virtual std::vector<std::string> getOutputNames() = 0 ;
     /**
-     * 获取name对应的input
-     * @param name input的name
+     * get input by name
+     * @param name input name
      * @return LiteKitData
      */
     virtual std::unique_ptr<litekit_framework::LiteKitData> getInputByName(const std::string& name) = 0 ;
     
     /**
-     * 析构函数。会delete realPredictor 并置空。
+     * Destructor。will delete realPredictor and set null。
      */
     virtual ~BaseMachinePredictor() {};
 };

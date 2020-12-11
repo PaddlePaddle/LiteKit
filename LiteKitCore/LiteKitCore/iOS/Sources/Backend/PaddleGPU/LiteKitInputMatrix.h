@@ -18,26 +18,26 @@
 #import <Foundation/Foundation.h>
 
 // @class - LiteKitPredicateMatrix
-// @brief - input容器
+// @brief - input container
 @interface LiteKitInputMatrix : NSObject
-@property (nonatomic,assign,readonly) int width; //宽
-@property (nonatomic,assign,readonly) int height;//高
+@property (nonatomic,assign,readonly) int width; //width
+@property (nonatomic,assign,readonly) int height;//height
 @property (nonatomic,assign,readonly) int channel;
 @property (nonatomic,assign,readonly) float* pixels;//input
 
 /*
- * @brief Action = input对象容器
+ * @brief Action = input container
  * @param - width
  * @param - height
  * @param - channel
- * @param - pixels 标准化后的pixels
+ * @param - pixels Standardization pixels
  * @return instancetype
  */
 -(instancetype)initWithWith:(int)width andHeight:(int)height andChannel:(int)channel andInputPixels:(float *)pixels;
 
 /*
- * @brief Action = input对象校验器
- * @return BOOL YES:有效 NO:无效
+ * @brief Action = input object check available
+ * @return BOOL YES:valid NO:invald
  */
 -(BOOL) inputValid;
 @end

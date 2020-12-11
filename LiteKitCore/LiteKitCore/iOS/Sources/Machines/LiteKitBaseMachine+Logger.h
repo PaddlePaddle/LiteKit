@@ -22,11 +22,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LiteKitMachine (Logger)
 
-/// Machine的日志器
+/// Machine logger
 @property (nonatomic, strong) id <LiteKitLoggerProtocol> logger;
 
-/// 设置日志器
-/// @param loggerClassName 日志器类名
+/// set logger
+/// @param loggerClassName logger class name
 - (void)setupMachineLoggerFromMachineLoggerName:(NSString *)loggerClassName;
 
 @end

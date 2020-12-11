@@ -19,9 +19,9 @@
 
 
 #ifdef DEBUG
-static NSUInteger tureConsoleLogLevel = LiteKitlogLevelTypeForDebug;       // 调试期的log级别
+static NSUInteger tureConsoleLogLevel = LiteKitlogLevelTypeForDebug;       // log level when debug
 #else
-static NSUInteger tureConsoleLogLevel = -1;                            // 非调试期的log级别
+static NSUInteger tureConsoleLogLevel = -1;                            // log level when release
 #endif
 
 

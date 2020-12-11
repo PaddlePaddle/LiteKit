@@ -19,19 +19,19 @@
 #import "LiteKitMachineService.h"
 
 NS_ASSUME_NONNULL_BEGIN
-/// @param machine 加载成功的machine
-/// @param performanceProfiler performance信息
-/// @param error error信息
+/// @param machine load succeed machine
+/// @param performanceProfiler performance info
+/// @param error error message
 typedef void (^LiteKitMachineLoadPerformanceBlock)(LiteKitMachine * __nullable machine,
                                                LiteKitPerformanceProfiler * __nullable performanceProfiler,
                                                NSError * __nullable error);
 
-/// 带performance信息的Service分类
+/// Service with performance infoo
 @interface LiteKitMachineService (Performancer)
 
-/// 加载带performance信息回调的machine
-/// @param aConfig 配置
-/// @param aBlock 带performance信息的回调
+/// load machine with performance callback
+/// @param aConfig config
+/// @param aBlock callback with performance
 - (void)loadMachineWithConfig:(LiteKitMachineConfig * __nonnull)aConfig performanceBlock:(LiteKitMachineLoadPerformanceBlock)aBlock;
 @end
 

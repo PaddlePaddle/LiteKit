@@ -24,7 +24,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- * LiteKitTensor数据 数据类型定义
+ * LiteKitTensor date type enum
  */
 typedef NS_ENUM(NSInteger, LiteKitTensorDataType) {
     LiteKitTensorDataTypeInt32 = 0,  // int32
@@ -34,50 +34,50 @@ typedef NS_ENUM(NSInteger, LiteKitTensorDataType) {
 };
 
 /**
- * LiteKitData 的数据类型定义
+ * LiteKitData data type enum
  */
 typedef NS_ENUM(NSUInteger, TLiteKitDataType) {
-    TLiteKitDataTypeMultiArray = 2,     //MLMultiArray数据
-    TLiteKitDataTypeCVPixelBuffer = 3,  //CVPixelBuffer数据
-    TLiteKitDataTypeFloats = 4,         //LiteKitFloat数据
-    TLiteKitDataTypeLiteKitTensor = 5,  //LiteKitTensor数据
-    TLiteKitDataTypeImageURL = 6,       //Image地址数据
-    TLiteKitDataTypeImage = 7,          //Image数据
-    TLiteKitDataTypeDictionary = 8,     //NSDictionary数据
-    TLiteKitDataTypeLiteKitShapedData = 9,   //LiteKitShapedData数据
-    TLiteKitDataTypeMTLTexture = 10,    //MTLTexture数据
-    TLiteKitDataTypeMTLBuffer = 11,     //MTLBuffer数据
-    TLiteKitDataTypeString = 12,        //NSString数据
+    TLiteKitDataTypeMultiArray = 2,     //MLMultiArray data
+    TLiteKitDataTypeCVPixelBuffer = 3,  //CVPixelBuffer data
+    TLiteKitDataTypeFloats = 4,         //LiteKitFloat data
+    TLiteKitDataTypeLiteKitTensor = 5,  //LiteKitTensor data
+    TLiteKitDataTypeImageURL = 6,       //Image地址 data
+    TLiteKitDataTypeImage = 7,          //Image data
+    TLiteKitDataTypeDictionary = 8,     //NSDictionary data
+    TLiteKitDataTypeLiteKitShapedData = 9,   //LiteKitShapedData data
+    TLiteKitDataTypeMTLTexture = 10,    //MTLTexture data
+    TLiteKitDataTypeMTLBuffer = 11,     //MTLBuffer data
+    TLiteKitDataTypeString = 12,        //NSString data
 };
 
 /**
- * LiteKitFloat结构定义，包含float* 和length。
+ * LiteKitFloat struct，include float*  and length。
  */
 typedef struct LiteKitFloat {
-    NSUInteger length;//数据长度
-    float *data;//数据指针
+    NSUInteger length;// data length
+    float *data;// data pointer
 } LiteKitFloat;
 
 #pragma mark - LiteKitShapedData
 
 /**
- * LiteKitShapedData数据
+ * LiteKitShapedData data
  */
 @interface LiteKitShapedData : NSObject
-///数据float*
+/// data float*
 @property (nonatomic, readonly) float *data;
-///数据size
+/// data size
 @property (nonatomic, readonly) NSInteger dataSize;
-///数据dims
+/// data dims
 @property (nonatomic, readonly) NSArray <NSNumber *> *dim;
 
 /**
- * 初始化方法
+ * init method
  
- @param data 初始化数据
- @param dataSize 数据长度
- @param dim 数据维度
- @return 初始化的数据
+ @param data init data
+ @param dataSize  data length
+ @param dim  data dims
+ @return init data
  */
 - (instancetype)initWithData:(float *)data
                     dataSize:(NSInteger)dataSize
@@ -87,23 +87,23 @@ typedef struct LiteKitFloat {
 #pragma mark - LiteKitBMLTensor
 
 /**
- * LiteKitBMLTensor数据
+ * LiteKitBMLTensor data
  */
 @interface LiteKitBMLTensor : NSObject
-///数据featurearray
+/// data featurearray
 @property (nonatomic, readonly) NSArray *dataArray;
-///predict阈值
+///predict threshold
 @property (nonatomic, readonly) NSNumber *threshold;
-///数据类型
+/// data type
 @property (nonatomic, readonly) LiteKitTensorDataType dataType;
 
 /**
- * 初始化方法
+ * init
  
- @param dataArray 数据feature array
+ @param dataArray  data feature array
  @param threshold predict
- @param dataType 数据类型
- @return 初始化的数据
+ @param dataType  data type
+ @return init data
  */
 - (instancetype)initWithArray:(NSArray *)dataArray
                     threshold:(NSNumber *)threshold
@@ -113,45 +113,45 @@ typedef struct LiteKitFloat {
 #pragma mark - LiteKitData
 
 /**
- * LiteKitData定义
+ * LiteKitData define
  */
 @interface LiteKitData : NSObject
 
-///LiteKit tensor 一般用于BML
+///LiteKit tensor
 @property (nonatomic, strong) LiteKitBMLTensor *litekitTensor;
-///dictionary类型数据，一般用于BML结果返回
+///dictionary type data
 @property (nonatomic, strong) NSDictionary *dictionaryData;
-///string类型数据，一般用于BML结果返回
+///string type data
 @property (nonatomic, strong) NSDictionary *stringData;
 
-///rare float数据
+///rare float data
 @property (nonatomic, assign) LiteKitFloat *floatData;
 
-///MLMultiArray保存图像数据，multiArray最多只能支持4通道图像数据
+///MLMultiArray image data ，multiArray support 4 channels data most
 @property (nonatomic, strong) MLMultiArray *multiArray;
-///CVPixelBufferRef保存图像数据
+///CVPixelBufferRef image data
 @property (nonatomic, assign) CVPixelBufferRef pixelBuffer;
-///图片地址
+///image path
 @property (nonatomic, strong) NSString *imageURL;
-///图片数据画
+/// image data
 @property (nonatomic, strong) UIImage *image;
 ///LiteKitshapeddata
 @property (nonatomic, strong) LiteKitShapedData *litekitShapedData;
-///MTLTexture MTL的texture类型input
+///MTLTexture MTL texture input
 @property (nonatomic, strong) id<MTLTexture> mtlTexture;
-///MTLBuffer MTL的buffer类型input
+///MTLBuffer MTL buffer input
 @property (nonatomic, strong) id<MTLBuffer> mtlBuffer;
-///MTLTexture or MTLBuffer的时候会使用该属性, dims排列是 n h w c，
+///MTLTexture or MTLBuffer will use this propertty , dims rank is n h w c，
 @property (nonatomic, strong) NSArray *dims;
 
 @property (nonatomic, assign) TLiteKitDataType type;
 
 /**
- * 初始化方法
+ * init
  
- @param data 数据
- @param type 数据类型
- @return 初始化的LiteKitData
+ @param data  data
+ @param type  data type
+ @return init LiteKitData
  */
 - (instancetype)initWithData:(id)data type:(TLiteKitDataType)type;
 

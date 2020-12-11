@@ -22,47 +22,47 @@
 #import "LiteKitPerformanceProfiler.h"
 
 NS_ASSUME_NONNULL_BEGIN
-/// load阶段错误domain
+/// load period domain
 FOUNDATION_EXPORT NSString * const LiteKitMachineServiceLoadErrorDomain;
-/// error信息中的附带信息key值
+/// error message key
 FOUNDATION_EXPORT NSString * const LiteKitMachineServiceErrorExtKey;
 
-/// service load阶段错误值枚举
+/// service load period error enum
 typedef NS_ENUM(NSInteger,LiteKitMachineServiceLoadErrorCode) {
-    LiteKitMachineServiceLoadMachineTypeError = 0,      // 错误的machine类型
-    LiteKitMachineServiceLoadNotSupportSimulator,       // 不支持模拟器
-    LiteKitMachineServiceLoadNotSupportArchitecture,    // 不支持的处理器架构
-    LiteKitMachineServiceLoadWrongConfig,               // 错误的配置
-    LiteKitMachineServiceLoadNoModelFile,               // 没有模型文件
-    LiteKitMachineServiceLoadNoModelPointer,            // 内存指针为空
+    LiteKitMachineServiceLoadMachineTypeError = 0,      // error machine type
+    LiteKitMachineServiceLoadNotSupportSimulator,       // Simulator not support
+    LiteKitMachineServiceLoadNotSupportArchitecture,    // Architecture not support
+    LiteKitMachineServiceLoadWrongConfig,               // error config
+    LiteKitMachineServiceLoadNoModelFile,               // model file not found
+    LiteKitMachineServiceLoadNoModelPointer,            // model pointer is null
 };
 
 
-/// @param machine 加载成功的machine
-/// @param error error信息
+/// @param machine succeed loaded machine
+/// @param error error message
 typedef void (^LiteKitMachineLoadCompletionBlock)(LiteKitMachine * __nullable machine, NSError * __nullable error);
 
 
-/// Machine Service类，负责Machine的创建、运行以及释放
+/// Machine Service class，charge of Machine load、run and release
 @interface LiteKitMachineService : NSObject
 
-/// 当前对应的machine
+/// current machine
 @property (nonatomic, strong, readonly) LiteKitBaseMachine * __nullable litekitMachine;
-/// Service的唯一标识
+/// Service identifier
 @property (nonatomic, copy, readonly) NSString *machineServiceId;
-/// 性能统计数据
+/// performance data
 @property (nonatomic, strong, readonly) LiteKitPerformanceProfiler *performanceDataMap;
 
 #pragma mark - Load
 
-/// sync 通过配置加载Machine
-/// @param aConfig LiteKit配置
-/// @param aError 错误信息
+/// sync load Machine with conofig
+/// @param aConfig LiteKit config
+/// @param aError error message
 - (LiteKitBaseMachine * __nullable)loadMachineWithConfig:(LiteKitMachineConfig * __nonnull)aConfig error:(NSError **)aError;
 
 /// async
-/// @param aConfig LiteKit配置
-/// @param aBlock 完成回调
+/// @param aConfig LiteKit config
+/// @param aBlock complete callback
 - (void)loadMachineWithConfig:(LiteKitMachineConfig * __nonnull)aConfig completionBlock:(LiteKitMachineLoadCompletionBlock)aBlock;
 
 

@@ -26,16 +26,16 @@ NS_ASSUME_NONNULL_BEGIN
 typedef void (^LiteKitPaddleGPUPredicatOutputsCallback)(PaddleGPUResult *__nullable gpuPredicateOutputs, NSError *__nullable error);
 
 
-/// Paddle GPU 的Machine
+/// Paddle GPU Machine
 @interface LiteKitPaddleGPUMachine : LiteKitBaseMachine
 
 /*
- * @brief Action = 初始化模型 模型操作工具Machine
- * @param - modelURL 模型文件URL（模型文件本身）
- * @param - paramPath params文件URL
- * @param - netType 网络类型
- * @param - config 原始ModelConfig
- * @param - error 错误容器 （ErrorDomain:LiteKitPaddleMachineInitErrorDomain ErrorCode:PMachineErrorCode）
+ * @brief Action = init paddle GPU Machine
+ * @param - modelURL model file path
+ * @param - paramPath params file path
+ * @param - netType net type
+ * @param - config origin ModelConfig
+ * @param - error error message （ErrorDomain:LiteKitPaddleMachineInitErrorDomain ErrorCode:PMachineErrorCode）
  * @return instancetype
  */
 - (instancetype __nullable)initWithModelPath:(NSString *)modelPath
@@ -46,11 +46,11 @@ typedef void (^LiteKitPaddleGPUPredicatOutputsCallback)(PaddleGPUResult *__nulla
 
 
 /**
- 初始化模型
+ init paddle GPU machine
 
- @param modelConfig modelconfig配置
- @param netType 网络类型
- @param error 错误容器
+ @param modelConfig model config
+ @param netType net type
+ @param error error message
  @return instancetype
  */
 - (instancetype __nullable)initWithModelConfig:(PaddleGPUConfig *)modelConfig
@@ -58,27 +58,27 @@ typedef void (^LiteKitPaddleGPUPredicatOutputsCallback)(PaddleGPUResult *__nulla
                                      withError:(NSError**)error;
 
 /**
- 预测接口
+ predict interface
  
- @param input 输入容器
- @param callback 结果容器
+ @param input input data
+ @param callback output call back
  */
 - (void)predictWithInputMatrix:(LiteKitInputMatrix *)input
                completionBlock:(LiteKitPaddleGPUPredicatOutputsCallback)callback;
 
 
 /**
- 清除machine内存
+ clear machine memory
  */
 - (void)clearMachine;
 
 /**
- 清除machine内存,且释放GPUMachine
+ release machine memory,  release GPUMachine
  */
 - (void)releasePaddleGPU;
 
 /**
- 重新load machine
+ reload machine
  */
 - (void)reloadMachineWithError:(NSError **)error;
 

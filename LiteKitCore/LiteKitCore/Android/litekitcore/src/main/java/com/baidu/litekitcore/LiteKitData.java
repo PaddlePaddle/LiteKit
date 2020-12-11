@@ -19,7 +19,7 @@ package com.baidu.litekitcore;
 import android.util.Log;
 
 /**
- * LiteKitData包含输入和输出的数据
+ * LiteKitData include input and output data
  */
 public class LiteKitData {
     public enum Type {
@@ -92,7 +92,7 @@ public class LiteKitData {
     }
 
     /**
-     * 输入数据相关
+     * input datas
      */
     private float[] floatData;
     private byte[] byteData;
@@ -103,12 +103,12 @@ public class LiteKitData {
     private int inputGraphId;
 
     /**
-     * 输出数据相关
+     * output data
      */
     public LiteKitTensor output;
 
     /**
-     * 构造函数
+     * Constructor
      */
     public LiteKitData() {
         output = new LiteKitTensor();

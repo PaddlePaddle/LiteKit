@@ -19,22 +19,22 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-FOUNDATION_EXPORT NSString * const LiteKitPerformanceLoadTimeForInferenceEngine;        // 纯load时间
-FOUNDATION_EXPORT NSString * const LiteKitPerformancePredictTimeForInferenceEngine;     // 纯预测时间
-FOUNDATION_EXPORT NSString * const LiteKitPerformanceReadMetalSourceTime;               // 读取metallib资源时间
-FOUNDATION_EXPORT NSString * const LiteKitPerformanceLoadTimeForInterface;              // 接口层级的load时间
-FOUNDATION_EXPORT NSString * const LiteKitPerformancePredictTimeForInterface;           // 接口层级的预测时间
+FOUNDATION_EXPORT NSString * const LiteKitPerformanceLoadTimeForInferenceEngine;        // pure load time
+FOUNDATION_EXPORT NSString * const LiteKitPerformancePredictTimeForInferenceEngine;     // pure predicttime
+FOUNDATION_EXPORT NSString * const LiteKitPerformanceReadMetalSourceTime;               // read metallib resource time
+FOUNDATION_EXPORT NSString * const LiteKitPerformanceLoadTimeForInterface;              // interface load time
+FOUNDATION_EXPORT NSString * const LiteKitPerformancePredictTimeForInterface;           // interface predict time
 
 
-/// 性能统计实体类
+/// performance profiler
 @interface LiteKitPerformanceProfiler : NSObject
 
-/// 性能数据Map
+/// performance data Map
 @property (atomic, strong, readonly) NSDictionary *performanceMap;
 
-/// 添加性能数据
-/// @param data 性能数据
-/// @param key 性能数据对应的Key
+/// add performance data
+/// @param data performance data
+/// @param key performance Key
 - (void)appendPerformanceData:(NSString *)data key:(NSString *)key;
 
 @end

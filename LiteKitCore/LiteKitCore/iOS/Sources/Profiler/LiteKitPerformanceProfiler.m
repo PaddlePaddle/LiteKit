@@ -17,11 +17,11 @@
 
 #import "LiteKitPerformanceProfiler.h"
 
-NSString * const LiteKitPerformanceLoadTimeForInferenceEngine    = @"LiteKitPerformanceLoadTimeForInferenceEngine";        // 纯load时间
-NSString * const LiteKitPerformancePredictTimeForInferenceEngine = @"LiteKitPerformancePredictTimeForInferenceEngine";     // 纯预测时间
-NSString * const LiteKitPerformanceReadMetalSourceTime           = @"LiteKitPerformanceReadMetalSourceTime";               // 读取metallib资源时间
-NSString * const LiteKitPerformanceLoadTimeForInterface          = @"LiteKitPerformanceLoadTimeForInterface";              // 接口层级的load时间
-NSString * const LiteKitPerformancePredictTimeForInterface       = @"LiteKitPerformancePredictTimeForInterface";           // 接口层级的预测时间
+NSString * const LiteKitPerformanceLoadTimeForInferenceEngine    = @"LiteKitPerformanceLoadTimeForInferenceEngine";        // pure load time
+NSString * const LiteKitPerformancePredictTimeForInferenceEngine = @"LiteKitPerformancePredictTimeForInferenceEngine";     // pure predicttime
+NSString * const LiteKitPerformanceReadMetalSourceTime           = @"LiteKitPerformanceReadMetalSourceTime";               // read metallib resource time
+NSString * const LiteKitPerformanceLoadTimeForInterface          = @"LiteKitPerformanceLoadTimeForInterface";              // interface load time
+NSString * const LiteKitPerformancePredictTimeForInterface       = @"LiteKitPerformancePredictTimeForInterface";           // interface predict time
 
 @interface LiteKitPerformanceProfiler ()
 @property (atomic, strong, readwrite) NSDictionary *performanceMap;

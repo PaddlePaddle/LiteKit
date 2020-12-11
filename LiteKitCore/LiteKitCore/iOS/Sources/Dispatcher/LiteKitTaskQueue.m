@@ -22,17 +22,17 @@ NSString * const LiteKitTaskQueueErrorDomain = @"LiteKitTaskQueueErrorDomain";
 static NSString * const kLiteKitTaskSerialQueueName = @"__kLiteKitTaskSerialQueueName__";
 
 @interface LiteKitTaskQueue ()
-/// 任务队列
+/// task queue
 @property (nonatomic, strong) NSMutableArray <LiteKitTask *> *taskStack;
-/// 任务队列中所有任务的Machine
+/// all Machines fo task in queue
 @property (nonatomic, strong) NSMutableDictionary <NSString *, LiteKitBaseMachine *> *queueMachines;
-/// 在单独的线程中执行任务
+/// executing task in a single queue
 @property (nonatomic, strong) dispatch_queue_t serial_queue;
-/// 日志器
+/// logger
 @property (nonatomic, strong) id <LiteKitLoggerProtocol> logger;
-/// 是否打开性能数据统计
+/// performance profiler
 @property (nonatomic, assign) BOOL openPerformanceProfiler;
-/// 队列状态
+/// queue state
 @property (nonatomic, assign, readwrite) LiteKitTaskQueueStatus queueStatus;
 @end
 
@@ -90,7 +90,7 @@ static NSString * const kLiteKitTaskSerialQueueName = @"__kLiteKitTaskSerialQueu
     if (tasks && [tasks isKindOfClass:[NSArray class]] && tasks.count > 0) {
        dispatch_async(self.serial_queue, ^{
            NSMutableArray *taskStackCopy = [self.taskStack mutableCopy];
-           // 循环遍历找出待删除的元素的index
+           // find element to delete by enum index
            for (int index = 0; index <= tasks.count - 1; index++) {
                for (int stackIndex = 0; stackIndex < self.taskStack.count; stackIndex++) {
                    LiteKitTask *taskInQueue = [self.taskStack objectAtIndex:stackIndex];
@@ -112,17 +112,17 @@ static NSString * const kLiteKitTaskSerialQueueName = @"__kLiteKitTaskSerialQueu
    }
 }
 
-//加到队首
+//add to begin of queue
 - (void)addHighPriorityTask:(LiteKitTask *)task error:(NSError **)aError {
     [self litekit_internalAddTask:task atHead:YES error:aError];
 }
 
-//加入队尾
+//add to end of queue
 - (void)addTask:(LiteKitTask *)task error:(NSError **)aError {
     [self litekit_internalAddTask:task atHead:NO error:aError];
 }
 
-// 移除单个任务
+// remove task
 - (void)removeTask:(LiteKitTask *)task error:(NSError **)aError {
     if (task && [task isKindOfClass:[LiteKitTask class]]) {
         dispatch_async(self.serial_queue, ^{
@@ -147,7 +147,7 @@ static NSString * const kLiteKitTaskSerialQueueName = @"__kLiteKitTaskSerialQueu
     }
 }
 
-// 查询任务状态
+// query task state
 - (LiteKitTaskStatus)taskStatusByID:(NSString *)taskID {
     LiteKitTaskStatus status = LiteKitTaskStatusWaiting;
     for (LiteKitTask *task in self.taskStack) {
@@ -159,14 +159,14 @@ static NSString * const kLiteKitTaskSerialQueueName = @"__kLiteKitTaskSerialQueu
     return status;
 }
 
-// 移除所有任务
+// remove all tasks
 - (void)removeAllTasks {
     dispatch_async(self.serial_queue, ^{
         [self.taskStack removeAllObjects];
     });
 }
 
-/// 释放Machine
+/// release Machine
 - (void)releaseMachine {
     dispatch_async(self.serial_queue, ^{
         [self litekit_releaseMachineInQueueMachines];
@@ -181,20 +181,20 @@ static NSString * const kLiteKitTaskSerialQueueName = @"__kLiteKitTaskSerialQueu
     } else {
         if (self.taskStack.count > 0) {
             self.queueStatus = LiteKitTaskQueueStatusBusy;
-            [self.logger debugLogMsg:@"队列调度开始"];
-            // 先进先出
+            [self.logger debugLogMsg:@"schedule start"];
+            // FIFO
             LiteKitTask *nextTask = [self.taskStack firstObject];
             if (nextTask.taskStatus == LiteKitTaskStatusFinished ||
                 nextTask.taskStatus == LiteKitTaskStatusCanceled) {
-                // 出队
+                // out queue
                 [self litekit_taskFinished:nextTask];
-            } else if (nextTask.taskStatus == LiteKitTaskStatusExecuting) { // 任务正在执行
+            } else if (nextTask.taskStatus == LiteKitTaskStatusExecuting) { // task executing
                 return;
             } else {
                 [self litekit_executeTask:nextTask];
             }
         } else {
-            // 队列空闲需要手动clearMachine
+            // queue is idle,need clearMachine manual
             [self litekit_clearMachineInQueueMachines];
         }
     }
@@ -204,10 +204,10 @@ static NSString * const kLiteKitTaskSerialQueueName = @"__kLiteKitTaskSerialQueu
     [self.logger debugLogMsg:@"execute task start"];
     LiteKitBaseMachine *taskMachine = task.machine;
     if (taskMachine) {
-        // 执行task
+        // execute task
         [self litekit_executeTaskWithMachine:taskMachine task:task];
     } else {
-        // 向外抛错
+        // throw error
         LiteKitTaskCompletionBlock block = task.taskBlock;
         if (block) {
             NSError *aError = [NSError errorWithDomain:LiteKitTaskQueueErrorDomain code:LiteKitTaskQueueNULLMachine userInfo:nil];
@@ -256,14 +256,14 @@ static NSString * const kLiteKitTaskSerialQueueName = @"__kLiteKitTaskSerialQueu
     }
 }
 
-/// 任务出队
-/// @param task 待出队的任务
+/// task queue
+/// @param task task finished
 - (void)litekit_taskFinished:(LiteKitTask *)task {
     [self.logger debugLogMsg:@"dequeue the finish task start"];
     if (task && [task isKindOfClass:[LiteKitTask class]]) {
         [self.taskStack removeObject:task];
     }
-    [self.logger debugLogMsg:[NSString stringWithFormat:@"dequeue the finish task end, 队列剩余任务数目 == %lu", (unsigned long)self.taskStack.count]];
+    [self.logger debugLogMsg:[NSString stringWithFormat:@"dequeue the finish task end, task in queue == %lu", (unsigned long)self.taskStack.count]];
     self.queueStatus = LiteKitTaskQueueStatusFree;
     
     [self litekit_removeMachineByTask:task];
@@ -312,9 +312,9 @@ static NSString * const kLiteKitTaskSerialQueueName = @"__kLiteKitTaskSerialQueu
 - (void)litekit_internalAddTask:(LiteKitTask *)task atHead:(BOOL)atHead error:(NSError **)aError {
     if (task && [task isKindOfClass:[LiteKitTask class]]) {
         dispatch_async(self.serial_queue, ^{
-            if (atHead) { // 插到队尾
+            if (atHead) { // add to end of queue
                 [self.taskStack insertObject:task atIndex:0];
-            } else { // 插到队首
+            } else { // insert to end of queue
                 [self.taskStack addObject:task];
             }
             

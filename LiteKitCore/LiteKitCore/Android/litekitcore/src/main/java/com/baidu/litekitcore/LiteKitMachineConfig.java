@@ -18,7 +18,7 @@ package com.baidu.litekitcore;
 
 public class LiteKitMachineConfig {
     /**
-     * 模型文件路径
+     * model file path
      */
     public String modelPath;
 
@@ -32,7 +32,7 @@ public class LiteKitMachineConfig {
     }
 
     /**
-     * 预测引擎类型
+     * machine type
      */
     public MachineType machineType;
 

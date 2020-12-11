@@ -28,48 +28,48 @@ typedef void (^LiteKitTaskPerformanceBlock) (LiteKitData * __nullable outputData
                                          NSError * __nullable aError);
 
 typedef NS_ENUM(NSInteger, LiteKitTaskStatus) {
-    LiteKitTaskStatusWaiting = 0,       // 默认状态，正在等待中
-    LiteKitTaskStatusExecuting,         // 执行状态，正在执行中
-    LiteKitTaskStatusCanceled,          // 取消状态，已经被取消
-    LiteKitTaskStatusFinished           // 完成状态，已经执行完成
+    LiteKitTaskStatusWaiting = 0,       // default state，idle
+    LiteKitTaskStatusExecuting,         // excuting state，excuting
+    LiteKitTaskStatusCanceled,          // cancel state，canceled
+    LiteKitTaskStatusFinished           // finish state，execute complete
 };
 
-/// 任务封装实体
+/// task Instance
 @interface LiteKitTask : NSObject
-/// 任务标识
+/// tasd identifier
 @property (nonatomic, copy, readonly) NSString *taskID;
-/// 对应的machine
+/// machine
 @property (nonatomic, strong, readonly) LiteKitBaseMachine *machine;
-/// 结果回调block
+/// callback block
 @property (nonatomic, copy, readonly) LiteKitTaskCompletionBlock taskBlock;
-/// 带performance的结果回调block
+/// callback block with performance
 @property (nonatomic, copy, readonly) LiteKitTaskPerformanceBlock taskPerformanceBlock;
-/// 输入数据
+/// input data
 @property (nonatomic, strong, readonly) LiteKitData *inputData;
-/// 任务的执行状态
+/// task state
 @property (nonatomic, assign, readonly) LiteKitTaskStatus taskStatus;
 
-/// 根据inputData创建任务
+/// create task with inputData
 /// @param machine machine
-/// @param inputData 输入数据
-/// @param block 回调block
+/// @param inputData inputdata
+/// @param block callback block
 - (instancetype)initTaskWithMachine:(LiteKitBaseMachine *)machine inputData:(LiteKitData *)inputData completionBlock:(LiteKitTaskCompletionBlock)block;
 
-/// 根据inputData创建带performance的任务
+///  create performance task with inputData
 /// @param machine machine
-/// @param inputData 输入数据
-/// @param block performance回调block
+/// @param inputData inputData
+/// @param block performance callback block
 - (instancetype)initTaskWithMachine:(LiteKitBaseMachine *)machine inputData:(LiteKitData *)inputData performanceBlock:(LiteKitTaskPerformanceBlock)block;
 
-/// 运行Task
-/// @param block 任务是否完成回调
+/// execute Task
+/// @param block complete block
 - (void)runTaskWithCompletionBlock:(void(^)(NSError * __nullable error))block;
 
-/// 运行带性能数据的Task
-/// @param block 任务是否完成回调
+/// execute Task with performance data
+/// @param block complete block
 - (void)runPerformanceTaskWithCompletionBlock:(void(^)(NSError * __nullable error))block;
 
-/// 设置status的状态为取消状态
+/// set status cancel
 - (void)cancel;
 @end
 

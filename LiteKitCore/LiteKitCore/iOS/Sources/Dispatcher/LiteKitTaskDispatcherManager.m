@@ -54,17 +54,17 @@
 }
 
 #pragma mark - Public
-/// 申请一个TaskQueue
-/// @param businessId 业务ID
+/// apply a TaskQueue
+/// @param businessId task ID
 - (LiteKitTaskQueue *)applyLiteKitTaskQueueWithBusinessId:(NSString *)businessId {
     if (!businessId || ![businessId isKindOfClass:[NSString class]]) {
         return nil;
     }
     LiteKitTaskQueue *taskQueue = [self litekit_queueForKey:businessId];
-    if (taskQueue) { // 基于该业务ID已经存在相应的绑定
+    if (taskQueue) { // task id existing a Queue
         return taskQueue;
     } else {
-        // 创建一个queue
+        // create a queue
         taskQueue = [[LiteKitTaskQueue alloc] init];
         [self litekit_addQueue:taskQueue forKey:businessId];
         return taskQueue;

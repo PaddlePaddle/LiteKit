@@ -23,7 +23,7 @@
 using namespace cv;
 
 /**
- * 颜色空间转换枚举定义
+ * color space enum
 */
 typedef NS_ENUM(int, TLiteKitMatColorSpace) {
     TLiteKitMatColorSpace_RGB2YCrCb = CV_RGB2YCrCb, //RGB -> YCrCb
@@ -33,10 +33,10 @@ typedef NS_ENUM(int, TLiteKitMatColorSpace) {
 @implementation LiteKitDataProcess
 
 /**
-  下采样
+  downsampling
  
-  @param src 待采样mat
-  @param samplingRate 采样比例
+  @param src input mat
+  @param samplingRate sampling rate
  */
 + (Mat)litekit_subSamplingCVMat:(Mat)src rate:(double)samplingRate {
     Mat pixel;
@@ -49,10 +49,10 @@ typedef NS_ENUM(int, TLiteKitMatColorSpace) {
 }
 
 /**
-  上采样
+  upsampling
  
-  @param src 待采样mat
-  @param samplingRate 采样比例
+  @param src input mat
+  @param samplingRate upsampling rate
  */
 + (Mat)litekit_upSamplingCVMat:(Mat)src rate:(double)samplingRate {
     Mat pixel;
@@ -104,7 +104,7 @@ typedef NS_ENUM(int, TLiteKitMatColorSpace) {
     return finalImage;
 }
 
-#pragma mark -> warning 此方法copy自opencv的UIImageToMat, 解决opencv的方法丢掉了Alpha通道的问题, opencv修改后可使用opencv提供的方法
+#pragma mark -> warning this function copy from opencv/UIImageToMat, to resolve opencv method throw Alpha channel, use opencv function after opencv fixed
 + (cv::Mat)litekit_CVMatFromUIImage:(UIImage *)image {
     cv::Mat m;
     CGColorSpaceRef colorSpace = CGImageGetColorSpace(image.CGImage);
@@ -227,10 +227,10 @@ typedef NS_ENUM(int, TLiteKitMatColorSpace) {
 }
 
 /**
- Mat -> Point *转换
+ Mat -> Point * convert
 
- @param src Mat数据
- @param dst Point *数据,待填充
+ @param src Mat data
+ @param dst Point * data,to be write
 */
 template<typename T> void litekit_convertCVMatToData(Mat src, T * _Nullable dst) {
     BOOL continuous = NO;
@@ -256,10 +256,10 @@ template<typename T> void litekit_convertCVMatToData(Mat src, T * _Nullable dst)
 }
 
 /**
- Point * -> Mat转换
+ Point * -> Mat convert
  
- @param src Point *数据
- @param dst Mat数据，待填充
+ @param src Point *data
+ @param dst Mat data，to be write
 */
 template<typename T> void litekit_convertDataToCVMat(T * _Nullable src,  Mat dst) {
     BOOL continuous = NO;
@@ -282,7 +282,7 @@ template<typename T> void litekit_convertDataToCVMat(T * _Nullable src,  Mat dst
 }
 
 /**
-  提取mat数据
+  get data from mat
  
   @param inputMat inputMat
  */

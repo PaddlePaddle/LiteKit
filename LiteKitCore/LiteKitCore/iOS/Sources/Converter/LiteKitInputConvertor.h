@@ -28,10 +28,10 @@ NS_ASSUME_NONNULL_BEGIN
 @interface LiteKitInputConvertor : NSObject
 
 /**
-  LiteKitData转换PaddleInput
+  LiteKitData convert to PaddleInput
  
-  @param inputData 输入数据
-  @return LiteKitInputMatrix返回的paddle input matrix
+  @param inputData  input data
+  @return LiteKitInputMatrix return paddle input matrix
  */
 + (LiteKitInputMatrix *)convertLiteKitInputToPaddleInput:(LiteKitData *)inputData;
 

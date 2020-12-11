@@ -54,7 +54,7 @@ Java_com_baidu_litekitcore_LiteKitPaddleLiteMachine_createLiteKitMachineService(
 
   LiteKitConfig litekitConfig = LiteKitConfig();
   litekitConfig.machine_config.paddle_lite_config = liteConfig;
-  // 目前暂只支持paddlelite
+  // support paddlelite only
   litekitConfig.machine_type = static_cast<LiteKitConfig::MachineType>(back_end_type);
 
   int result = service->load(litekitConfig);

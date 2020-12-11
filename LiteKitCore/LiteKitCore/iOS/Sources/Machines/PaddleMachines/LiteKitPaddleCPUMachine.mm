@@ -80,10 +80,10 @@
 
 
 /*
- * @brief Action = 预测API
- * @param - input input容器
- * @param - error 错误容器 （ErrorDomain:LiteKitMachinPredicateErrorDomain ErrorCode:PPredicateErrorCode）
- * @return LiteKitPredicateOutputs* 预测结果容器
+ * @brief Action = predict API
+ * @param - input input container
+ * @param - error error message （ErrorDomain:LiteKitMachinPredicateErrorDomain ErrorCode:PPredicateErrorCode）
+ * @return LiteKitPredicateOutputs* predict result
  */
 - (void)predictWithInputData:(LiteKitData * __nonnull)aInputData completionBlock:(LiteKitMachinePredictCompletionBlock)aBlock {
     if (aInputData.type != TLiteKitDataTypeLiteKitShapedData) {

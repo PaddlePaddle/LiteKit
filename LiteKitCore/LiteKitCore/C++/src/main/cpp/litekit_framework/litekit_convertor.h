@@ -21,16 +21,16 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
 using namespace litekit_framework;
 
 /**
- * 返回LiteKitDataType的Size
+ * return LiteKitDataType Size
  * @param litekitDataType
  * @return
  */
 int sizeOfRawDataType(LiteKitData::RawDataType litekitDataType);
 
 /**
- * 根据DataType创建对应的Data数组
+ * according to DataType create Data array
  * @param litekitDataType
- * @param len 单位为sizeOfRawDataType()，而不是byte
+ * @param len unit is size Of RawDataType()，not byte
  * @return
  */
 void* createRawData(LiteKitData::RawDataType litekitDataType, int len);

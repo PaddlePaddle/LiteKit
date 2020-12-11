@@ -151,17 +151,17 @@
         }
         
         if (net && !error) {
-            // 是否开启MPS
+            // MPS switch
             net.useMPS = config.useMPS;
-            // 是否开启最高等级的加速策略
+            // Aggressive Optimization switch
             net.useAggressiveOptimization = config.useAggressiveOptimization;
-            // 模型精度
+            // model precision
             if (config.modelPrecision == PrecisionTypeFloat16) {
                 net.paramPrecision = PrecisionFloat16;
             } else {
                 net.paramPrecision = PrecisionFloat32;
             }
-            // 运算精度
+            // calculate precision
             GlobalConfig *globalConfig = [GlobalConfig shared];
             if (config.computePrecision == PrecisionTypeFloat16) {
                 globalConfig.computePrecision = PrecisionFloat16;
@@ -169,17 +169,17 @@
                 globalConfig.computePrecision = PrecisionFloat32;
             }
             
-            // 是否开启日志
+            // log switch
             globalConfig.debug = config.enableDebug;
-            /// 于PaddleGPU而言:
-            /// LoadMetalInCustomMetalLib 才是外界设置的自定义的路径，
-            /// LoadMetalInPaddle   为各个Net封装的
-            /// 当 metalLoadType 为 LoadMetalInCustomMetalLib 时， metal library 路径不能为空
+            /// for PaddleGPU:
+            /// LoadMetalInCustomMetalLib is external custom path,
+            /// LoadMetalInPaddle   is encapsulation for Net
+            /// when metalLoadType is LoadMetalInCustomMetalLib , metal library should not be empty
             net.metalLoadMode = config.metalLoadType;
             if (config.metalLoadType == LoadMetalInCustomMetalLib) {
                 net.metalLibPath = config.metalLibPath;
             }
-            // 设置dims
+            // set dims
             if (config.dims && [config.dims count] > 0 && [config.dims isKindOfClass:[NSArray class]]) {
                 net.inputDim = [[Dim alloc] initInDim:config.dims];
             }
@@ -188,7 +188,7 @@
                 BBALogInfo(@"end ---- net.paramSize == %ld, net.modelSize == %ld ,net.modelPrecision == %ld,globalConfig.computePrecision == %ld,metalLoadType == %lu, net.useMPS == %d", (long)net.paramSize, (long)net.modelSize, (long)net.paramPrecision, (long)globalConfig.computePrecision, (unsigned long)config.metalLoadType, net.useMPS);
             }
 #endif
-            // PaddleGPU对超分定制的优化
+            // PaddleGPU optimization for super resolutions
             if (netType == SuperResolutionNetType) {
                 net = [self openAggressiveOptimizationWithNet:net];
             }
@@ -211,7 +211,7 @@
 #if TARGET_IPHONE_SIMULATOR
 #else
 #if __has_include(<paddle_mobile/paddle_mobile-Swift.h>)
-// 开启Aggressive优化
+// open Aggressive optimization
 - (Net *)openAggressiveOptimizationWithNet:(Net *)net {
     net.useAggressiveOptimization = YES;
     return net;
@@ -234,13 +234,13 @@
     }
 #endif
 #endif
-  
+    return NO;
 }
 
 /**
- 待error信息的load
+ load with error message
 
- @param error error信息
+ @param error error message
  */
 - (void)loadWithError:(NSError *__autoreleasing  _Nullable * _Nullable)error {
 #if TARGET_IPHONE_SIMULATOR
@@ -268,13 +268,14 @@
     }
 #endif
 #endif
+    return NO;
 }
 
 /**
- 带error信息的updateInputDims
+ updateInputDims with error message
 
- @param dims 待更新的dims
- @param error error信息
+ @param dims dims to update
+ @param error error message
  */
 -(void)updateInputDimInDim:(NSArray <NSNumber *>*)dims error:(NSError *__autoreleasing  _Nullable * _Nullable)error {
 #if TARGET_IPHONE_SIMULATOR
@@ -365,10 +366,10 @@
 
 
 /**
- 带error信息的预测，output为原始数据
+ predict with error message，output is origin data
 
  @param texture texture
- @param completion 回调
+ @param completion callback
  */
 -(void)predict:(id<MTLTexture>)texture withErrorCompletion:(void (^)(NSError * _Nullable, NSArray<NSArray <NSNumber *>*> *))completion {
 #if TARGET_IPHONE_SIMULATOR
@@ -422,10 +423,10 @@
 }
 
 /**
- 带error信息的预测，output封装成PaddleGPUResult
+ predict with error message，output encapsulated as PaddleGPUResult
  
- @param texture 需要进行预测的图像转换的 texture
- @param completion 预测完成回调
+ @param texture  texture from image to be predicted
+ @param completion predict complete callback
  */
 -(void)predict:(id<MTLTexture>)texture withErrorResultCompletion:(void (^)(NSError * _Nullable, NSArray <PaddleGPUResult *> *))completion {
 #if TARGET_IPHONE_SIMULATOR

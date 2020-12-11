@@ -18,27 +18,27 @@
 #ifndef LiteKitLoggerProtocol_h
 #define LiteKitLoggerProtocol_h
 
-/// Logger 接口
+/// Logger interface
 @protocol LiteKitLoggerProtocol <NSObject>
 @required
-/// 设置log的Tag
-/// @param tag tag标识
+/// set log Tag
+/// @param tag tag id
 - (void)setLogTag:(NSString *)tag;
 
-/// debug级别的log信息
-/// @param content 内容
+/// debug level log message
+/// @param content content
 - (void)debugLogMsg:(NSString *)content;
 
-/// 错误级别的log信息
-/// @param content 内容
+/// error log message
+/// @param content content
 - (void)errorLogMsg:(NSString *)content;
 
-/// 警告级别的log信息
-/// @param content 内容
+/// warning level log message
+/// @param content content
 - (void)warningLogMsg:(NSString *)content;
 
-/// 性能级别的log信息
-/// @param content 内容
+/// performance level log message
+/// @param content content
 - (void)performanceInfoLogMsg:(NSString *)content;
 @end
 

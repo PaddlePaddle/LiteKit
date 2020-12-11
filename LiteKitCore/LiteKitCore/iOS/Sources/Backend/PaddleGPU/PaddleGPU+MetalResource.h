@@ -19,27 +19,27 @@
 #import "PaddleGPU.h"
 
 NS_ASSUME_NONNULL_BEGIN
-// 解析metal Error Domain
+// resolving metal Error Domain
 FOUNDATION_EXPORT NSString * _Nonnull const PaddleGPUParseMetalErrorDomain;
 
-// PaddleGPU的MetalLib路径解析相关状态码
+// PaddleGPU MetalLib path state code
 typedef NS_ENUM(NSInteger, PaddleGPUMetalLibCode) {
-    PaddleGPUMetalLibCodeNotExistZipPlist   = 0,// 无外层zip plist
-    PaddleGPUMetalLibCodeZipPlistError      = 1,// 外层zip plist 错误
-    PaddleGPUMetalLibCodeNotExistZip        = 2,// 外层zip 不存在
-    PaddleGPUMetalLibCodeBundlePlistError   = 3,// 内层bundle plist 错误
-    PaddleGPUMetalLibCodeRemoveBundleError  = 4,// 删除内层bundle 失败
-    PaddleGPUMetalLibCodeUnzipError         = 5,// 解压zip 失败
-    PaddleGPUMetalLibCodeNotExistBundle     = 6 // 不存在内层bundle
+    PaddleGPUMetalLibCodeNotExistZipPlist   = 0,// no outer zip plist
+    PaddleGPUMetalLibCodeZipPlistError      = 1,// outer zip plist error
+    PaddleGPUMetalLibCodeNotExistZip        = 2,// outer zip not exist
+    PaddleGPUMetalLibCodeBundlePlistError   = 3,// inner bundle plist error
+    PaddleGPUMetalLibCodeRemoveBundleError  = 4,// delete inner bundle fail
+    PaddleGPUMetalLibCodeUnzipError         = 5,// unzip fail
+    PaddleGPUMetalLibCodeNotExistBundle     = 6 // inner bundle not exist
 };
 
-/// 获取PaddleGPU 自定义的MetalLib
+/// get MetalLib in PaddleGPU
 @interface PaddleGPU (MetalResource)
 
 /**
- 获取Paddle自定义的MetalLib路径
- @param error 错误信息，具体的错误code是TPaddleGPUMetalLibCode中的枚举值
- @return paddle自定义的MetalLib路径
+ get custom MetalLib path from Paddle
+ @param error message，error code is from enum TPaddleGPUMetalLibCode
+ @return custom MetalLib Path
 */
 + (NSString *)pm_customMetalLibResourceWithError:(NSError **)error;
 

@@ -18,7 +18,7 @@ package com.baidu.litekitcore;
 
 public class LiteKitTensor {
     /**
-     * 保存native层的tensor的指针
+     * save native pointer to tensor
      */
     private long nativeTensorHandler = 0L;
 

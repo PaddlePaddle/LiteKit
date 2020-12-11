@@ -23,17 +23,17 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- * LiteKitConvertTool LiteKitdata <--> Machine input\Machine output转换工具
+ * LiteKitConvertTool LiteKitdata <--> Machine input\Machine output convert tool
 */
 @interface LiteKitConvertTool : NSObject
 
 #pragma mark input
 
 /**
- LiteKitData -> LiteKitInputMatrix转换
+ LiteKitData -> LiteKitInputMatrix convert
 
- @param inputData 输入的LiteKitData
- @return 转换后的LiteKitInputMatrix
+ @param inputData input LiteKitData
+ @return output LiteKitInputMatrix
 */
 + (LiteKitInputMatrix *)convertLiteKitInputToPaddleInput:(LiteKitData *)inputData;
 

@@ -22,10 +22,10 @@
 NS_ASSUME_NONNULL_BEGIN
 
 typedef enum : NSUInteger {
-    SuperResolutionNetType, // 超分 Net
+    SuperResolutionNetType, // SuperResolution Net
     MobileNetCombileType,   // mobile Net
     YoloNetType,            // Yolo  Net
-    CustomNetType,          // 自定义 Net，由 ModelConfig 指定 Net 参数
+    CustomNetType,          // custom Net, Net Params from ModelConfig
 } NetType;
 
 typedef enum : NSUInteger {
@@ -34,9 +34,9 @@ typedef enum : NSUInteger {
 } PrecisionType;
 
 typedef enum : NSUInteger {
-    LoadMetalInPaddleGPU   = 1,           // 使用 paddleGPU 中的 metal 代码
-    LoadMetalInDefaultLib     = 2,     // 使用 main bundle 中的 metal 代码
-    LoadMetalInCustomMetalLib = 3      // 使用 metal 库文件
+    LoadMetalInPaddleGPU   = 1,        // use metal in paddleGPU
+    LoadMetalInDefaultLib     = 2,     // use metal in main bundle
+    LoadMetalInCustomMetalLib = 3      // use metal framework
 } MetalLoadType;
 
 @interface PaddleGPUResult: NSObject
@@ -55,64 +55,64 @@ typedef enum : NSUInteger {
 
 
 /*
- * 输入维度信息  [n c h w]
+ * dims info  [n c h w]
  */
 @property (strong, nonatomic) NSArray<NSNumber *> *dims;
 
 
 /*
- * 模型参数内存地址
+ * pointer to params
  */
 @property (assign, nonatomic) void *paramPointer;
 
 /*
- * 模型参数占用内存大小 (kb)
+ * params sizes (kb)
  */
 @property (assign, nonatomic) int paramSize;
 
 /*
- * 模型内存地址
+ * pointer to model
  */
 @property (assign, nonatomic) void *modelPointer;
 
 /*
- * 模型占用内存大小 (kb)
+ * model size (kb)
  */
 @property (assign, nonatomic) int modelSize;
 
 /**
- 是否使用 MetalPerformanceShaders 进行运算, 运算精度为 32 位时不支持开启该选项, 默认值是 false
+ whether use MetalPerformanceShaders to calculate, when precision is 32 should not enable this option, default is false
  */
 @property (assign, nonatomic) BOOL useMPS;
 
 /**
- 是否使用最高等级的加速策略, 可能会导致计算精度略微下降, 默认值是 false
+ Aggressive Optimization Strategy, may harm to precision, default is false
  */
 @property (assign, nonatomic) BOOL useAggressiveOptimization;
 
 /**
- 模型精度
+ model precision
  */
 @property (assign, nonatomic) PrecisionType modelPrecision;
 
 /**
- metallib的加载方式, 当 metalLoadType 为LoadMetalInCustomMetalLib 时， metal library 路径不能为空
+ metallib load type, when metalLoadType is LoadMetalInCustomMetalLib ， metal library should not be empty
  */
 @property (assign, nonatomic) MetalLoadType metalLoadType;
 
 /**
- metal lib路径
+ metal lib path
  */
 @property (copy, nonatomic) NSString *metalLibPath;
 
 
 /**
- 运算精度， runner 生命周期中不可变
+ calculate precision， Immutable in a runner lifecycle
  */
 @property (assign, nonatomic) PrecisionType computePrecision;
 
 /**
- 是否打开调试信息
+ debug switch
  */
 @property (assign, nonatomic) BOOL enableDebug;
 
@@ -121,121 +121,121 @@ typedef enum : NSUInteger {
 
 @interface PaddleGPU: NSObject
 
-/*
- * 初始化
+/**
+ init
  */
 -(instancetype)initWithCommandQueue:(id<MTLCommandQueue>)queue net:(NetType)netType modelConfig:(PaddleGPUConfig *)config;
 
 
 /**
- 对runner加载
+ load runner
 
- @return 加载结果
+ @return load result
  */
 -(BOOL)load;
 
 
 /**
- 对runner加载
+ load runner
  
- @param error 错误信息
+ @param error error message
  */
 - (void)loadWithError:(NSError *__autoreleasing  _Nullable * _Nullable)error;
 
 
 
 /**
- 更新dim
+ update dim
  
- @param dims 待更新的dims信息
+ @param dims dims to updatet
  */
 - (BOOL)updateInputDim:(NSArray <NSNumber *>*)dims ;
 
 
 /**
- 更新dim
+ update dim
  
- @param dims 待更新的dims信息
- @param error 错误信息
+ @param dims dims to updatet
+ @param error error message
  */
 - (void)updateInputDimInDim:(NSArray <NSNumber *>*)dims error:(NSError *__autoreleasing  _Nullable * _Nullable)error;
 
 
 /**
- 根据imageRef获取texture
+ get texture from imageRef
  
  @param image imageref
- @param block texture回调
+ @param block texture callback
  */
 - (void)getTextureWithImage:(CGImageRef)image getTexture:(void (^) (id<MTLTexture>))block;
 
 /**
- 根据MTLBuffer获取texture，通道数为1
+ get texture from MTLBuffer，channel=1
  
  @param buffer MTLBuffer
- @param block texture回调
+ @param block texture callback
  */
 - (void)getTextureWithBuffer:(id<MTLBuffer>)buffer getTexture:(void (^) (id<MTLTexture>))block;
 
 /**
- 根据MTLBuffer获取texture
+ get texture from MTLBuffer
  
  @param buffer MTLBuffer
- @param block texture回调
- @param channelNum 通道数
+ @param block texture callback
+ @param channelNum channel number
  */
 - (void)getTextureWithBuffer:(id<MTLBuffer>)buffer getTexture:(void (^) (id<MTLTexture>))block channelNum:(NSInteger)channelNum;
 
-/*
- * texture:     需要进行预测的图像转换的 texture
- * completion:  预测完成回调
+/**
+ predict with complete callback
+ 
+ @param texture texture from image need to be predict
+ @param completion  predict complete callback
  */
 -(void)predict:(id<MTLTexture>)texture withCompletion:(void (^)(BOOL, NSArray<NSArray <NSNumber *>*> *))completion;
 
 /**
- 带error信息的预测，output为原始数据
+ predict with error message，output is origin data
  
- @param texture 需要进行预测的图像转换的 texture
- @param completion 预测完成回调
+ @param texture texture from image need to be predict
+ @param completion predict complete callback
  */
 -(void)predict:(id<MTLTexture>)texture withErrorCompletion:(void (^)(NSError * _Nullable, NSArray<NSArray <NSNumber *>*> *))completion;
 
 
-/*
- * texture:     需要进行预测的图像转换的 texture
- * completion:  预测完成回调
+/**
+ predict with completion callback, output format as PaddleGPUResult
+ * @param texture texture from image need to be predict
+ * @param completion predict complete callback
  */
 -(void)predict:(id<MTLTexture>)texture withResultCompletion:(void (^)(BOOL, NSArray <PaddleGPUResult *> *))completion;
 
 /**
- 带error信息的预测，output封装成PaddleGPUResult
- 
- @param texture 需要进行预测的图像转换的 texture
- @param completion 预测完成回调
+ predict with completion callback, output format as PaddleGPUResult
+ * @param texture texture from image need to be predict
+ * @param completion predict complete callback
  */
 -(void)predict:(id<MTLTexture>)texture withErrorResultCompletion:(void (^)(NSError * _Nullable, NSArray <PaddleGPUResult *> *))completion;
 
 /**
-通过buffer进行预测，output封装成PaddleGPUResult
- 
-@param buffer     内存buffer
-@param channelNum  通道数
-@param completion  预测完成回调
-*/
+ predict with buffer, output format as PaddleGPUResult
+ * @param buffer buffer in memory
+ * @param channelNum channel number
+ * @param completion predict complete callback
+ */
 - (void)predictWithBuffer:(id<MTLBuffer>)buffer channelNum:(NSInteger)channelNum withResultCompletion:(void (^)(BOOL, NSArray <PaddleGPUResult *> *))completion;
 
 /**
-通过buffer进行预测，output封装成PaddleGPUResult
-
-@param buffer 内存buffer
-@param channelNum  通道数
-@param completion 预测完成回调
-*/
+ predict with buffer, output format as PaddleGPUResult
+ * @param buffer buffer in memory
+ * @param channelNum channel number
+ * @param completion predict complete callback
+ */
 - (void)predictWithBuffer:(id<MTLBuffer>)buffer channelNum:(NSInteger)channelNum withErrorResultCompletion:(void (^)(NSError * _Nullable, NSArray <PaddleGPUResult *> *))completion;
 
 
-/*
- * 清理内存
+/**
+ * clean memory
  */
 -(void)clear;
 

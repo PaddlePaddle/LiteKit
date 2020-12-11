@@ -28,7 +28,7 @@
 #include <string>
 #include <iostream>
 
-/// Paddle GPU 的Machine
+/// Paddle GPU Machine
 @interface LiteKitPaddleGPUMachine ()
 @property (nonatomic, strong) id<MTLDevice> device;
 @property (nonatomic, strong) PaddleGPU *paddleGPU;
@@ -39,14 +39,14 @@
 @implementation LiteKitPaddleGPUMachine
 
 /*
- * @brief Action = 初始化模型 模型操作工具Machine
- * @param - modelURL 模型文件URL（模型文件本身）
- * @param - paramPath params文件URL
- * @param - netType 网络类型
- * @param - config 原始ModelConfig
- * @param - error 错误容器 （ErrorDomain:LiteKitPaddleMachineInitErrorDomain ErrorCode:LiteKitMachineErrorCode）
- * @return instancetype
- */
+* @brief Action = init paddle GPU Machine
+* @param - modelURL model file path
+* @param - paramPath params file path
+* @param - netType net type
+* @param - config origin ModelConfig
+* @param - error error message （ErrorDomain:LiteKitPaddleMachineInitErrorDomain ErrorCode:PMachineErrorCode）
+* @return instancetype
+*/
 - (instancetype __nullable)initWithModelPath:(NSString *)modelPath
                                    paramPath:(NSString *)paramPath
                                      netType:(NetType)netType
@@ -127,13 +127,13 @@
 }
 
 /**
- 初始化模型
+ init paddle GPU machine
 
- @param modelConfig modelconfig配置
- @param netType 网络类型
- @param error 错误容器
+ @param modelConfig model config
+ @param netType net type
+ @param error error message
  @return instancetype
- */
+*/
 - (instancetype __nullable)initWithModelConfig:(PaddleGPUConfig *)modelConfig
                                        netType:(NetType)netType
                                      withError:(NSError**)error {
@@ -229,8 +229,9 @@
     [self.paddleGPU clear];
     self.paddleGPU = nil;
 }
+
 /**
- 清除machine,彻底释放内存
+ clear machine memory
  */
 - (void)clearMachine {
     [self.paddleGPU clear];
@@ -240,11 +241,12 @@
 #pragma mark - Public
 
 /**
- 预测接口
- 
- @param input 输入容器
- @param callback 结果容器
- */
+ predict interface
+
+ @param input input data
+ @param dims dims
+ @param callback output call back
+*/
 - (void)predictWithBuffer:(id<MTLBuffer>)input
                      dims:(NSArray *)dims
           completionBlock:(LiteKitPaddleGPUPredicatOutputsCallback)callback {
@@ -299,7 +301,8 @@
                 if (gpuResult && gpuResult.output && gpuResult.outputSize > 0) {
                     [self.logger debugLogMsg:@"paddle gpu -- predict success"];
                     callback(gpuResult, nil);
-                    // task执行完毕后，有线程的异步切换，导致此方法先执行，业务方获得的内存在使用时已经被释放，会有crash发生，所以在LiteKitShapedData内部对data进行copy，生命周期随着shapedData一起，这里就可以直接释放掉
+                    // when task end，if call back execute in async thread，will release before callback complete,and lead a crash
+                    // so LiteKitShapedData will copy data，lifecycle same as shapedData，here can release immediately
                     [gpuResult releaseOutput];
                 } else {
                     // release gpuResult
@@ -311,7 +314,7 @@
              }
         }];
     } else {
-        // error 模型已经释放
+        // error model release
         NSError *aError = nil;
         aError = [NSError errorWithDomain:LiteKitPaddleMachinePredicateErrorDomain code:(LiteKitMachinePredicateErrorCode)LiteKitMachinePredicateDestroyed userInfo:nil];
         callback(nil, aError);
@@ -321,11 +324,11 @@
 
 
 /**
- 预测接口
- 
- @param input 输入容器
- @param callback 结果容器
- */
+ predict interface
+
+ @param input input data
+ @param callback output call back
+*/
 - (void)predictWithTexture:(id<MTLTexture>)input
                       dims:(NSArray *)dims
            completionBlock:(LiteKitPaddleGPUPredicatOutputsCallback)callback {
@@ -377,7 +380,8 @@
                 if (gpuResult && gpuResult.output && gpuResult.outputSize > 0) {
                     [self.logger debugLogMsg:@"paddle gpu -- predict success"];
                     callback(gpuResult, nil);
-                    // task执行完毕后，有线程的异步切换，导致此方法先执行，业务方获得的内存在使用时已经被释放，会有crash发生，所以在LiteKitShapedData内部对data进行copy，生命周期随着shapedData一起，这里就可以直接释放掉
+                    // when task end，if call back execute in async thread，will release before callback complete,and lead a crash
+                    // so LiteKitShapedData will copy data，lifecycle same as shapedData，here can release immediately
                     [gpuResult releaseOutput];
                 } else {
                     // release gpuResult
@@ -389,7 +393,7 @@
             }
         }];
     } else {
-        // error 模型已经释放
+        // error machine already release
         NSError *aError = nil;
         aError = [NSError errorWithDomain:LiteKitPaddleMachinePredicateErrorDomain code:(LiteKitMachinePredicateErrorCode)LiteKitMachinePredicateDestroyed userInfo:nil];
         callback(nil, aError);
@@ -398,11 +402,11 @@
 }
 
 /**
- 预测接口
- 
- @param input 输入容器
- @param callback 结果容器
- */
+predict interface
+
+@param input input data
+@param callback output call back
+*/
 - (void)predictWithInputMatrix:(LiteKitInputMatrix *)input
                completionBlock:(LiteKitPaddleGPUPredicatOutputsCallback)callback {
     if (!input
@@ -417,8 +421,8 @@
     
     if (self.paddleGPU) {
         NSTimeInterval start = [[NSDate date] timeIntervalSince1970];
-        // dims是 n h w c，内存排布输入输出都是nchw，所以input.pixels的排布为nchw
-        // TODO:后续gpu不使用getTexture接口，直接使用predictWithBuffer的接口(PaddleGPU.m得补充此接口)
+        // dims is n h w c，memory\input\output rank are all nchw，so input.pixels rank nchw
+        // TODO:gpu will not support getTexture API，use predictWithBuffer API immediately(PaddleGPU.m should suupport the interface)
         NSArray *dims = [NSArray arrayWithObjects:@(1), [NSNumber numberWithInt:input.height], [NSNumber numberWithInt:input.width], [NSNumber numberWithInt:input.channel], nil];
 
         int w  = input.width;
@@ -470,7 +474,8 @@
                 if (gpuResult && gpuResult.output && gpuResult.outputSize > 0) {
                     [self.logger debugLogMsg:@"paddle gpu -- predict success"];
                     callback(gpuResult, nil);
-                    // task执行完毕后，有线程的异步切换，导致此方法先执行，业务方获得的内存在使用时已经被释放，会有crash发生，所以在LiteKitShapedData内部对data进行copy，生命周期随着shapedData一起，这里就可以直接释放掉
+                    // when task end，if call back execute in async thread，will release before callback complete,and lead a crash
+                    // so LiteKitShapedData will copy data，lifecycle same as shapedData，here can release immediately
                     [gpuResult releaseOutput];
                 } else {
                     // release gpuResult
@@ -484,7 +489,7 @@
         // release buffer
         buffer = nil;
     } else {
-        // error 模型已经释放
+        // error machine already release
         NSError *aError = nil;
         aError = [NSError errorWithDomain:LiteKitPaddleMachinePredicateErrorDomain code:(LiteKitMachinePredicateErrorCode)LiteKitMachinePredicateDestroyed userInfo:nil];
         callback(nil, aError);
@@ -493,7 +498,7 @@
 }
 
 /**
- 释放GPU且清除machine,释放内存
+  release GPU and clear machine,free memory
  */
 - (void)releasePaddleGPU {
     [self.paddleGPU clear];
@@ -501,7 +506,7 @@
 }
 
 /**
- 重新load machine
+ reload machine
  */
 - (void)reloadMachineWithError:(NSError **)error {
     if (self.paddleGPU) {
@@ -517,7 +522,7 @@
 /**
  load paddle gpu
 
- @param aError 加载paddle gpu的结果
+ @param aError paddle gpu load result
  */
 - (void)litekit_loadMachine:(NSError **)aError {
     @try {
@@ -533,11 +538,11 @@
 }
 
 /**
- 添加metallib的config配置
- @param config 初始config
- @param netType net类型
+ metallib config
+ @param config init config
+ @param netType net type
  @param error error
- @return ModelConfig的实例
+ @return ModelConfig instance
  */
 - (PaddleGPUConfig *)litekit_appendConfigWithMetalLibPathIfNeed:(PaddleGPUConfig *)config
                                                 netType:(NetType)netType
@@ -546,7 +551,7 @@
         if (!config || ![config isKindOfClass:[PaddleGPUConfig class]]) {
             break;
         }
-        // 已经设置了自定义的metal路径，则不再加载默认的metal路径
+        // already set customm metal path，will not load default metal path
         if (config.metalLibPath && config.metalLoadType == LoadMetalInCustomMetalLib) {
             break;
         }
@@ -574,9 +579,9 @@
 }
 
 /**
- 加载一个新的GPU Config
+ load a new GPU Config
  
- @return config实例
+ @return config instance
  */
 - (PaddleGPUConfig *__nullable)loadGPUModelConfigWithModelPath:(NSString *)modelPath
                                                  paramPath:(NSString *)modelParamPath
@@ -590,13 +595,13 @@
         if (![fileManager fileExistsAtPath:modelPath] && ![fileManager fileExistsAtPath:modelParamPath]) {
             break;
         }
-        // model 文件地址
+        // model file path path
         std::string model_path_str = std::string([modelPath UTF8String]);
-        // model param 文件地址
+        // model param file path
         std::string model_param_path_str = std::string([modelParamPath UTF8String]);
-        // model内存大小
+        // model size
         size_t model_content_size = 0;
-        // model param内存大小
+        // model param size
         size_t model_param_content_size = 0;
         
         char *model_content = [self getFileContent:model_path_str.c_str() fileSize:&model_content_size];
@@ -606,20 +611,20 @@
         config.paramPointer = model_param_content;
         config.modelSize = model_content_size;
         config.modelPointer = model_content;
-        // model_content的内存不能手动释放，否则会导致paddle gpu load 时期（运行）crash,空间开辟在栈上，无需手动释放，系统自动回收
+        // memory of model_content will not release manual，or will lead a paddle gpu load period（running）crash,space is on heap，no need release manual，system recovery
     } while (0);
     return config;
 }
 
 
 - (long)getFileSize:(FILE *)file_handle {
-    //获取当前读取文件的位置 进行保存
+    //get file read position
     long current_read_position = ftell(file_handle);
     long file_size = 0;
     fseek(file_handle, 0, SEEK_END);
-    //获取文件的大小
+    // get file size
     file_size = ftell(file_handle);
-    //恢复文件原来读取的位置
+    //reset file read position
     fseek(file_handle, current_read_position, SEEK_SET);
     return file_size;
 }
@@ -665,7 +670,7 @@
             
         } else {
             LiteKitData *outputData = [LiteKitOutputConvertor convertPaddleGPUOutputToLiteKitOutput:gpuPredicateOutputs];
-            // 调用方处理output data，需要释放gpuPredicateOutputs
+            // process output data，need to release gpuPredicateOutputs
             completionBlock(outputData, nil);
         }
     }];
@@ -692,7 +697,7 @@
             
         } else {
             LiteKitData *outputData = [LiteKitOutputConvertor convertPaddleGPUOutputToLiteKitOutput:gpuPredicateOutputs];
-            // 调用方处理output data，需要释放gpuPredicateOutputs
+            // process output data，need to gpuPredicateOutputs
             completionBlock(outputData, nil);
         }
     }];
@@ -718,7 +723,7 @@
             
         } else {
             LiteKitData *outputData = [LiteKitOutputConvertor convertPaddleGPUOutputToLiteKitOutput:gpuPredicateOutputs];
-            // 调用方处理output data，需要释放gpuPredicateOutputs
+            // process output data，need to gpuPredicateOutputs
             completionBlock(outputData, nil);
         }
     }];

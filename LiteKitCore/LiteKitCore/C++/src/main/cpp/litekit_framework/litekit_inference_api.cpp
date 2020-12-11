@@ -40,7 +40,7 @@ int litekit_framework::LiteKitMachineService::load(const LiteKitConfig &config) 
     
     if (machineHandle != nullptr) {
         LOGI("LiteKitMachineService was already loaded and not released");
-        // 释放并重新load()
+        // release and reload()
         release();
     }
 

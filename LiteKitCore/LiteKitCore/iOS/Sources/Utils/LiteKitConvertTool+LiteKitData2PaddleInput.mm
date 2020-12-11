@@ -77,7 +77,7 @@ using namespace std;
     
     NSInteger channel = aMLArray.shape[channelAxis].intValue;
     if (channel>3) {
-        //最多只能处理4通道（RGBA）
+        //max is 4 channels（RGBA）
         channel = 4;
     }
     

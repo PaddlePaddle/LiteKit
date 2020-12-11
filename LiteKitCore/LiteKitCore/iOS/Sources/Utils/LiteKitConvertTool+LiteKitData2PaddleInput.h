@@ -28,40 +28,40 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  UIImage -> Paddle Input
 
- @param image 输入的image
- @return 转换后的LiteKitInputMatrix
+ @param image  input image
+ @return output LiteKitInputMatrix
 */
 + (LiteKitInputMatrix *)inputMatrixConvertFromImage:(UIImage *)image;
 
 /**
  UIImageURL -> Paddle Input
 
- @param imageURL 图片地址
- @return 转换后的LiteKitInputMatrix
+ @param imageURL image path
+ @return output LiteKitInputMatrix
 */
 + (LiteKitInputMatrix *)inputMatrixConvertFromImageURL:(NSString *)imageURL;
 
 /**
  pixelBuffer -> Paddle Input
 
- @param pixelBuffer 图片的CVPixelBufferRef格式
- @return 转换后的LiteKitInputMatrix
+ @param pixelBuffer   CVPixelBufferRef of image
+ @return output LiteKitInputMatrix
 */
 + (LiteKitInputMatrix *)inputMatrixConvertFromCVPixelBuffer:(CVPixelBufferRef)pixelBuffer;
 
 /**
  multiArray -> Paddle Input
 
- @param multiArray 图片的MLMultiArray格式
- @return 转换后的LiteKitInputMatrix
+ @param multiArray MLMultiArray of image
+ @return output LiteKitInputMatrix
 */
 + (LiteKitInputMatrix *)inputMatrixConvertFromMultiArray:(MLMultiArray *)multiArray;
 
 /**
  LiteKitShapedData -> Paddle Input
 
- @param shapedData 图片的LiteKitShapedData格式
- @return 转换后的LiteKitInputMatrix
+ @param shapedData LiteKitShapedData of image
+ @return output LiteKitInputMatrix
 */
 + (LiteKitInputMatrix *)inputMatrixConvertFromLiteKitShapedData:(LiteKitShapedData *)shapedData;
 

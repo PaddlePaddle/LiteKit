@@ -29,9 +29,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface LiteKitPaddleCPUMachine : LiteKitBaseMachine
 
 /*
- * @brief Action = 初始化模型 模型操作工具Machine
- * @param - modelDir 模型文件路径
- * @param - error 错误容器 （ErrorDomain:LiteKitPaddleMachineInitErrorDomain ErrorCode:PMachineErrorCode）
+ * @brief Action = init Machine
+ * @param - modelDir model dir
+ * @param - error error message （ErrorDomain:LiteKitPaddleMachineInitErrorDomain ErrorCode:PMachineErrorCode）
  * @return instancetype
  */
 - (instancetype)initWithModelDir:(NSString *)modelDir

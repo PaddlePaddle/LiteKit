@@ -19,14 +19,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-/// 性能数据
+/// performance data
 @interface LiteKitBaseMachine (Performancer)
 
-/// 纯inferenceEngine的加载时间
+/// pure inferenceEngine load time
 @property (nonatomic, copy) NSString *loadTime;
-/// 纯inferenceEngine的预测时间
+/// pure inferenceEngine predict time
 @property (nonatomic, copy) NSString *predictTime;
-/// 读取paddle的metal资源时间
+/// read metal of paddle time
 @property (nonatomic, copy) NSString *readMetalResourceTime;
 
 @end

@@ -21,7 +21,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
 #include <stdio.h>
 #include <string.h>
 
-// 打Release包请关闭DEBUG
+// archieve Release pleast ndefine DEBUG
 #ifndef LITEKIT_OPEN_LOG
     #define LOGI(format, ...)
     #define LOGW(format, ...)

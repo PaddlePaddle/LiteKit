@@ -15,7 +15,7 @@
 */
 
 
-/// LiteKit 的通用头文件
+/// LiteKit common header
 #ifndef LiteKitCommonDefines_h
 #define LiteKitCommonDefines_h
 #import <Foundation/Foundation.h>

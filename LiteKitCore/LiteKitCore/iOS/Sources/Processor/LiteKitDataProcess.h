@@ -28,24 +28,24 @@ using namespace cv;
 @class LiteKitData;
 
 /**
- * LiteKit 图片数据结构
+ * LiteKit image data struct
  */
 typedef struct {
-    std::vector<cv::Mat> channels;//拆分后的色彩通道
+    std::vector<cv::Mat> channels;//color channel after split
     Mat alpha;//Alpha
 } LiteKitImageData;
 
 /**
- * LiteKitnormalization中，返回数据类型定义
+ * LiteKitnormalization中，return data type enum
 */
 typedef NS_ENUM(NSUInteger, TLiteKitMatDataType) {
-    TLiteKitMatDataType_32FC1,//返回mat为32f c1 格式
-    TLiteKitMatDataType_8UC1,//返回mat为8u c1 格式
+    TLiteKitMatDataType_32FC1,//return mat as 32f c1 format
+    TLiteKitMatDataType_8UC1,//return mat as 8u c1 format
 };
 
-#pragma mark 填充Mat类型&struct
+#pragma mark fill Mat &struct
 /**
- * LiteKit margin数据结构，用于裁剪
+ * LiteKit margin data struct，used in border
 */
 typedef struct {
     int top;
@@ -55,7 +55,7 @@ typedef struct {
 } LiteKitMargin;
 
 /**
- * LiteKitborder填充类型
+ * LiteKitborder fill type
 */
 typedef NS_ENUM(int,  TLiteKitBorderTypes) {
     TLiteKitBorderConstant    = BORDER_CONSTANT, //!< `iiiiii|abcdefgh|iiiiiii`  with some specified `i`
@@ -70,52 +70,52 @@ typedef NS_ENUM(int,  TLiteKitBorderTypes) {
 
 #pragma mark class define
 /**
- * LiteKit数据处理工具方法
+ * LiteKit data process tool
 */
 @interface LiteKitDataProcess : NSObject
 
 /**
-  上采样
+  up sampling
  
-  @param src 待采样mat
-  @param samplingRate 采样比例
-  @return sampling后的Mat数据，如果samplingRate是0，则为非法，会返回empty的mat
+  @param src input mat
+  @param samplingRate sampling rate
+  @return Mat after sampling，if samplingRate=0，invalid，will return empty mat
  */
 + (Mat)litekit_subSamplingCVMat:(Mat)src rate:(double)samplingRate;
 /**
- 下采样
+ down sampling
 
- @param src 待采样mat
- @param samplingRate 采样比例
- @return sampling后的Mat数据
+ @param src inputmat
+ @param samplingRate sampling rate
+ @return Mat after sampling
 */
 + (Mat)litekit_upSamplingCVMat:(Mat)src rate:(double)samplingRate;
 
 /**
- UIimage -> Mat互转方法
+ UIimage -> Mat convert
 
- @param src 入参数图片数据
- @return 转换后的UIimage数据
+ @param src input image data
+ @return converted UIimage data
 */
 + (UIImage *)litekit_UIImageFromCVMat:(Mat)src;
 
 /**
- Mat -> UIimage转换
+ Mat -> UIimage convert
 
- @param src 入参数图片数据
- @return 转换后的Mat数据
+ @param src input image data
+ @return converted Mat data
 */
 + (Mat)litekit_CVMatFromUIImage:(UIImage *)src;
 
 
 /**
- normalization方法
+ normalization
 
- @param src 入参数图片数据
- @param outputType 返回Mat数据类型
- @param alpha 转换系数，return = src * alpha + beta
- @param beta 转换偏移，return = src * alpha + beta
- @return Mat 返回转换后的数据。如果outputType是无法支持的类型，会返回empty的mat
+ @param src input image data
+ @param outputType retturn Mat data type
+ @param alpha coefficient，return = src * alpha + beta
+ @param beta shifting，return = src * alpha + beta
+ @return Mat converted data。if outputType not support，will return empty mat
 */
 + (Mat)litekit_CVMatNormalization:(Mat)src
                    outputType:(TLiteKitMatDataType)outputType
@@ -123,94 +123,94 @@ typedef NS_ENUM(int,  TLiteKitBorderTypes) {
                          beta:(double)beta;
 
 /**
- Mat Resize方法
+ Mat Resize
 
- @param src 入参数图片数据
- @param size output的size
- @return Mat scale后的size
+ @param src  input image data
+ @param size output size
+ @return Mat scaled size
 */
 + (Mat)litekit_scaleCVMat:(Mat)src toSize:(Size2i)size;
 
 /**
- RGB的LiteKit图片数据结构转Mat
+ RGB LiteKit image data struct convert to Mat
 
- @param ycrcbData YCrCb数据
- @return Mat 转换后的Mat，如果ycrcbData通道数不是1、3、4则无法支持，会返回empty的mat
+ @param ycrcbData YCrCb data
+ @return Mat converted mat，if ycrcbData channels != 1、3、4 will not support，will return empty mat
 */
 + (Mat)litekit_imageRGBCVMatFromYCrCb:(LiteKitImageData)ycrcbData;
 
 /**
- RGB的LiteKit图片数据结构转Mat
+ RGB LiteKit image data struct convert to Mat
 
- @param yuvData YUV数据
- @return Mat 转换后的Mat，如果ycrcbData通道数不是1、3、4则无法支持，会返回empty的mat
+ @param yuvData YUV data
+ @return Mat converted mat，if ycrcbData channels != 1、3、4 will not suppoort，will return empty mat
 */
 + (Mat)litekit_imageRGBCVMatFromYUV:(LiteKitImageData)yuvData;
 
 /**
- Mat转LiteKit图片数据
+ Mat to LiteKit image data
 
- @param imageMat YCrCb数据
- @return LiteKitImageData RGB的LiteKit图片数据结构，如果imageMat通道数不是1、3、4则无法支持，会返回empty的mat
+ @param imageMat YCrCb data
+ @return LiteKitImageData RGB LiteKit image data struct，if imageMat channels != 1、3、4will not support，will return empty mat
 */
 + (LiteKitImageData)litekit_YCrCbFromImageRGBCVMat:(Mat)imageMat;
 
 /**
- Mat转LiteKit图片数据
+ Mat转LiteKit image data struct
 
- @param imageMat YUV数据
- @return LiteKitImageData RGB的LiteKit图片数据结构，如果imageMat通道数不是1、3、4则无法支持，会返回empty的mat
+ @param imageMat YUV data
+ @return LiteKitImageData RGB LiteKit image data struct，if imageMat channels != 1、3、4will not support，will return empty mat
 */
 + (LiteKitImageData)litekit_YUVFromImageRGBCVMat:(Mat)imageMat;
 
 /**
- Mat -> float *转换
+ Mat -> float * converter
 
- @param inputMat Mat数据
- @param image_data float*数据,待填充
+ @param inputMat Mat data
+ @param image_data float* data, to be writed
 */
 + (void)litekit_convertCVMatData:(Mat)inputMat toFloatData:(float *)image_data;///Mat    >> float*
 
 /**
- float * -> Mat转换
+ float * -> Mat converter
 
- @param image_data float*数据
- @param inputMat Mat数据，待填充
+ @param image_data float* data
+ @param inputMat Mat data，to be writed
 */
 + (void)litekit_convertFloatData:(float *)image_data toCVMatData:(Mat)inputMat;///float* >> Mat
 
 /**
- Mat -> uint8_t *转换
+ Mat -> uint8_t * converter
 
- @param inputMat Mat数据
- @param image_data uint8_t*数据,待填充
+ @param inputMat Mat data
+ @param image_data uint8_t* data,to be writed
 */
 + (void)litekit_convertCVMatData:(Mat)inputMat toUint8Data:(uint8_t *)image_data;
 
 /**
- uint8_t * -> Mat转换
+ uint8_t * -> Mat converter
  
- @param image_data uint8_t*数据
- @param inputMat Mat数据，待填充
+ @param image_data uint8_t* data
+ @param inputMat Mat data，to be writed
 */
 + (void)litekit_convertUint8Data:(uint8_t *)image_data toCVMatData:(Mat)inputMat;
 
 /**
- 剪裁Mat
+ shear Mat
 
- @param inputMat Mat数据
- @param rect 剪裁的区域
- @return Mat 剪裁后的Mat
+ @param inputMat Mat data
+ @param rect shear rect
+ @return Mat sheared Mat
 */
 + (Mat)litekit_shearCVMat:(Mat)inputMat rect:(Rect2i)rect;
 
 /**
- 填充Mat
+ border Mat
 
- @param inputMat Mat数据
- @param margin 填充的margin
- @param borderTypre 填充的方法
- @return Mat 剪裁后的Mat
+ @param inputMat Mat data
+ @param margin border margin
+ @param borderTypre border type
+ @return Mat border Mat
 */
 + (Mat)litekit_borderCVMat:(Mat)inputMat margin:(LiteKitMargin)margin type:( TLiteKitBorderTypes)borderTypre;
 

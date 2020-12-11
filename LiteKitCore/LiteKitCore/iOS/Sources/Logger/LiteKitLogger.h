@@ -21,10 +21,10 @@
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(NSUInteger, LiteKitlogLevelType) {
-    LiteKitlogLevelTypeForError = 0,        // 错误级别，一般用于报错时期
-    LiteKitlogLevelTypeForPerformanceInfo,  // 性能信息级别，用于加载、预测速度打印等
-    LiteKitlogLevelTypeForWarning,          // 警告级别，一般用于dealloc时期
-    LiteKitlogLevelTypeForDebug             // 调试信息级别，用于多数场景，流程转换时期等
+    LiteKitlogLevelTypeForError = 0,        // error level，use when error occur
+    LiteKitlogLevelTypeForPerformanceInfo,  // performance level，for output load、predict speed
+    LiteKitlogLevelTypeForWarning,          // warning level，using in dealloc period
+    LiteKitlogLevelTypeForDebug             // debug level，common debug log
 };
 
 
@@ -43,16 +43,16 @@ do { LiteKitlogMessageFunc(LiteKitlogLevelTypeForWarning, __FILE__, __LINE__, __
 #define LogInfo(level, frmt, ...) \
 do { LiteKitlogMessageFunc(LiteKitlogLevelTypeForPerformanceInfo, __FILE__ ,__LINE__, __FUNCTION__, frmt, ##__VA_ARGS__);} while (0)
 
-/// LiteKit 默认的logger
+/// LiteKit default logger
 @interface LiteKitLogger : NSObject <LiteKitLoggerProtocol>
 
 /**
- 设置控制台log输出的等级，DEBUG默认输出所有等级，其他默认输出error等级
+ set console log output level，DEBUG default output all，else output error level
  */
 @property (nonatomic, assign) NSUInteger consoleLogLevel;
 
-/// 根据tag标签进行初始化logger
-/// @param tag tag标签
+/// init logger with tag
+/// @param tag tag
 - (instancetype)initWithTag:(NSString *)tag;
 
 @end

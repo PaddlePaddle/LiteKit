@@ -29,8 +29,8 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  paddle gpu output >> LiteKitData
 
- @param outputData 输入的Paddle GPU output
- @return 转换后的LiteKitData
+ @param outputData input Paddle GPU output
+ @return output LiteKitData
 */
 + (LiteKitData *)convertPaddleGPUOutputToLiteKitOutput:(PaddleGPUResult *)outputData ;
 

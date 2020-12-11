@@ -21,41 +21,41 @@
 #import "LiteKitPaddleGPUMachine.h"
 #import "LiteKitPaddleCPUMachine.h"
 
-/// fluid模型固定模型文件名称
+/// fluid model default model file name
 static NSString * const LiteKitPaddleModelName = @"model.mlm";
-/// fluid模型固定参数文件名称
+/// fluid model default param file name
 static NSString * const LiteKitPaddleParamName = @"params.mlm";
 
-/// load阶段错误domain
+/// load state errordomain
 NSString * const LiteKitMachineServiceLoadErrorDomain = @"LiteKitMachineServiceLoadErrorDomain";
 
-/// error信息中的附带信息key值
+/// error message key
 NSString * const LiteKitMachineServiceErrorExtKey = @"machine_service_error_key";
 
-/// load阶段错误Ext key
+/// load state error key
 NSString * const LiteKitMachineServiceRunErrorExtKey = @"LiteKitMachineServiceRunErrorExtKey";
 
 
 @interface LiteKitMachineService ()
-/// 当前对应的machine
+/// currrnt machine
 @property (nonatomic, strong) LiteKitBaseMachine * __nullable litekitMachine;
 
-/// 当前的machineType
+/// current machineType
 @property (nonatomic, assign) LiteKitMachineType currentMachineType;
 
-/// 当前的machineConfig
+/// current machineConfig
 @property (nonatomic, strong) LiteKitMachineConfig * __nullable currentMachineConfig;
 
-/// Service的日志器
+/// Service logger
 @property (nonatomic, strong) id <LiteKitLoggerProtocol> logger;
 
-/// Service的唯一标识
+/// Service identifier
 @property (nonatomic, copy, readwrite) NSString *machineServiceId;
 
-/// 同步锁
+/// sync loock
 @property (nonatomic, strong) dispatch_semaphore_t lock;
 
-/// 性能统计数据
+/// performance data
 @property (nonatomic, strong) LiteKitPerformanceProfiler *performanceDataMap;
 @end
 
@@ -139,9 +139,9 @@ NSString * const LiteKitMachineServiceRunErrorExtKey = @"LiteKitMachineServiceRu
 
 #pragma mark - Paddle
 
-/// 创建统一Paddle Machine入口
-/// @param aConfig LiteKit配置
-/// @param aError 错误信息
+/// unify Paddle Machine entrance
+/// @param aConfig LiteKit config
+/// @param aError error message
 - (void)litekit_createPaddleMachineWithConfig:(LiteKitMachineConfig *)aConfig
                                     error:(NSError **)aError {
     do {
@@ -171,9 +171,9 @@ NSString * const LiteKitMachineServiceRunErrorExtKey = @"LiteKitMachineServiceRu
 }
 
 
-/// 创建Paddle CPU
-/// @param aConfig LiteKit配置
-/// @param aError 错误信息
+/// create Paddle CPU
+/// @param aConfig LiteKit config
+/// @param aError error message
 - (void)litekit_createPaddleCPUMachineWithConfig:(LiteKitMachineConfig *)aConfig
                                         error:(NSError **)aError {
 #if __has_include("PaddleCPU.h")
@@ -188,9 +188,9 @@ NSString * const LiteKitMachineServiceRunErrorExtKey = @"LiteKitMachineServiceRu
 #endif
 }
 
-/// 创建GPUMachine
-/// @param aConfig LiteKit配置
-/// @param aError 错误信息
+/// create GPUMachine
+/// @param aConfig LiteKit config
+/// @param aError error message
 - (void)litekit_createPaddleGPUMachineWithConfig:(LiteKitMachineConfig *)aConfig
                                        error:(NSError **)aError {
     if (!aConfig.engineConifg || ![aConfig.engineConifg conformsToProtocol:@protocol(LiteKitInferenceEngineConfigProtocol)]) {
@@ -223,7 +223,7 @@ NSString * const LiteKitMachineServiceRunErrorExtKey = @"LiteKitMachineServiceRu
     }
     else if (modelPointer != NULL || paramPointer != NULL) {
         if (paddleEngineConfig.paddleGPUConfig.modelPointer == NULL ||
-            paddleEngineConfig.paddleGPUConfig.paramPointer == NULL) { // 业务方未给config中的pointer赋值
+            paddleEngineConfig.paddleGPUConfig.paramPointer == NULL) { // business not set pointer in config
             paddleEngineConfig.paddleGPUConfig.modelSize = (int)paddleEngineConfig.modelSize;
             paddleEngineConfig.paddleGPUConfig.paramSize = (int)paddleEngineConfig.paramSize;
             paddleEngineConfig.paddleGPUConfig.modelPointer = modelPointer;

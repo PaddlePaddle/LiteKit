@@ -26,27 +26,27 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
- @b 创建对象
+ @b create instance
 
- @param config 配置
- @return PaddleCPU对象
+ @param config config
+ @return PaddleCPU Instance
  */
 - (instancetype)initWithConfig:(PaddleCPUConfig *)config;
 
 /**
- @b 加载machine
+ @b load machine
  
- @param error 错误信息
+ @param error error message
  */
 - (void)loadWithError:(NSError *__autoreleasing  _Nullable * _Nullable)error;
 
 
 /**
- @b 进行预测, 预处理 means 值为 0, scale 值为 1
+ @b predict, preprocess means = 0, scale = 1
 
- @param input 输入图像
- @param error 返回错误
- @return 预测结果
+ @param input input image
+ @param error return error
+ @return predict result
  */
 - (PaddleCPUResult *)predictWithInput:(PaddleCPUInput *)input
                                  error:(NSError **) error;
@@ -65,20 +65,20 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - @Class PaddleCPUShapedData
 @interface  PaddleCPUShapedData: NSObject
-///数据float*
+///data float*
 @property (nonatomic, readonly) float *data;
-///数据size
+///data size
 @property (nonatomic, readonly) NSInteger dataSize;
-///数据dims
+///data dims
 @property (nonatomic, readonly) NSArray <NSNumber *> *dim;
 
 /**
- * 初始化方法
+ * Init
  
- @param data 初始化数据
- @param dataSize 数据长度
- @param dim 数据维度
- @return 初始化的数据
+ @param data init data
+ @param dataSize data length
+ @param dim data dims
+ @return initeds data
  */
 - (instancetype)initWithData:(float *)data
                     dataSize:(NSInteger)dataSize

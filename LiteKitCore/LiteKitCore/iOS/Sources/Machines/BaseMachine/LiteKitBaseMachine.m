@@ -46,8 +46,8 @@ static NSInteger const LiteKitBaseMachineLockTime = 10;
 #pragma mark - Predict
 
 /// sync
-/// @param aInputData LiteKitData类型的输入数据
-/// @param aError 错误信息
+/// @param aInputData LiteKitData input data
+/// @param aError erroor info
 - (LiteKitData * __nullable)predictWithInputData:(LiteKitData * __nonnull)aInputData error:(NSError **)aError {
     __block LiteKitData *outData = nil;
     __weak typeof (self) weakSelf = self;
@@ -79,22 +79,22 @@ static NSInteger const LiteKitBaseMachineLockTime = 10;
 
 
 /// async
-/// @param aInputData LiteKitData类型的输入数据
-/// @param aBlock 完成回调
+/// @param aInputData LiteKitData input data
+/// @param aBlock complete callback
 - (void)predictWithInputData:(LiteKitData * __nonnull)aInputData completionBlock:(LiteKitMachinePredictCompletionBlock)aBlock {
     return;
 }
 
 #pragma mark - Clear
 
-/// 清理machine内存，不释放Machine
+/// clear machine memory，not release Machine
 - (void)clearMachine {
     return;
 }
 
 #pragma mark - Release
 
-/// 释放Machine,置空Machine
+/// release Machine,set Machine null
 - (void)releaseMachine {
     return;
 }

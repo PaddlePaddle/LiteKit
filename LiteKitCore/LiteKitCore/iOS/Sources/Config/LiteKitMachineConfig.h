@@ -21,7 +21,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-/// 默认的、基础的LiteKitMachine Config
+/// default LiteKitMachine Config
 @interface LiteKitMachineConfig : NSObject <LiteKitMachineConfigProtocol>
 
 @end

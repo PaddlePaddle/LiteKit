@@ -22,53 +22,53 @@
 #import "LiteKitPerformanceProfiler.h"
 
 // error domain
-FOUNDATION_EXPORT NSString * _Nonnull const LiteKitMachinInitErrorDomain;//模型初始化失败 Domain
-FOUNDATION_EXPORT NSString * _Nonnull const LiteKitMachinPredicateErrorDomain;//预测Error Domain
+FOUNDATION_EXPORT NSString * _Nonnull const LiteKitMachinInitErrorDomain;//machine init error Domain
+FOUNDATION_EXPORT NSString * _Nonnull const LiteKitMachinPredicateErrorDomain;//predict Error Domain
 
 NS_ASSUME_NONNULL_BEGIN
 
-/// @param outputData output数据
-/// @param error error信息
+/// @param outputData output data
+/// @param error error info
 typedef void (^LiteKitMachinePredictCompletionBlock)(LiteKitData * __nullable outputData, NSError * __nullable error);
 
 
-/// @param outputData output数据
-/// @param performanceProfiler performance信息
-/// @param error error信息
+/// @param outputData output data
+/// @param performanceProfiler performance info
+/// @param error error info
 typedef void (^LiteKitMachinePredictPerformanceBlock)(LiteKitData * __nullable outputData,
                                                   LiteKitPerformanceProfiler * __nullable performanceProfiler,
                                                   NSError * __nullable error);
 
-/// Machine的基类
+/// Machine base class
 @interface LiteKitBaseMachine : LiteKitMachine
 
-/// machine唯一ID
+/// machine unique ID
 @property (nonatomic, copy, readonly) NSString * machineId;
 
 #pragma mrak - Predict
 /// sync
-/// @param aInputData LiteKitData类型的输入数据
-/// @param aError 错误信息
+/// @param aInputData LiteKitData input data
+/// @param aError error message
 - (LiteKitData * __nullable)predictWithInputData:(LiteKitData * __nonnull)aInputData error:(NSError **)aError;
 
 /// async
-/// @param aInputData LiteKitData类型的输入数据
-/// @param aBlock 完成回调
+/// @param aInputData LiteKitData input data
+/// @param aBlock complete block
 - (void)predictWithInputData:(LiteKitData * __nonnull)aInputData completionBlock:(LiteKitMachinePredictCompletionBlock)aBlock;
 
-/// 运行带performance信息回调的machine
-/// @param aInputData input数据
-/// @param aBlock 带performance信息的回调
+/// predict with performance message
+/// @param aInputData input data
+/// @param aBlock callback with performance
 - (void)predictWithInputData:(LiteKitData * __nonnull)aInputData performanceBlock:(LiteKitMachinePredictPerformanceBlock)aBlock;
 
 #pragma mark - Clear
 
-/// 清理machine内存，不释放Machine
+/// clear machine memory，not release Machine
 - (void)clearMachine;
 
 #pragma mark - Release
 
-/// 释放Machine,置空Machine
+/// release Machine,set Machine null
 - (void)releaseMachine;
 
 @end

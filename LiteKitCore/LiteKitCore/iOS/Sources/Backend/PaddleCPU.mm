@@ -23,11 +23,11 @@ static NSString *TLiteKit_PaddleCPU_LoadError = @"TLiteKit_PaddleCPU_LoadError";
 
 
 @interface PaddleCPUResult ()
-///数据float*
+///data float*
 @property (nonatomic, assign) float *data;
-///数据size
+///data size
 @property (nonatomic, assign) NSInteger dataSize;
-///数据dims
+///data dims
 @property (nonatomic, strong) NSArray <NSNumber *> *dim;
 @end
 

@@ -21,21 +21,21 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-/// 任务分发管理器
+/// task dispatcher manager
 @interface LiteKitTaskDispatcherManager : NSObject
-/// 所有的业务ID
+/// all business IDs
 @property (nonatomic, strong, readonly) NSArray <NSString *> *businessIds;
 
-/// 单实例
+/// Instance
 + (instancetype)sharedInstance;
 
-/// 申请TaskQueue
-/// @param businessId 业务ID
+/// apply TaskQueue
+/// @param businessId task ID
 - (LiteKitTaskQueue *)applyLiteKitTaskQueueWithBusinessId:(NSString * __nullable)businessId;
 
 
-/// 移除TaskQueue
-/// @param businessId 业务ID
+/// remove TaskQueue
+/// @param businessId task ID
 - (void)removeLiteKitTaskQueueWithBusinessId:(NSString * __nullable)businessId;
 
 

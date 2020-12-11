@@ -21,12 +21,12 @@
 #import <Foundation/Foundation.h>
 
 @interface LiteKitMachine (Protected)
-///machine内model的文件位置
+/// model file patth in machine
 @property (nonatomic, strong) NSString *modelURL;
 
 /**
- * @brief 通过模型位置创建model的方法
- * @param modelURL 模型文件的位置
+ * @brief load machine with model
+ * @param modelURL model path
  */
 -(void)loadModelWithURL:(NSString *)modelURL;
 

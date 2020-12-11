@@ -21,20 +21,20 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-/// Paddle Machine的配置
+/// Paddle Machine config
 @interface LiteKitPaddleConfig : NSObject <LiteKitInferenceEngineConfigProtocol>
-/// machineType == LiteKitPaddleGPU时，可以配置GPU Inference Engine的配置，此时参数可选
+/// when machineType == LiteKitPaddleGPU，config GPU Inference Engine by this，optional
 @property (nonatomic, strong) PaddleGPUConfig *paddleGPUConfig;
-/// machineType == LiteKitPaddleGPU时，必须配置GPU Inference Engine的net类型，此时参数必选
+/// when machineType == LiteKitPaddleGPU，net type of GPU Inference Engine，necessary
 @property (nonatomic, assign) NetType netType;
 
-/// fluid模型内存指针
+/// fluid model memory pointer
 @property (nonatomic, assign) unsigned char * modelPointer;
-/// fluid参数内存指针
+/// fluid param memory pointer
 @property (nonatomic, assign) unsigned char * paramPointer;
-/// 模型内存大小
+/// model memory size
 @property (nonatomic, assign) size_t modelSize;
-/// 参数内存大小
+/// param memory size
 @property (nonatomic, assign) size_t paramSize;
 @end
 

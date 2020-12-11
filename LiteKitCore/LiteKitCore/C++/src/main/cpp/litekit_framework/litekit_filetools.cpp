@@ -20,13 +20,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
 #pragma mark - utils
 
 long get_file_size(FILE *file_handle) {
-    //获取当前读取文件的位置 进行保存
+    // get current file reading position
     long current_read_position = ftell(file_handle);
     long file_size = 0;
     fseek(file_handle, 0, SEEK_END);
-    //获取文件的大小
+    // get size of file
     file_size = ftell(file_handle);
-    //恢复文件原来读取的位置
+    // reset file reading position
     fseek(file_handle, current_read_position, SEEK_SET);
     return file_size;
 }

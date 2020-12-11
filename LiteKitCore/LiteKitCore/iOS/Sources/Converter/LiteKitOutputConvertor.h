@@ -22,15 +22,15 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- * 预测output数据转换LiteKitData
+ * predict output data convert to LiteKitData
  */
 @interface LiteKitOutputConvertor : NSObject
 
 /**
-  PaddleGPUOutput转换LiteKitData
+  PaddleGPUOutput convert to LiteKitData
  
-  @param outputData 输入数据
-  @return LiteKitData 返回的LiteKitData
+  @param outputData input data
+  @return LiteKitData return LiteKitData
  */
 + (LiteKitData *)convertPaddleGPUOutputToLiteKitOutput:(id)outputData;
 

@@ -15,7 +15,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
 */
 
 /**
- * PaddleLiteMachinePredictor封装，实现基于PaddleLite的预测引擎
+ * PaddleLiteMachinePredictor，predict engine baseon PaddleLite
  */
 #ifndef LIB_AI_PADDLE_LITE_MACHIN_EPREDICTOR_H
 #define LIB_AI_PADDLE_LITE_MACHIN_EPREDICTOR_H
@@ -27,58 +27,61 @@ class PaddleLiteMachinePredictor : public BaseMachinePredictor {
 
 public:
     /**
-     * 根据config，创建对应backend，并且完成对 backend的实例化
-     */
+     * according to config，create realPredictor，and load model
+     *
+     * @param config config
+     * @return ErrorCode
+    */
     int load(const litekit_framework::LiteKitConfig &config);
 
     /**
-     * 预测函数
-     * @param inputData
-     * @param outputData
-     * @return
-     */
+     * predict function
+     * @param inputData input data
+     * @param outputData output data
+     * @return ErrorCode
+    */
     int predict(litekit_framework::LiteKitData &inputData, litekit_framework::LiteKitData *outputData);
     /**
-    * 预测函数 适用于paddle-lite backend
-    * @return i 0成功, 其他错误见litekit_framework ErrorCode
+     * predict function for paddle-lite backend
+     * @return ErrorCode, 0 means succeed, else see litekit_framework ErrorCode
     */
     int predict();
     
     /**
-    * 申请第i个input的tensor空间
-    * @param i
-    * @return LiteKitData
+     * create the Ith input tensor
+     * @param i index
+     * @return LiteKitData
     */
     virtual std::unique_ptr<litekit_framework::LiteKitData> getInputData(int i);
     
     /**
-    * 获取多输出中的第i个output
-    * @param i
-    * @return LiteKitData
+     * get thr Ith output
+     * @param i index
+     * @return LiteKitData
     */
     virtual std::unique_ptr<const litekit_framework::LiteKitData> getOutputData(int i);
     
     /**
-     * 获取input的names
+     * get inputnames
      * @return std::vector<std::string>
-     */
+    */
     virtual std::vector<std::string> getInputNames() ;
     
     /**
-     * 获取output的names
+     * get output names
      * @return std::vector<std::string>
-     */
+    */
     virtual std::vector<std::string> getOutputNames() ;
 
     /**
-     * 获取name对应的input
-     * @param name input的name
+     * get input by name
+     * @param name input name
      * @return LiteKitData
-     */
+    */
     virtual std::unique_ptr<litekit_framework::LiteKitData> getInputByName(const std::string& name) ;
     
     /**
-     * 析构函数
+     * Destructor
      */
     ~PaddleLiteMachinePredictor();
 

@@ -232,7 +232,7 @@ class PaddleLiteImagePreprocess {
                     float* scales);
 
     /**
-     * 析构函数
+     * Destructor
      */
     ~PaddleLiteImagePreprocess();
     

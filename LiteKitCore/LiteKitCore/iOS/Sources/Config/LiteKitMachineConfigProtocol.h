@@ -18,21 +18,21 @@
 #ifndef LiteKitMachineConfigProtocol_h
 #define LiteKitMachineConfigProtocol_h
 #import "LiteKitInferenceEngineConfigProtocol.h"
-/// Machine的类型
+/// Machine type
 typedef NS_ENUM (NSUInteger, LiteKitMachineType) {
     LiteKitPaddleGPU,              // paddle GPU Machine
     LiteKitPaddleCPU               // paddle CPU Machine
 };
 
-/// LiteKitMachine的公共协议
+/// LiteKitMachine protocol
 @protocol LiteKitMachineConfigProtocol <NSObject>
-/// Machine类型,参数必传，代表使用什么底层inference框架
+/// Machinetype,necessary，means which inference backend is used
 @property (nonatomic, assign) LiteKitMachineType machineType;
-/// 模型文件地址，通过已存在的Model地址加载Machine
+/// model file path，load machine by existing Model path
 @property (nonatomic, copy) NSString *modelPath;
-/// inference引擎特殊的配置
+/// inference Specific config
 @property (nonatomic, strong) id <LiteKitInferenceEngineConfigProtocol> engineConifg;
-/// 可以设置自定义的logger
+/// custom logger
 @property (nonatomic, copy) NSString *loggerClassName;
 
 @end

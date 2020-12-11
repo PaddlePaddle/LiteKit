@@ -18,27 +18,28 @@
 #import "PaddleGPU+MetalResource.h"
 #import <ZipArchive/ZipArchive.h>
 
-static NSString * const PaddleGPUSandBoxStoragePath = @"paddlegpu";             // 解压路径名
-// 外层相关
-static NSString * const PaddleGPUZipPlistName    = @"pmgpu_zip_config.plist";   // 取值应为pmgpu_zip_config.plist
-static NSString * const PaddleGPUVersionOnZip    = @"pmgpu_zip_version";        // 取值应为 xx.xx.xx.xx
-static NSString * const PaddleGPUZipName         = @"pmgpu_zip_name";           // 取值应为pmgpu_metal.zip
-// 内层相关
-static NSString * const PaddleGPUBundlePlistName = @"pmgpu_bundle_config.plist";// 取值应为pmgpu_bundle_config.plist
-static NSString * const PaddleGPUVersionOnBundle = @"pmgpu_bundle_version";     // 取值应为 xx.xx.xx.xx
-static NSString * const PaddleGPUMetalLibName    = @"pmgpu_metallib_name";      // 取值应为 paddle_mobile.bundle/paddle-mobile-metallib.metallib
+static NSString * const PaddleGPUSandBoxStoragePath = @"paddlegpu";             // unzip folder name
+// about outer
+static NSString * const PaddleGPUZipPlistName    = @"pmgpu_zip_config.plist";   // value is pmgpu_zip_config.plist
+static NSString * const PaddleGPUVersionOnZip    = @"pmgpu_zip_version";        // value is xx.xx.xx.xx
+static NSString * const PaddleGPUZipName         = @"pmgpu_zip_name";           // value is pmgpu_metal.zip
+// about inner
+static NSString * const PaddleGPUBundlePlistName = @"pmgpu_bundle_config.plist";// value is pmgpu_bundle_config.plist
+static NSString * const PaddleGPUVersionOnBundle = @"pmgpu_bundle_version";     // value is xx.xx.xx.xx
+static NSString * const PaddleGPUMetalLibName    = @"pmgpu_metallib_name";      // value is paddle_mobile.bundle/paddle-mobile-metallib.metallib
 
-// 解析Paddle的Metal路径错误信息封装的domain
+// error message domain for analysising Metal path of Paddle
 NSString * const PaddleGPUParseMetalErrorDomain     = @"PMGPUMetalError";
 
 @implementation PaddleGPU (MetalResource)
 
 #pragma mark - Public
 
+
 /**
- 获取Paddle自定义的MetalLib路径
- @param error 错误信息
- @return paddle自定义的MetalLib路径
+ get custom MetalLib path from Paddle
+ @param error message，error code is from enum TPaddleGPUMetalLibCode
+ @return custom MetalLib Path
  */
 + (NSString *)pm_customMetalLibResourceWithError:(NSError **)error {
     __block NSString *paddleMetalLibPath = nil;
@@ -48,31 +49,31 @@ NSString * const PaddleGPUParseMetalErrorDomain     = @"PMGPUMetalError";
 #endif
     
     do {
-        // 读取外层plist
+        // read outer plist
         NSFileManager *fileManager = [NSFileManager defaultManager];
         NSString *documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
         NSString *desFilePath = [documentPath stringByAppendingPathComponent:PaddleGPUSandBoxStoragePath];
         NSString *zipPlistPath = [[NSBundle mainBundle] pathForResource:PaddleGPUZipPlistName ofType:nil];
         if (![fileManager fileExistsAtPath:zipPlistPath]) {
-            // 无外层plist,无法判断版本，避免版本不一致导致的crash问题，直接返回
+            // no outer plist,cannot judge version，avoid crash cause of version inconformity，return  immediately
             *error = [NSError errorWithDomain:PaddleGPUParseMetalErrorDomain code:PaddleGPUMetalLibCodeNotExistZipPlist userInfo:nil];
             break;
         }
         NSDictionary *zipPlistMap = [[NSDictionary alloc] initWithContentsOfFile:zipPlistPath];
         if (!zipPlistMap || ![zipPlistMap isKindOfClass:[NSDictionary class]]) {
-            // 外层plist文件格式不正确
+            // outer plist file format error
             *error = [NSError errorWithDomain:PaddleGPUParseMetalErrorDomain code:PaddleGPUMetalLibCodeZipPlistError userInfo:nil];
             break;
         }
         
-        // 对解压文件夹进行version提取
+        // get version from zip folder
         NSString *bundlePlistPath = [desFilePath stringByAppendingPathComponent:PaddleGPUBundlePlistName];
         NSString *versionOnBundle = nil;
         NSDictionary *bundlePlistMap = nil;
-        if ([fileManager fileExistsAtPath:bundlePlistPath]) { // 已经解压过
+        if ([fileManager fileExistsAtPath:bundlePlistPath]) { // already unzip
             bundlePlistMap = [[NSDictionary alloc] initWithContentsOfFile:bundlePlistPath];
             if (!bundlePlistMap || ![bundlePlistMap isKindOfClass:[NSDictionary class]]) {
-                // 内层plist文件格式不正确
+                // inner plist file format error
                 *error = [NSError errorWithDomain:PaddleGPUParseMetalErrorDomain code:PaddleGPUMetalLibCodeBundlePlistError userInfo:nil];
                 break;
             }
@@ -82,11 +83,11 @@ NSString * const PaddleGPUParseMetalErrorDomain     = @"PMGPUMetalError";
         NSString *versionOnZip = [zipPlistMap objectForKey:PaddleGPUVersionOnZip];
         __block NSError *interanlError = nil;
         if (![versionOnBundle isEqualToString:versionOnZip]) {
-            // 版本不同，删除旧包，重新解压新zip包
+            // different version，delete old package，upzip new package
             NSString *zipName = [zipPlistMap objectForKey:PaddleGPUZipName];
             NSString *zipPath = [[NSBundle mainBundle] pathForResource:zipName ofType:nil];
             if (![fileManager fileExistsAtPath:zipPath]) {
-                // 外层zip包不存在
+                // outer zip not exist
                 *error = [NSError errorWithDomain:PaddleGPUParseMetalErrorDomain code:PaddleGPUMetalLibCodeNotExistZip userInfo:nil];
                 break;
             }
@@ -104,13 +105,13 @@ NSString * const PaddleGPUParseMetalErrorDomain     = @"PMGPUMetalError";
                     NSDictionary *newBundlePlistMap = [[NSDictionary alloc] initWithContentsOfFile:newBundlePlistPath];
                     paddleMetalLibPath = [PaddleGPU pm_parseMetalLibPath:newBundlePlistMap metalBundleRootPath:desFilePath error:&interanlError];
                 } else {
-                    // 解压失败
+                    // unzip fail
                     interanlError = [NSError errorWithDomain:PaddleGPUParseMetalErrorDomain code:PaddleGPUMetalLibCodeUnzipError userInfo:nil];
                 }
             });
             
         } else {
-            // 版本相同，使用原有解压包路径下的metallib
+            // same version，use metallib in origin path
             paddleMetalLibPath = [PaddleGPU pm_parseMetalLibPath:bundlePlistMap metalBundleRootPath:desFilePath error:&interanlError];
         }
         if (error != NULL && interanlError != nil) {
@@ -130,11 +131,11 @@ NSString * const PaddleGPUParseMetalErrorDomain     = @"PMGPUMetalError";
 #pragma mark - Private
 
 /**
- 根据bundlePlistMap解析metalLib路径
- @param bundlePlistMap Paddle对应的Bundle Plist
- @param metalBundlePath Paddle对应的Bundle根路径
- @param error 错误信息
- @return bundlePlistMap解析metalLib路径
+ according to bundlePlistMap, analysis metalLib path
+ @param bundlePlistMap Bundle Plist of Paddle
+ @param metalBundlePath Bundle path of Paddle
+ @param error error message
+ @return metalLib path from bundlePlistMap
 */
 + (NSString *)pm_parseMetalLibPath:(NSDictionary *)bundlePlistMap
                metalBundleRootPath:(NSString *)metalBundlePath

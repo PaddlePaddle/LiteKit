@@ -39,7 +39,7 @@ namespace litekit_framework {
     };
 
 
-    /// LiteKit string容器
+    /// LiteKit string container
     struct LiteKitString {
         const char *data;
         size_t size;
@@ -52,38 +52,32 @@ namespace litekit_framework {
         size_t param_buffer_size;
     };
 
-    // LiteKit配置相关参数
+    // LiteKit config params
     struct LiteKitConfig {
-        // 默认的模型和参数文件名
+        // default model & param file name
         const std::string MODEL_FILE_NAME = "model.mlm";
         const std::string PARAM_FILE_NAME = "params.mlm";
 
         enum Precision {
             FP32 = 0
         };
-        // Machine类型，PaddleLite、PaddleiOSGPU
+        // Machine type，PaddleLite、PaddleiOSGPU
         enum MachineType {
             PaddleLite = 2, PaddleiOSGPU = 3
         };
 
-        // 模型输入的数据精度
+        // model input data precision
         Precision precision = FP32;
 
-        // 模型文件路径
+        // model file path
         std::string modelUrl;
 
-        // 模型和参数文件名
+        // model & param file name
         std::string model_file_name = "";
         std::string param_file_name = "";
 
-        // 后端类型
+        // backend type
         MachineType machine_type = MachineType::PaddleLite;
-
-        // paddle可支持在模型之外添加的前后处理类型
-        enum PrePostType {
-            NONE_PRE_POST = 0,  // none
-            UINT8_255 = 1       // 输入数据归一化
-        };
 
         // Paddle lite config
         struct PaddleLiteConfig {
@@ -114,32 +108,32 @@ namespace litekit_framework {
             PaddleLiteModel model;
         };
 
-        // PaddleiOSGPU special config （ios特有）
+        // PaddleiOSGPU special config （ios only）
         struct PaddleiOSGPUConfig {
-            //支持的模型类型 设置了类型 gpu层自动设置输入维度 LiteKitData中shape不需要了
+            //model types,GPU backend will set input data shape automatic, instead of shape in LiteKitData
             enum NetType {
                 Default = -1, SuperResolution = 0, MobileNetSSD = 1, Gan = 2, Shuffle = 3
             };
             NetType type = Default;
         };
 
-        // 具体machine的配置
+        // specific machine config
         union MachineConfig {
             PaddleLiteConfig paddle_lite_config;
             PaddleiOSGPUConfig paddle_ios_gpu_config;
         };
-        // 专属于某个machine的配置
+        // config for a specific machine
         MachineConfig machine_config = {PaddleLiteConfig()};
 
     };
 
     enum LiteKitMachineType {
-        // 暂时只支持PADDLE_LITE
+        // Android support PADDLE_LITE only
         PADDLE_LITE = 1,
         PADDLE_iOSGPU = 2,
     };
 
-    // LiteKitTensor中使用的一些控制类型
+    // types control in LiteKitTensor
     using shape_t = std::vector<int64_t>;
     using lod_t = std::vector<std::vector<uint64_t>>;
 
@@ -171,14 +165,14 @@ namespace litekit_framework {
 
         bool autoRelease = true;
 
-        // 如果autoRelease为true，则会在析构时释放rawData
+        // if autoRelease = true，will release rawData when destruct
         virtual ~LiteKitTensor();
 
-        // 释放rawData，如果autoRelease为true，则不需要主动调用
+        // release rawData，if autoRelease = true，no need to be called
         void release();
     };
 
-    // LiteKit配置相关参数
+    // LiteKit data struct
     struct LiteKitData {
         enum RawDataType {
             FLOAT32,
@@ -203,46 +197,46 @@ namespace litekit_framework {
             }
         };
 
-        // 待预测的数据，对应input_tensor.data
+        // data prepare to predict，corresponding to input_tensor.data
         void *rawData = nullptr;
-        // rawData长度，单位byte
+        // rawData length，unit is byte
         long dataLength;
         RawDataType rawDataType;
-        // 对应input_tensor.shape，非必须
+        // corresponding to input_tensor.shape，unnecessary
         RawDataShape rawDataShape;
-        // 若为true 析构时自动调用release()
+        // if true call release() when destruct
         bool autoRelease = true;
         //tensor
         LiteKitTensor *litekitTensor = 0;
 
         LiteKitData() = default;
 
-        // 如果autoRelease为true，则会在析构时释放rawData
+        // if autoRelease=true，will release rawData when destruct
         virtual ~LiteKitData();
 
-        // delete rawData、litekitTensor，如果autoRelease为true，则不需要主动调用
+        // delete rawData、litekitTensor，if autoRelease=true，no need to be called
         void release();
     };
 
     /**
-     * 前后处理接口类
+     * Preprocess/Postproocess Interface
      */
     class LiteKitDataProcessor {
     public:
         /**
-         * 前处理回调
-         * @param preProcessInputData
-         * @param preProcessOutputData
-         * @return
+         * Preprocess call back
+         * @param preProcessInputData preprocess input data
+         * @param preProcessOutputData preprocess output data
+         * @return ErrorCode
          */
         virtual int
         preProcess(const LiteKitData &preProcessInputData, LiteKitData *preProcessOutputData) = 0;
 
         /**
-         * 后处理回调
-         * @param postProcessInputData
-         * @param postProcessOutputData
-         * @return
+         * Postprocess call back
+         * @param postProcessInputData postprocess input data
+         * @param postProcessOutputData postprocess output data
+         * @return ErrorCode
          */
         virtual int
         postProcess(const LiteKitData &postProcessInputData, LiteKitData *postProcessOutputData) = 0;
@@ -251,7 +245,7 @@ namespace litekit_framework {
     };
 
     /**
-     * LiteKitMachine管理类。我们把加载了某个模型的一种Inference引擎（如PaddleLite）称做一个LiteKitMachine。
+     * LiteKitMachine Manager。LiteKitMachine means a engine that loaded a kind of inference(for example :PaddleLite)
      */
     class LiteKitMachineService {
     public:
@@ -266,19 +260,19 @@ namespace litekit_framework {
         std::unique_ptr<litekit_framework::LiteKitData> getInputByName(const std::string &name);
 
     private:
-        // MachinePredictor指针
+        // MachinePredictor pointer
         void *machineHandle = nullptr;
-        // MachinePredictor类型，如PaddleLite, PaddleiOSGPU等
+        // MachinePredictor type，like PaddleLite, PaddleiOSGPU..
         LiteKitMachineType litekitMachineType;
-        // 前后处理回调实现
+        // preprocess/postprocess callback
         LiteKitDataProcessor *mProcessorImpl = nullptr;
 
         /**
-         * 预测函数，不包含前后处理
+         * predict(without preprocess/postprocess)
          *
-         * @param modelInputData
-         * @param modelOutputData
-         * @return
+         * @param modelInputData input data
+         * @param modelOutputData output data
+         * @return ErrorCode
          */
         int predict(LiteKitData &modelInputData, LiteKitData *modelOutputData);
 
@@ -287,50 +281,50 @@ namespace litekit_framework {
     public:
 
         /**
-         * 如果autoRelease为true，则会在析构时释放machineHandle
+         *  if autoRelease=true，will release machineHandle when destruct
          */
         bool autoRelease = true;
 
         /**
-         * 设置前后处理回调实现
+         * set preprocess/postprocess impl
          *
-         * @param processorImpl
+         * @param processorImpl processor impl
          */
         void setInterceptProcessor(LiteKitDataProcessor *processorImpl);
 
         /**
-         * 预测函数，如果设置了InterceptProcessor，则会先执行InterceptProcessor的前处理回调，再执行predict，
-         * 再执行InterceptProcessor的后处理回调。如果未设置InterceptProcessor，则会直接执行predict
+         * predict function，if InterceptProcessor setted，will call preprocess of InterceptProcessor before predict，
+         * then call postprocess of InterceptProcessor after。if InterceptProcessor not setted，will call predict
          *
-         * @param inputData
-         * @param outputData
-         * @return
+         * @param inputData input datta
+         * @param outputData output data
+         * @return ErrorCode
          */
         int run(LiteKitData &inputData, LiteKitData *outputData);
 
         int run();
 
         /**
-         * 根据LiteKitConfig配置，创建MachinePredictor，并加载模型
+         * according to LiteKitConfig，create MachinePredictor，and load model
          *
-         * @param config
-         * @return
+         * @param config config
+         * @return ErrorCode
          */
         int load(const LiteKitConfig &config);
 
         /**
-         * 如果autoRelease为true，则会在析构时delete mProcessorImpl以及machineHandle指向的predictor
+         * if autoRelease=true，will delete mProcessorImpl and predictor of machineHandle when destruct
          */
         virtual ~LiteKitMachineService();
 
         /**
-        * 释放mProcessorImpl与machineHandle，如果autoRelease为true，则不需要主动调用
+        * release mProcessorImpl and machineHandle，if autoRelease=true，no need to be called
         */
         void release();
     };
 
     /**
-     * 模型加载错误，成功/解密错误/参数错误/引擎创建错误
+     * Errorcode，succeed/param error/engine load error
      */
     enum ErrorCode {
         SUCCESS = 0,

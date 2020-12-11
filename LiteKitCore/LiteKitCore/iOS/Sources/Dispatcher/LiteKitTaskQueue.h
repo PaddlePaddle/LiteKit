@@ -21,75 +21,75 @@
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(NSInteger, LiteKitTaskQueueStatus) {
-    LiteKitTaskQueueStatusDefault = 0,  // 默认状态
-    LiteKitTaskQueueStatusFree = 1,     // 队列空闲
-    LiteKitTaskQueueStatusBusy = 2      // 队列忙
+    LiteKitTaskQueueStatusDefault = 0,  // default
+    LiteKitTaskQueueStatusFree = 1,     // idle
+    LiteKitTaskQueueStatusBusy = 2      // busy
 };
 
 typedef NS_ENUM(NSInteger, LiteKitTaskQueueErrorCode) {
-    LiteKitTaskQueueParamError = 0,      // 参数错误
-    LiteKitTaskQueueNULLMachine          // Machine为空
+    LiteKitTaskQueueParamError = 0,      // param error
+    LiteKitTaskQueueNULLMachine          // Machine is null
     
 };
 
-/// 队列错误domain
+/// Queue error domain
 FOUNDATION_EXPORT NSString * const LiteKitTaskQueueErrorDomain;
 
-/// 任务队列
+/// task Queue
 @interface LiteKitTaskQueue : NSObject
 
-/// 队列即时状态
+/// Queue state
 @property (nonatomic, assign, readonly) LiteKitTaskQueueStatus queueStatus;
 
 
-/// 设置Logger 的类名
-/// @param loggerClassName logger类名
+/// set Logger class name
+/// @param loggerClassName logger class name
 - (void)setupLoggerName:(NSString * __nullable)loggerClassName;
 
-/// 设置是否开启TaskQueue的性能数据收集
-/// @param performanceProfiler 是否开启
+/// TaskQueue performance switch
+/// @param performanceProfiler enable
 - (void)enablePerformanceProfiler:(BOOL)performanceProfiler;
 
 
 
-/// 批量添加高优任务，加到队首
-/// @param tasks 任务组
-/// @param aError 错误句柄
+/// batch add task to begin of queue
+/// @param tasks tasks
+/// @param aError error
 - (void)addHighPriorityTasks:(NSArray <LiteKitTask *> *)tasks error:(NSError **)aError;
 
-/// 批量添加普通任务，加入队尾
-/// @param tasks 任务组
-/// @param aError 错误句柄
+/// batch add tasks to end of queue
+/// @param tasks tasks
+/// @param aError error
 - (void)addTasks:(NSArray <LiteKitTask *> *)tasks error:(NSError **)aError;
 
-/// 批量移除任务
-/// @param tasks 任务组
-/// @param aError 错误句柄
+/// batch remove tasks
+/// @param tasks tasks
+/// @param aError error
 - (void)removeTasks:(NSArray <LiteKitTask *> *)tasks error:(NSError **)aError;
 
-/// 添加高优任务，加到队首
-/// @param task 任务
-/// @param aError 错误句柄
+/// add task to begin of queue
+/// @param task task
+/// @param aError error
 - (void)addHighPriorityTask:(LiteKitTask *)task error:(NSError **)aError;
 
-/// 添加普通任务，加入队尾
-/// @param task 任务
-/// @param aError 错误句柄
+/// add task to end of queue
+/// @param task task
+/// @param aError error
 - (void)addTask:(LiteKitTask *)task error:(NSError **)aError;
 
-/// 移除任务
-/// @param task 任务
-/// @param aError 错误句柄
+/// remove task
+/// @param task task
+/// @param aError error
 - (void)removeTask:(LiteKitTask *)task error:(NSError **)aError;
 
-/// 查询任务状态
-/// @param taskID 任务唯一标识
+/// quert task
+/// @param taskID task id
 - (LiteKitTaskStatus)taskStatusByID:(NSString *)taskID;
 
-/// 移除所有的任务
+/// remove all tasks
 - (void)removeAllTasks;
 
-/// 彻底释放Machine
+/// release Machine
 - (void)releaseMachine;
 @end
 

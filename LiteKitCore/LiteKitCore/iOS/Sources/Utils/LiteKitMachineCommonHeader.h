@@ -15,7 +15,7 @@
 */
 
 
-/// Machine的公共头文件
+/// Machine public header
 #ifndef LiteKitMachineCommonHeader_h
 #define LiteKitMachineCommonHeader_h
 
@@ -27,34 +27,34 @@
 #define LiteKitBMLMachinePredicateErrorDomain     @"BMLMachinePredicateError"
 
 /// error key
-/// predict阶段错误中userinfo字段中错误信息的key值
+/// predict period error userinfo key
 #define LiteKitMachinePredictErrorExtKey          @" litekit_error_ext_key"
 
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
 /// error code
 typedef NS_ENUM(NSInteger, LiteKitMachineInitErrorCode) {
-    LiteKitMachineInitFailed = 0,       // machine初始化失败
-    LiteKitMachineLoadFailed = 1,       // machine load阶段失败
-    LiteKitModelFileNotFound = 2,       // 未找到模型文件
-    LiteKitIllegalModelFileURL = 3,     // 非法的模型地址
-    LiteKitIllegalOSVersion = 4,        // 非法系统版本
-    LiteKitIllegalModelConfig = 5       // 错误的配置
+    LiteKitMachineInitFailed = 0,       // machine init fail
+    LiteKitMachineLoadFailed = 1,       // machine load fail
+    LiteKitModelFileNotFound = 2,       // model file not found
+    LiteKitIllegalModelFileURL = 3,     // model file path not valid
+    LiteKitIllegalOSVersion = 4,        // error OS version
+    LiteKitIllegalModelConfig = 5       // error config
 };
 
 /// error code
 typedef NS_ENUM(NSInteger, LiteKitMachinePredicateErrorCode) {
-    LiteKitMachinePredicateDestroyed = 0,                   // machine已经销毁
-    LiteKitMachinePredicateInputPixelTooLarge = 1,          // input的size过大
-    LiteKitMachinePredicatePredictError = 2,                // 预测阶段错误
-    LiteKitMachinePredicateLoadError = 3,                   // 加载错误
-    LiteKitMachinePredicateUpdateDimError = 4,              // 更新dim失败
-    LiteKitMachinePredicateConvertTextureError = 5,         // 转换texture失败
-    LiteKitMachinePredicateInputDataError = 6,              // 输入数据有误
-    LiteKitMachinePredicateNotSupportSimulator = 7,         // 不支持模拟器
-    LiteKitMachinePredicateNotSupportArchitecture = 8,      // 不支持的处理器架构
-    LiteKitMachinePredicateMachineNotReady = 9,             // Machine未准备好
-    LiteKitMachinePredicateMachineReloadError = 10          // 模型reload失败
+    LiteKitMachinePredicateDestroyed = 0,                   // machine already destroyed
+    LiteKitMachinePredicateInputPixelTooLarge = 1,          // input size too large
+    LiteKitMachinePredicatePredictError = 2,                // predict error
+    LiteKitMachinePredicateLoadError = 3,                   // load error
+    LiteKitMachinePredicateUpdateDimError = 4,              // update dim fail
+    LiteKitMachinePredicateConvertTextureError = 5,         // convert texture fail
+    LiteKitMachinePredicateInputDataError = 6,              // input data not valid
+    LiteKitMachinePredicateNotSupportSimulator = 7,         // simulator not support
+    LiteKitMachinePredicateNotSupportArchitecture = 8,      // architecture not support
+    LiteKitMachinePredicateMachineNotReady = 9,             // Machine not ready
+    LiteKitMachinePredicateMachineReloadError = 10          // model reload fail
 };
 
 #endif /* LiteKitMachineCommonHeader_h */
