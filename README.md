@@ -89,14 +89,14 @@ end
 1. 将依赖SDK放置在工程对应目录下
 - 首先需要[下载依赖的aar](https://gitee.com/paddlepaddle/LiteKit/tree/main/Android), 按照下面的格式放置
 ```
-app/libs/gesturerecognize-0.1.0.aar
-app/libs/superresolution-0.1.0.aar
-app/libs/portraitsegmentation-0.1.0.aar
-app/libs/thirdpartydependency-0.1.0.aar
-app/libs/dependency-0.1.0.aar
+./LiteKitDemo/Android/LiteKitDemoapp/libs/gesturerecognize-0.1.0.aar
+./LiteKitDemo/Android/LiteKitDemoapp/libs/superresolution-0.1.0.aar
+./LiteKitDemo/Android/LiteKitDemoapp/libs/portraitsegmentation-0.1.0.aar
+./LiteKitDemo/Android/LiteKitDemoapp/libs/thirdpartydependency-0.1.0.aar
+./LiteKitDemo/Android/LiteKitDemoapp/libs/dependency-0.1.0.aar
 ```
 
-例如在LiteKit的demo工程中，放置在`LiteKit/LiteKitDemo/Android/LiteKitDemo/app/libs/*` 目录下。
+例如在LiteKit的demo工程中，放置在`./LiteKitDemo/Android/LiteKitDemo/app/libs/*` 目录下。
 
 2. gradle增加配置引入SDK
 ```groovy
@@ -124,7 +124,7 @@ LiteKit的AI能力，主要包含3类接口：创建、执行、释放。
 <br>
 其中执行接口通常有多个，可以接受不同格式的数据输入，以适应相机帧、图像、视频解码数据等不同也业务场景。
 
-<p align="center"><img width="300" src="/Doc/Resources/1_8.png"/></p>
+<p align="center"><img width="450" src="/Doc/Resources/1_8.png"/></p>
 
 [人像分割 API文档](/Doc/LiteKit接口文档_人像分割.md) <br>
 [手势识别 API文档](/Doc/LiteKit接口文档_手势识别.md) <br>

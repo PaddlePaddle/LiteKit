@@ -1,6 +1,13 @@
 # 视频超分接口文档
 视频超分能力是由LiteKit VideoSuperResolution SDK提供的，对图像进行超分辨率处理的能力。在视频中，对于通常的480p超分到720p场景可以达到25FPS。
 
+### 目录
+<a href="#iOSAPI">iOS API</a>
+<br>
+<a href="#AndroidAPI">Android API</a>
+<br>
+
+<div id="iOSAPI"></div>
 
 ## iOS API
 
@@ -123,10 +130,10 @@ int v_stride;
 - 图像数据为YUV420格式
 - 视频解码后的图像帧数据，行中右侧通常会包含padding部分
 所以，通常：<br>
-- y_data的length = y_stride\*height，<br>
-- u_data的length = u_stride\*height，<br>
-- v_data的length = v_stride\*height，<br>
-- 2\*u_stride = 2\*v_stride = y_stride >= width。
+    - y_data的length = y_stride\*height，<br>
+    - u_data的length = u_stride\*height，<br>
+    - v_data的length = v_stride\*height，<br>
+    - 2\*u_stride = 2\*v_stride = y_stride >= width。
 
 #### 5. Demo code
 ```objective-c
@@ -143,6 +150,7 @@ UIImage *newImg = [sVideo superResolutionWithUIImage:self.image scale:1.0 error:
 // Predictor不需要特殊的释放操作
 ```
 
+<div id="AndroidAPI"></div>
 
 ## Android API
 
@@ -154,8 +162,6 @@ UIImage *newImg = [sVideo superResolutionWithUIImage:self.image scale:1.0 error:
 #### 返回值
 - long：视频超分inferencer的handler，在预测和释放的接口中需要使用。
 ```java
-example：VideoSuperResolution.init(this);
-
 public static long init(Context context);
 ```
 

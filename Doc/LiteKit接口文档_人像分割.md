@@ -1,6 +1,13 @@
 # 人像分割接口文档
 人像分割能力由LiteKit 
 
+### 目录
+<a href="#iOSAPI">iOS API</a>
+<br>
+<a href="#AndroidAPI">Android API</a>
+<br>
+
+<div id="iOSAPI"></div>
 
 ## iOS API
 
@@ -141,6 +148,7 @@ LiteKitPSData *output = (LiteKitPSData *)[portraitSegmentor inferWithPixelBuffer
 
 
 
+<div id="AndroidAPI"></div>
 
 ## Android API
 
@@ -201,8 +209,8 @@ public void release()
 
 ### 4. 返回值说明
 #### return
-人像分割返回为w\*h=192\*192的int[]，其中每一位的值为value = ( a << 24 | 255 << 16 | 255 << 8 | 255 )，
-可以通过Color.alpha(value)获取到一个0～255的alpha值，0表示该点不存在人像，255表示该点存在人像
+人像分割返回为w\*h=192\*192的int[]，其中每一位的值为`value = ( a << 24 | 255 << 16 | 255 << 8 | 255 )`，
+可以通过`Color.alpha(value)`获取到一个0～255的alpha值，0表示该点不存在人像，255表示该点存在人像
 
 
 ### 5. Demo Code
