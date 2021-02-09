@@ -15,11 +15,11 @@ set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -s -O3 -DNDEBUG -fopenmp
 
 if (ANDROID_ABI STREQUAL "armeabi-v7a")
     set(ABI armeabi-v7a)
-    set(CMAKE_CXX_FLAGS "-march=armv7-a -marm -mfpu=neon -mfloat-abi=softfp -funwind-tables -no-canonical-prefixes -O3 -std=c++11 -DNDEBUG  -Wl,--fix-cortex-a8  -fPIE -pie -Wl,--gc-sections -Wl,-z,nocopyreloc")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=armv7-a -marm -mfpu=neon -mfloat-abi=softfp -funwind-tables -no-canonical-prefixes -O3 -std=c++11 -DNDEBUG  -Wl,--fix-cortex-a8  -fPIE -pie -Wl,--gc-sections -Wl,-z,nocopyreloc")
     include_directories(${ANDROID_SYSROOT}/usr/include/arm-linux-androideabi)
 elseif (ANDROID_ABI STREQUAL "arm64-v8a")
     set(ABI arm64-v8a)
-    set(CMAKE_CXX_FLAGS "-O3 -std=c++11")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -std=c++11")
     include_directories(${ANDROID_SYSROOT}/usr/include/aarch64-linux-android)
 else ()
     message(FATAL_ERROR "Unkown architecture.")
