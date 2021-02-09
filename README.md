@@ -42,7 +42,7 @@ open LiteKitDemo.xcworkspace
 
 #### Android平台
 1. 打开Android Studio，点击File->Open...，选择LiteKitDemo/Android/LiteKitDemo目录
-2. 参考[LiteKit README](/LiteKit/LiteKitDemo/Android/README.md)文档，下载并放置依赖aar至对应位置
+2. 参考[LiteKit README](/LiteKitDemo/Android/README.md)文档，下载并放置依赖aar至对应位置
 3. 点击Run安装运行到真机上（Demo中视频检测依赖摄像头输入）
 
 
@@ -86,34 +86,54 @@ end
 ```
 
 #### Android 安装SDK
-1. 将依赖SDK放置在工程对应目录下
-- 首先需要[下载依赖的aar](https://gitee.com/paddlepaddle/LiteKit/tree/main/Android), 按照下面的格式放置
+1. 将依赖SDK仓库作为LocalMaven仓库
 ```
-./LiteKitDemo/Android/LiteKitDemoapp/libs/gesturerecognize-0.1.0.aar
-./LiteKitDemo/Android/LiteKitDemoapp/libs/superresolution-0.1.0.aar
-./LiteKitDemo/Android/LiteKitDemoapp/libs/portraitsegmentation-0.1.0.aar
-./LiteKitDemo/Android/LiteKitDemoapp/libs/thirdpartydependency-0.1.0.aar
-./LiteKitDemo/Android/LiteKitDemoapp/libs/dependency-0.1.0.aar
+git clone https://gitee.com/paddlepaddle/LiteKit
 ```
 
-例如在LiteKit的demo工程中，放置在`./LiteKitDemo/Android/LiteKitDemo/app/libs/*` 目录下。
+2. 修改LiteKitDemo工程local.properties（文件位置在`./LiteKitDemo/Android/LiteKitDemo/local.properties`)，添加MAVEN_REPO_LOCAL属性，值为第1步中clone的gitee仓库地址。
+例如：
+```
+MAVEN_REPO_LOCAL = XXXXXXX
+```
 
-2. gradle增加配置引入SDK
+3. 在工程的gradle中增加配置LocalMaven，例如`./LiteKitDemo/Android/LiteKitDemo/build.gradle`
 ```groovy
-// search for aar + so
-repositories {
-    flatDir {
-        dirs 'libs'
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven{ url getLocalProperty("MAVEN_REPO_LOCAL") + "/Android/repository" }
     }
 }
 
+/**
+ * 从local.properties文件中读取配置
+ *
+ * @param propertyName 读取的参数名
+ * @return 配置value
+ */
+def getLocalProperty(String propertyName) {
+    Properties properties = new Properties()
+    try {
+        properties.load(project.rootProject.file('local.properties').newDataInputStream())
+    } catch (Exception e) {
+        println "read local.properties failed${e.message}"
+    }
+    String value =  properties.get(propertyName);
+    System.out.println("key: " + propertyName + ", value: " +  value)
+    return value
+}
+```
+
+4. 在app的gradle中增加配置引入SDK，例如`./LiteKitDemo/Android/LiteKitDemo/app/build.gradle`
+```groovy
+
 dependencies {
-    compile(name:'LiteKitdependency-0.1.0', ext:'aar')
-    compile(name:'thirdpartydependency-0.1.0', ext:'aar')
-    
-    compile(name:'gesturerecognize-0.1.0', ext:'aar')
-    compile(name:'portraitsegmentation-0.1.0', ext:'aar')
-    compile(name:'superresolution-0.1.0', ext:'aar')
+    implementation 'com.baidu.litekit:handgesturedetector:0.1.0'
+    implementation 'com.baidu.litekit:portraitsegmentation:0.1.0'
+    implementation 'com.baidu.litekit:videosuperresolution:0.1.0'
 }
 ```
 
@@ -183,18 +203,8 @@ open LiteKitDemo.xcworkspace
 | ViewController+LiteKitCore_OC | LiteKit Objective-C API demo code|
 
 #### 部署Android示例工程  
-1. 根据[接入文档 for Native C++ API on Android](/Doc/LiteKitCore接入文档(for%20Native%20C%2B%2B%20API%20on%20Android).md), 生成`libLiteKit_framework.so`和`LiteKitCore-debug.aar`
-放置在`./LiteKitDemo/Android/LiteKitDemo/app/libs/litekitcore-debug.aar`路径下。
-2. 需要[下载](https://gitee.com/paddlepaddle/LiteKit/tree/main/Android)依赖的so以及aar, 按照下面的格式放置：
-```
-./LiteKitDemo/Android/LiteKitDemo/app/libs/gesturerecognize-0.1.0.aar
-./LiteKitDemo/Android/LiteKitDemo/app/libs/superresolution-0.1.0.aar
-./LiteKitDemo/Android/LiteKitDemo/app/libs/portraitsegmentation-0.1.0.aar
-./LiteKitDemo/Android/LiteKitDemo/app/libs/thirdpartydependency-0.1.0.aar
-./LiteKitDemo/Android/LiteKitDemo/app/libs/dependency-0.1.0.aar
-```
-3. 需要[下载](https://gitee.com/paddlepaddle/LiteKit/tree/main/Android/LiteKitCoreDemoDependency/0.1.0)Demo依赖的opencv.so和libgnustl_shared.so，
-放置在`./LiteKitDemo/Android/LiteKitDemo/app/src/main/cpp/libs`路径下。
+1. 根据[接入文档 for Java API ](/Doc/LiteKitCore接入文档(for%20Java%20API).md), 生成`LiteKitCore-debug.aar`，放置在`./LiteKitDemo/Android/LiteKitDemo/app/libs/litekitcore-debug.aar`路径下。
+2. 需要[下载](https://gitee.com/paddlepaddle/LiteKit/tree/main/Android/LiteKitCoreDemoDependency/opencv/0.1.0)Demo依赖的opencv.so和libgnustl_shared.so，放置在`./LiteKitDemo/Android/LiteKitDemo/app/src/main/cpp/libs`路径下。
 ## 二、接口文档
 [接口文档 for Native C++ API](/Doc/LiteKitCore接口文档(for%20Native%20C%2B%2B%20API).md)
 <br>

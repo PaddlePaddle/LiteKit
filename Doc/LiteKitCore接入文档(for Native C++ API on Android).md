@@ -24,16 +24,18 @@ Native C++ Android产物依赖及版本：
 
 ### 3. 构建步骤
 - 下载[依赖库](https://gitee.com/paddlepaddle/LiteKit/tree/main/Android/LiteKitCoreNativeDependency/paddle_api_light_bundled/0.0.9)，放到以下目录：
-`./LiteKitCore/LiteKitCore/Android/litekitcore/src/main/jniLibs/arm64-v8a/libpaddle_api_light_bundled.a`
+    - `./LiteKitCore/LiteKitCore/Android/litekitcore/src/main/jniLibs/arm64-v8a/libpaddle_api_light_bundled.a`
+    - `./LiteKitCore/LiteKitCore/Android/litekitcore/src/main/jniLibs/armeabi-v7a/libpaddle_api_light_bundled.a`
+    
 - 执行脚本
 ```
 cd /LiteKitCore/LiteKitCore/C++
 sh build_android.sh
 ```
 - 输出产物
-- `./LiteKitCore/LiteKitCore/C++/output/litekit_inference_api.h`
-- `./LiteKitCore/LiteKitCore/C++/output/armeabi-v7a/liblitekit_framework.so`
-- `./LiteKitCore/LiteKitCore/C++/output/arm64-v8a/liblitekit_framework.so`
+    - `./LiteKitCore/LiteKitCore/C++/output/litekit_inference_api.h`
+    - `./LiteKitCore/LiteKitCore/C++/output/armeabi-v7a/liblitekit_framework.so`
+    - `./LiteKitCore/LiteKitCore/C++/output/arm64-v8a/liblitekit_framework.so`
 
 ## 二、集成
 ### 1. 导入SDK

@@ -35,13 +35,6 @@ android {
 
 }
 
-// search for aar + so
-repositories {
-    flatDir {
-        dirs 'libs'
-    }
-}
-
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     //noinspection GradleCompatible

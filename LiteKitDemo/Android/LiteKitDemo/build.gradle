@@ -17,10 +17,6 @@ allprojects {
         google()
         jcenter()
         maven{ url getLocalProperty("MAVEN_REPO_LOCAL") + "/Android/repository" }
-        // 国内访问推荐使用阿里云镜像
-//        maven { url "https://maven.aliyun.com/nexus/content/groups/public" }
-//        mavenCentral()
-//        mavenLocal()
     }
 }
 
