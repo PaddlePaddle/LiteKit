@@ -21,6 +21,13 @@ DCMAKE_BUILD_TYPE = release
 
 
 ### 3. 构建步骤
+- 下载依赖库：
+[Protobuf](https://gitee.com/paddlepaddle/LiteKit/tree/main/iOS/LiteKitCoreNativeDependency/Protobuf/0.0.9)、
+[PaddleCPU](https://gitee.com/paddlepaddle/LiteKit/tree/main/iOS/LiteKitCoreNativeDependency/paddle_api_light_bundled/0.0.9)、
+[PaddleGPU](https://gitee.com/paddlepaddle/LiteKit/tree/main/iOS/LiteKitCoreNativeDependency/paddle_mobile/0.0.9)，
+放到以下目录：
+    - `./LiteKitCore/LiteKitCore/C++/src/main/iOSLibs/*`
+    
 ```
 git clone https://github.com/PaddlePaddle/LiteKit.git
 cd ./LiteKitCore/LiteKitCore/C++/build-ios 

@@ -24,9 +24,9 @@ Native C++ Android产物依赖及版本：
 
 ### 3. 构建步骤
 - 下载[依赖库](https://gitee.com/paddlepaddle/LiteKit/tree/main/Android/LiteKitCoreNativeDependency/paddle_api_light_bundled/0.0.9)，放到以下目录：
-    - `./LiteKitCore/LiteKitCore/Android/litekitcore/src/main/jniLibs/arm64-v8a/libpaddle_api_light_bundled.a`
-    - `./LiteKitCore/LiteKitCore/Android/litekitcore/src/main/jniLibs/armeabi-v7a/libpaddle_api_light_bundled.a`
-    
+    - `./LiteKitCore/LiteKitCore/C++/src/main/jniLibs/arm64-v8a/libpaddle_api_light_bundled.a`
+    - `./LiteKitCore/LiteKitCore/C++/src/main/jniLibs/armeabi-v7a/libpaddle_api_light_bundled.a`
+
 - 执行脚本
 ```
 cd /LiteKitCore/LiteKitCore/C++

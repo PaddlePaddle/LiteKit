@@ -17,6 +17,16 @@ OTHER_CFLAGS="-fembed-bitcode"
 
 
 ### 3. 构建步骤
+- 下载依赖库：
+[opencv2](https://gitee.com/paddlepaddle/LiteKit/tree/main/iOS/LiteKitCoreOCDependency/opencv2/0.0.9/)、
+[ZipArchive](https://gitee.com/paddlepaddle/LiteKit/tree/main/iOS/LiteKitCoreOCDependency/ZipArchive/0.0.9/)、
+[ProtocolBuffers](https://gitee.com/paddlepaddle/LiteKit/tree/main/iOS/LiteKitCoreOCDependency/ProtocolBuffers/0.0.9/)、
+[PaddleCPU](https://gitee.com/paddlepaddle/LiteKit/tree/main/iOS/LiteKitCoreOCDependency/PaddleLite/0.0.9/)、
+[PaddleGPU](https://gitee.com/paddlepaddle/LiteKit/tree/main/iOS/LiteKitCoreOCDependency/paddle_mobile/0.0.9/)，
+放到以下目录：
+    - `./LiteKitCore/LiteKitCore/iOS/Dependences/*`
+
+
 ```
 git clone https://github.com/PaddlePaddle/LiteKit.git
 cd ./LiteKitCore/LiteKitCore/C++/build-ios
