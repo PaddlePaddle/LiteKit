@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		27179F58257F64E8006B6E71 /* LiteKitCoreDemo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 27179F57257F64E8006B6E71 /* LiteKitCoreDemo.bundle */; };
+		278925C425DE7F7A0034A1A9 /* paddle_mobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 278925C325DE7F7A0034A1A9 /* paddle_mobile.framework */; };
 		27B436A324F100EB00A792A1 /* ProtocolBuffers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B4369124F100AD00A792A1 /* ProtocolBuffers.framework */; };
-		27B436A424F100EB00A792A1 /* ProtocolBuffers.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 27B4369124F100AD00A792A1 /* ProtocolBuffers.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		27B9F2A224E0008600CD423B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B9F2A124E0008600CD423B /* AppDelegate.m */; };
 		27B9F2AD24E0008800CD423B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27B9F2AC24E0008800CD423B /* Assets.xcassets */; };
 		27B9F2B324E0008800CD423B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B9F2B224E0008800CD423B /* main.m */; };
@@ -19,28 +19,14 @@
 		27B9F2CD24E00C1700CD423B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27B9F2CC24E00C1700CD423B /* Default-568h@2x.png */; };
 		27B9FBB224E2AA2C00CD423B /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B9FBB124E2AA2C00CD423B /* File.swift */; };
 		27DBCEE3257F50AB00B15EA7 /* LiteKitCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27DBCEE2257F50AB00B15EA7 /* LiteKitCore.framework */; };
-		27FD877E24FE5E27005E6FEB /* paddle_mobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27FD877D24FE5E27005E6FEB /* paddle_mobile.framework */; };
 		27FD878024FE5EE5005E6FEB /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27FD877F24FE5EE4005E6FEB /* opencv2.framework */; };
 		27FD878224FE5F38005E6FEB /* ZipArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27FD878124FE5F38005E6FEB /* ZipArchive.framework */; };
 		27FD878824FE69A5005E6FEB /* paddle-mobile-metallib.metallib in Resources */ = {isa = PBXBuildFile; fileRef = 27FD878724FE69A5005E6FEB /* paddle-mobile-metallib.metallib */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		27B436A724F100EC00A792A1 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				27B436A424F100EB00A792A1 /* ProtocolBuffers.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		27179F57257F64E8006B6E71 /* LiteKitCoreDemo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = LiteKitCoreDemo.bundle; path = litekitcore_models/LiteKitCoreDemo.bundle; sourceTree = "<group>"; };
+		278925C325DE7F7A0034A1A9 /* paddle_mobile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = paddle_mobile.framework; path = Dependence/paddle_mobile.framework; sourceTree = "<group>"; };
 		27B4369124F100AD00A792A1 /* ProtocolBuffers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ProtocolBuffers.framework; path = Dependence/ProtocolBuffers.framework; sourceTree = "<group>"; };
 		27B9F29D24E0008600CD423B /* LiteKitCoreDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiteKitCoreDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27B9F2A024E0008600CD423B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -58,7 +44,6 @@
 		27B9FBB024E2AA2B00CD423B /* LiteKitCoreDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LiteKitCoreDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		27B9FBB124E2AA2C00CD423B /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		27DBCEE2257F50AB00B15EA7 /* LiteKitCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LiteKitCore.framework; path = Dependence/LiteKitCore.framework; sourceTree = "<group>"; };
-		27FD877D24FE5E27005E6FEB /* paddle_mobile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = paddle_mobile.framework; path = Dependence/PaddleMobileGPU/paddle_mobile.framework; sourceTree = "<group>"; };
 		27FD877F24FE5EE4005E6FEB /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = Dependence/opencv2.framework; sourceTree = "<group>"; };
 		27FD878124FE5F38005E6FEB /* ZipArchive.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZipArchive.framework; path = Dependence/ZipArchive.framework; sourceTree = "<group>"; };
 		27FD878724FE69A5005E6FEB /* paddle-mobile-metallib.metallib */ = {isa = PBXFileReference; lastKnownFileType = "archive.metal-library"; path = "paddle-mobile-metallib.metallib"; sourceTree = "<group>"; };
@@ -71,8 +56,8 @@
 			files = (
 				27FD878024FE5EE5005E6FEB /* opencv2.framework in Frameworks */,
 				27FD878224FE5F38005E6FEB /* ZipArchive.framework in Frameworks */,
-				27FD877E24FE5E27005E6FEB /* paddle_mobile.framework in Frameworks */,
 				27B436A324F100EB00A792A1 /* ProtocolBuffers.framework in Frameworks */,
+				278925C425DE7F7A0034A1A9 /* paddle_mobile.framework in Frameworks */,
 				27DBCEE3257F50AB00B15EA7 /* LiteKitCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -134,7 +119,7 @@
 				27DBCEE2257F50AB00B15EA7 /* LiteKitCore.framework */,
 				27FD878124FE5F38005E6FEB /* ZipArchive.framework */,
 				27FD877F24FE5EE4005E6FEB /* opencv2.framework */,
-				27FD877D24FE5E27005E6FEB /* paddle_mobile.framework */,
+				278925C325DE7F7A0034A1A9 /* paddle_mobile.framework */,
 				27B4369124F100AD00A792A1 /* ProtocolBuffers.framework */,
 			);
 			name = Frameworks;
@@ -150,7 +135,6 @@
 				27B9F29924E0008600CD423B /* Sources */,
 				27B9F29A24E0008600CD423B /* Frameworks */,
 				27B9F29B24E0008600CD423B /* Resources */,
-				27B436A724F100EC00A792A1 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

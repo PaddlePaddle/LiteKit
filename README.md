@@ -41,9 +41,19 @@ open LiteKitDemo.xcworkspace
 
 
 #### Android平台
-1. 打开Android Studio，点击File->Open...，选择LiteKitDemo/Android/LiteKitDemo目录
-2. 参考[LiteKit README](/LiteKitDemo/Android/README.md)文档，下载并放置依赖aar至对应位置
-3. 点击Run安装运行到真机上（Demo中视频检测依赖摄像头输入）
+1. clone依赖SDK仓库作为LocalMaven仓库
+```
+git clone https://gitee.com/paddlepaddle/LiteKit
+```
+
+2. 修改LiteKitDemo工程local.properties（文件位置在`./LiteKitDemo/Android/LiteKitDemo/local.properties`)，添加MAVEN_REPO_LOCAL属性，值为第1步中clone的gitee仓库地址。
+例如：
+```
+MAVEN_REPO_LOCAL = XXXXXXX
+```
+
+3. Gradle sync & Run
+
 
 
 ## 依赖关系
@@ -91,7 +101,7 @@ end
 git clone https://gitee.com/paddlepaddle/LiteKit
 ```
 
-2. 修改LiteKitDemo工程local.properties（文件位置在`./LiteKitDemo/Android/LiteKitDemo/local.properties`)，添加MAVEN_REPO_LOCAL属性，值为第1步中clone的gitee仓库地址。
+2. 修改LiteKitDemo工程local.properties（例如`./LiteKitDemo/Android/LiteKitDemo/local.properties`)，添加MAVEN_REPO_LOCAL属性，值为第1步中clone的gitee仓库地址。
 例如：
 ```
 MAVEN_REPO_LOCAL = XXXXXXX
@@ -189,11 +199,28 @@ LiteKitCore是一种跨平台的，面向移动开发者的，AI工程化的综�
 iOS示例工程包含了Native C++ API和Objective-C API的demo调用示例，Native C++ API和Objective-C API分别包含CPU和GPU两种backend，一共4种加载和预测的方式。针对C++API（在iOS上）和Objective-C API的CPU/GPU backend分别是对齐的，模型的加载和预测能力一致。但是CPU和GPU backend之间是隔离的，预测所使用的模型是不一样的。
 
 #### 示例iOS工程部署
+1. clone git仓库
 ```
 git clone https://github.com/PaddlePaddle/LiteKit.git
-cd ./LiteKitDemo/iOS/LiteKitDemo
-pod install
-open LiteKitDemo.xcworkspace 
+```
+
+2. 下载依赖
+[opencv2](https://gitee.com/paddlepaddle/LiteKit/tree/main/iOS/LiteKitCoreOCDependency/opencv2/0.0.9)、
+[paddle_mobile](https://gitee.com/paddlepaddle/LiteKit/tree/main/iOS/LiteKitCoreOCDependency/paddle_mobile/0.0.9)、
+[ProtocolBuffers](https://gitee.com/paddlepaddle/LiteKit/tree/main/iOS/LiteKitCoreOCDependency/ProtocolBuffers/0.0.9)、
+[ZipArchive](https://gitee.com/paddlepaddle/LiteKit/tree/main/iOS/LiteKitCoreOCDependency/ZipArchive/0.0.9)
+到文件夹`./LiteKitCore/LiteKitCoreDemo/iOS/Dependence/*`
+
+3. 添加LiteKitCore依赖
+[接入文档 for Objective-C API ](/Doc/LiteKitCore接入文档(for%20Objective-C%20API).md)构建产物`LiteKit.framework`
+和
+[接入文档 for Native C++ API on iOS](/Doc/LiteKitCore接入文档(for%20Native%20C%2B%2B%20API%20on%20iOS).md)构建产物`./LiteKitCore/LiteKitCore/C++/build-ios/product/release/*`
+到文件夹`./LiteKitCore/LiteKitCoreDemo/iOS/Dependence/*`
+
+4. 打开工程
+```
+cd ./LiteKitCore/LiteKitCoreDemo/iOS
+open LiteKitCoreDemo.xcodeproj
 ```
 
 |类名 | 说明 | 
@@ -203,8 +230,9 @@ open LiteKitDemo.xcworkspace
 | ViewController+LiteKitCore_OC | LiteKit Objective-C API demo code|
 
 #### 部署Android示例工程  
-1. 根据[接入文档 for Java API ](/Doc/LiteKitCore接入文档(for%20Java%20API).md), 生成`LiteKitCore-debug.aar`，放置在`./LiteKitDemo/Android/LiteKitDemo/app/libs/litekitcore-debug.aar`路径下。
-2. 需要[下载](https://gitee.com/paddlepaddle/LiteKit/tree/main/Android/LiteKitCoreDemoDependency/opencv/0.1.0)Demo依赖的opencv.so和libgnustl_shared.so，放置在`./LiteKitDemo/Android/LiteKitDemo/app/src/main/cpp/libs`路径下。
+1. 根据[接入文档 for Java API ](/Doc/LiteKitCore接入文档(for%20Java%20API).md), 生成`LiteKitCore-debug.aar`，放置在`./LiteKitCore/LiteKitCoreDemo/Android/app/libs/litekitcore-debug.aar`路径下。
+2. 需要[下载](https://gitee.com/paddlepaddle/LiteKit/tree/main/Android/LiteKitCoreDemoDependency/opencv/0.1.0)Demo依赖的opencv.so和libgnustl_shared.so，放置在`./LiteKitCore/LiteKitCoreDemo/Android/app/src/main/cpp/libs`路径下。
+
 ## 二、接口文档
 [接口文档 for Native C++ API](/Doc/LiteKitCore接口文档(for%20Native%20C%2B%2B%20API).md)
 <br>
