@@ -77,7 +77,7 @@ LiteKit由[MIT License](LICENSE)提供
 
 ### 2. 安装SDK
 #### iOS 安装SDK
-通过pod引入，[参考](/LiteKit/LiteKitDemo/iOS/LiteKitDemo/Podfile)
+通过pod引入，[参考](/LiteKitDemo/iOS/LiteKitDemo/Podfile)
 ```ruby
 # coding: utf-8
 source 'https://github.com/CocoaPods/Specs.git'
