@@ -3,50 +3,42 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		27179F58257F64E8006B6E71 /* LiteKitCoreDemo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 27179F57257F64E8006B6E71 /* LiteKitCoreDemo.bundle */; };
-		278925C425DE7F7A0034A1A9 /* paddle_mobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 278925C325DE7F7A0034A1A9 /* paddle_mobile.framework */; };
-		27B436A324F100EB00A792A1 /* ProtocolBuffers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B4369124F100AD00A792A1 /* ProtocolBuffers.framework */; };
 		27B9F2A224E0008600CD423B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B9F2A124E0008600CD423B /* AppDelegate.m */; };
-		27B9F2AD24E0008800CD423B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27B9F2AC24E0008800CD423B /* Assets.xcassets */; };
 		27B9F2B324E0008800CD423B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B9F2B224E0008800CD423B /* main.m */; };
 		27B9F2BE24E0015E00CD423B /* ViewController+LiteKitCore_CPP.mm in Sources */ = {isa = PBXBuildFile; fileRef = 27B9F2B924E0015D00CD423B /* ViewController+LiteKitCore_CPP.mm */; };
 		27B9F2BF24E0015E00CD423B /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 27B9F2BA24E0015D00CD423B /* ViewController.mm */; };
 		27B9F2C024E0015E00CD423B /* ViewController+LiteKitCore_OC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 27B9F2BB24E0015D00CD423B /* ViewController+LiteKitCore_OC.mm */; };
 		27B9F2CD24E00C1700CD423B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27B9F2CC24E00C1700CD423B /* Default-568h@2x.png */; };
 		27B9FBB224E2AA2C00CD423B /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B9FBB124E2AA2C00CD423B /* File.swift */; };
-		27DBCEE3257F50AB00B15EA7 /* LiteKitCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27DBCEE2257F50AB00B15EA7 /* LiteKitCore.framework */; };
-		27FD878024FE5EE5005E6FEB /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27FD877F24FE5EE4005E6FEB /* opencv2.framework */; };
-		27FD878224FE5F38005E6FEB /* ZipArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27FD878124FE5F38005E6FEB /* ZipArchive.framework */; };
-		27FD878824FE69A5005E6FEB /* paddle-mobile-metallib.metallib in Resources */ = {isa = PBXBuildFile; fileRef = 27FD878724FE69A5005E6FEB /* paddle-mobile-metallib.metallib */; };
+		27C53E2225E6A39E002A0C36 /* paddle-mobile-metallib.metallib in Resources */ = {isa = PBXBuildFile; fileRef = 27C53E2125E6A39E002A0C36 /* paddle-mobile-metallib.metallib */; };
+		D8DFC169E73F79C393C8F2FB /* libPods-LiteKitCoreDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BEF4E1D44EFB7285391A797A /* libPods-LiteKitCoreDemo.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		27179F57257F64E8006B6E71 /* LiteKitCoreDemo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = LiteKitCoreDemo.bundle; path = litekitcore_models/LiteKitCoreDemo.bundle; sourceTree = "<group>"; };
-		278925C325DE7F7A0034A1A9 /* paddle_mobile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = paddle_mobile.framework; path = Dependence/paddle_mobile.framework; sourceTree = "<group>"; };
-		27B4369124F100AD00A792A1 /* ProtocolBuffers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ProtocolBuffers.framework; path = Dependence/ProtocolBuffers.framework; sourceTree = "<group>"; };
+		27179F57257F64E8006B6E71 /* LiteKitCoreDemo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = LiteKitCoreDemo.bundle; path = LiteKitCoreDemo/Resources/litekitcore_models/LiteKitCoreDemo.bundle; sourceTree = "<group>"; };
 		27B9F29D24E0008600CD423B /* LiteKitCoreDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiteKitCoreDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27B9F2A024E0008600CD423B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		27B9F2A124E0008600CD423B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		27B9F2A624E0008600CD423B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		27B9F2AC24E0008800CD423B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		27B9F2B124E0008800CD423B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = MMLDemo/Info.plist; sourceTree = "<group>"; };
+		27B9F2B124E0008800CD423B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = LiteKitCoreDemo/Info.plist; sourceTree = "<group>"; };
 		27B9F2B224E0008800CD423B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		27B9F2B924E0015D00CD423B /* ViewController+LiteKitCore_CPP.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "ViewController+LiteKitCore_CPP.mm"; sourceTree = "<group>"; };
 		27B9F2BA24E0015D00CD423B /* ViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
 		27B9F2BB24E0015D00CD423B /* ViewController+LiteKitCore_OC.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "ViewController+LiteKitCore_OC.mm"; sourceTree = "<group>"; };
 		27B9F2BC24E0015D00CD423B /* ViewController+LiteKitCore_CPP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+LiteKitCore_CPP.h"; sourceTree = "<group>"; };
 		27B9F2BD24E0015E00CD423B /* ViewController+LiteKitCore_OC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+LiteKitCore_OC.h"; sourceTree = "<group>"; };
-		27B9F2CC24E00C1700CD423B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		27B9F2CC24E00C1700CD423B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "LiteKitCoreDemo/Resources/Default-568h@2x.png"; sourceTree = "<group>"; };
 		27B9FBB024E2AA2B00CD423B /* LiteKitCoreDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LiteKitCoreDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		27B9FBB124E2AA2C00CD423B /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
-		27DBCEE2257F50AB00B15EA7 /* LiteKitCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LiteKitCore.framework; path = Dependence/LiteKitCore.framework; sourceTree = "<group>"; };
-		27FD877F24FE5EE4005E6FEB /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = Dependence/opencv2.framework; sourceTree = "<group>"; };
-		27FD878124FE5F38005E6FEB /* ZipArchive.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZipArchive.framework; path = Dependence/ZipArchive.framework; sourceTree = "<group>"; };
-		27FD878724FE69A5005E6FEB /* paddle-mobile-metallib.metallib */ = {isa = PBXFileReference; lastKnownFileType = "archive.metal-library"; path = "paddle-mobile-metallib.metallib"; sourceTree = "<group>"; };
+		27C53E2125E6A39E002A0C36 /* paddle-mobile-metallib.metallib */ = {isa = PBXFileReference; lastKnownFileType = "archive.metal-library"; name = "paddle-mobile-metallib.metallib"; path = "LiteKitCoreDemo/Resources/paddle-mobile-metallib.metallib"; sourceTree = "<group>"; };
+		96343F7CD67EE38940239A78 /* Pods-LiteKitCoreDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiteKitCoreDemo.release.xcconfig"; path = "Target Support Files/Pods-LiteKitCoreDemo/Pods-LiteKitCoreDemo.release.xcconfig"; sourceTree = "<group>"; };
+		BEF4E1D44EFB7285391A797A /* libPods-LiteKitCoreDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LiteKitCoreDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3A3DA63E51748B383701ADE /* Pods-LiteKitCoreDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiteKitCoreDemo.debug.xcconfig"; path = "Target Support Files/Pods-LiteKitCoreDemo/Pods-LiteKitCoreDemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,25 +46,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27FD878024FE5EE5005E6FEB /* opencv2.framework in Frameworks */,
-				27FD878224FE5F38005E6FEB /* ZipArchive.framework in Frameworks */,
-				27B436A324F100EB00A792A1 /* ProtocolBuffers.framework in Frameworks */,
-				278925C425DE7F7A0034A1A9 /* paddle_mobile.framework in Frameworks */,
-				27DBCEE3257F50AB00B15EA7 /* LiteKitCore.framework in Frameworks */,
+				D8DFC169E73F79C393C8F2FB /* libPods-LiteKitCoreDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		049DF31771CD0D40F577A7E4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F3A3DA63E51748B383701ADE /* Pods-LiteKitCoreDemo.debug.xcconfig */,
+				96343F7CD67EE38940239A78 /* Pods-LiteKitCoreDemo.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		27B9F29424E0008600CD423B = {
 			isa = PBXGroup;
 			children = (
-				27FD878724FE69A5005E6FEB /* paddle-mobile-metallib.metallib */,
+				27C53E2125E6A39E002A0C36 /* paddle-mobile-metallib.metallib */,
 				27B9F29F24E0008600CD423B /* LiteKitCoreDemo */,
 				27B9F2C724E00B5B00CD423B /* Resources */,
 				27B9F29E24E0008600CD423B /* Products */,
 				27B9FBAE24E2A73D00CD423B /* Frameworks */,
+				049DF31771CD0D40F577A7E4 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -107,7 +105,6 @@
 			children = (
 				27B9F2CC24E00C1700CD423B /* Default-568h@2x.png */,
 				27179F57257F64E8006B6E71 /* LiteKitCoreDemo.bundle */,
-				27B9F2AC24E0008800CD423B /* Assets.xcassets */,
 				27B9F2B124E0008800CD423B /* Info.plist */,
 			);
 			name = Resources;
@@ -116,11 +113,7 @@
 		27B9FBAE24E2A73D00CD423B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				27DBCEE2257F50AB00B15EA7 /* LiteKitCore.framework */,
-				27FD878124FE5F38005E6FEB /* ZipArchive.framework */,
-				27FD877F24FE5EE4005E6FEB /* opencv2.framework */,
-				278925C325DE7F7A0034A1A9 /* paddle_mobile.framework */,
-				27B4369124F100AD00A792A1 /* ProtocolBuffers.framework */,
+				BEF4E1D44EFB7285391A797A /* libPods-LiteKitCoreDemo.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -132,9 +125,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 27B9F2B624E0008800CD423B /* Build configuration list for PBXNativeTarget "LiteKitCoreDemo" */;
 			buildPhases = (
+				8B8FCCF665099088C59DC828 /* [CP] Check Pods Manifest.lock */,
 				27B9F29924E0008600CD423B /* Sources */,
 				27B9F29A24E0008600CD423B /* Frameworks */,
 				27B9F29B24E0008600CD423B /* Resources */,
+				ACDBA8F894E4D1B31BA19DCA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -183,14 +178,55 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27B9F2AD24E0008800CD423B /* Assets.xcassets in Resources */,
-				27FD878824FE69A5005E6FEB /* paddle-mobile-metallib.metallib in Resources */,
+				27C53E2225E6A39E002A0C36 /* paddle-mobile-metallib.metallib in Resources */,
 				27179F58257F64E8006B6E71 /* LiteKitCoreDemo.bundle in Resources */,
 				27B9F2CD24E00C1700CD423B /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8B8FCCF665099088C59DC828 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LiteKitCoreDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ACDBA8F894E4D1B31BA19DCA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LiteKitCoreDemo/Pods-LiteKitCoreDemo-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LiteKitCoreDemo/Pods-LiteKitCoreDemo-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LiteKitCoreDemo/Pods-LiteKitCoreDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		27B9F29924E0008600CD423B /* Sources */ = {
@@ -245,6 +281,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Dependence\"/**";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -259,10 +296,17 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Dependence/LiteKitNative/\"/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/Dependence\"/**";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-l\"litekit_framework_ios\"",
+					"-force_load",
+					"\"$(SRCROOT)/Dependence/LiteKitCore.framework/LiteKitCore\"",
+				);
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -303,6 +347,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Dependence\"/**";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -311,9 +356,16 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Dependence/LiteKitNative/\"/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/Dependence\"/**";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = (
+					"-l\"litekit_framework_ios\"",
+					"-force_load",
+					"\"$(SRCROOT)/Dependence/LiteKitCore.framework/LiteKitCore\"",
+				);
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -321,25 +373,22 @@
 		};
 		27B9F2B724E0008800CD423B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F3A3DA63E51748B383701ADE /* Pods-LiteKitCoreDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 95V4CMQNYA;
-				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Dependence\"/**";
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Dependence\"/**";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)/**";
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = LiteKitCoreDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/Dependence\"/**";
-				OTHER_LDFLAGS = (
-					"-l\"litekit_framework_ios\"",
-					"-force_load",
-					"\"$(SRCROOT)/Dependence/LiteKitCore.framework/LiteKitCore\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)/**";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.baidu.litekitcore.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "LiteKitCoreDemo/LiteKitCoreDemo-Bridging-Header.h";
@@ -351,25 +400,22 @@
 		};
 		27B9F2B824E0008800CD423B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 96343F7CD67EE38940239A78 /* Pods-LiteKitCoreDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 95V4CMQNYA;
-				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Dependence\"/**";
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Dependence\"/**";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)/**";
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = LiteKitCoreDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/Dependence\"/**";
-				OTHER_LDFLAGS = (
-					"-l\"litekit_framework_ios\"",
-					"-force_load",
-					"\"$(SRCROOT)/Dependence/LiteKitCore.framework/LiteKitCore\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)/**";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.baidu.litekitcore.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "LiteKitCoreDemo/LiteKitCoreDemo-Bridging-Header.h";
