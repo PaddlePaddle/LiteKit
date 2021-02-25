@@ -204,23 +204,16 @@ iOS示例工程包含了Native C++ API和Objective-C API的demo调用示例，Na
 git clone https://github.com/PaddlePaddle/LiteKit.git
 ```
 
-2. 下载依赖
-[opencv2](https://gitee.com/paddlepaddle/LiteKit/tree/main/iOS/LiteKitCoreOCDependency/opencv2/0.0.9)、
-[paddle_mobile](https://gitee.com/paddlepaddle/LiteKit/tree/main/iOS/LiteKitCoreOCDependency/paddle_mobile/0.0.9)、
-[ProtocolBuffers](https://gitee.com/paddlepaddle/LiteKit/tree/main/iOS/LiteKitCoreOCDependency/ProtocolBuffers/0.0.9)、
-[ZipArchive](https://gitee.com/paddlepaddle/LiteKit/tree/main/iOS/LiteKitCoreOCDependency/ZipArchive/0.0.9)
-到文件夹`./LiteKitCore/LiteKitCoreDemo/iOS/Dependence/*`
+2. 添加LiteKitCore依赖
+按照[接入文档 for Objective-C API ](/Doc/LiteKitCore接入文档(for%20Objective-C%20API).md)构建产物`LiteKit.framework`放在`./LiteKitCore/LiteKitCoreDemo/iOS/Dependence/*`</br>
+按照[接入文档 for Native C++ API on iOS](/Doc/LiteKitCore接入文档(for%20Native%20C%2B%2B%20API%20on%20iOS).md)构建产物`./LiteKitCore/LiteKitCore/C++/build-ios/product/release/*`，
+头文件到文件夹`./LiteKitCore/LiteKitCoreDemo/iOS/Dependence/LiteKitCoreNative/include/*.h`，.a文件放到`./LiteKitCore/LiteKitCoreDemo/iOS/Dependence/LiteKitCoreNative/liblitekit_framework_ios.a`
 
-3. 添加LiteKitCore依赖
-[接入文档 for Objective-C API ](/Doc/LiteKitCore接入文档(for%20Objective-C%20API).md)构建产物`LiteKit.framework`
-和
-[接入文档 for Native C++ API on iOS](/Doc/LiteKitCore接入文档(for%20Native%20C%2B%2B%20API%20on%20iOS).md)构建产物`./LiteKitCore/LiteKitCore/C++/build-ios/product/release/*`
-到文件夹`./LiteKitCore/LiteKitCoreDemo/iOS/Dependence/*`
-
-4. 打开工程
+3. 打开工程
 ```
 cd ./LiteKitCore/LiteKitCoreDemo/iOS
-open LiteKitCoreDemo.xcodeproj
+pod install
+open LiteKitCoreDemo.xcworkspace
 ```
 
 |类名 | 说明 | 

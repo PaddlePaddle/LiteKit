@@ -22,9 +22,7 @@ DCMAKE_BUILD_TYPE = release
 
 ### 3. 构建步骤
 - 下载依赖库：
-[Protobuf](https://gitee.com/paddlepaddle/LiteKit/tree/main/iOS/LiteKitCoreNativeDependency/Protobuf/0.0.9)、
-[PaddleCPU](https://gitee.com/paddlepaddle/LiteKit/tree/main/iOS/LiteKitCoreNativeDependency/paddle_api_light_bundled/0.0.9)、
-[PaddleGPU](https://gitee.com/paddlepaddle/LiteKit/tree/main/iOS/LiteKitCoreNativeDependency/paddle_mobile/0.0.9)，
+[PaddleCPU](https://gitee.com/paddlepaddle/LiteKit/tree/main/iOS/LiteKitCoreNativeDependency/paddle_api_light_bundled/0.0.9)
 放到以下目录：
     - `./LiteKitCore/LiteKitCore/C++/src/main/iOSLibs/*`
     
@@ -32,12 +30,12 @@ DCMAKE_BUILD_TYPE = release
 git clone https://github.com/PaddlePaddle/LiteKit.git
 cd ./LiteKitCore/LiteKitCore/C++/build-ios 
 sh product_build.sh 
- 
+```
 构建产物位置：
 产物目录PRODUCT_DIR = ./LiteKitCore/LiteKitCore/C++/build-ios/product
 产物头文件目录PRODUCT_HEADER_DIR = PRODUCT_DIR/release/include/
 产物静态库目录PRODUCT_FINAL_DIR = PRODUCT_DIR/release/libpaddle_api_light_bundled.a
-```
+
 
 ## 二、集成
 ### 1. 导入SDK
