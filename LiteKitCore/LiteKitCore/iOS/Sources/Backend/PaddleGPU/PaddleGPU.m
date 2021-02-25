@@ -26,8 +26,6 @@
 #endif
 #ifndef BBALogInfo
 #define BBALogInfo(frmt, ...)
-#else
-#import <BBALumberjack/BBALumberjack.h>
 #endif
 
 #endif

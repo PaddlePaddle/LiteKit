@@ -18,9 +18,10 @@
 #import "PaddleCPU.h"
 
 static NSString *TLiteKit_PaddleCPU_LoadError = @"TLiteKit_PaddleCPU_LoadError";
-#if __has_include("PaddleLite/paddle_api.h")
-#include "PaddleLite/paddle_api.h"
-
+#if __has_include("paddle_api.h")
+#include "paddle_api.h"
+#include "paddle_use_kernels.h"
+#include "paddle_use_ops.h"
 
 @interface PaddleCPUResult ()
 ///data float*
@@ -108,7 +109,7 @@ NSInteger litekit_ShapeProduction(const paddle::lite_api::shape_t& shape) {
 }
 
 @end
-#else // else __has_include(<PaddleLite/paddle_api.h>)
+#else // else __has_include("paddle_api.h")
 @implementation PaddleCPU
 
 - (instancetype)initWithConfig:(PaddleCPUConfig *)config {
@@ -127,7 +128,7 @@ NSInteger litekit_ShapeProduction(const paddle::lite_api::shape_t& shape) {
 }
 
 @end
-#endif // end __has_include(<PaddleLite/paddle_api.h>)
+#endif // end __has_include("paddle_api.h")
 
 
 

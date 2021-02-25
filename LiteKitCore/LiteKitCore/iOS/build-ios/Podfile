@@ -1,0 +1,15 @@
+# coding: utf-8
+ source 'https://github.com/CocoaPods/Specs.git'
+# source 'https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git'
+
+platform :ios
+
+target 'LiteKitCore' do
+  project './LiteKitCore.xcodeproj'
+    platform :ios, '10.0'
+
+    pod 'LiteKitCoreOCDependency', '~> 0.1.0'
+    pod 'LiteKitCorePaddleGPU', '~> 1.1.3'
+    pod 'LiteKitCorePaddleCPU', '~> 2.8.0rc'
+
+end

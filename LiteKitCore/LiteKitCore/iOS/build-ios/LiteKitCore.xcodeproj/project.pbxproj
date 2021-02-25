@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -29,10 +29,6 @@
 		27B4367F24F0FC9900A792A1 /* PaddleGPU.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B4367B24F0FC9700A792A1 /* PaddleGPU.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27B4368024F0FC9900A792A1 /* PaddleGPU.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B4367C24F0FC9800A792A1 /* PaddleGPU.m */; };
 		27B4368124F0FC9900A792A1 /* PaddleGPU+MetalResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B4367D24F0FC9800A792A1 /* PaddleGPU+MetalResource.m */; };
-		27F540CF24FD26F50085B065 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27F540CC24FD26F50085B065 /* opencv2.framework */; };
-		27F540D024FD26F50085B065 /* ZipArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27F540CD24FD26F50085B065 /* ZipArchive.framework */; };
-		27F540D324FD26FB0085B065 /* paddle_mobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27F540D224FD26FB0085B065 /* paddle_mobile.framework */; };
-		27F540D424FD27010085B065 /* ProtocolBuffers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27F540CE24FD26F50085B065 /* ProtocolBuffers.framework */; };
 		3C4F8243786843040A1CA42B /* LiteKitBaseMachine+Performancer.h in Headers */ = {isa = PBXBuildFile; fileRef = 780A3EA5FC8FC35A9F7F24B3 /* LiteKitBaseMachine+Performancer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3F617F956137FBB3541A1B74 /* LiteKitInputConvertor.m in Sources */ = {isa = PBXBuildFile; fileRef = E9716E9C49FBE2E96B4E4212 /* LiteKitInputConvertor.m */; };
 		4056B23E35AC977E87893B49 /* LiteKitMachineConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B2836EAE30039E3A082C9BD /* LiteKitMachineConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -50,7 +46,6 @@
 		8286D7348212DA0B137AFBBC /* PaddleCPU.h in Headers */ = {isa = PBXBuildFile; fileRef = 59644577C0E1614C9C53C80A /* PaddleCPU.h */; };
 		84DD16B506D85D44F893F504 /* LiteKitMachineService.m in Sources */ = {isa = PBXBuildFile; fileRef = 18535B4294E4C782506BE1B5 /* LiteKitMachineService.m */; };
 		85215F214D0D59FA5400D5F0 /* LiteKitData.h in Headers */ = {isa = PBXBuildFile; fileRef = BF284950A146C4729B6A90AF /* LiteKitData.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		864DCE80B4FFBB93653614D5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82B374CB47EFB4570988C17 /* Foundation.framework */; };
 		A109A90B86B5119A88C5DDC7 /* LiteKitTaskDispatcherManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 06940439C35281EB5DF9E2B9 /* LiteKitTaskDispatcherManager.m */; };
 		A295E346868EBA09065EE239 /* LiteKitConvertTool.h in Headers */ = {isa = PBXBuildFile; fileRef = D5E6D45AE8EE5379A6EAADDE /* LiteKitConvertTool.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A36171AC7E9A126E737F05B0 /* LiteKitDataProcess.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B15C8D55EBAA4762DC8F4D /* LiteKitDataProcess.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -62,6 +57,7 @@
 		BF582223F60F517C786F7D0E /* LiteKitTask.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F0624E774FDA0BB22BA5B8 /* LiteKitTask.m */; };
 		BFE4CED6FB9709B985EC1DD4 /* LiteKitConvertTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5658DE68C150C659D024833B /* LiteKitConvertTool.mm */; };
 		C08A9DC345E8681E61AD0B66 /* LiteKitConvertTool+LiteKitData2PaddleInput.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CC147F3E18860F263C453CB /* LiteKitConvertTool+LiteKitData2PaddleInput.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D870D5C0B7509F5CBCCF5039 /* libPods-LiteKitCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 993F57B34ED0C1DF45A30C21 /* libPods-LiteKitCore.a */; };
 		DDA4F1439DD6A7114FFCDEB9 /* LiteKitLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 6647998EC557D16729E2E4A3 /* LiteKitLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E0729C13058B6EA8D683909F /* LiteKitMachineCommonHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 0595BE735D1DE2B442AFB4E2 /* LiteKitMachineCommonHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E4DFB666F038CEEDE0CBA02D /* LiteKitTaskQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B3DC1657800AEEE3F7DAA8 /* LiteKitTaskQueue.m */; };
@@ -95,12 +91,12 @@
 		27B4367B24F0FC9700A792A1 /* PaddleGPU.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaddleGPU.h; sourceTree = "<group>"; };
 		27B4367C24F0FC9800A792A1 /* PaddleGPU.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaddleGPU.m; sourceTree = "<group>"; };
 		27B4367D24F0FC9800A792A1 /* PaddleGPU+MetalResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PaddleGPU+MetalResource.m"; sourceTree = "<group>"; };
-		27F540CC24FD26F50085B065 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = ../Dependences/opencv2.framework; sourceTree = "<group>"; };
-		27F540CD24FD26F50085B065 /* ZipArchive.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZipArchive.framework; path = ../Dependences/ZipArchive.framework; sourceTree = "<group>"; };
-		27F540CE24FD26F50085B065 /* ProtocolBuffers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ProtocolBuffers.framework; path = ../Dependences/ProtocolBuffers.framework; sourceTree = "<group>"; };
-		27F540D224FD26FB0085B065 /* paddle_mobile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = paddle_mobile.framework; path = ../Dependences/PaddleMobileGPU/paddle_mobile.framework; sourceTree = "<group>"; };
+		29206D51410181F64A76898A /* Pods-LiteKitCore.debugc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiteKitCore.debugc.xcconfig"; path = "Target Support Files/Pods-LiteKitCore/Pods-LiteKitCore.debugc.xcconfig"; sourceTree = "<group>"; };
 		29C36C2444AE2EDC9E76342C /* LiteKitMachineService+Performancer.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; includeInIndex = 1; path = "LiteKitMachineService+Performancer.m"; sourceTree = "<group>"; };
+		33B16E8F8D6E0297F7CE6CFD /* Pods-LiteKitCore.enterprisedailybranch2.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiteKitCore.enterprisedailybranch2.xcconfig"; path = "Target Support Files/Pods-LiteKitCore/Pods-LiteKitCore.enterprisedailybranch2.xcconfig"; sourceTree = "<group>"; };
+		3539BB36C3CEA78383A55167 /* Pods-LiteKitCore.debugq.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiteKitCore.debugq.xcconfig"; path = "Target Support Files/Pods-LiteKitCore/Pods-LiteKitCore.debugq.xcconfig"; sourceTree = "<group>"; };
 		353A2406D49699954101F1E5 /* LiteKitPaddleGPUMachine.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; path = LiteKitPaddleGPUMachine.mm; sourceTree = "<group>"; };
+		35E3DBA9178FE5F6EE85FED2 /* Pods-LiteKitCore.debugb.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiteKitCore.debugb.xcconfig"; path = "Target Support Files/Pods-LiteKitCore/Pods-LiteKitCore.debugb.xcconfig"; sourceTree = "<group>"; };
 		389C70EC8CF11C7D44BD68CB /* LiteKitBaseMachine+Performancer.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; includeInIndex = 1; path = "LiteKitBaseMachine+Performancer.m"; sourceTree = "<group>"; };
 		3BA76E6C792890E8B1CD8B99 /* LiteKitTask.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; includeInIndex = 1; path = LiteKitTask.h; sourceTree = "<group>"; };
 		3F720952F68C260031DFB38C /* LiteKitBaseMachine+Logger.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; includeInIndex = 1; path = "LiteKitBaseMachine+Logger.h"; sourceTree = "<group>"; };
@@ -111,8 +107,10 @@
 		5658DE68C150C659D024833B /* LiteKitConvertTool.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; path = LiteKitConvertTool.mm; sourceTree = "<group>"; };
 		569B3E275C7B43D0D567347F /* LiteKitInputConvertor.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; includeInIndex = 1; path = LiteKitInputConvertor.h; sourceTree = "<group>"; };
 		59644577C0E1614C9C53C80A /* PaddleCPU.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; includeInIndex = 1; path = PaddleCPU.h; sourceTree = "<group>"; };
+		663E6AAA3A5743D39B75D6A3 /* Pods-LiteKitCore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiteKitCore.debug.xcconfig"; path = "Target Support Files/Pods-LiteKitCore/Pods-LiteKitCore.debug.xcconfig"; sourceTree = "<group>"; };
 		6647998EC557D16729E2E4A3 /* LiteKitLogger.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; includeInIndex = 1; path = LiteKitLogger.h; sourceTree = "<group>"; };
 		6CC147F3E18860F263C453CB /* LiteKitConvertTool+LiteKitData2PaddleInput.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; includeInIndex = 1; path = "LiteKitConvertTool+LiteKitData2PaddleInput.h"; sourceTree = "<group>"; };
+		6E6126AAF2A190DE22027F81 /* Pods-LiteKitCore.enterprisepre-release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiteKitCore.enterprisepre-release.xcconfig"; path = "Target Support Files/Pods-LiteKitCore/Pods-LiteKitCore.enterprisepre-release.xcconfig"; sourceTree = "<group>"; };
 		6F65B2BA535DAFE4DEB1CD5A /* LiteKitConvertTool+PaddleOutput2LiteKitData.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; includeInIndex = 1; path = "LiteKitConvertTool+PaddleOutput2LiteKitData.h"; sourceTree = "<group>"; };
 		70355372D899E2F5EDD3FD21 /* LiteKitOutputConvertor.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; includeInIndex = 1; path = LiteKitOutputConvertor.m; sourceTree = "<group>"; };
 		780A3EA5FC8FC35A9F7F24B3 /* LiteKitBaseMachine+Performancer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; includeInIndex = 1; path = "LiteKitBaseMachine+Performancer.h"; sourceTree = "<group>"; };
@@ -122,12 +120,15 @@
 		8A247FE4B1301CB9063C56A9 /* PaddleCPU.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; path = PaddleCPU.mm; sourceTree = "<group>"; };
 		8AD17443A14DA743909911FE /* LiteKitBaseMachine+Logger.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; includeInIndex = 1; path = "LiteKitBaseMachine+Logger.m"; sourceTree = "<group>"; };
 		8B13F5124FDADD07AC4B90E1 /* LiteKitPaddleConfig.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; includeInIndex = 1; path = LiteKitPaddleConfig.m; sourceTree = "<group>"; };
-		A82B374CB47EFB4570988C17 /* Foundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		993F57B34ED0C1DF45A30C21 /* libPods-LiteKitCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LiteKitCore.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A08798372927D695CEE9D69E /* Pods-LiteKitCore.enterprisedailybranch1.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiteKitCore.enterprisedailybranch1.xcconfig"; path = "Target Support Files/Pods-LiteKitCore/Pods-LiteKitCore.enterprisedailybranch1.xcconfig"; sourceTree = "<group>"; };
 		AC20DB98865A0A4E70DCFE8D /* LiteKitDataProcess.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; path = LiteKitDataProcess.mm; sourceTree = "<group>"; };
+		B3762F9D3264B6B384089155 /* Pods-LiteKitCore.enterprise.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiteKitCore.enterprise.xcconfig"; path = "Target Support Files/Pods-LiteKitCore/Pods-LiteKitCore.enterprise.xcconfig"; sourceTree = "<group>"; };
 		B5CD5919B46EB3A490A9B8FF /* LiteKitCore.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; includeInIndex = 1; path = LiteKitCore.h; sourceTree = "<group>"; };
 		B6F0624E774FDA0BB22BA5B8 /* LiteKitTask.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; includeInIndex = 1; path = LiteKitTask.m; sourceTree = "<group>"; };
 		B75AAFAC5A7D033E9D6B7296 /* LiteKitBaseMachine.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; includeInIndex = 1; path = LiteKitBaseMachine.m; sourceTree = "<group>"; };
 		B8683CAC4BBF7D480FCF41E9 /* LiteKitPerformanceProfiler.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; includeInIndex = 1; path = LiteKitPerformanceProfiler.m; sourceTree = "<group>"; };
+		BB4590E3403B4219257969C7 /* Pods-LiteKitCore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiteKitCore.release.xcconfig"; path = "Target Support Files/Pods-LiteKitCore/Pods-LiteKitCore.release.xcconfig"; sourceTree = "<group>"; };
 		BF284950A146C4729B6A90AF /* LiteKitData.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; includeInIndex = 1; path = LiteKitData.h; sourceTree = "<group>"; };
 		C2834D165C3AC258E4AA51E3 /* LiteKitInferenceEngineConfigProtocol.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; includeInIndex = 1; path = LiteKitInferenceEngineConfigProtocol.h; sourceTree = "<group>"; };
 		C3D71D53B68BDA0DA1A6EC68 /* LiteKitMachineService.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; includeInIndex = 1; path = LiteKitMachineService.h; sourceTree = "<group>"; };
@@ -136,11 +137,13 @@
 		D2713306694531BD167C7FA9 /* LiteKitConvertTools.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; includeInIndex = 1; path = LiteKitConvertTools.h; sourceTree = "<group>"; };
 		D5E6D45AE8EE5379A6EAADDE /* LiteKitConvertTool.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; includeInIndex = 1; path = LiteKitConvertTool.h; sourceTree = "<group>"; };
 		DA9452D57A99646FFDE49864 /* LiteKitTaskDispatcherManager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; includeInIndex = 1; path = LiteKitTaskDispatcherManager.h; sourceTree = "<group>"; };
+		DE6572556F2BB2F297A8DC31 /* Pods-LiteKitCore.debuga.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiteKitCore.debuga.xcconfig"; path = "Target Support Files/Pods-LiteKitCore/Pods-LiteKitCore.debuga.xcconfig"; sourceTree = "<group>"; };
 		E9716E9C49FBE2E96B4E4212 /* LiteKitInputConvertor.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; includeInIndex = 1; path = LiteKitInputConvertor.m; sourceTree = "<group>"; };
 		ECCCBF960537FCE83DC916E2 /* LiteKitConvertTool+LiteKitData2PaddleInput.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; path = "LiteKitConvertTool+LiteKitData2PaddleInput.mm"; sourceTree = "<group>"; };
 		EF69824B9EEEE0CDEB25EBDF /* LiteKitMachineService+Performancer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; includeInIndex = 1; path = "LiteKitMachineService+Performancer.h"; sourceTree = "<group>"; };
 		F192E3F0BF8E2AC715F352EA /* LiteKitMachineConfigProtocol.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; includeInIndex = 1; path = LiteKitMachineConfigProtocol.h; sourceTree = "<group>"; };
 		F597E054840F35279A9AB80D /* LiteKitTaskQueue.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; includeInIndex = 1; path = LiteKitTaskQueue.h; sourceTree = "<group>"; };
+		F9E828B7C17D37CC4DAF5CD0 /* Pods-LiteKitCore.debugd.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiteKitCore.debugd.xcconfig"; path = "Target Support Files/Pods-LiteKitCore/Pods-LiteKitCore.debugd.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,11 +151,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				864DCE80B4FFBB93653614D5 /* Foundation.framework in Frameworks */,
-				27F540D424FD27010085B065 /* ProtocolBuffers.framework in Frameworks */,
-				27F540CF24FD26F50085B065 /* opencv2.framework in Frameworks */,
-				27F540D024FD26F50085B065 /* ZipArchive.framework in Frameworks */,
-				27F540D324FD26FB0085B065 /* paddle_mobile.framework in Frameworks */,
+				D870D5C0B7509F5CBCCF5039 /* libPods-LiteKitCore.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,6 +203,24 @@
 			path = Machines;
 			sourceTree = "<group>";
 		};
+		3D6F850039E29F1D61F6467A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BB4590E3403B4219257969C7 /* Pods-LiteKitCore.release.xcconfig */,
+				663E6AAA3A5743D39B75D6A3 /* Pods-LiteKitCore.debug.xcconfig */,
+				DE6572556F2BB2F297A8DC31 /* Pods-LiteKitCore.debuga.xcconfig */,
+				35E3DBA9178FE5F6EE85FED2 /* Pods-LiteKitCore.debugb.xcconfig */,
+				29206D51410181F64A76898A /* Pods-LiteKitCore.debugc.xcconfig */,
+				F9E828B7C17D37CC4DAF5CD0 /* Pods-LiteKitCore.debugd.xcconfig */,
+				3539BB36C3CEA78383A55167 /* Pods-LiteKitCore.debugq.xcconfig */,
+				B3762F9D3264B6B384089155 /* Pods-LiteKitCore.enterprise.xcconfig */,
+				A08798372927D695CEE9D69E /* Pods-LiteKitCore.enterprisedailybranch1.xcconfig */,
+				33B16E8F8D6E0297F7CE6CFD /* Pods-LiteKitCore.enterprisedailybranch2.xcconfig */,
+				6E6126AAF2A190DE22027F81 /* Pods-LiteKitCore.enterprisepre-release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		3DB7DCA59BFD711AE668BED7 /* Dispatcher */ = {
 			isa = PBXGroup;
 			children = (
@@ -220,11 +237,7 @@
 		4DCCB7BCC5FFE25B4DDC211B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				27F540D224FD26FB0085B065 /* paddle_mobile.framework */,
-				27F540CC24FD26F50085B065 /* opencv2.framework */,
-				27F540CE24FD26F50085B065 /* ProtocolBuffers.framework */,
-				27F540CD24FD26F50085B065 /* ZipArchive.framework */,
-				A82B374CB47EFB4570988C17 /* Foundation.framework */,
+				993F57B34ED0C1DF45A30C21 /* libPods-LiteKitCore.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -308,6 +321,7 @@
 				E4B90723C4AC92786E9529F7 /* Products */,
 				4DCCB7BCC5FFE25B4DDC211B /* Frameworks */,
 				B6BB2401474BBD2DCFDAAE49 /* SupportFiles */,
+				3D6F850039E29F1D61F6467A /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -427,10 +441,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B7CC4BA210AB809AB2D3155A /* Build configuration list for PBXNativeTarget "LiteKitCore" */;
 			buildPhases = (
+				0A7E6AE572A74D6B04586A96 /* [CP] Check Pods Manifest.lock */,
 				94C49BFE55F2AE5E6ED57634 /* Headers */,
 				CA297B10552507B71279821E /* Sources */,
 				8313B25F7E037BF376096113 /* Frameworks */,
 				C9FB07DBE84E27FE2287D359 /* Resources */,
+				07876344908F6CF3E4BD5DCD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -478,6 +494,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		07876344908F6CF3E4BD5DCD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LiteKitCore/Pods-LiteKitCore-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LiteKitCore/Pods-LiteKitCore-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LiteKitCore/Pods-LiteKitCore-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0A7E6AE572A74D6B04586A96 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LiteKitCore-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CA297B10552507B71279821E /* Sources */ = {
@@ -571,6 +629,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../Dependency/PaddleGPU/include/\"/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -642,6 +701,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../Dependency/PaddleGPU/include/\"/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_GENERATE_MAP_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -662,6 +722,7 @@
 		};
 		2D0576F4CA204DF13459CA45 /* DebugA */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DE6572556F2BB2F297A8DC31 /* Pods-LiteKitCore.debuga.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
@@ -669,11 +730,8 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../Dependences\"/**",
-				);
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../Dependences\"";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -681,8 +739,9 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../Dependences\"/**";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -747,6 +806,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../Dependency/PaddleGPU/include/\"/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -819,6 +879,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../Dependency/PaddleGPU/include/\"/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -890,6 +951,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../Dependency/PaddleGPU/include/\"/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_GENERATE_MAP_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -910,6 +972,7 @@
 		};
 		510132F0714935EC4C92EB9D /* EnterprisePre-release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6E6126AAF2A190DE22027F81 /* Pods-LiteKitCore.enterprisepre-release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
@@ -917,11 +980,8 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../Dependences\"/**",
-				);
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../Dependences\"";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -929,8 +989,9 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../Dependences\"/**";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -943,6 +1004,7 @@
 		};
 		60F056448FECE53CDE80A40A /* EnterpriseDailyBranch1 */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A08798372927D695CEE9D69E /* Pods-LiteKitCore.enterprisedailybranch1.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
@@ -950,11 +1012,8 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../Dependences\"/**",
-				);
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../Dependences\"";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -962,8 +1021,9 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../Dependences\"/**";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -1028,6 +1088,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../Dependency/PaddleGPU/include/\"/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_GENERATE_MAP_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1100,6 +1161,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../Dependency/PaddleGPU/include/\"/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_GENERATE_MAP_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1120,6 +1182,7 @@
 		};
 		94B83E9A5DDF5571C97C3F17 /* DebugC */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 29206D51410181F64A76898A /* Pods-LiteKitCore.debugc.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1127,11 +1190,8 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../Dependences\"/**",
-				);
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../Dependences\"";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1139,8 +1199,9 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../Dependences\"/**";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -1205,6 +1266,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../Dependency/PaddleGPU/include/\"/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1224,6 +1286,7 @@
 		};
 		BD06AB38AE9BC617568D2D9C /* Enterprise */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B3762F9D3264B6B384089155 /* Pods-LiteKitCore.enterprise.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1231,11 +1294,8 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../Dependences\"/**",
-				);
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../Dependences\"";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1243,8 +1303,9 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../Dependences\"/**";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -1257,6 +1318,7 @@
 		};
 		CE889C18DC296DD1C4C6A1CB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB4590E3403B4219257969C7 /* Pods-LiteKitCore.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1264,11 +1326,8 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../Dependences\"/**",
-				);
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../Dependences\"";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1276,8 +1335,9 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../Dependences\"/**";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -1290,6 +1350,7 @@
 		};
 		D129D2091003E44647499C98 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 663E6AAA3A5743D39B75D6A3 /* Pods-LiteKitCore.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1297,11 +1358,8 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../Dependences\"/**",
-				);
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../Dependences\"";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1309,8 +1367,9 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../Dependences\"/**";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -1375,6 +1434,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../Dependency/PaddleGPU/include/\"/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1446,6 +1506,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../Dependency/PaddleGPU/include/\"/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_GENERATE_MAP_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1466,6 +1527,7 @@
 		};
 		E08421140F81F88071864F47 /* EnterpriseDailyBranch2 */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 33B16E8F8D6E0297F7CE6CFD /* Pods-LiteKitCore.enterprisedailybranch2.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1473,11 +1535,8 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../Dependences\"/**",
-				);
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../Dependences\"";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1485,8 +1544,9 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../Dependences\"/**";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -1499,6 +1559,7 @@
 		};
 		EAD0F8233EFEA92052AC7E21 /* DebugD */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F9E828B7C17D37CC4DAF5CD0 /* Pods-LiteKitCore.debugd.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1506,11 +1567,8 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../Dependences\"/**",
-				);
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../Dependences\"";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1518,8 +1576,9 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../Dependences\"/**";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -1531,6 +1590,7 @@
 		};
 		ED9DF83FA9C2E20918CA4A96 /* DebugB */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 35E3DBA9178FE5F6EE85FED2 /* Pods-LiteKitCore.debugb.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1538,11 +1598,8 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../Dependences\"/**",
-				);
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../Dependences\"";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1550,8 +1607,9 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../Dependences\"/**";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -1563,6 +1621,7 @@
 		};
 		F021BB81302B89AC105273A9 /* DebugQ */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3539BB36C3CEA78383A55167 /* Pods-LiteKitCore.debugq.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1570,11 +1629,8 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../Dependences\"/**",
-				);
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../Dependences\"";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1582,8 +1638,9 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../Dependences\"/**";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -1648,6 +1705,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../Dependency/PaddleGPU/include/\"/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
