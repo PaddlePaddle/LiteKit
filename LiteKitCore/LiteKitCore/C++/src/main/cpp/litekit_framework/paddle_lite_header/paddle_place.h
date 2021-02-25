@@ -57,7 +57,9 @@ enum class TargetType : int {
   kMLU = 11,
   kRKNPU = 12,
   kAPU = 13,
-  NUM = 14,  // number of fields.
+  kHuaweiAscendNPU = 14,
+  kImaginationNNA = 15,
+  NUM = 16,  // number of fields.
 };
 enum class PrecisionType : int {
   kUnk = 0,
@@ -69,7 +71,9 @@ enum class PrecisionType : int {
   kBool = 6,
   kInt64 = 7,
   kInt16 = 8,
-  NUM = 9,  // number of fields.
+  kUInt8 = 9,
+  kFP64 = 10,
+  NUM = 11,  // number of fields.
 };
 enum class DataLayoutType : int {
   kUnk = 0,
@@ -91,6 +95,19 @@ typedef enum {
   LITE_POWER_RAND_LOW = 5
 } PowerMode;
 
+typedef enum {
+  CL_TUNE_NONE = 0,
+  CL_TUNE_RAPID = 1,
+  CL_TUNE_NORMAL = 2,
+  CL_TUNE_EXHAUSTIVE = 3
+} CLTuneMode;
+
+typedef enum {
+  CL_PRECISION_AUTO = 0,
+  CL_PRECISION_FP32 = 1,
+  CL_PRECISION_FP16 = 2
+} CLPrecisionType;
+
 typedef enum { MLU_220 = 0, MLU_270 = 1 } MLUCoreVersion;
 
 enum class ActivationType : int {
@@ -106,13 +123,23 @@ enum class ActivationType : int {
   kAbs = 9,
   kHardSwish = 10,
   kReciprocal = 11,
-  NUM = 12,
+  kThresholdedRelu = 12,
+  kElu = 13,
+  kHardSigmoid = 14,
+  kLog = 15,
+  kSigmoid_v2 = 16,
+  kTanh_v2 = 17,
+  NUM = 18,
 };
 
 static size_t PrecisionTypeLength(PrecisionType type) {
   switch (type) {
     case PrecisionType::kFloat:
       return 4;
+    case PrecisionType::kFP64:
+      return 8;
+    case PrecisionType::kUInt8:
+      return 1;
     case PrecisionType::kInt8:
       return 1;
     case PrecisionType::kInt32:
@@ -121,10 +148,17 @@ static size_t PrecisionTypeLength(PrecisionType type) {
       return 8;
     case PrecisionType::kFP16:
       return 2;
+    case PrecisionType::kInt16:
+      return 2;
     default:
-      return 4;
+      return 0;
   }
 }
+
+enum class QuantType : int {
+  QUANT_INT8,
+  QUANT_INT16,
+};
 
 template <typename T>
 struct PrecisionTypeTrait {
@@ -137,6 +171,8 @@ struct PrecisionTypeTrait {
 #define _ForEachPrecisionType(callback)                   \
   _ForEachPrecisionTypeHelper(callback, bool, kBool);     \
   _ForEachPrecisionTypeHelper(callback, float, kFloat);   \
+  _ForEachPrecisionTypeHelper(callback, double, kFP64);   \
+  _ForEachPrecisionTypeHelper(callback, uint8_t, kUInt8); \
   _ForEachPrecisionTypeHelper(callback, int8_t, kInt8);   \
   _ForEachPrecisionTypeHelper(callback, int16_t, kInt16); \
   _ForEachPrecisionTypeHelper(callback, int, kInt32);     \

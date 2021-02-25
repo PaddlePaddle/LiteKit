@@ -19,8 +19,10 @@
 
 #ifndef PADDLE_LITE_API_H_  // NOLINT
 #define PADDLE_LITE_API_H_
+#include <map>
 #include <memory>
 #include <string>
+#include <utility>
 #include <vector>
 #include "paddle_place.h"  // NOLINT
 
@@ -31,9 +33,17 @@ using shape_t = std::vector<int64_t>;
 using lod_t = std::vector<std::vector<uint64_t>>;
 
 enum class LiteModelType { kProtobuf = 0, kNaiveBuffer, UNK };
+// Methods for allocating L3Cache on Arm platform
+enum class L3CacheSetMethod {
+  kDeviceL3Cache = 0,  // Use the system L3 Cache size, best performance.
+  kDeviceL2Cache = 1,  // Use the system L2 Cache size, trade off performance
+                       // with less memory consumption.
+  kAbsolute = 2,       // Use the external setting.
+  // kAutoGrow = 3,   // Not supported yet, least memory consumption.
+};
 
 // return true if current device supports OpenCL model
-LITE_API bool IsOpenCLBackendValid();
+LITE_API bool IsOpenCLBackendValid(bool check_fp16_valid = false);
 
 struct LITE_API Tensor {
   explicit Tensor(void* raw);
@@ -48,6 +58,11 @@ struct LITE_API Tensor {
   template <typename T>
   T* mutable_data(TargetType type = TargetType::kHost) const;
 
+  // Share external memory. Note: ensure that the data pointer is in a valid
+  // state
+  // during the prediction process.
+  void ShareExternalMemory(void* data, size_t memory_size, TargetType target);
+
   template <typename T, TargetType type = TargetType::kHost>
   void CopyFromCpu(const T* data);
 
@@ -57,12 +72,14 @@ struct LITE_API Tensor {
   shape_t shape() const;
   TargetType target() const;
   PrecisionType precision() const;
+  void SetPrecision(PrecisionType precision);
 
   // LoD of the tensor
   lod_t lod() const;
 
   // Set LoD of the tensor
   void SetLoD(const lod_t& lod);
+  bool IsInitialized() const;
 
  private:
   void* raw_tensor_;
@@ -82,6 +99,8 @@ class LITE_API PaddlePredictor {
 
   virtual void Run() = 0;
   virtual std::shared_ptr<PaddlePredictor> Clone() = 0;
+  virtual std::shared_ptr<PaddlePredictor> Clone(
+      const std::vector<std::string>& var_names) = 0;
 
   virtual std::string GetVersion() const = 0;
 
@@ -121,20 +140,33 @@ class LITE_API ConfigBase {
   std::string model_dir_;
   int threads_{1};
   PowerMode mode_{LITE_POWER_NO_BIND};
-  // to save subgraph model for npu/xpu/...
+  // gpu opencl
+  CLTuneMode opencl_tune_mode_{CL_TUNE_NONE};
+  CLPrecisionType opencl_precision_{CL_PRECISION_AUTO};
+  // Where to cache the npu/xpu/rknpu/apu offline model to the binary files
   std::string subgraph_model_cache_dir_{""};
+  // Set the cached npu/xpu/rknpu/apu offline model from the buffers
+  std::map<std::string, std::pair<std::vector<char>, std::vector<char>>>
+      subgraph_model_cache_buffers_{};
+  int device_id_{0};
+  int x86_math_num_threads_ = 1;
 
  public:
   explicit ConfigBase(PowerMode mode = LITE_POWER_NO_BIND, int threads = 1);
   // set Model_dir
   void set_model_dir(const std::string& x) { model_dir_ = x; }
   const std::string& model_dir() const { return model_dir_; }
-  // set Power_mode
-  void set_power_mode(PowerMode mode);
-  PowerMode power_mode() const { return mode_; }
   // set Thread
   void set_threads(int threads);
   int threads() const { return threads_; }
+  // set Power_mode
+  void set_power_mode(PowerMode mode);
+  PowerMode power_mode() const { return mode_; }
+  // set GPU opencl tune
+  void set_opencl_tune(CLTuneMode tune_mode = CL_TUNE_NONE,
+                       size_t lws_repeats = 4);
+  // set GPU opencl precision
+  void set_opencl_precision(CLPrecisionType p = CL_PRECISION_AUTO);
   // set subgraph_model_dir
   void set_subgraph_model_cache_dir(std::string subgraph_model_cache_dir) {
     subgraph_model_cache_dir_ = subgraph_model_cache_dir;
@@ -142,6 +174,38 @@ class LITE_API ConfigBase {
   const std::string& subgraph_model_cache_dir() const {
     return subgraph_model_cache_dir_;
   }
+  void set_subgraph_model_cache_buffers(const std::string& key,
+                                        const std::vector<char>& cfg,
+                                        const std::vector<char>& bin);
+  const std::map<std::string, std::pair<std::vector<char>, std::vector<char>>>&
+  subgraph_model_cache_buffers() const {
+    return subgraph_model_cache_buffers_;
+  }
+  // set Device ID
+  void set_device_id(int device_id) { device_id_ = device_id; }
+  int get_device_id() const { return device_id_; }
+  // set x86_math_num_threads
+  void set_x86_math_num_threads(int threads);
+  int x86_math_num_threads() const;
+};
+
+class LITE_API CxxModelBuffer {
+ public:
+  CxxModelBuffer(const char* program_buffer,
+                 size_t program_buffer_size,
+                 const char* params_buffer,
+                 size_t params_buffer_size);
+  CxxModelBuffer(std::string&& program_buffer, std::string&& params_buffer);
+  const std::string& get_program() const;
+  const std::string& get_params() const;
+  bool is_empty() const;
+
+  CxxModelBuffer() = default;
+  CxxModelBuffer(const CxxModelBuffer&) = delete;
+
+ private:
+  std::string program_;
+  std::string params_;
 };
 
 /// CxxConfig is the config for the Full feature predictor.
@@ -149,11 +213,12 @@ class LITE_API CxxConfig : public ConfigBase {
   std::vector<Place> valid_places_;
   std::string model_file_;
   std::string param_file_;
+  std::shared_ptr<CxxModelBuffer> model_buffer_{nullptr};
   std::vector<std::string> passes_internal_{};
-  bool model_from_memory_{false};
-#ifdef LITE_WITH_X86
-  int x86_math_library_math_threads_ = 1;
-#endif
+  bool quant_model_{false};  // Enable post_quant_dynamic in opt
+  QuantType quant_type_{QuantType::QUANT_INT16};
+  std::map<int, std::vector<std::shared_ptr<void>>>
+      preferred_inputs_for_warmup_;
 #ifdef LITE_WITH_CUDA
   bool multi_stream_{false};
 #endif
@@ -161,9 +226,8 @@ class LITE_API CxxConfig : public ConfigBase {
   lite_api::MLUCoreVersion mlu_core_version_{lite_api::MLUCoreVersion::MLU_270};
   int mlu_core_number_{1};
   DataLayoutType mlu_input_layout_{DATALAYOUT(kNCHW)};
-  bool mlu_use_first_conv_{false};
-  std::vector<float> mlu_first_conv_mean_;
-  std::vector<float> mlu_first_conv_std_;
+  std::vector<float> mlu_first_conv_mean_{};
+  std::vector<float> mlu_first_conv_std_{};
 #endif
 
  public:
@@ -174,10 +238,13 @@ class LITE_API CxxConfig : public ConfigBase {
                         size_t model_buffer_size,
                         const char* param_buffer,
                         size_t param_buffer_size) {
-    model_file_ = std::string(model_buffer, model_buffer + model_buffer_size);
-    param_file_ = std::string(param_buffer, param_buffer + param_buffer_size);
-    model_from_memory_ = true;
+    model_buffer_.reset(new CxxModelBuffer(
+        model_buffer, model_buffer_size, param_buffer, param_buffer_size));
   }
+  void set_model_buffer(std::shared_ptr<CxxModelBuffer> model_buffer) {
+    model_buffer_ = model_buffer;
+  }
+  const CxxModelBuffer& get_model_buffer() const;
   // internal inference to choose passes for model optimizing,
   // it's designed for internal developer and not recommanded
   // for comman users.
@@ -191,16 +258,12 @@ class LITE_API CxxConfig : public ConfigBase {
   const std::vector<Place>& valid_places() const { return valid_places_; }
   std::string model_file() const { return model_file_; }
   std::string param_file() const { return param_file_; }
-  bool model_from_memory() const { return model_from_memory_; }
+  bool is_model_from_memory() const { return static_cast<bool>(model_buffer_); }
+  // note: `model_from_memory` has the same effect as `is_model_from_memory`,
+  // but is_model_from_memory is recommended and `model_from_memory` will be
+  // abandoned in v3.0.
+  bool model_from_memory() const { return static_cast<bool>(model_buffer_); }
 
-#ifdef LITE_WITH_X86
-  void set_x86_math_library_num_threads(int threads) {
-    x86_math_library_math_threads_ = threads;
-  }
-  int x86_math_library_num_threads() const {
-    return x86_math_library_math_threads_;
-  }
-#endif
 #ifdef LITE_WITH_CUDA
   void set_multi_stream(bool multi_stream) { multi_stream_ = multi_stream; }
   bool multi_stream() const { return multi_stream_; }
@@ -211,24 +274,22 @@ class LITE_API CxxConfig : public ConfigBase {
   void set_mlu_core_version(lite_api::MLUCoreVersion core_version);
   // set MLU core number, which is used when compiling MLU kernels
   void set_mlu_core_number(int core_number);
-  // set MLU input layout. User can specify layout of input data to be NHWC,
-  // default is NCHW
-  void set_mlu_input_layout(DataLayoutType layout);
   // whether use MLU's first conv kernel. First conv is a special kernel
   // provided by MLU, its input is uint8, and also needs two 3-dimentional
   // vectors which save all inputs' mean and std values
-  void set_mlu_use_first_conv(bool use_first_conv);
-  // set the 3-dimentional mean vector used by MLU's first conv
-  void set_mlu_first_conv_mean(const std::vector<float>& mean);
-  // set the 3-dimentional std vector used by MLU's first conv
-  void set_mlu_first_conv_std(const std::vector<float>& std);
+  // set the 3-dimentional mean vector and 3-dimentional std vector used by
+  // MLU's first conv
+  void set_mlu_firstconv_param(const std::vector<float>& mean,
+                               const std::vector<float>& std);
+  // set MLU input layout. User can specify layout of input data to be NHWC,
+  // default is NCHW
+  void set_mlu_input_layout(DataLayoutType layout);
 
   lite_api::MLUCoreVersion mlu_core_version() const;
   int mlu_core_number() const;
   DataLayoutType mlu_input_layout() const;
-  bool mlu_use_first_conv() const;
-  const std::vector<float>& mlu_first_conv_mean() const;
-  const std::vector<float>& mlu_first_conv_std() const;
+  // std::pair<mean, std>
+  std::pair<std::vector<float>, std::vector<float>> mlu_firstconv_param() const;
 #endif
 
   // XPU only, set the size of the workspace memory from L3 cache for the
@@ -238,6 +299,27 @@ class LITE_API CxxConfig : public ConfigBase {
   // **DEPRECATED**, use xpu_set_device() at the very beginning of each worker
   // thread
   void set_xpu_dev_per_thread(int dev_no = 0);
+  void set_xpu_multi_encoder_precision(const std::string& precision = "int16");
+
+  // set input tensor for warmup.
+  // It is optional. If you set prefered_inputs, model wil run immediately when
+  // predictor is created
+  template <class T>
+  void set_preferred_inputs_for_warmup(const int group_idx,
+                                       const int tensor_idx,
+                                       const shape_t& shape,
+                                       const lod_t& lod = {},
+                                       const T fill_value = 0,
+                                       const void* data = nullptr);
+  const std::map<int, std::vector<std::shared_ptr<void>>>&
+  preferred_inputs_for_warmup() const {
+    return preferred_inputs_for_warmup_;
+  }
+
+  void set_quant_model(bool quant_model) { quant_model_ = quant_model; }
+  bool quant_model() const { return quant_model_; }
+  void set_quant_type(QuantType quant_type) { quant_type_ = quant_type; }
+  QuantType quant_type() const { return quant_type_; }
 };
 
 /// MobileConfig is the config for the light weight predictor, it will skip
@@ -265,6 +347,10 @@ class LITE_API MobileConfig : public ConfigBase {
 
   // return model_from_memory_, which indicates whether to load model from
   // memory buffer.
+  bool is_model_from_memory() const { return model_from_memory_; }
+  // note: `model_from_memory` has the same effect as `is_model_from_memory`,
+  // but is_model_from_memory is recommended and `model_from_memory` will be
+  // abandoned in v3.0.
   bool model_from_memory() const { return model_from_memory_; }
 
   // NOTE: This is a deprecated API and will be removed in latter release.
@@ -278,6 +364,11 @@ class LITE_API MobileConfig : public ConfigBase {
 
   // NOTE: This is a deprecated API and will be removed in latter release.
   const std::string& param_buffer() const { return param_buffer_; }
+
+  // This is the method for allocating workspace_size according to L3Cache size
+  void SetArmL3CacheSize(
+      L3CacheSetMethod method = L3CacheSetMethod::kDeviceL3Cache,
+      int absolute_val = -1);
 };
 
 template <typename ConfigT>

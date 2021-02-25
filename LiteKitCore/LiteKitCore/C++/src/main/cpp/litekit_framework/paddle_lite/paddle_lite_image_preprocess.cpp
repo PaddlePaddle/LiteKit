@@ -129,7 +129,7 @@ PaddleLiteImagePreprocess::PaddleLiteImagePreprocess(ImageFormat srcFormat,
 */
 void PaddleLiteImagePreprocess::imageConvert(const uint8_t* src, uint8_t* dst) {
     paddle::lite::utils::cv::ImagePreprocess *preprocesser = (paddle::lite::utils::cv::ImagePreprocess *)this->preprocesser;
-    preprocesser->imageConvert(src, dst);
+    preprocesser->image_convert(src, dst);
 }
 /*
 * image color convert
@@ -154,7 +154,7 @@ void PaddleLiteImagePreprocess::imageConvert(const uint8_t* src,
     paddle::lite::utils::cv::ImageFormat dstFormatLite = srcFormatFromLiteKitFormat(dstFormat);
     
     paddle::lite::utils::cv::ImagePreprocess *preprocesser = (paddle::lite::utils::cv::ImagePreprocess *)this->preprocesser;
-    preprocesser->imageConvert(src, dst, srcFormatLite, dstFormatLite);
+    preprocesser->image_convert(src, dst, srcFormatLite, dstFormatLite);
 }
 /*
 * image resize, use bilinear method
@@ -165,7 +165,7 @@ void PaddleLiteImagePreprocess::imageConvert(const uint8_t* src,
 */
 void PaddleLiteImagePreprocess::imageResize(const uint8_t* src, uint8_t* dst) {
     paddle::lite::utils::cv::ImagePreprocess *preprocesser = (paddle::lite::utils::cv::ImagePreprocess *)this->preprocesser;
-    preprocesser->imageResize(src, dst);
+    preprocesser->image_resize(src, dst);
 }
 /*
  image resize, use bilinear method
@@ -189,7 +189,7 @@ void PaddleLiteImagePreprocess::imageResize(const uint8_t* src,
     
     paddle::lite::utils::cv::ImageFormat srcFormatLite = srcFormatFromLiteKitFormat(srcFormat);
     
-    preprocesser->imageResize(src, dst, srcFormatLite, srcw, srch, dstw, dsth);
+    preprocesser->image_resize(src, dst, srcFormatLite, srcw, srch, dstw, dsth);
 }
 
 /*
@@ -201,7 +201,7 @@ void PaddleLiteImagePreprocess::imageResize(const uint8_t* src,
 */
 void PaddleLiteImagePreprocess::imageRotate(const uint8_t* src, uint8_t* dst) {
     paddle::lite::utils::cv::ImagePreprocess *preprocesser = (paddle::lite::utils::cv::ImagePreprocess *)this->preprocesser;
-    preprocesser->imageRotate(src, dst);
+    preprocesser->image_rotate(src, dst);
 }
 /*
 * image Rotate
@@ -222,7 +222,7 @@ void PaddleLiteImagePreprocess::imageRotate(const uint8_t* src,
                                             float degree) {
     paddle::lite::utils::cv::ImagePreprocess *preprocesser = (paddle::lite::utils::cv::ImagePreprocess *)this->preprocesser;
     paddle::lite::utils::cv::ImageFormat srcFormatLite = srcFormatFromLiteKitFormat(srcFormat);
-    preprocesser->imageRotate(src, dst, srcFormatLite, srcw, srch, degree);
+    preprocesser->image_rotate(src, dst, srcFormatLite, srcw, srch, degree);
 }
 /*
 * image Flip
@@ -233,7 +233,7 @@ void PaddleLiteImagePreprocess::imageRotate(const uint8_t* src,
 */
 void PaddleLiteImagePreprocess::imageFlip(const uint8_t* src, uint8_t* dst) {
     paddle::lite::utils::cv::ImagePreprocess *preprocesser = (paddle::lite::utils::cv::ImagePreprocess *)this->preprocesser;
-    preprocesser->imageFlip(src, dst);
+    preprocesser->image_flip(src, dst);
 }
 /*
 * image Flip
@@ -256,7 +256,7 @@ void PaddleLiteImagePreprocess::imageFlip(const uint8_t* src,
     paddle::lite::utils::cv::ImageFormat srcFormatLite = srcFormatFromLiteKitFormat(srcFormat);
     paddle::lite::utils::cv::FlipParam flip_param_lite = filpParamFromLiteKitFlipParam(flip_param);
     
-    preprocesser->imageFlip(src, dst, srcFormatLite, srcw, srch, flip_param_lite);
+    preprocesser->image_flip(src, dst, srcFormatLite, srcw, srch, flip_param_lite);
 }
 
 
@@ -318,7 +318,7 @@ void PaddleLiteImagePreprocess::image2Tensor(const uint8_t* src,
                                              float* scales) {
     paddle::lite::utils::cv::ImagePreprocess *preprocesser = (paddle::lite::utils::cv::ImagePreprocess *)this->preprocesser;
     paddle::lite::utils::cv::LayoutType layoutLite = layoutTypeFromLiteKitLayoutType(layout);
-    preprocesser->image2Tensor(src, (paddle::lite_api::Tensor *)dstTensor->tensor, layoutLite, means, scales);
+    preprocesser->image_to_tensor(src, (paddle::lite_api::Tensor *)dstTensor->tensor, layoutLite, means, scales);
 }
 /*
  * change image data to tensor data
@@ -346,7 +346,7 @@ void PaddleLiteImagePreprocess::image2Tensor(const uint8_t* src,
     paddle::lite::utils::cv::LayoutType layoutLite = layoutTypeFromLiteKitLayoutType(layout);
     paddle::lite::utils::cv::ImageFormat srcFormatLite = srcFormatFromLiteKitFormat(srcFormat);
     
-    preprocesser->image2Tensor(src, (paddle::lite_api::Tensor *)dstTensor->tensor, srcFormatLite, srcw, srch, layoutLite, means, scales);
+    preprocesser->image_to_tensor(src, (paddle::lite_api::Tensor *)dstTensor->tensor, srcFormatLite, srcw, srch, layoutLite, means, scales);
 }
 
 PaddleLiteImagePreprocess::~PaddleLiteImagePreprocess() {

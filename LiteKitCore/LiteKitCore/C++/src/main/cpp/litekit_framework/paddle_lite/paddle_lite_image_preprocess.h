@@ -28,7 +28,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
 #include <stdio.h>
 #include <stdint.h>
 #include <vector>
+
+#if __has_include("litekit_inference_api.h")
+#include "litekit_inference_api.h"
+#else
 #include "../litekit_inference_api.h"
+#endif
+
 
 namespace litekit_framework {
 namespace lite {

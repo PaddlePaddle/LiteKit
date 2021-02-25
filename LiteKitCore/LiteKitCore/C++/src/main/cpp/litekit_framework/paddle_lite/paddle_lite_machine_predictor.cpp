@@ -23,6 +23,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
 #include "../common_log.h"
 #include "../litekit_inference_api.h"
 #include "../paddle_lite_header/paddle_api.h"
+#include "../paddle_lite_header/paddle_use_kernels.h"
+#include "../paddle_lite_header/paddle_use_ops.h"
 
 litekit_framework::ErrorCode fillLiteConfigWithLiteKitConfig_Business(paddle::lite_api::MobileConfig &aconfig,
                                                          litekit_framework::LiteKitConfig::PaddleLiteConfig &liteconfig,
