@@ -11,6 +11,7 @@ project.xcworkspace
 Pods
 Podfile.lock
 LiteKitDemo.xcworkspace
+LiteKitCore.xcworkspace
 LiteKitCoreDemo.xcworkspace
 Dependences
 Dependence
