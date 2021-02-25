@@ -15,7 +15,6 @@
 		27B9F2C024E0015E00CD423B /* ViewController+LiteKitCore_OC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 27B9F2BB24E0015D00CD423B /* ViewController+LiteKitCore_OC.mm */; };
 		27B9F2CD24E00C1700CD423B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27B9F2CC24E00C1700CD423B /* Default-568h@2x.png */; };
 		27B9FBB224E2AA2C00CD423B /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B9FBB124E2AA2C00CD423B /* File.swift */; };
-		27C53E2225E6A39E002A0C36 /* paddle-mobile-metallib.metallib in Resources */ = {isa = PBXBuildFile; fileRef = 27C53E2125E6A39E002A0C36 /* paddle-mobile-metallib.metallib */; };
 		D8DFC169E73F79C393C8F2FB /* libPods-LiteKitCoreDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BEF4E1D44EFB7285391A797A /* libPods-LiteKitCoreDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -35,7 +34,6 @@
 		27B9F2CC24E00C1700CD423B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "LiteKitCoreDemo/Resources/Default-568h@2x.png"; sourceTree = "<group>"; };
 		27B9FBB024E2AA2B00CD423B /* LiteKitCoreDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LiteKitCoreDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		27B9FBB124E2AA2C00CD423B /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
-		27C53E2125E6A39E002A0C36 /* paddle-mobile-metallib.metallib */ = {isa = PBXFileReference; lastKnownFileType = "archive.metal-library"; name = "paddle-mobile-metallib.metallib"; path = "LiteKitCoreDemo/Resources/paddle-mobile-metallib.metallib"; sourceTree = "<group>"; };
 		96343F7CD67EE38940239A78 /* Pods-LiteKitCoreDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiteKitCoreDemo.release.xcconfig"; path = "Target Support Files/Pods-LiteKitCoreDemo/Pods-LiteKitCoreDemo.release.xcconfig"; sourceTree = "<group>"; };
 		BEF4E1D44EFB7285391A797A /* libPods-LiteKitCoreDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LiteKitCoreDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3A3DA63E51748B383701ADE /* Pods-LiteKitCoreDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiteKitCoreDemo.debug.xcconfig"; path = "Target Support Files/Pods-LiteKitCoreDemo/Pods-LiteKitCoreDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -65,7 +63,6 @@
 		27B9F29424E0008600CD423B = {
 			isa = PBXGroup;
 			children = (
-				27C53E2125E6A39E002A0C36 /* paddle-mobile-metallib.metallib */,
 				27B9F29F24E0008600CD423B /* LiteKitCoreDemo */,
 				27B9F2C724E00B5B00CD423B /* Resources */,
 				27B9F29E24E0008600CD423B /* Products */,
@@ -178,7 +175,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27C53E2225E6A39E002A0C36 /* paddle-mobile-metallib.metallib in Resources */,
 				27179F58257F64E8006B6E71 /* LiteKitCoreDemo.bundle in Resources */,
 				27B9F2CD24E00C1700CD423B /* Default-568h@2x.png in Resources */,
 			);
@@ -296,7 +292,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Dependence/LiteKitNative/\"/**";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Dependence/LiteKitCoreNative/include/\"/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/Dependence\"/**";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -356,7 +352,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Dependence/LiteKitNative/\"/**";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Dependence/LiteKitCoreNative/include/\"/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/Dependence\"/**";
 				MTL_ENABLE_DEBUG_INFO = NO;
