@@ -22,9 +22,9 @@ DCMAKE_BUILD_TYPE = release
 
 ### 3. 构建步骤
 - 下载依赖库：
-[PaddleCPU](https://gitee.com/paddlepaddle/LiteKit/tree/main/iOS/LiteKitCoreNativeDependency/paddle_api_light_bundled/0.0.9)
+[PaddleCPU](https://gitee.com/paddlepaddle/LiteKit/tree/main/iOS/LiteKitCoreDependency/PaddleCPU/2.8.0rc/libpaddle_api_light_bundled.a)
 放到以下目录：
-    - `./LiteKitCore/LiteKitCore/C++/src/main/iOSLibs/*`
+    - `./LiteKitCore/LiteKitCore/C++/src/main/iOSLibs/paddle_api_light_bundled/libpaddle_api_light_bundled.a`
     
 ```
 git clone https://github.com/PaddlePaddle/LiteKit.git
