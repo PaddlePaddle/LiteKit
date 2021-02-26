@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		27179F58257F64E8006B6E71 /* LiteKitCoreDemo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 27179F57257F64E8006B6E71 /* LiteKitCoreDemo.bundle */; };
+		2739232125E8E2AC00FCDBB4 /* ViewController+View.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2739231F25E8E2AC00FCDBB4 /* ViewController+View.mm */; };
 		27B9F2A224E0008600CD423B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B9F2A124E0008600CD423B /* AppDelegate.m */; };
 		27B9F2B324E0008800CD423B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B9F2B224E0008800CD423B /* main.m */; };
 		27B9F2BE24E0015E00CD423B /* ViewController+LiteKitCore_CPP.mm in Sources */ = {isa = PBXBuildFile; fileRef = 27B9F2B924E0015D00CD423B /* ViewController+LiteKitCore_CPP.mm */; };
@@ -20,6 +21,8 @@
 
 /* Begin PBXFileReference section */
 		27179F57257F64E8006B6E71 /* LiteKitCoreDemo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = LiteKitCoreDemo.bundle; path = LiteKitCoreDemo/Resources/litekitcore_models/LiteKitCoreDemo.bundle; sourceTree = "<group>"; };
+		2739231F25E8E2AC00FCDBB4 /* ViewController+View.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "ViewController+View.mm"; sourceTree = "<group>"; };
+		2739232025E8E2AC00FCDBB4 /* ViewController+View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+View.h"; sourceTree = "<group>"; };
 		27B9F29D24E0008600CD423B /* LiteKitCoreDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiteKitCoreDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27B9F2A024E0008600CD423B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		27B9F2A124E0008600CD423B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -84,6 +87,8 @@
 			children = (
 				27B9F2A624E0008600CD423B /* ViewController.h */,
 				27B9F2BA24E0015D00CD423B /* ViewController.mm */,
+				2739232025E8E2AC00FCDBB4 /* ViewController+View.h */,
+				2739231F25E8E2AC00FCDBB4 /* ViewController+View.mm */,
 				27B9F2BC24E0015D00CD423B /* ViewController+LiteKitCore_CPP.h */,
 				27B9F2B924E0015D00CD423B /* ViewController+LiteKitCore_CPP.mm */,
 				27B9F2BD24E0015E00CD423B /* ViewController+LiteKitCore_OC.h */,
@@ -233,6 +238,7 @@
 				27B9F2BF24E0015E00CD423B /* ViewController.mm in Sources */,
 				27B9FBB224E2AA2C00CD423B /* File.swift in Sources */,
 				27B9F2A224E0008600CD423B /* AppDelegate.m in Sources */,
+				2739232125E8E2AC00FCDBB4 /* ViewController+View.mm in Sources */,
 				27B9F2B324E0008800CD423B /* main.m in Sources */,
 				27B9F2C024E0015E00CD423B /* ViewController+LiteKitCore_OC.mm in Sources */,
 			);
@@ -378,7 +384,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)/**";
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = LiteKitCoreDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -405,7 +411,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)/**";
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = LiteKitCoreDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

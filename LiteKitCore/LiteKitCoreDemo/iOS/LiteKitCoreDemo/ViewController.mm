@@ -17,6 +17,7 @@
 #import "ViewController.h"
 #import "ViewController+LiteKitCore_CPP.h"
 #import "ViewController+LiteKitCore_OC.h"
+#import "ViewController+View.h"
 
 ///litekit  header
 #import "litekit_inference_api.h"
@@ -38,6 +39,8 @@
     NSString *filePath = @"LiteKitCoreDemo.bundle";
     NSString *modelDir = [testBundle pathForResource:filePath ofType:nil];
     
+    [self createViews];
+    
     /// LiteKit  demo code
     [self LiteKit_CPP_Demo_GPU:modelDir];
     [self LiteKit_CPP_Demo_CPU:modelDir];
@@ -53,6 +56,7 @@
 
 NSUInteger n = 1, c = 3, h = 256, w = 256;
 - (void *)LiteKit_CPP_Demo_GPU:(NSString *)modelDir {
+    printf("\n>>>>>>>>>   CPP_Demo_GPU   <<<<<<<<<\n");
     printf("\ninput: \n");
     NSError *error = nil;
     NSString *inputName = [modelDir stringByAppendingPathComponent:@"input_1_3_256_256"];
@@ -73,6 +77,7 @@ NSUInteger n = 1, c = 3, h = 256, w = 256;
     printf("\noutput: \n");
     [self logBuffer:(float *)(output.rawData) length:output.dataLength count:20];
       
+    printf("\n^^^^^^^^^^^^^^^^^^^^^^^^^^^\n");
     return output.rawData;
 }
 
@@ -89,6 +94,7 @@ NSUInteger n = 1, c = 3, h = 256, w = 256;
 
 
 - (void)LiteKit_CPP_Demo_CPU:(NSString *)modelDir {
+    printf("\n>>>>>>>>>   CPP_Demo_GPU   <<<<<<<<<\n");
     /// shared ptr
     @autoreleasepool {
         // load
@@ -104,6 +110,8 @@ NSUInteger n = 1, c = 3, h = 256, w = 256;
             free(output);
         }
      }
+    
+    printf("\n\n=====================================\n\n");
     
     /// normal ptr
     @autoreleasepool {
@@ -123,6 +131,8 @@ NSUInteger n = 1, c = 3, h = 256, w = 256;
             delete service;
         }
     }
+    
+    printf("\n^^^^^^^^^^^^^^^^^^^^^^^^^^^\n");
 }
 
 - (float *)predictWithMachine:(litekit_framework::LiteKitMachineService *)service {
@@ -141,7 +151,10 @@ NSUInteger n = 1, c = 3, h = 256, w = 256;
     ainput->Resize(shape);
     auto *data = ainput->mutable_data<float>();
     memcpy(data, inputDemoData, inputDemoDataSize*sizeof(float));
-
+    
+    printf("\ninput: \n");
+    [self logBuffer:(float *)inputDemoData length:inputDemoDataSize count:20];
+    
     // 4. Predict
     service->run();
 
@@ -167,7 +180,9 @@ NSUInteger n = 1, c = 3, h = 256, w = 256;
         memcpy(output2, output_tensor2->data<float>(), sizeof(float)*outputDataSize2);
         free(output2);
     }
-       
+    
+    printf("\noutput: \n");
+    [self logBuffer:(float *)output length:outputDataSize count:20];
     
     free(inputDemoData);
     
@@ -192,6 +207,9 @@ NSUInteger n = 1, c = 3, h = 256, w = 256;
     auto *data = ainput->mutable_data<float>();
     memcpy(data, inputDemoData, inputDemoDataSize*sizeof(float));
 
+    printf("\ninput: \n");
+    [self logBuffer:(float *)inputDemoData length:inputDemoDataSize count:20];
+    
     // 4. Predict
     service->run();
 
@@ -218,6 +236,8 @@ NSUInteger n = 1, c = 3, h = 256, w = 256;
         free(output2);
     }
        
+    printf("\noutput: \n");
+    [self logBuffer:(float *)output length:outputDataSize count:20];
     
     free(inputDemoData);
     
@@ -235,6 +255,7 @@ int64_t demo_shapeProduction(const litekit_framework::shape_t shape) {
 #pragma mark - OC Demo
 
 - (void)LiteKit_OC_Demo_GPU:(NSString *)modelDir {
+    printf("\n>>>>>>>>>   OC_Demo_GPU   <<<<<<<<<\n");
     
     LiteKitBaseMachine *litekitMachine = [self loadLiteKitWithModelDir_GPU:modelDir];
     
@@ -255,10 +276,13 @@ int64_t demo_shapeProduction(const litekit_framework::shape_t shape) {
     NSError *error = nil;
     LiteKitData *outputData = [litekitMachine predictWithInputData:inputData error:&error];
     
-    NSLog(@"end");
+    NSLog(@"end\n outputData = %d, dims = %@\n", outputData.litekitShapedData.dataSize, outputData.litekitShapedData.dim);
+    
+    printf("\n^^^^^^^^^^^^^^^^^^^^^^^^^^^\n");
 }
 
 - (void)LiteKit_OC_Demo_CPU:(NSString *)modelDir {
+    printf("\n>>>>>>>>>   OC_Demo_CPU   <<<<<<<<<\n");
     
     LiteKitBaseMachine *litekitMachine = [self loadLiteKitWithModelDir_CPU:modelDir];
     
@@ -279,7 +303,9 @@ int64_t demo_shapeProduction(const litekit_framework::shape_t shape) {
     NSError *error = nil;
     LiteKitData *outputData = [litekitMachine predictWithInputData:inputData error:&error];
     
-    NSLog(@"end");
+    NSLog(@"end\n outputData = %d, dims = %@\n", outputData.litekitShapedData.dataSize, outputData.litekitShapedData.dim);
+    
+    printf("\n^^^^^^^^^^^^^^^^^^^^^^^^^^^\n");
 }
 
 @end

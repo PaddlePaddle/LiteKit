@@ -18,6 +18,9 @@
 
 @interface ViewController : UIViewController
 
-
+- (void *)LiteKit_CPP_Demo_GPU:(NSString *)modelDir;
+- (void)LiteKit_CPP_Demo_CPU:(NSString *)modelDir;
+- (void)LiteKit_OC_Demo_GPU:(NSString *)modelDir;
+- (void)LiteKit_OC_Demo_CPU:(NSString *)modelDir;
 @end
 
