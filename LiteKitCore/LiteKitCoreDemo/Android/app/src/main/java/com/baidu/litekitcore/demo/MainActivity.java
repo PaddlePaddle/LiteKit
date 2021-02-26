@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        for (int i = 0; i < 20; ++i) {
+        for (int i = 0; i < 1; ++i) {
             doRun();
         }
         Toast.makeText(this, "litekitcore, successful", Toast.LENGTH_LONG).show();
@@ -72,17 +72,12 @@ public class MainActivity extends AppCompatActivity {
      * 读取输入 --> 预处理 --> 创建LiteKit推理引擎 --> feed input data --> run --> fetch --> 后处理 --> 释放
      */
     void doRun() {
-        // 读取输入图片
-        try {
-            InputStream is = getApplicationContext().getAssets().open("images/test.jpg");
-            image = BitmapFactory.decodeStream(is);
-            is.close();
-        } catch (IOException e) {
-            Log.e(TAG, e.toString());
-            System.exit(-1);
-        }
+        // 读取输入数据
+        byte[] buffer = readInputDataFromFile("input_1_3_256_256");
         // 预处理数据
-        float[] inputData = createInputData(image);
+        float[] inputData = createInputData(buffer);
+        logBuffer(inputData, inputData.length, 20);
+
         if (inputData.length != modelInputBatchSize * modelInputChannel * modelInputHeight * modelInputWidth) {
             Log.e(TAG, "input data error");
             System.exit(-1);
@@ -102,11 +97,61 @@ public class MainActivity extends AppCompatActivity {
         // run
         ArrayList<LiteKitData> output = machine.predictWithInputData(input);
         // 后处理数据
-        float[] result = postprocess(output.get(0).output.fetchFloatData(), output.get(1).output.fetchFloatData(), output.get(2).output.fetchFloatData(),
-                output.get(3).output.fetchFloatData(), output.get(4).output.fetchFloatData(), image.getWidth(), image.getHeight());
-        RectF handBoxRext = new RectF(result[0], result[1], result[0] + result[2], result[1] + result[3]);
-        draw(handBoxRext);
+        float[] result = output.get(0).output.fetchFloatData();
+        logBuffer(result, result.length, 20);
+
         machine.releaseMachine();
+    }
+
+    public byte[] readInputDataFromFile(String fileName) {
+        int dataLength = modelInputBatchSize * modelInputChannel * modelInputHeight * modelInputWidth;
+        byte[] buffer = new byte[dataLength*4];
+
+        try {
+            InputStream is = getApplicationContext().getAssets().open(fileName);
+
+            is.read(buffer);
+
+            is.close();
+        } catch (IOException e) {
+            Log.e(TAG, e.toString());
+            System.exit(-1);
+        }
+
+        return buffer;
+    }
+
+    public float[] createInputData(byte[] buffer) {
+        int dataLength = modelInputBatchSize * modelInputChannel * modelInputHeight * modelInputWidth;
+
+        float[] inputData = new float[dataLength];
+
+        for (int i=0; i< dataLength; i++) {
+            inputData[i] = getFloat(buffer, i*4);
+        }
+
+        return inputData;
+    }
+
+    public static float getFloat(byte[] a, int index) {
+        int accum = 0;
+        accum = accum|(a[index+0] & 0xff) << 0;
+        accum = accum|(a[index+1] & 0xff) << 8;
+        accum = accum|(a[index+2] & 0xff) << 16;
+        accum = accum|(a[index+3] & 0xff) << 24;
+        return Float.intBitsToFloat(accum);
+    }
+
+    private void logBuffer(float[] buffer , int length, int count) {
+        int stride = length / count;
+        if (stride == 0) {
+            stride = 1;
+        }
+
+        for (int j = 0; j < length / stride; j++) {
+            Log.d("logBuffer", String.format("%.6f",buffer[j * stride]));
+        }
+        Log.d("logBuffer","\n");
     }
 
     /**
@@ -139,9 +184,9 @@ public class MainActivity extends AppCompatActivity {
 
     String modelPath() {
         String dir = this.getFilesDir().getAbsolutePath() + File.separator;
-        String model_name = "gesture_det_cpu";
+        String model_name = "mobilenet_v1_opt.nb";
         try {
-            FileUtil.copyAssetResource2File(this.getApplicationContext(), "models/gesture/" + model_name, dir + model_name);
+            FileUtil.copyAssetResource2File(this.getApplicationContext(), "models/" + model_name, dir + model_name);
         } catch (IOException e) {
             Log.e(TAG, e.toString());
             System.exit(-1);
