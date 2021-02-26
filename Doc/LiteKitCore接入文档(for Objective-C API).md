@@ -20,7 +20,7 @@ OTHER_CFLAGS="-fembed-bitcode"
 
 ```
 git clone https://github.com/PaddlePaddle/LiteKit.git
-cd ./LiteKitCore/LiteKitCore/C++/build-ios
+cd ./LiteKitCore/LiteKitCore/iOS/build-ios
 sh product_build.sh 
  
 构建产物位置：

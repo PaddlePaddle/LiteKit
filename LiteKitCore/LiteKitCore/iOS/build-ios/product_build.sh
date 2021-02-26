@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pod install
+pod install --repo-update
 
 set -x
 
