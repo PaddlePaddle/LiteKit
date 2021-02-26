@@ -25,6 +25,7 @@ import android.graphics.RectF;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.Toast;
 
 
@@ -39,16 +40,16 @@ import com.baidu.litekitcore.LiteKitPaddleLiteConfig;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.ByteBuffer;
 import java.util.ArrayList;
+
+import static com.baidu.litekitcore.demo.MachineController.modelInputBatchSize;
+import static com.baidu.litekitcore.demo.MachineController.modelInputChannel;
+import static com.baidu.litekitcore.demo.MachineController.modelInputHeight;
+import static com.baidu.litekitcore.demo.MachineController.modelInputWidth;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "litekitcore-java";
-    private static final int modelInputBatchSize = 1;
-    private static final int modelInputChannel = 3;
-    private static final int modelInputWidth = 256;
-    private static final int modelInputHeight = 256;
 
     // Used to load the 'native-lib' library on application startup.
     static {
@@ -56,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     Bitmap image = null;
+
+    MachineController mMachineController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +68,23 @@ public class MainActivity extends AppCompatActivity {
             doRun();
         }
         Toast.makeText(this, "litekitcore, successful", Toast.LENGTH_LONG).show();
+
+        this.loadViewProperties();
     }
+
+    void loadViewProperties() {
+        byte[] buffer = readInputDataFromFile("input_1_3_256_256");
+        float[] inputData = createInputData(buffer);
+        mMachineController = new MachineController(this.modelPath(), inputData);
+
+        ((Button) this.findViewById(R.id.button1)).setOnClickListener(mMachineController);
+        ((Button) this.findViewById(R.id.button2)).setOnClickListener(mMachineController);
+        ((Button) this.findViewById(R.id.button3)).setOnClickListener(mMachineController);
+        ((Button) this.findViewById(R.id.button4)).setOnClickListener(mMachineController);
+        ((Button) this.findViewById(R.id.button5)).setOnClickListener(mMachineController);
+    }
+
+
 
     /**
      * 完整的litekitcore java api调用示例代码，从
@@ -76,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         byte[] buffer = readInputDataFromFile("input_1_3_256_256");
         // 预处理数据
         float[] inputData = createInputData(buffer);
-        logBuffer(inputData, inputData.length, 20);
+        MachineController.logBuffer(inputData, inputData.length, 20);
 
         if (inputData.length != modelInputBatchSize * modelInputChannel * modelInputHeight * modelInputWidth) {
             Log.e(TAG, "input data error");
@@ -98,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<LiteKitData> output = machine.predictWithInputData(input);
         // 后处理数据
         float[] result = output.get(0).output.fetchFloatData();
-        logBuffer(result, result.length, 20);
+        MachineController.logBuffer(result, result.length, 20);
 
         machine.releaseMachine();
     }
@@ -140,18 +159,6 @@ public class MainActivity extends AppCompatActivity {
         accum = accum|(a[index+2] & 0xff) << 16;
         accum = accum|(a[index+3] & 0xff) << 24;
         return Float.intBitsToFloat(accum);
-    }
-
-    private void logBuffer(float[] buffer , int length, int count) {
-        int stride = length / count;
-        if (stride == 0) {
-            stride = 1;
-        }
-
-        for (int j = 0; j < length / stride; j++) {
-            Log.d("logBuffer", String.format("%.6f",buffer[j * stride]));
-        }
-        Log.d("logBuffer","\n");
     }
 
     /**
