@@ -93,6 +93,13 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     [self detectWithSampleBuffer:sampleBuffer];
 }
 
+//横竖屏切换时：显示相机流的layer更新frame
+- (void)updateViewLayout:(CGSize)screenSize  {
+    [super updateViewLayout:screenSize];
+    self.imageView.frame = CGRectMake(0, 0, screenSize.width, screenSize.height);
+    [self.view bringSubviewToFront:self.imageView];
+}
+
 - (void)detectWithSampleBuffer:(CMSampleBufferRef)sampleBuffer {
     NSTimeInterval begin = [[NSDate date] timeIntervalSince1970];
     LiteKitPSData *output = (LiteKitPSData *)[self.portraitSegmentor inferWithPixelBuffer:CMSampleBufferGetImageBuffer(sampleBuffer) error:nil];

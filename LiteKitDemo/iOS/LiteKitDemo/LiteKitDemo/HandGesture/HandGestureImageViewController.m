@@ -18,7 +18,8 @@
 @interface HandGestureImageViewController ()
 @property (strong, nonatomic) UIImage *image;
 @property (strong, nonatomic) UILabel *timeCost;
-@property (strong, nonatomic) HandGestureRecognizeView *detectView;
+@property (strong, nonatomic) UIImageView *imageView;
+@property (strong, nonatomic) HandGestureRecognizeView *recognizeView;
 @property (nonatomic, strong) LiteKitHandGestureDetector *gestureRecognizer;
 @end
 
@@ -52,17 +53,36 @@
     imageView.image = self.image;
     imageView.backgroundColor = [UIColor clearColor];
     imageView.contentMode = UIViewContentModeScaleAspectFit;
+    self.imageView = imageView;
     [self.view addSubview:imageView];
 
-    self.detectView = [[HandGestureRecognizeView alloc] initWithFrame:imageView.frame];
-    self.detectView.backgroundColor = [UIColor clearColor];
-    self.detectView.presetSize = CGSizeMake(imgW, imgH);
-    [self.view addSubview:self.detectView];
+    self.recognizeView = [[HandGestureRecognizeView alloc] initWithFrame:imageView.frame];
+    self.recognizeView.backgroundColor = [UIColor clearColor];
+    self.recognizeView.presetSize = CGSizeMake(imgW, imgH);
+    [self.view addSubview:self.recognizeView];
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(12, [self naviBarHeight] + 8, 100, 30)];
     label.textColor = [UIColor redColor];
     [self.view addSubview:label];
     self.timeCost = label;
+}
+
+- (BOOL)isNeedCamera {
+    return NO;
+}
+
+//横竖屏切换时：显示相机流的layer更新frame
+- (void)updateViewLayout:(CGSize)screenSize  {
+    [super updateViewLayout:screenSize];
+    
+    CGFloat imgW = self.image.size.width;
+    CGFloat imgH = self.image.size.height;
+    CGFloat adjustH = imgH * self.view.frame.size.width / imgW;
+    self.imageView.frame = CGRectMake(0, 0, screenSize.width, adjustH);
+    [self.view bringSubviewToFront:self.imageView];
+    
+    self.recognizeView.frame = self.imageView.frame;
+    [self.view bringSubviewToFront:self.recognizeView];
 }
 
 - (void)createInstance {
@@ -82,7 +102,7 @@
         }
         dispatch_async(dispatch_get_main_queue(), ^{
             [self outputDetectResult:result];
-            [(HandGestureRecognizeView*)self.detectView updateResultData:result];
+            [(HandGestureRecognizeView*)self.recognizeView updateResultData:result];
             self.timeCost.text = [NSString stringWithFormat:@"%.2fms", (end - begin) * 1000];
         });
     }];

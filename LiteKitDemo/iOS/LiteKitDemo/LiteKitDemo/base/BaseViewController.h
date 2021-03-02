@@ -45,6 +45,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (float)naviBarHeight;
 - (CGSize)captureSessionPresetSize;
 
+- (BOOL)isNeedCamera;
+
+//横竖屏切换时：显示相机流的layer更新frame
+- (void)updateViewLayout:(CGSize)screenSize;
+
 @end
 
 NS_ASSUME_NONNULL_END

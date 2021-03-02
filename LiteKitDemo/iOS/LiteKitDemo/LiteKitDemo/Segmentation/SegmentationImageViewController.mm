@@ -86,6 +86,21 @@
     self.timeCost = label;
 }
 
+- (BOOL)isNeedCamera {
+    return NO;
+}
+
+//横竖屏切换时：显示相机流的layer更新frame
+- (void)updateViewLayout:(CGSize)screenSize  {
+    [super updateViewLayout:screenSize];
+    
+    CGFloat imgW = self.image.size.width;
+    CGFloat imgH = self.image.size.height;
+    CGFloat adjustH = imgH * self.view.frame.size.width / imgW;
+    self.imageView.frame = CGRectMake(0, [self naviBarHeight], screenSize.width, adjustH);
+    [self.view bringSubviewToFront:self.imageView];
+}
+
 - (void)createInstance {
     NSError *error = nil;
     self.portraitSegmentor = [LiteKitPortraitSegmentor createPortraitSegmentorWithError:&error];

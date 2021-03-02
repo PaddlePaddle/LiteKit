@@ -110,9 +110,6 @@
 }
 
 - (void)initMotion {
-    if (![self isNeedCamera]) {
-        return;
-    }
     
     // 添加设备方向变化监听
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceOrientationDidChange:)
@@ -256,14 +253,20 @@
             self.videoPreviewLayer.frame = CGRectMake(0, 0, screenWidth, adjustHeight);
         }
         self.detectView.frame = CGRectMake(0, 0, screenWidth, adjustHeight);
+        [self updateViewLayout:CGSizeMake(screenWidth, adjustHeight)];
     } else {
         CGFloat adjustWidth = screenHeight * presetSize.height / presetSize.width;  // 适应宽
         if (isCamera) {
             self.videoPreviewLayer.frame = CGRectMake(0, 0, adjustWidth, screenHeight);
         }
         self.detectView.frame = CGRectMake(0, 0, adjustWidth, screenHeight);
+        [self updateViewLayout:CGSizeMake(adjustWidth, screenHeight)];
     }
     [self.view bringSubviewToFront:self.detectView];
+}
+
+- (void)updateViewLayout:(CGSize)screenSize {
+    return;
 }
 
 //横竖屏切换时：显示相机流的layer更新输出内容的方向
