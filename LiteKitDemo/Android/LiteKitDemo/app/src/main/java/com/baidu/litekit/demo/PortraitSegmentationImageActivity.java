@@ -34,6 +34,7 @@ import android.widget.ImageView;
 
 import com.baidu.litekit.PortraitSegmentation;
 import com.baidu.litekit.PortraitSegmentationConfig;
+import com.baidu.litekit.demo.utils.ThreadManager;
 
 import java.nio.ByteBuffer;
 
@@ -138,36 +139,38 @@ public class PortraitSegmentationImageActivity extends AppCompatActivity {
     }
 
     void doSegment() {
-        createKitInstance();
-        Bitmap bmp = null, scaleImage = null;
-        bmp = BitmapFactory.decodeResource(PortraitSegmentationImageActivity.this.getResources(), R.mipmap.portrait_girl);
-        final int inWidth = 192;
-        final int inHeight = 192;
+        synchronized (ThreadManager.mCommonlock) {
+            createKitInstance();
+            Bitmap bmp = null, scaleImage = null;
+            bmp = BitmapFactory.decodeResource(PortraitSegmentationImageActivity.this.getResources(), R.mipmap.portrait_girl);
+            final int inWidth = 192;
+            final int inHeight = 192;
 
-        scaleImage = Bitmap.createScaledBitmap(bmp, inWidth, inHeight, true);
+            scaleImage = Bitmap.createScaledBitmap(bmp, inWidth, inHeight, true);
 
-        Bitmap rgbaImage = scaleImage.copy(scaleImage.getConfig(), true);
-        byte[] inputData = new byte[rgbaImage.getWidth() * rgbaImage.getHeight() * 3];
-        ByteBuffer buffer = ByteBuffer.allocate(rgbaImage.getByteCount());
-        rgbaImage.copyPixelsToBuffer(buffer);
-        byte[] rgba = buffer.array();
-        for (int i = 0; i < rgba.length / 4; i++) {
-            inputData[i * 3] = rgba[i * 4];
-            inputData[i * 3 + 1] = rgba[i * 4 + 1];
-            inputData[i * 3 + 2] = rgba[i * 4 + 2];
+            Bitmap rgbaImage = scaleImage.copy(scaleImage.getConfig(), true);
+            byte[] inputData = new byte[rgbaImage.getWidth() * rgbaImage.getHeight() * 3];
+            ByteBuffer buffer = ByteBuffer.allocate(rgbaImage.getByteCount());
+            rgbaImage.copyPixelsToBuffer(buffer);
+            byte[] rgba = buffer.array();
+            for (int i = 0; i < rgba.length / 4; i++) {
+                inputData[i * 3] = rgba[i * 4];
+                inputData[i * 3 + 1] = rgba[i * 4 + 1];
+                inputData[i * 3 + 2] = rgba[i * 4 + 2];
+            }
+            final long start = System.currentTimeMillis();
+            int[] alpha_data = portraitSegmentation.predictor(inputData, rgbaImage.getWidth(), rgbaImage.getHeight());
+            final long end = System.currentTimeMillis();
+            Log.d(getResources().getString(R.string.TAG),
+                    "【LiteKit】【Portrait】【predict】" + (end - start) + " ms");
+            Bitmap maskbmp = Bitmap.createBitmap(alpha_data, 0, (int) SEGMENT_WIDTH, (int) SEGMENT_WIDTH, (int) SEGMENT_HEIGHT, Bitmap.Config.ARGB_8888);
+            drawMask(bmp, maskbmp, System.currentTimeMillis() - start);
+
+            bmp.recycle();
+            scaleImage.recycle();
+            rgbaImage.recycle();
+            buffer.clear();
         }
-        final long start = System.currentTimeMillis();
-        int[] alpha_data = portraitSegmentation.predictor(inputData, rgbaImage.getWidth(), rgbaImage.getHeight());
-        final long end = System.currentTimeMillis();
-        Log.d(getResources().getString(R.string.TAG),
-                "【LiteKit】【Portrait】【predict】"+ (end-start) +" ms");
-        Bitmap maskbmp = Bitmap.createBitmap(alpha_data, 0, (int) SEGMENT_WIDTH, (int) SEGMENT_WIDTH, (int) SEGMENT_HEIGHT, Bitmap.Config.ARGB_8888);
-        drawMask(bmp, maskbmp, System.currentTimeMillis() - start);
-
-        bmp.recycle();
-        scaleImage.recycle();
-        rgbaImage.recycle();
-        buffer.clear();
     }
 
     @Override

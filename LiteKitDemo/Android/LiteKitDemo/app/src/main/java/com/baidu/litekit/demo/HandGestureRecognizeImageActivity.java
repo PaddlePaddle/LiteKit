@@ -33,6 +33,7 @@ import android.widget.ImageView;
 
 import com.baidu.litekit.HandGestureDetectResult;
 import com.baidu.litekit.HandGestureDetector;
+import com.baidu.litekit.demo.utils.ThreadManager;
 
 public class HandGestureRecognizeImageActivity extends AppCompatActivity {
 
@@ -86,13 +87,15 @@ public class HandGestureRecognizeImageActivity extends AppCompatActivity {
     }
 
     void doDetect() {
-        Bitmap bmp = BitmapFactory.decodeResource(HandGestureRecognizeImageActivity.this.getResources(), R.mipmap.face_img);
-        long start = System.currentTimeMillis();
-        HandGestureDetectResult result = HandGestureDetector.detect(bmp);
-        drawLabel(result, bmp, System.currentTimeMillis() - start);
-        final long end = System.currentTimeMillis();
-        Log.d(getResources().getString(R.string.TAG),
-                "【LiteKit】【Gesture】【predict】"+ (end-start) +" ms");
+        synchronized (ThreadManager.mCommonlock) {
+            Bitmap bmp = BitmapFactory.decodeResource(HandGestureRecognizeImageActivity.this.getResources(), R.mipmap.face_img);
+            long start = System.currentTimeMillis();
+            HandGestureDetectResult result = HandGestureDetector.detect(bmp);
+            drawLabel(result, bmp, System.currentTimeMillis() - start);
+            final long end = System.currentTimeMillis();
+            Log.d(getResources().getString(R.string.TAG),
+                    "【LiteKit】【Gesture】【predict】" + (end - start) + " ms");
+        }
     }
 
     @Override

@@ -71,14 +71,14 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback, C
         minPreviewHeight = minHeight;
     }
 
-    private void openCamera(SurfaceHolder holder) {
+    private void openCamera(SurfaceHolder holder, int cameraFacing) {
         releaseCamera();
-        mCamera = Camera.open(mCameraFacing);
+        mCamera = Camera.open(cameraFacing);
 
         Camera.CameraInfo info = new Camera.CameraInfo();
-        Camera.getCameraInfo(mCameraFacing, info);
+        Camera.getCameraInfo(cameraFacing, info);
         int rotation = ((Activity) getContext()).getWindowManager().getDefaultDisplay().getRotation();
-        int degrees = rotation * 90;
+        int degrees = rotation * 270;
 
         mOrientation = info.orientation;
 
@@ -90,7 +90,7 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback, C
         mPreviewSize = getPropPreviewSize(mParams.getSupportedPreviewSizes(), minPreviewWidth, minPreviewHeight);
         mParams.setPreviewSize(mPreviewSize.width, mPreviewSize.height);
         mParams.setPreviewFormat(ImageFormat.NV21);
-        if (mCameraFacing == Camera.CameraInfo.CAMERA_FACING_BACK) {
+        if (cameraFacing == Camera.CameraInfo.CAMERA_FACING_BACK) {
             mParams.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO);
         }
 
@@ -133,7 +133,7 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback, C
     @Override
     public void surfaceCreated(SurfaceHolder surfaceHolder) {
         Log.i(getResources().getString(R.string.TAG), "surfaceCreated");
-        openCamera(surfaceHolder);
+        openCamera(surfaceHolder, mCameraFacing);
     }
 
     @Override
@@ -147,8 +147,9 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback, C
     }
 
     public void switchCamera() {
-        mCameraFacing = isFrontCamera() ? Camera.CameraInfo.CAMERA_FACING_BACK : Camera.CameraInfo.CAMERA_FACING_FRONT;
-        openCamera(getHolder());
+        int cameraFacing = isFrontCamera() ? Camera.CameraInfo.CAMERA_FACING_BACK : Camera.CameraInfo.CAMERA_FACING_FRONT;
+        openCamera(getHolder(), cameraFacing);
+        mCameraFacing = cameraFacing;
     }
 
     public boolean isFrontCamera() {
