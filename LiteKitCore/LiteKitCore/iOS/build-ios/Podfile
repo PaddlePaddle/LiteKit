@@ -6,7 +6,7 @@ platform :ios
 
 target 'LiteKitCore' do
   project './LiteKitCore.xcodeproj'
-    platform :ios, '10.0'
+    platform :ios, '9.0'
 
     pod 'LiteKitCoreOCDependency', '~> 0.1.0'
     pod 'LiteKitCorePaddleGPU', '~> 1.1.3'

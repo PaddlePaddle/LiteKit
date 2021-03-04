@@ -16,6 +16,9 @@
 		27B9F2C024E0015E00CD423B /* ViewController+LiteKitCore_OC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 27B9F2BB24E0015D00CD423B /* ViewController+LiteKitCore_OC.mm */; };
 		27B9F2CD24E00C1700CD423B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27B9F2CC24E00C1700CD423B /* Default-568h@2x.png */; };
 		27B9FBB224E2AA2C00CD423B /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B9FBB124E2AA2C00CD423B /* File.swift */; };
+		27FD8ACA25ECEC2E0026A01E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27FD8AC525ECEC2E0026A01E /* LaunchScreen.storyboard */; };
+		27FD8ACB25ECEC2E0026A01E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27FD8AC725ECEC2E0026A01E /* Main.storyboard */; };
+		27FD8ACC25ECEC2E0026A01E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27FD8AC925ECEC2E0026A01E /* Assets.xcassets */; };
 		D8DFC169E73F79C393C8F2FB /* libPods-LiteKitCoreDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BEF4E1D44EFB7285391A797A /* libPods-LiteKitCoreDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +40,9 @@
 		27B9F2CC24E00C1700CD423B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "LiteKitCoreDemo/Resources/Default-568h@2x.png"; sourceTree = "<group>"; };
 		27B9FBB024E2AA2B00CD423B /* LiteKitCoreDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LiteKitCoreDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		27B9FBB124E2AA2C00CD423B /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		27FD8AC625ECEC2E0026A01E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LiteKitCoreDemo/Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		27FD8AC825ECEC2E0026A01E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LiteKitCoreDemo/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		27FD8AC925ECEC2E0026A01E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = LiteKitCoreDemo/Assets.xcassets; sourceTree = "<group>"; };
 		96343F7CD67EE38940239A78 /* Pods-LiteKitCoreDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiteKitCoreDemo.release.xcconfig"; path = "Target Support Files/Pods-LiteKitCoreDemo/Pods-LiteKitCoreDemo.release.xcconfig"; sourceTree = "<group>"; };
 		BEF4E1D44EFB7285391A797A /* libPods-LiteKitCoreDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LiteKitCoreDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3A3DA63E51748B383701ADE /* Pods-LiteKitCoreDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiteKitCoreDemo.debug.xcconfig"; path = "Target Support Files/Pods-LiteKitCoreDemo/Pods-LiteKitCoreDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -105,6 +111,9 @@
 		27B9F2C724E00B5B00CD423B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				27FD8AC925ECEC2E0026A01E /* Assets.xcassets */,
+				27FD8AC525ECEC2E0026A01E /* LaunchScreen.storyboard */,
+				27FD8AC725ECEC2E0026A01E /* Main.storyboard */,
 				27B9F2CC24E00C1700CD423B /* Default-568h@2x.png */,
 				27179F57257F64E8006B6E71 /* LiteKitCoreDemo.bundle */,
 				27B9F2B124E0008800CD423B /* Info.plist */,
@@ -180,8 +189,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27FD8ACA25ECEC2E0026A01E /* LaunchScreen.storyboard in Resources */,
 				27179F58257F64E8006B6E71 /* LiteKitCoreDemo.bundle in Resources */,
 				27B9F2CD24E00C1700CD423B /* Default-568h@2x.png in Resources */,
+				27FD8ACB25ECEC2E0026A01E /* Main.storyboard in Resources */,
+				27FD8ACC25ECEC2E0026A01E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,6 +257,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		27FD8AC525ECEC2E0026A01E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				27FD8AC625ECEC2E0026A01E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		27FD8AC725ECEC2E0026A01E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				27FD8AC825ECEC2E0026A01E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		27B9F2B424E0008800CD423B /* Debug */ = {
@@ -379,6 +410,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 95V4CMQNYA;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)/**";
@@ -393,6 +425,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.baidu.litekitcore.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "LiteKitCoreDemo/LiteKitCoreDemo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -406,6 +439,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 95V4CMQNYA;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)/**";
@@ -420,6 +454,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.baidu.litekitcore.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "LiteKitCoreDemo/LiteKitCoreDemo-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
