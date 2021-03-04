@@ -25,7 +25,7 @@ LiteKitCore Java API产物依赖及版本：
  - 将`liblitekit_framework.so`放在
     - `./LiteKitCore/LiteKitCore/Android/litekitcore/src/main/cpp/libs/arm64-v8a/liblitekit_framework.so`
     - `./LiteKitCore/LiteKitCore/Android/litekitcore/src/main/cpp/libs/armeabi-v7a/liblitekit_framework.so`
-- 执行android studio的按钮Build / Make Project编译
+- 打开工程目录`./LiteKitCore/LiteKitCore/Android`，执行AndroidStudio Gradle的按钮Android/litekitcore/Tasks/build/assemble编译
 - 输出产物
   - `./LiteKitCore/LiteKitCore/Android/litekitcore/build/outputs/aar/litekitcore-debug.aar`
   - `./LiteKitCore/LiteKitCore/Android/litekitcore/build/outputs/aar/litekitcore-release.aar`

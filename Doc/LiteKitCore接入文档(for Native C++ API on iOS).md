@@ -43,21 +43,28 @@ sh product_build.sh
 ![图片](/Doc/Resources/3_1.png)
 
 ### 2. 添加第三方依赖
-无
+添加相关依赖
+- 系统最低版本iOS 9.0
+- 通过pod引入，[参考](/LiteKitCore/LiteKitCore/iOS/build-ios/Podfile)
+```ruby
+# coding: utf-8
+ source 'https://github.com/CocoaPods/Specs.git'
+# source 'https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git'
 
-### 3. 添加系统framework
-将使用Native C++的类改名为.mm结尾，以便使用Object-C++ source模式编译
+platform :ios
 
-### 4. 配置环境
-1) Library Search Path和Header Search Paths中分别添加对Native C++ API的引用
-![图片](/Doc/Resources/3_2.png)
+target 'LiteKitCore' do
+  project './LiteKitCore.xcodeproj'
+    platform :ios, '9.0'
 
-2) Other Linker Flags添加 -l"litekit_framework_ios"
+    pod 'LiteKitCoreOCDependency', '~> 0.1.0'
+    pod 'LiteKitCorePaddleGPU', '~> 1.1.3'
+    # pod 'LiteKitCorePaddleCPU', '~> 2.8.0rc' // CPU已经包含在Native C++产物libpaddle_api_light_bundled中
 
-### 5. 资源文件
-如果使用PaddleMobileGPU作为backend，需要将paddle-mobile-metallib.metallib文件拷贝至main bundle下
-![图片](/Doc/Resources/3_3.png)
+end
 
+
+```
 ## 三、使用
    LiteKit Native C++ API执行推理的时候。
    <br>首先，需要确定模型、所使用的backend、模型和backend是否匹配、以及其他config参数，并创建config。

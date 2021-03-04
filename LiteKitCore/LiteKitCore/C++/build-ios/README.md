@@ -3,10 +3,10 @@
 - 统一环境
 - cmake 3.15.0
 
-- 下载[依赖库](https://gitee.com/paddlepaddle/LiteKit/tree/main/iOS/LiteKitCoreNativeDepencency/0.0.9)
-
-  - 放到以下路径中
-  - LiteKitCore/LiteKitCore/C++/src/main/iOSLibs/
+- 下载依赖库：
+[PaddleCPU](https://gitee.com/paddlepaddle/LiteKit/tree/main/iOS/LiteKitCoreDependency/PaddleCPU/2.8.0rc/libpaddle_api_light_bundled.a)
+放到以下目录：
+    - `./LiteKitCore/LiteKitCore/C++/src/main/iOSLibs/paddle_api_light_bundled/libpaddle_api_light_bundled.a`
 
 - 执行脚本
 

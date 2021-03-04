@@ -29,7 +29,7 @@ Native C++ Android产物依赖及版本：
 
 - 执行脚本
 ```
-cd /LiteKitCore/LiteKitCore/C++
+cd ./LiteKitCore/LiteKitCore/C++
 sh build_android.sh
 ```
 - 输出产物

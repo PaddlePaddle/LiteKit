@@ -15,13 +15,13 @@ LiteKit旨在为客户端应用提供开箱即用的离线的AI能力，使产�
 | <div align=center><img width="320" height="480"  src="/Doc/Resources/1_5.gif"/></div> | <div align=center><img width="320" height="315"  src="/Doc/Resources/1_6.gif"/></div> |
 
 视频超分
-| 超分前 | 超分后 |
+| 增强前 | 增强后 |
 | --- | --- |
 | ![SR](/Doc/Resources/1_7.png) | ![SR](/Doc/Resources/1_7_2.png) |
 ### 1. Android - 扫码安装<br>
 ![QR_Code](/Doc/Resources/1_3.png)
 
-### 2. Demo Project
+### 2. Demo Project 源码安装
 
 ```
 git clone https://github.com/PaddlePaddle/LiteKit.git
@@ -56,7 +56,7 @@ MAVEN_REPO_LOCAL = XXXXXXX
 
 
 
-## 依赖关系
+## 安装SDK
 
 LiteKit依赖关系如下：
 <p align="center"><img width="300" src="/Doc/Resources/1_4.png"/></p>
@@ -71,13 +71,14 @@ LiteKit由[MIT License](LICENSE)提供
 
 | 功能 |依赖 | iOS版本| Android版本 |
 |---|---|---|---|
-| 手势识别 |LiteKitHandGestureDetection    | 0.1.0 | 0.1.0 | 
-| 人像分割 |LiteKitPortraitSegmentation      | 0.1.0 | 0.1.0 |
-| 视频超分 |LiteKitAIVideoSuperResolution  | 0.1.0 | 0.1.0 |
+| 手势识别 |LiteKitHandGestureDetection    | 0.2.0 | 0.2.0 | 
+| 人像分割 |LiteKitPortraitSegmentation      | 0.2.0 | 0.2.0 |
+| 视频超分 |LiteKitAIVideoSuperResolution  | 0.2.0 | 0.2.0 |
 
-### 2. 安装SDK
+### 2. 安装
 #### iOS 安装SDK
-通过pod引入，[参考](/LiteKitDemo/iOS/LiteKitDemo/Podfile)
+- 系统最低版本iOS 9.0
+- 通过pod引入，[参考](/LiteKitDemo/iOS/LiteKitDemo/Podfile)
 ```ruby
 # coding: utf-8
 source 'https://github.com/CocoaPods/Specs.git'
@@ -88,14 +89,15 @@ target 'LiteKitDemo' do
   project './LiteKitDemo.xcodeproj'
     platform :ios, '10.0'
 
-    pod 'LiteKitHandGestureDetection', '~> 0.1.0'
-    pod 'LiteKitPortraitSegmentation', '~> 0.1.0'
-    pod 'LiteKitVideoSuperResolution', '~> 0.1.0'
+    pod 'LiteKitHandGestureDetection', '~> 0.2.0'
+    pod 'LiteKitPortraitSegmentation', '~> 0.2.0'
+    pod 'LiteKitVideoSuperResolution', '~> 0.2.0'
 end
 
 ```
 
 #### Android 安装SDK
+- 系统最低API Level16（4.1版本）
 1. 将依赖SDK仓库作为LocalMaven仓库
 ```
 git clone https://gitee.com/paddlepaddle/LiteKit
@@ -141,9 +143,9 @@ def getLocalProperty(String propertyName) {
 ```groovy
 
 dependencies {
-    implementation 'com.baidu.litekit:handgesturedetector:0.1.0'
-    implementation 'com.baidu.litekit:portraitsegmentation:0.1.0'
-    implementation 'com.baidu.litekit:videosuperresolution:0.1.0'
+    implementation 'com.baidu.litekit:handgesturedetector:0.2.0'
+    implementation 'com.baidu.litekit:portraitsegmentation:0.2.0'
+    implementation 'com.baidu.litekit:videosuperresolution:0.2.0'
 }
 ```
 
@@ -207,7 +209,7 @@ git clone https://github.com/PaddlePaddle/LiteKit.git
 2. 添加LiteKitCore依赖
 按照[接入文档 for Objective-C API ](/Doc/LiteKitCore接入文档(for%20Objective-C%20API).md)构建产物`LiteKit.framework`放在`./LiteKitCore/LiteKitCoreDemo/iOS/Dependence/*`</br>
 按照[接入文档 for Native C++ API on iOS](/Doc/LiteKitCore接入文档(for%20Native%20C%2B%2B%20API%20on%20iOS).md)构建产物`./LiteKitCore/LiteKitCore/C++/build-ios/product/release/*`，
-头文件到文件夹`./LiteKitCore/LiteKitCoreDemo/iOS/Dependence/LiteKitCoreNative/include/*.h`，.a文件放到`./LiteKitCore/LiteKitCoreDemo/iOS/Dependence/LiteKitCoreNative/liblitekit_framework_ios.a`
+*.h头文件到文件夹`./LiteKitCore/LiteKitCoreDemo/iOS/Dependence/LiteKitCoreNative/include/*.h`，liblitekit_framework_ios.a文件放到`./LiteKitCore/LiteKitCoreDemo/iOS/Dependence/LiteKitCoreNative/liblitekit_framework_ios.a`
 
 3. 打开工程
 ```
@@ -223,6 +225,13 @@ open LiteKitCoreDemo.xcworkspace
 | ViewController+LiteKitCore_OC | LiteKit Objective-C API demo code|
 
 #### 部署Android示例工程  
+- 环境部署
+|环境 | 版本 | 
+|---|---|
+| NDK |[android-ndk-r16b](https://developer.android.google.cn/ndk/downloads/older_releases) |
+| cmake | cmake 3.15.0 |
+在~/.bashrc里指定cmake路径`ANDROID_CMAKE`和NDK路径`ANDROID_NDK`变量
+
 1. 根据[接入文档 for Java API ](/Doc/LiteKitCore接入文档(for%20Java%20API).md), 生成`LiteKitCore-debug.aar`，放置在`./LiteKitCore/LiteKitCoreDemo/Android/app/libs/litekitcore-debug.aar`路径下。
 2. 需要[下载](https://gitee.com/paddlepaddle/LiteKit/tree/main/Android/LiteKitCoreDemoDependency/opencv/0.1.0)Demo依赖的opencv.so和libgnustl_shared.so，放置在`./LiteKitCore/LiteKitCoreDemo/Android/app/src/main/cpp/libs`路径下。
 

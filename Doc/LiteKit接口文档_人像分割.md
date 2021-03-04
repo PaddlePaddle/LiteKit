@@ -1,5 +1,5 @@
 # 人像分割接口文档
-人像分割能力由LiteKit 
+人像分割能力由LiteKit PortraitSegmentation SDK提供的，对图像中人像部分进行分割的能力。
 
 ### 目录
 <a href="#iOSAPI">iOS API</a>

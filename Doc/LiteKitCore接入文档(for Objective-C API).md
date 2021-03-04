@@ -1,4 +1,4 @@
-# LiteKitCore接入文档 (for Native Objective-C API)
+# LiteKitCore接入文档 (for Objective-C API)
 
 
 ## 一、编译
@@ -30,30 +30,29 @@ sh product_build.sh
 ## 二、集成
 ### 1. 导入SDK
 在build phases中导入LiteKit Objective-C SDK： LiteKit.framework
-![图片](/Doc/Resources/2_1.png)
 
-### 2. 添加第三方依赖
-在build phases中添加LiteKit Objective-C SDK相关依赖
-|依赖| 版本|
-|---|---|---|---|
-|opencv|3.4.1|
-|paddleLite|1.0.0|
-|paddle_mobile|1.0.0|
-|ProtocolBuffers|1.0.0|
-|ZipArchive|1.0.0|
+添加相关依赖
+- 系统最低版本iOS 9.0
+- 通过pod引入，[参考](/LiteKitCore/LiteKitCore/iOS/build-ios/Podfile)
+```ruby
+# coding: utf-8
+ source 'https://github.com/CocoaPods/Specs.git'
+# source 'https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git'
 
-### 3. 添加系统framework
-在工程中添加一个swift文件，以支持swift相关库的使用。如果已经在使用swift，跳过此步。
-![图片](/Doc/Resources/2_2.png)
+platform :ios
 
-### 4. 配置环境
-检查build setting中的framework Search Paths中是否已经正确配置引用的frameowkr paths。
-![图片](/Doc/Resources/2_3.png)
+target 'LiteKitCore' do
+  project './LiteKitCore.xcodeproj'
+    platform :ios, '9.0'
 
-### 5. 资源文件
-如果使用PaddleMobileGPU作为backend，需要将paddle-mobile-metallib.metallib文件拷贝至main bundle下
-![图片](/Doc/Resources/2_4.png)
+    pod 'LiteKitCoreOCDependency', '~> 0.1.0'
+    pod 'LiteKitCorePaddleGPU', '~> 1.1.3'
+    pod 'LiteKitCorePaddleCPU', '~> 2.8.0rc'
 
+end
+
+
+```
 ## 三、使用
 LiteKit Objective-C API执行推理的时候。
    <br>首先，需要确定模型、所使用的backend、模型和backend是否匹配、以及其他config参数，并创建config。
