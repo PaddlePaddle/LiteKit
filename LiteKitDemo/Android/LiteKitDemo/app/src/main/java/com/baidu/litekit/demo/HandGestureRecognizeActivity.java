@@ -48,6 +48,8 @@ public class HandGestureRecognizeActivity extends CameraBaseActivity {
     Paint LinePaint = new Paint();
     Paint LablePaint = new Paint();
 
+    Boolean mIsLoaded = false;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,8 +85,11 @@ public class HandGestureRecognizeActivity extends CameraBaseActivity {
         final long start = System.currentTimeMillis();
         if (!HandGestureDetector.init(this)) {
             Log.e(getResources().getString(R.string.TAG), "initialization gesture failed");
+            mIsLoaded = false;
             System.exit(-1);
         }
+
+        mIsLoaded = true;
         final long end = System.currentTimeMillis();
         Log.i(getResources().getString(R.string.TAG),
                 "【LiteKit】【Gesture】【Init】"+ (end-start) +" ms");
@@ -192,6 +197,7 @@ public class HandGestureRecognizeActivity extends CameraBaseActivity {
     protected void onDestroy() {
         super.onDestroy();
         synchronized (ThreadManager.mCommonlock) {
+            mIsLoaded = false;
             HandGestureDetector.release();
         }
     }
@@ -200,6 +206,9 @@ public class HandGestureRecognizeActivity extends CameraBaseActivity {
     public void inference(Bitmap scaleImage) {
         HandGestureDetectResult result = null;
         synchronized (ThreadManager.mCommonlock) {
+            if (!mIsLoaded) {
+                return;
+            }
             final long start = System.currentTimeMillis();
             result = HandGestureDetector.detect(scaleImage);
             final long end = System.currentTimeMillis();

@@ -32,6 +32,7 @@
             android:id="@+id/imageView2"
             android:layout_width="match_parent"
             android:layout_height="135dp"
+            android:background="#673AB7"
             android:scaleType="centerCrop"
             app:srcCompat="@mipmap/gesture" />
 
@@ -61,6 +62,7 @@
             android:id="@+id/imageView3"
             android:layout_width="match_parent"
             android:layout_height="135dp"
+            android:background="#3F51B5"
             android:scaleType="centerCrop"
             app:srcCompat="@mipmap/super_resolution" />
 
@@ -92,6 +94,7 @@
             android:id="@+id/imageView4"
             android:layout_width="match_parent"
             android:layout_height="135dp"
+            android:background="#9C27B0"
             android:scaleType="centerCrop"
             app:srcCompat="@mipmap/portrait" />
 
