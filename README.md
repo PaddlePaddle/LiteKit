@@ -225,15 +225,17 @@ open LiteKitCoreDemo.xcworkspace
 | ViewController+LiteKitCore_OC | LiteKit Objective-C API demo code|
 
 #### 部署Android示例工程  
-- 环境部署
-|环境 | 版本 | 
-|---|---|
+1. 环境部署
+
+| 环境 | 版本 | 
+| ----- | ----- |
 | NDK |[android-ndk-r16b](https://developer.android.google.cn/ndk/downloads/older_releases) |
 | cmake | cmake 3.15.0 |
+
 在~/.bashrc里指定cmake路径`ANDROID_CMAKE`和NDK路径`ANDROID_NDK`变量
 
-1. 根据[接入文档 for Java API ](/Doc/LiteKitCore接入文档(for%20Java%20API).md), 生成`LiteKitCore-debug.aar`，放置在`./LiteKitCore/LiteKitCoreDemo/Android/app/libs/litekitcore-debug.aar`路径下。
-2. 需要[下载](https://gitee.com/paddlepaddle/LiteKit/tree/main/Android/LiteKitCoreDemoDependency/opencv/0.1.0)Demo依赖的opencv.so和libgnustl_shared.so，放置在`./LiteKitCore/LiteKitCoreDemo/Android/app/src/main/cpp/libs`路径下。
+2. 根据[接入文档 for Java API ](/Doc/LiteKitCore接入文档(for%20Java%20API).md), 生成`LiteKitCore-debug.aar`，放置在`./LiteKitCore/LiteKitCoreDemo/Android/app/libs/litekitcore-debug.aar`路径下。
+3. 需要[下载](https://gitee.com/paddlepaddle/LiteKit/tree/main/Android/LiteKitCoreDemoDependency/opencv/0.1.0)Demo依赖的opencv.so和libgnustl_shared.so，放置在`./LiteKitCore/LiteKitCoreDemo/Android/app/src/main/cpp/libs`路径下。
 
 ## 二、接口文档
 [接口文档 for Native C++ API](/Doc/LiteKitCore接口文档(for%20Native%20C%2B%2B%20API).md)
