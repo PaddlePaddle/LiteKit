@@ -59,7 +59,7 @@ MAVEN_REPO_LOCAL = XXXXXXX
 ## 安装SDK
 
 LiteKit依赖关系如下：
-<p align="center"><img width="300" src="/Doc/Resources/1_4.png"/></p>
+<p align="center"><img width="450" src="/Doc/Resources/1_4.png"/></p>
 
 其中：
 1. PaddleLite层，[PaddleLite](https://github.com/PaddlePaddle/Paddle-Lite)是一个高性能、轻量级、灵活性强且易于扩展的深度学习推理框架，LiteKitSDK的AI能力底层基于PaddleLite引擎实现。
@@ -156,7 +156,7 @@ LiteKit的AI能力，主要包含3类接口：创建、执行、释放。
 <br>
 其中执行接口通常有多个，可以接受不同格式的数据输入，以适应相机帧、图像、视频解码数据等不同也业务场景。
 
-<p align="center"><img width="450" src="/Doc/Resources/1_8.png"/></p>
+<p align="center"><img width="800" src="/Doc/Resources/1_8.png"/></p>
 
 [人像分割 API文档](/Doc/LiteKit接口文档_人像分割.md) <br>
 [手势识别 API文档](/Doc/LiteKit接口文档_手势识别.md) <br>
