@@ -4,6 +4,7 @@ project(litekit_c_ios_arch)
 
 # 添加编译选项
 add_definitions(-std=c++11)
+add_definitions(-DBACKEND_PADDLE_GPU)
 
 # set variable
 set(CMAKE_BUILD_TYPE Release)

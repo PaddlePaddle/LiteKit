@@ -94,7 +94,7 @@ NSUInteger n = 1, c = 3, h = 256, w = 256;
 
 
 - (void)LiteKit_CPP_Demo_CPU:(NSString *)modelDir {
-    printf("\n>>>>>>>>>   CPP_Demo_GPU   <<<<<<<<<\n");
+    printf("\n>>>>>>>>>   CPP_Demo_CPU   <<<<<<<<<\n");
     /// shared ptr
     @autoreleasepool {
         // load
