@@ -33,7 +33,7 @@ git clone https://github.com/PaddlePaddle/LiteKit.git
 
 ###### 示例工程部署
 ```
-cd LiteKit/LiteKitDemo/iOS/LiteKitDemo
+cd ./LiteKit/LiteKitDemo/iOS/LiteKitDemo
 pod install --repo-update
 open LiteKitDemo.xcworkspace
 ```
@@ -52,7 +52,13 @@ git clone https://gitee.com/paddlepaddle/LiteKit
 MAVEN_REPO_LOCAL = XXXXXXX
 ```
 
-3. Gradle sync & Run
+3. 打开工程
+```
+cd ./LiteKit/LiteKitDemo/Android/LiteKitDemo
+open -a /Applications/Android\ Studio.app ./
+```
+
+4. Gradle sync & Run
 
 
 
@@ -200,7 +206,7 @@ LiteKitCore是一种跨平台的，面向移动开发者的，AI工程化的综�
 ### 3. Demo Project
 iOS示例工程包含了Native C++ API和Objective-C API的demo调用示例，Native C++ API和Objective-C API分别包含CPU和GPU两种backend，一共4种加载和预测的方式。针对C++API（在iOS上）和Objective-C API的CPU/GPU backend分别是对齐的，模型的加载和预测能力一致。但是CPU和GPU backend之间是隔离的，预测所使用的模型是不一样的。
 
-#### 示例iOS工程部署
+#### 部署iOS示例工程
 1. clone git仓库
 ```
 git clone https://github.com/PaddlePaddle/LiteKit.git
@@ -234,8 +240,20 @@ open LiteKitCoreDemo.xcworkspace
 
 在~/.bashrc里指定cmake路径`ANDROID_CMAKE`和NDK路径`ANDROID_NDK`变量
 
-2. 根据[接入文档 for Java API ](/Doc/LiteKitCore接入文档(for%20Java%20API).md), 生成`LiteKitCore-debug.aar`，放置在`./LiteKitCore/LiteKitCoreDemo/Android/app/libs/litekitcore-debug.aar`路径下。
-3. 需要[下载](https://gitee.com/paddlepaddle/LiteKit/tree/main/Android/LiteKitCoreDemoDependency/opencv/0.1.0)Demo依赖的opencv.so和libgnustl_shared.so，放置在`./LiteKitCore/LiteKitCoreDemo/Android/app/src/main/cpp/libs`路径下。
+2. clone git仓库
+```
+git clone https://github.com/PaddlePaddle/LiteKit.git
+```
+
+3. 根据[接入文档 for Java API ](/Doc/LiteKitCore接入文档(for%20Java%20API).md), 生成`LiteKitCore-debug.aar`，放置在`./LiteKitCore/LiteKitCoreDemo/Android/app/libs/litekitcore-debug.aar`路径下。
+4. 需要[下载](https://gitee.com/paddlepaddle/LiteKit/tree/main/Android/LiteKitCoreDemoDependency/opencv/0.1.0)Demo依赖的opencv.so和libgnustl_shared.so，放置在`./LiteKitCore/LiteKitCoreDemo/Android/app/src/main/cpp/libs`路径下。
+5. 打开工程
+```
+cd ./LiteKit/LiteKitCore/LiteKitCoreDemo/Android
+open -a /Applications/Android\ Studio.app ./
+```
+
+6. Gradle sync & Run
 
 ## 二、接口文档
 [接口文档 for Native C++ API](/Doc/LiteKitCore接口文档(for%20Native%20C%2B%2B%20API).md)
