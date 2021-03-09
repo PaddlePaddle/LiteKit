@@ -32,10 +32,16 @@ cd ./LiteKitCore/LiteKitCore/C++/build-ios
 sh product_build.sh 
 ```
 构建产物位置：
-产物目录PRODUCT_DIR = ./LiteKitCore/LiteKitCore/C++/build-ios/product
-产物头文件目录PRODUCT_HEADER_DIR = PRODUCT_DIR/release/include/
-产物静态库目录PRODUCT_FINAL_DIR = PRODUCT_DIR/release/libpaddle_api_light_bundled.a
+```
+// 产物目录
+PRODUCT_DIR = ./LiteKitCore/LiteKitCore/C++/build-ios/product
 
+// 产物头文件目录
+PRODUCT_HEADER_DIR = PRODUCT_DIR/release/include/
+
+// 产物静态库目录
+PRODUCT_FINAL_DIR = PRODUCT_DIR/release/libpaddle_api_light_bundled.a
+```
 
 ## 二、集成
 ### 1. 导入SDK
