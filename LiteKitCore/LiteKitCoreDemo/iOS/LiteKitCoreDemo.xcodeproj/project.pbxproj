@@ -16,6 +16,9 @@
 		27B9F2C024E0015E00CD423B /* ViewController+LiteKitCore_OC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 27B9F2BB24E0015D00CD423B /* ViewController+LiteKitCore_OC.mm */; };
 		27B9F2CD24E00C1700CD423B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27B9F2CC24E00C1700CD423B /* Default-568h@2x.png */; };
 		27B9FBB224E2AA2C00CD423B /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B9FBB124E2AA2C00CD423B /* File.swift */; };
+		27D226ED2653C57900A057E2 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D226E92653C57900A057E2 /* CameraViewController.m */; };
+		27D226EE2653C57900A057E2 /* ImageViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 27D226EC2653C57900A057E2 /* ImageViewController.mm */; };
+		27D226F82653C5F200A057E2 /* BaseDetectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D226F72653C5F200A057E2 /* BaseDetectView.m */; };
 		27FD8ACA25ECEC2E0026A01E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27FD8AC525ECEC2E0026A01E /* LaunchScreen.storyboard */; };
 		27FD8ACB25ECEC2E0026A01E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27FD8AC725ECEC2E0026A01E /* Main.storyboard */; };
 		27FD8ACC25ECEC2E0026A01E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27FD8AC925ECEC2E0026A01E /* Assets.xcassets */; };
@@ -40,6 +43,12 @@
 		27B9F2CC24E00C1700CD423B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "LiteKitCoreDemo/Resources/Default-568h@2x.png"; sourceTree = "<group>"; };
 		27B9FBB024E2AA2B00CD423B /* LiteKitCoreDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LiteKitCoreDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		27B9FBB124E2AA2C00CD423B /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		27D226E92653C57900A057E2 /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
+		27D226EA2653C57900A057E2 /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
+		27D226EB2653C57900A057E2 /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
+		27D226EC2653C57900A057E2 /* ImageViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ImageViewController.mm; sourceTree = "<group>"; };
+		27D226F62653C5F200A057E2 /* BaseDetectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseDetectView.h; sourceTree = "<group>"; };
+		27D226F72653C5F200A057E2 /* BaseDetectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseDetectView.m; sourceTree = "<group>"; };
 		27FD8AC625ECEC2E0026A01E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LiteKitCoreDemo/Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		27FD8AC825ECEC2E0026A01E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LiteKitCoreDemo/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		27FD8AC925ECEC2E0026A01E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = LiteKitCoreDemo/Assets.xcassets; sourceTree = "<group>"; };
@@ -91,6 +100,7 @@
 		27B9F29F24E0008600CD423B /* LiteKitCoreDemo */ = {
 			isa = PBXGroup;
 			children = (
+				27D226E82653C56200A057E2 /* DemoViewController */,
 				27B9F2A624E0008600CD423B /* ViewController.h */,
 				27B9F2BA24E0015D00CD423B /* ViewController.mm */,
 				2739232025E8E2AC00FCDBB4 /* ViewController+View.h */,
@@ -127,6 +137,19 @@
 				BEF4E1D44EFB7285391A797A /* libPods-LiteKitCoreDemo.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		27D226E82653C56200A057E2 /* DemoViewController */ = {
+			isa = PBXGroup;
+			children = (
+				27D226F62653C5F200A057E2 /* BaseDetectView.h */,
+				27D226F72653C5F200A057E2 /* BaseDetectView.m */,
+				27D226EA2653C57900A057E2 /* CameraViewController.h */,
+				27D226E92653C57900A057E2 /* CameraViewController.m */,
+				27D226EB2653C57900A057E2 /* ImageViewController.h */,
+				27D226EC2653C57900A057E2 /* ImageViewController.mm */,
+			);
+			path = DemoViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,10 +270,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				27B9F2BE24E0015E00CD423B /* ViewController+LiteKitCore_CPP.mm in Sources */,
+				27D226ED2653C57900A057E2 /* CameraViewController.m in Sources */,
+				27D226F82653C5F200A057E2 /* BaseDetectView.m in Sources */,
 				27B9F2BF24E0015E00CD423B /* ViewController.mm in Sources */,
 				27B9FBB224E2AA2C00CD423B /* File.swift in Sources */,
 				27B9F2A224E0008600CD423B /* AppDelegate.m in Sources */,
 				2739232125E8E2AC00FCDBB4 /* ViewController+View.mm in Sources */,
+				27D226EE2653C57900A057E2 /* ImageViewController.mm in Sources */,
 				27B9F2B324E0008800CD423B /* main.m in Sources */,
 				27B9F2C024E0015E00CD423B /* ViewController+LiteKitCore_OC.mm in Sources */,
 			);
@@ -423,7 +449,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)/**";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.baidu.litekitcore.demo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.baidu.litekitcore.demo1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "LiteKitCoreDemo/LiteKitCoreDemo-Bridging-Header.h";
@@ -452,7 +478,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)/**";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.baidu.litekitcore.demo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.baidu.litekitcore.demo1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "LiteKitCoreDemo/LiteKitCoreDemo-Bridging-Header.h";

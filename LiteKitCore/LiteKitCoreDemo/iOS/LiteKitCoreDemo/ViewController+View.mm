@@ -7,14 +7,15 @@
 //
 
 #import "ViewController+View.h"
-
+#import "CameraViewController.h"
 
 @implementation ViewController(View)
 typedef NS_ENUM(NSInteger, DemoButtonType) {
     DemoButtonType_OC_CPU = 0,
     DemoButtonType_OC_GPU = 1,
     DemoButtonType_CXX_CPU = 2,
-    DemoButtonType_CXX_GPU = 3
+    DemoButtonType_CXX_GPU = 3,
+    DemoButtonType_CameraView = 4
 };
 
 
@@ -23,6 +24,7 @@ typedef NS_ENUM(NSInteger, DemoButtonType) {
     [self addButton:DemoButtonType_OC_GPU title:@"OC_GPU"];
     [self addButton:DemoButtonType_CXX_CPU title:@"CXX_CPU"];
     [self addButton:DemoButtonType_CXX_GPU title:@"CXX_GPU"];
+    [self addButton:DemoButtonType_CameraView title:@"DemoView"];
     
 }
 
@@ -57,11 +59,18 @@ typedef NS_ENUM(NSInteger, DemoButtonType) {
             [button addTarget:self action:@selector(LiteKit_CPP_Demo_GPU) forControlEvents:UIControlEventTouchUpInside];
             break;
         }
+        case DemoButtonType_CameraView: {
+            [button addTarget:self action:@selector(LiteKit_CameraView) forControlEvents:UIControlEventTouchUpInside];
+            break;
+        }
         default:
             break;
     }
 }
 
+- (void)LiteKit_CameraView {
+    [self.navigationController pushViewController:[[CameraViewController alloc] init] animated:YES];
+}
 
 - (void)LiteKit_OC_Demo_CPU {
     NSBundle *testBundle = [NSBundle mainBundle];
