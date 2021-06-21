@@ -54,5 +54,7 @@ public class MainActivity extends AppCompatActivity {
     public void onPortraitSegmentation(View v) {
         startActivity(new Intent(MainActivity.this, PortraitSegmentationActivity.class));
     }
-
+    public void onOCR(View v) {
+        startActivity(new Intent(MainActivity.this, OCRActivity.class));
+    }
 }

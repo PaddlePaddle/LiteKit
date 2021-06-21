@@ -46,7 +46,9 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    implementation 'com.baidu.litekit:handgesturedetector:0.2.0'
-    implementation 'com.baidu.litekit:portraitsegmentation:0.2.0'
-    implementation 'com.baidu.litekit:videosuperresolution:0.2.0'
+
+    implementation 'com.baidu.litekit:handgesturedetector:0.3.0'
+    implementation 'com.baidu.litekit:portraitsegmentation:0.3.0'
+    implementation 'com.baidu.litekit:videosuperresolution:0.3.0'
+    implementation 'com.baidu.litekit:ocr:0.3.0'
 }

@@ -24,6 +24,7 @@
         <activity android:name=".VideoSuperResolutionActivity"/>
         <activity android:name=".PortraitSegmentationImageActivity"/>
         <activity android:name=".HandGestureRecognizeImageActivity"/>
+        <activity android:name=".OCRActivity"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

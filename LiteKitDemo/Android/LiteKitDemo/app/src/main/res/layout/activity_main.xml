@@ -2,6 +2,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/portraitVideoLayout">
@@ -16,17 +17,19 @@
         android:text="@string/LiteKit"
         android:textAlignment="center"
         android:textColor="#AAAAAA"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        android:gravity="center_horizontal" />
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardgesture"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_below="@id/textView"
         android:layout_marginLeft="12dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="12dp"
-        app:cardCornerRadius="10dp">
+        app:cardCornerRadius="10dp"
+        tools:layout_height="wrap_content"
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/imageView2"
@@ -54,7 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/cardgesture"
         android:layout_marginLeft="12dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="12dp"
         app:cardCornerRadius="10dp">
 
@@ -83,11 +86,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/cardsr"
-        android:layout_alignParentBottom="false"
         android:layout_marginLeft="12dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="12dp"
-        android:layout_marginBottom="116dp"
         app:cardCornerRadius="10dp">
 
         <ImageView
@@ -105,6 +106,36 @@
             android:onClick="onPortraitSegmentation"
             android:padding="20dp"
             android:text="人像分割"
+            android:textColor="#FFFFFF"
+            android:textSize="30dp" />
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardocr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cardportraint"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="12dp"
+        app:cardCornerRadius="10dp">
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="match_parent"
+            android:layout_height="135dp"
+            android:background="#9C27B0"
+            android:scaleType="centerCrop"
+            app:srcCompat="@mipmap/ocr" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="left|center_vertical"
+            android:onClick="onOCR"
+            android:padding="20dp"
+            android:text="OCR"
             android:textColor="#FFFFFF"
             android:textSize="30dp" />
 
