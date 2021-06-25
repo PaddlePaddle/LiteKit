@@ -7,7 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BC0DDB3F24C9ECA0002AB0E9 /* test_img.png in Resources */ = {isa = PBXBuildFile; fileRef = BC0DDB3E24C9ECA0002AB0E9 /* test_img.png */; };
+		2723B9CC2685D3EE00D88FCE /* LiteKitOCRView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2723B9C72685D3EE00D88FCE /* LiteKitOCRView.m */; };
+		2723B9CD2685D3EE00D88FCE /* LiteKitOCRViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2723B9C82685D3EE00D88FCE /* LiteKitOCRViewController.mm */; };
+		2723B9CE2685D3EE00D88FCE /* LiteKitPhotoSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 2723B9CB2685D3EE00D88FCE /* LiteKitPhotoSelector.m */; };
+		2723B9D22685D4C300D88FCE /* bg_ocr.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 2723B9CF2685D4C300D88FCE /* bg_ocr.jpeg */; };
+		2723B9D32685D4C300D88FCE /* test_OCR_0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2723B9D02685D4C300D88FCE /* test_OCR_0.jpg */; };
+		2723B9D42685D4C300D88FCE /* test_PortraitSegmentation.png in Resources */ = {isa = PBXBuildFile; fileRef = 2723B9D12685D4C300D88FCE /* test_PortraitSegmentation.png */; };
 		BC158F9124BC494C00308245 /* SuperResolutionViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = BC158F9024BC494C00308245 /* SuperResolutionViewController.mm */; };
 		BC158FA324BC60EA00308245 /* test-SuperResolution.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = BC158FA224BC60EA00308245 /* test-SuperResolution.jpeg */; };
 		BC6A82E724ADADAA000E9480 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = BC6A82E624ADADAA000E9480 /* AppDelegate.mm */; };
@@ -45,9 +50,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2723B9C62685D3EE00D88FCE /* LiteKitPhotoSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiteKitPhotoSelector.h; sourceTree = "<group>"; };
+		2723B9C72685D3EE00D88FCE /* LiteKitOCRView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiteKitOCRView.m; sourceTree = "<group>"; };
+		2723B9C82685D3EE00D88FCE /* LiteKitOCRViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LiteKitOCRViewController.mm; sourceTree = "<group>"; };
+		2723B9C92685D3EE00D88FCE /* LiteKitOCRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiteKitOCRViewController.h; sourceTree = "<group>"; };
+		2723B9CA2685D3EE00D88FCE /* LiteKitOCRView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiteKitOCRView.h; sourceTree = "<group>"; };
+		2723B9CB2685D3EE00D88FCE /* LiteKitPhotoSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiteKitPhotoSelector.m; sourceTree = "<group>"; };
+		2723B9CF2685D4C300D88FCE /* bg_ocr.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg_ocr.jpeg; sourceTree = "<group>"; };
+		2723B9D02685D4C300D88FCE /* test_OCR_0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test_OCR_0.jpg; sourceTree = "<group>"; };
+		2723B9D12685D4C300D88FCE /* test_PortraitSegmentation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_PortraitSegmentation.png; sourceTree = "<group>"; };
 		93B2B4E2CF48D285859FC8CB /* libPods-LiteKitDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LiteKitDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A32FF356C3EBCAD794D931D0 /* Pods-LiteKitDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiteKitDemo.release.xcconfig"; path = "Target Support Files/Pods-LiteKitDemo/Pods-LiteKitDemo.release.xcconfig"; sourceTree = "<group>"; };
-		BC0DDB3E24C9ECA0002AB0E9 /* test_img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_img.png; sourceTree = "<group>"; };
 		BC158F8F24BC494C00308245 /* SuperResolutionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SuperResolutionViewController.h; sourceTree = "<group>"; };
 		BC158F9024BC494C00308245 /* SuperResolutionViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SuperResolutionViewController.mm; sourceTree = "<group>"; };
 		BC158FA224BC60EA00308245 /* test-SuperResolution.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "test-SuperResolution.jpeg"; sourceTree = "<group>"; };
@@ -97,6 +110,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2723B9C52685D3EE00D88FCE /* OCR */ = {
+			isa = PBXGroup;
+			children = (
+				2723B9C82685D3EE00D88FCE /* LiteKitOCRViewController.mm */,
+				2723B9C92685D3EE00D88FCE /* LiteKitOCRViewController.h */,
+				2723B9CA2685D3EE00D88FCE /* LiteKitOCRView.h */,
+				2723B9C72685D3EE00D88FCE /* LiteKitOCRView.m */,
+				2723B9C62685D3EE00D88FCE /* LiteKitPhotoSelector.h */,
+				2723B9CB2685D3EE00D88FCE /* LiteKitPhotoSelector.m */,
+			);
+			path = OCR;
+			sourceTree = "<group>";
+		};
 		6E994EF212A5736169C8F673 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +162,7 @@
 		BC6A82E424ADADAA000E9480 /* LiteKitDemo */ = {
 			isa = PBXGroup;
 			children = (
+				2723B9C52685D3EE00D88FCE /* OCR */,
 				BC6A82FE24ADC46C000E9480 /* base */,
 				BC6A82FF24ADC46C000E9480 /* HandGesture */,
 				BC6A830024ADC46C000E9480 /* Segmentation */,
@@ -194,12 +221,14 @@
 		BC6A831124AE0386000E9480 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				2723B9D02685D4C300D88FCE /* test_OCR_0.jpg */,
+				2723B9CF2685D4C300D88FCE /* bg_ocr.jpeg */,
+				2723B9D12685D4C300D88FCE /* test_PortraitSegmentation.png */,
 				BCCB6C5324F816CC00884353 /* bg_gesture.jpeg */,
 				BCCB6C5524F816CC00884353 /* bg_portrait.jpeg */,
 				BCCB6C5424F816CC00884353 /* bg_super_resolution.jpeg */,
 				BC6A835824AF676C000E9480 /* test-HandGesture.jpg */,
 				BC158FA224BC60EA00308245 /* test-SuperResolution.jpeg */,
-				BC0DDB3E24C9ECA0002AB0E9 /* test_img.png */,
 			);
 			path = resource;
 			sourceTree = "<group>";
@@ -278,12 +307,14 @@
 				BCCB6C5724F816CC00884353 /* bg_super_resolution.jpeg in Resources */,
 				BC6A835924AF676C000E9480 /* test-HandGesture.jpg in Resources */,
 				BC158FA324BC60EA00308245 /* test-SuperResolution.jpeg in Resources */,
+				2723B9D42685D4C300D88FCE /* test_PortraitSegmentation.png in Resources */,
 				BC6A82F524ADADAF000E9480 /* LaunchScreen.storyboard in Resources */,
 				BCCB6C5624F816CC00884353 /* bg_gesture.jpeg in Resources */,
 				BC6A82F224ADADAF000E9480 /* Assets.xcassets in Resources */,
+				2723B9D32685D4C300D88FCE /* test_OCR_0.jpg in Resources */,
+				2723B9D22685D4C300D88FCE /* bg_ocr.jpeg in Resources */,
 				BC6A82F024ADADAA000E9480 /* Main.storyboard in Resources */,
 				BCCB6C5824F816CC00884353 /* bg_portrait.jpeg in Resources */,
-				BC0DDB3F24C9ECA0002AB0E9 /* test_img.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,12 +384,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2723B9CD2685D3EE00D88FCE /* LiteKitOCRViewController.mm in Sources */,
 				BCFDE3A824C9B6B5001A263A /* SegmentationImageViewController.mm in Sources */,
 				BC6A830A24ADC526000E9480 /* SegmentationViewController.mm in Sources */,
+				2723B9CE2685D3EE00D88FCE /* LiteKitPhotoSelector.m in Sources */,
 				BC6A82ED24ADADAA000E9480 /* ViewController.m in Sources */,
 				BC6A831024ADCE90000E9480 /* BaseDetectView.m in Sources */,
 				BC6A830724ADC511000E9480 /* HandGestureViewController.m in Sources */,
 				BC6A834B24AE3B65000E9480 /* HandGestureImageViewController.m in Sources */,
+				2723B9CC2685D3EE00D88FCE /* LiteKitOCRView.m in Sources */,
 				BC6A82E724ADADAA000E9480 /* AppDelegate.mm in Sources */,
 				BC6A830D24ADC9D5000E9480 /* BaseViewController.m in Sources */,
 				BC6A834824AE2458000E9480 /* HandGestureRecognizeView.m in Sources */,
@@ -519,7 +553,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.baidu.LiteKit.LiteKitDemo2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.baidu.LiteKit.LiteKitDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "LiteKitDemo/LiteKitDemo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -547,7 +581,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.baidu.LiteKit.LiteKitDemo2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.baidu.LiteKit.LiteKitDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "LiteKitDemo/LiteKitDemo-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

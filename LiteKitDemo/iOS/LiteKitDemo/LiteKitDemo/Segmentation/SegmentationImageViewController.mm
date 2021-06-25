@@ -52,7 +52,7 @@
 }
 
 - (void)initData {
-    self.image = [UIImage imageNamed:@"test_img.png"];
+    self.image = [UIImage imageNamed:@"test_PortraitSegmentation.png"];
     self.presetSize = self.image.size;
     
     self.alpha_output = (float *)calloc(Output_Width * Output_Height, sizeof(float));
@@ -193,9 +193,9 @@
             output[1] = input[1];
             output[2] = input[2];
         } else {
-            output[0] = 0;
-            output[1] = x;
-            output[2] = 0;
+            output[0] = 255;
+            output[1] = 255;
+            output[2] = 255;
         }
         output[3] = 255;
         
